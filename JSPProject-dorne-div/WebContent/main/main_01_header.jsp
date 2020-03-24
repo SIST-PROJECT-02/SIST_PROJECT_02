@@ -81,11 +81,7 @@
                             </div>
                             <!-- Register btn -->
                             <div class="dorne-signin-btn">
-                                <a href="index.jsp?mode=14">회원가입</a>
-                            </div>
-                            <!-- Signin btn -->
-                            <div class="dorne-signin-btn">
-                                <a href="index.jsp?mode=15">로그인</a>
+                                <a href="index.jsp?mode=14">로그인 / 회원가입</a>
                             </div>
                         </div>
                     </nav>

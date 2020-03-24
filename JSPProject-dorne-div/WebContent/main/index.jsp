@@ -73,13 +73,9 @@
 		case 13:
 			jsp="../detail/13_csc.jsp";	
 			break;
-		//회원가입
+		//회원가입/로그인
 		case 14:
 			jsp="../detail/00_signup.jsp";	
-			break;
-		//로그인
-		case 15:
-			jsp="../detail/00_signin.jsp";	
 			break;
 	}
 %>    
@@ -114,6 +110,9 @@
 	<div>
 		<jsp:include page="<%=jsp %>"></jsp:include>
 	</div>
+	
+	<br>
+	<br>
 	<!-- footer -->
   	<%@ include file="./main_03_footer.jsp" %>
   	
