@@ -23,7 +23,9 @@
 			break;
 		//여행준비
 		case 1: 
-			jsp="../detail/01_ready.jsp";
+			//jsp="../detail/01_ready.jsp";
+			jsp="../../html/ready.html";
+			
 			break;
 		//가이드북
 		case 2: 
