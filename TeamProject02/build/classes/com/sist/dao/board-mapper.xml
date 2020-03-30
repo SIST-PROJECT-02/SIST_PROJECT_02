@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PreparedStatement, ResultSet -->
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.dao.board-mapper">
+	<!-- 
+		목록
+		 public BoardVO boardListData(Map map)
+		 
+		 public int movieTotalPage()=> <select id="movieTotalPage" resultType="int">
+		 public <ZipcodeBean> postfind(String dong)=><select id="postfind" resultType="zipcodeBean" parameterType="String">
+		 
+		 Map map=new HashMap();
+		 map.out("start",1);
+		 map.out("end",10);
+		 
+		 #{start } => map.get("start");
+		 #{end }   => map.get("end");
+		 
+		 public List<BoardVO> boardListsData(Map map)
+		 => selectList();: 묶어서
+		 => selectone();: 한개만
+	 -->	
+	 <select id="boardListData" resultType="BoardVO" parameterType="java.util.Map">
+	 	SELECT no, subject, name, regdate, hit, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, num 
+	 	FROM (SELECT no, subject, name, regdate, hit, rownum as num
+	 	FROM (SELECT no, subject, name, regdate, hit
+	 	FROM board ORDER BY no DESC))
+	 	WHERE num BETWEEN #{start } AND #{end }
+	 </select>
+	 
+	 <select id="boardTotalPage" resultType="int">
+	 	SELECT CEIL(COUNT(*)/10.0) FROM board
+	 </select>
+	 
+	 <sql id="where-no">
+	 	WHERE no=#{no }
+	 </sql>
+	 
+	 <select id="boardDetailData" resultType="BoardVO" parameterType="int">
+	 	SELECT * FROM board
+	 	<include refid="where-no"/>
+	 </select>
+	 
+	 <update id="hitIncrement" parameterType="int">
+		UPDATE board SET	 
+		hit=hit+1	
+		<include refid="where-no"/>
+	 </update>
+	 
+	 <insert id="boardInsert" parameterType="BoardVO">
+	 <!-- order: 실행순서 BEFORE: 먼저실행 -->	
+	 	<selectKey keyProperty="no" resultType="int" order="BEFORE">
+	 		SELECT NVL(MAX(no)+1,1) as no FROM board
+	 	</selectKey>
+	 	INSERT INTO board VALUES (#{no},#{name},#{subject},#{content},#{pwd},SYSDATE,0)
+	 </insert>
+	 
+	 <update id="boardUpdate" parameterType="BoardVO">
+		UPDATE board
+		SET	   name=#{name }, subject=#{subject }, content=#{content }	
+		WHERE  no=#{no }	
+	 </update>
+	 
+	 <!-- <delete id="boardDelete" parameterType="int">
+	 	DELETE FROM
+	 	WHERE
+	 </delete> -->
+</mapper>
