@@ -22,4 +22,4 @@
 			5. 마지막으로, 자신의 view로 접근하기 위해 main_01_header.jsp(template의 main폴더)
 			에서 xxx.jsp?mode=yy 를, xxx.do로 바꾼다
       
-      ![안녕](./바탕 화면/picture_project2)
+      ![안녕](picture_project2.png)
