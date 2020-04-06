@@ -12,7 +12,7 @@
 			3. Config.xml에 자신의 mapper를 등록한다
 				=> alias : vo를 등록하고, mapper : mapper를 매핑한다
 	4.열심히 만든다 ^^
-	
+	<hr/>
 	-참고하기-
 			1.index.jsp를 실행시켜서 -> 여행상품 보기
 			2. hotel관련된 패키지 보기 or WebContent의 views에서 hotel보기
