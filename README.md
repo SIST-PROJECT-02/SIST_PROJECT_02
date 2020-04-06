@@ -1,17 +1,21 @@
-설명서 : 
+# 설명서 : 
 	1.web.xml을 수정한다
 		=> 수정 방법:
 			1. app.xml을 우클릭해서 properties를 누른다.
 			2. location을 복사한다 ex) C://어쩌구저쩌구...
-			3. 이것을 경로에 맞게 수정한다 + src도 마찬가지로
+			3. 이것을 경로에 맞게 수정한다 + src도 마찬가지로  
+			#
 	2.app.xml을 수정한다.
-			1. @Controller를 하려는 target Package를 beans태그 내에 놓는다.
+			1. @Controller를 하려는 target Package를 beans태그 내에 놓는다.  
+			#
 	3.패키지를 만든다.
 			1.com.sist.자신이 맡은 부분.model을 만든다. - 이 위에 모델을 만든다
 			2.                               .dao도 만들고, mapper도 만들고 다 만든다 + 
 			3. Config.xml에 자신의 mapper를 등록한다
-				=> alias : vo를 등록하고, mapper : mapper를 매핑한다
-	4.열심히 만든다 ^^
+				=> alias : vo를 등록하고, mapper : mapper를 매핑한다  
+				#
+	4.열심히 만든다 ^^  
+	#
 	<hr/>
 	-참고하기-
 			1.index.jsp를 실행시켜서 -> 여행상품 보기
