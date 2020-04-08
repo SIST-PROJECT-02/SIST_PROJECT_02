@@ -1,0 +1,46 @@
+*{
+    margin : 0px;
+    padding : 0px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+.list{
+    margin:auto;
+}
+
+.list li{
+    list-style: none;
+}
+.list ul{
+    overflow: hidden;
+}
+.list ul > li{
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px;
+    
+}
+
+.list ul > li > a{
+    
+    overflow: hidden;
+    position: absolute;
+    top : 0px;
+    left : 0px;
+    background-color: #f4f6f8;
+    transition : background-color 0.5s;
+}
+
+.list .more-data{
+	height : 80px;
+	text-align : center;
+	background-color : gray;
+	line-height : 80px; 
+}
+.list .more-data:hover{
+	cursor:pointer;
+}

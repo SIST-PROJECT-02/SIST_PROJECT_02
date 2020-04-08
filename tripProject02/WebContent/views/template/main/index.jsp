@@ -109,12 +109,12 @@
 	<!-- content -->
 	<div>
 		<c:if test="${not empty jsp}">
-			<h1><jsp:include page="${jsp }"></jsp:include></h1>
+			<jsp:include page="${jsp }"></jsp:include>+
 		</c:if>
 		<c:if test="${empty jsp}">
-			<h1><jsp:include page="../detail/00_search.jsp"></jsp:include></h1>
+			<jsp:include page="../detail/00_search.jsp"></jsp:include>
 		</c:if>
-		<!--<jsp:include page="<%= jsp %>"></jsp:include>-->
+		<%--<jsp:include page="<%= jsp %>"></jsp:include>--%>
 	</div>
 
 	<br>
