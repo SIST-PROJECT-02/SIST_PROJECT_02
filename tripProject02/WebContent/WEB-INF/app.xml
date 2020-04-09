@@ -3,4 +3,5 @@
   <context:component-scan base-package="com.sist.model"/>
   <context:component-scan base-package="com.sist.hotel.model"/>
   <context:component-scan base-package="com.sist.attraction.model"/>
+  <context:component-scan base-package="com.sist.member.model"/>
 </beans>

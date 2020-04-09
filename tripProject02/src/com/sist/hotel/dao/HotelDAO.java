@@ -34,17 +34,66 @@ public class HotelDAO {
 		return list;
 	}
 	
-	public static List<HotelVO> hotelAllDataByEvel() {
+	//호텔의 데이터를 별점순(내림차순)으로 얻는다
+	public static List<HotelVO> hotelAllDataByEvelDESC(int start, int count) {
 		List<HotelVO> list = null;
 		Map map = new HashMap();
-		map.put("start", 1);
-		map.put("end", 6);
 		try (SqlSession session = ssf.openSession()) {
-			list = session.selectList("hotelAllDataByEvel",map);
-			session.close();
+			map.put("start", start);
+			map.put("end", start + count - 1);
+			map.put("product_kind", "숙박");
+			list = session.selectList("hotelAllDataByEvelDESC",map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	//호텔의 총 개수를 얻는다
+	public static int hotelCount(){
+		int count = 0;
+		Map map = new HashMap();
+		List list = new ArrayList();
+		map.put("product_kind", "숙박");
+		try (SqlSession session = ssf.openSession()) {
+			list = session.selectList("hotelCount",map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		count = (int)list.get(0);
+		return count;
+	}
+	
+	//호텔 start~ x개 가져오기
+	public static List<HotelVO> getHotelFromStartToX(int start, int count){
+		List<HotelVO> list = null;
+		if(count == 0){
+			return null;
+		}
+		Map map = new HashMap();
+		try (SqlSession session = ssf.openSession()) {
+			map.put("start", start);
+			map.put("end", start + count-1);
+			map.put("product_kind", "숙박");
+			list = session.selectList("getHotelFromStartToX",map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	//호텔 id로 detail 가져오기
+	public static HotelVO getHotelDetailById(int id){
+		HotelVO vo = new HotelVO();
+		
+		Map map = new HashMap();
+		try (SqlSession session = ssf.openSession()) {
+			map.put("id", id);
+			vo = session.selectOne("getHotelDetailById",map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
 	}
 }
