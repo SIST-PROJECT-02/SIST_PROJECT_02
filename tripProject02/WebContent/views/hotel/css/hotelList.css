@@ -12,3 +12,8 @@
 	margin : auto;
 	margin-bottom : 5px;
 }
+
+.hotel-nav ul li select{
+    height : 35px;
+    width: 130px;
+}

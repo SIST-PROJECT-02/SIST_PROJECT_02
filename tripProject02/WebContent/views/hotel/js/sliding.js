@@ -9,7 +9,8 @@ var movingData ={
     width : 0,
     transLoc : 0,
     playMode : 1,
-    timefunc : 0
+    timefunc : 0,
+    slidingCount : 8
 };
 var makeSlidingMainTemplate = (width, height, data) => {
     //1. 사이즈 결정하기
@@ -132,7 +133,7 @@ document.querySelector('section.sliding-wrap').addEventListener('click', (e) => 
             clearTimeout(movingData.timefunc);
         }
     }
-    for(var i = 0 ; i < localData.list.length; i++){
+    for(var i = 0 ; i < movingData.slidingCount; i++){
         if(e.target.getAttribute('class') === 'sliding-check-' + i){
             movingData.nextPos = i;
             moveSlider();

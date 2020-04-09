@@ -43,7 +43,7 @@
                 <a href="#"><div>"{information}"</div></a>
             </li>
         </script>
-    <script src="./../../hotel/js/sliding.js?ver3"></script>
+    <script src="./../../hotel/js/sliding.js?ver4"></script>
 </body>
 
 </html>

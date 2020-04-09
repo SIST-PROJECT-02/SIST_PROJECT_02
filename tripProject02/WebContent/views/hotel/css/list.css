@@ -6,11 +6,29 @@
 a{
     text-decoration: none;
     color: black;
+    cursor : pointer;
 }
 .list{
     margin:auto;
 }
-
+.hotel-nav{
+	width:800px;
+	margin:auto;
+}
+.hotel-nav ul li select{
+    height : 35px;
+    width: 130px;
+}
+.hotel-nav ul{
+	overflow:hidden;
+}
+.hotel-nav ul li{
+	float : right;
+}
+.hotel-nav ul li select{
+    height : 35px;
+    width: 130px;
+}
 .list li{
     list-style: none;
 }
@@ -25,6 +43,17 @@ a{
     
 }
 
+.list ul > li > label{
+	overflow: hidden;
+    position: absolute;
+    top : 10px;
+    left : 20px;
+    background-color: #7643ea;
+    height : 40px;
+    z-index: 5;
+    color : #f19222;
+    line-height: 40px;
+}
 .list ul > li > a{
     
     overflow: hidden;

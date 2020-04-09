@@ -11,7 +11,19 @@
 </head>
 
 <body>
+
+	<nav class="hotel-nav">
+		<ul>
+			<li><select id="레이아웃♡행">
+					<option value="1">한줄로 볼♡행</option>
+					<option value="2">두줄로 볼♡행</option>
+					<option value="3">세줄로 볼♡행</option>
+			</select></li>
+		</ul>
+	</nav>
 	<section class="list">
+
+
 		<ul>
 			<li><a href="#"><img src="" alt=""></a></li>
 			<div>
@@ -27,13 +39,14 @@
 	</section>
 	<script id="template-list-items" type="text/template">
         <li name="{name}">
-            <a href="#"><img src="{img}" alt=""></a>
-            <a href="#"><div>{title}</div>
-            <div>{information}</div></a>
+			<label class="evelPoint">{label}</label>
+            <a ><img src="{img}" alt=""></a>
+            <a ><div id="title">{title}</div>
+            <div id="info">{information}</div></a>
         </li>
     </script>
-	<script src="./../../hotel/js/listConstructor.js?ver1"></script>
-	<script src="./../../hotel/js/listLayout.js"></script>
+	<script src="./../../hotel/js/listConstructor.js?ver4"></script>
+	<script src="./../../hotel/js/listLayout.js?ver2"></script>
 </body>
 
 </html>

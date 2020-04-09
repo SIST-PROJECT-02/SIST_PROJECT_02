@@ -36,6 +36,13 @@
     	WHERE num BETWEEN #{start} AND #{end}
     </select>
     
+    <select id="getHotelDetailById" resultType="HotelVO" parameterType="java.util.Map">
+    	SELECT id, title, product_kind, hash_tag, introduction, evel_point,
+    		web_site, description, convenience, address, road_address, tel,
+    		longitude, latitude, short_description, thumbnail
+    	FROM products
+    	WHERE id=#{id}
+    </select>
 </mapper>
 
 

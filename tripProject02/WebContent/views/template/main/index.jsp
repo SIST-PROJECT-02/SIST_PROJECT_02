@@ -109,7 +109,7 @@
 	<!-- content -->
 	<div>
 		<c:if test="${not empty jsp}">
-			<jsp:include page="${jsp }"></jsp:include>+
+			<jsp:include page="${jsp }"></jsp:include>
 		</c:if>
 		<c:if test="${empty jsp}">
 			<jsp:include page="../detail/00_search.jsp"></jsp:include>

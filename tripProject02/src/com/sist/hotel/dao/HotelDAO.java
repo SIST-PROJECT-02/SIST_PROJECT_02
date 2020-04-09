@@ -81,4 +81,19 @@ public class HotelDAO {
 		}
 		return list;
 	}
+	
+	//호텔 id로 detail 가져오기
+	public static HotelVO getHotelDetailById(int id){
+		HotelVO vo = new HotelVO();
+		
+		Map map = new HashMap();
+		try (SqlSession session = ssf.openSession()) {
+			map.put("id", id);
+			vo = session.selectOne("getHotelDetailById",map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
+	}
 }

@@ -12,6 +12,7 @@ import org.apache.coyote.Response;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
@@ -68,6 +69,7 @@ public class tmpHotelModel {
 			tmpObj.put("thumbnail", list.get(i).getThumbnail());
 			tmpObj.put("title", list.get(i).getTitle());
 			tmpObj.put("information", list.get(i).getIntroduction());
+			tmpObj.put("evelPoint", list.get(i).getEvel_point());
 			jsonArr.add(tmpObj);
 
 		}
@@ -122,6 +124,39 @@ public class tmpHotelModel {
 		out.println(jsonObj);
 		out.flush();
 
+		return "./../../hotel/jsp/dummy.jsp";
+	}
+	
+	@RequestMapping("views/template/main/listDetail.do")
+	public String getModalAjax(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		HotelVO vo = HotelDAO.getHotelDetailById(id);
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("id", vo.getId());
+		jsonObj.put("title", vo.getTitle());
+		jsonObj.put("productKind", vo.getProduct_kind());
+		jsonObj.put("hashTag", vo.getHash_tag());
+		jsonObj.put("introduction", vo.getIntroduction());
+		jsonObj.put("evelPoint", vo.getEvel_point());
+		jsonObj.put("webSite", vo.getWeb_site());
+		jsonObj.put("description", vo.getDescription());
+		jsonObj.put("convenience", vo.getConvenience());
+		jsonObj.put("address", vo.getAddress());
+		jsonObj.put("roadAddress", vo.getRoad_address());
+		jsonObj.put("tel", vo.getTel());
+		jsonObj.put("longitude", vo.getLongitude());
+		jsonObj.put("latitude", vo.getLatitude());
+		jsonObj.put("shortDescription", vo.getShort_description());
+		jsonObj.put("thumbnail", vo.getThumbnail());
+		
+		PrintWriter out = response.getWriter();
+		out.println(jsonObj);
+		out.flush();
 		return "./../../hotel/jsp/dummy.jsp";
 	}
 }
