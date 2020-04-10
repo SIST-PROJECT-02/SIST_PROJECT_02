@@ -10,36 +10,7 @@ window.addEventListener('DOMContentLoaded',(e)=>{
     modalBack.style.width = document.body.clientWidth + 'px';
     modalBack.style.height = '2000px';
     var modal = document.querySelector('.modal-wrap');
-    //modal.style.left = (document.body.clientWidth - modal.style.width) / 2 + 'px';
 });
-
-
-/*
- 	<section class="modal-wrap">
-	<div class="data-wrap">
-		<div class="img-wrap">
-			<img src="./../img/play-btn.png">
-		</div>
-		<div class="basic-info-wrap">
-			<p>무슨무슨 호텔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;★★★★☆</p>
-		</div>
-		<nav>
-		<ul>
-			<li>상세 정보</li>
-			<li>이용안내</li>
-			<li>주변/관광지</li>
-			<li style="border-right: 1px solid #e5e5e5">리뷰</li>
-		</ul>
-		</nav>
-		<div class="dynamic-info-wrap">
-			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae
-				quibusdam expedita ipsam minus ducimus veritatis non iusto ea ipsum
-				ut reprehenderit repudiandae magnam doloribus, veniam perspiciatis
-				asperiores hic sapiente. Aperiam.</p>
-		</div>
-	</div>
-	</section>
- */
 document.querySelector('.modal-wrap nav').addEventListener('click',(e)=>{
 	console.log('modal click operation');
 	var modal = document.querySelector('.modal-wrap');
@@ -57,6 +28,7 @@ document.querySelector('.modal-wrap nav').addEventListener('click',(e)=>{
 		templateModal = templateModal.replace('{introduction}',modalLocalData.introduction)
 									 .replace('{short_introduction}',modalLocalData.shortIntroduction)
 									 .replace('{convenience}', modalLocalData.convenience);
+		
 		templateModal = templateModal.replace(/undefined/ig,'')
 									 .replace(/null/ig, '');
 		dynamicModal.innerHTML = templateModal;
@@ -68,6 +40,14 @@ var modalSetting = (data)=>{
 	var modal = document.querySelector('.modal-wrap');
 	var thumbnail = modal.querySelector('.data-wrap .img-wrap img');
 	thumbnail.src = data.thumbnail;
+	var hashTag = modal.querySelector('.data-wrap .img-wrap span');
+	console.log('da.hashTag : ' + data.hashTag);
+	if(data.hashTag === 'null'){
+		console.log('data.hashTag is null : ' + data.hashTag);
+		data.hashTag = '즐거운 숙박!!♡행';
+	}
+	hashTag.innerText ='#' + data.hashTag.replace(/,/ig,',#');
+	
 	var title = modal.querySelector('.data-wrap .basic-info-wrap p');
 	title.innerHTML = "";
 	title.innerHTML += data.title + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';

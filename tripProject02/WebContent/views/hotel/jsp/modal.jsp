@@ -5,13 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./../../hotel/css/modal.css?ver2">
+<link rel="stylesheet" href="./../../hotel/css/modal.css?ver3">
 </head>
 <body>
 	<div class="modal-background"></div>
 	<section class="modal-wrap">
 	<div class="data-wrap">
 		<div class="img-wrap">
+			<span>#해시태그지롱</span>
 			<img src="#">
 		</div>
 		<div class="basic-info-wrap">
@@ -28,22 +29,6 @@
 		</ul>
 		</nav>
 		<div class="dynamic-info-wrap">
-			<p>^^Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-				Quae quibusdam expedita ipsam minus ducimus veritatis non iusto ea
-				ipsum ut reprehenderit repudiandae magnam doloribus, veniam
-				perspiciatis asperiores hic sapiente. Aperiam.</p>
-			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae
-				quibusdam expedita ipsam minus ducimus veritatis non iusto ea ipsum
-				ut reprehenderit repudiandae magnam doloribus, veniam perspiciatis
-				asperiores hic sapiente. Aperiam.</p>
-			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae
-				quibusdam expedita ipsam minus ducimus veritatis non iusto ea ipsum
-				ut reprehenderit repudiandae magnam doloribus, veniam perspiciatis
-				asperiores hic sapiente. Aperiam.</p>
-			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae
-				quibusdam expedita ipsam minus ducimus veritatis non iusto ea ipsum
-				ut reprehenderit repudiandae magnam doloribus, veniam perspiciatis
-				asperiores hic sapiente. Aperiam.</p>
 		</div>
 		<div class="reservation-btn">예약 ♡햏</div>
 	</div>
@@ -67,6 +52,6 @@
 				</tr>
 			</table>
 	</script>
-	<script src="./../../hotel/js/modal.js?ver7"></script>
+	<script src="./../../hotel/js/modal.js?ver9"></script>
 </body>
 </html>

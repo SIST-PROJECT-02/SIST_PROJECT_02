@@ -1,6 +1,6 @@
 //1. 받을 데이터들을 정리한다
 
-'strict mode'
+'use strict'
 
 function setLayout(layoutData){
 	var nav = document.querySelector('.hotel-nav');

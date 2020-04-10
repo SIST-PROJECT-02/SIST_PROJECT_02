@@ -101,7 +101,6 @@ var makeList = (data) =>{
 }
 
 document.querySelector(".more-data").addEventListener('click',(e)=>{
-	//먼저, 개수와 정렬 조건을 얻는 것이 필요하지만 생략하자 일단은
 	getListAjax();
 });
 
