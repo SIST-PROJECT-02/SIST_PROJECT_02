@@ -43,17 +43,17 @@ document.querySelector('.hotel-nav ul li select').addEventListener('change',(e)=
 	case "1":
 		layoutData.width = 800;
 		layoutData.rowCount = parseInt(e.target.value);
-		elementHeighy = 500;
+		layoutData.elementHeight = 500;
 		break;
 	case "2":
 		layoutData.width = 900;
 		layoutData.rowCount = parseInt(e.target.value);
-		elementHeighy = 400;
+		layoutData.elementHeight = 400;
 		break;
 	case "3":
 		layoutData.width = 1000;
 		layoutData.rowCount = parseInt(e.target.value);
-		elementHeighy = 300;
+		layoutData.elementHeight = 300;
 		break;
 	}
 	setLayout(layoutData);

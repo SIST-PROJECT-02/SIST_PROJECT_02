@@ -26,7 +26,6 @@
 	<jsp:include page="./../../hotel/jsp/list.jsp"></jsp:include>
 
 	<script>
-		var tmplate = document.getEleme
 	</script>
 
 </body>
