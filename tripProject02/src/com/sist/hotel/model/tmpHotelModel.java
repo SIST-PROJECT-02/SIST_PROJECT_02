@@ -26,13 +26,6 @@ public class tmpHotelModel {
 	public String tmpMethod(HttpServletRequest request, HttpServletResponse response) {
 
 		request.setAttribute("jsp", "./../../hotel/jsp/hotelList.jsp");
-		// request.setAttribute("jsp", "./../detail/04_staying.jsp");
-		List<HotelVO> list = HotelDAO.hotelAllDataByEvelDESC(1000, 1150);
-		for (HotelVO vo : list) {
-			// id, title, Evel_point, thumbnail
-
-		}
-		request.setAttribute("list", list);
 		return "index.jsp";
 	}
 
@@ -83,26 +76,39 @@ public class tmpHotelModel {
 
 	@RequestMapping("views/template/main/list.do")
 	public String getListAjax(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		/*
-		 * startPoint : 0, getCount : 6, sortCondition : 0
-		 * 
-		 */
-		int start = Integer.parseInt(request.getParameter("startPoint")) + 1;
-		int inputCount = Integer.parseInt(request.getParameter("getCount"));
-		int sortCondition = Integer.parseInt(request.getParameter("sortCondition"));
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
+		
+		int start = Integer.parseInt(request.getParameter("startPoint")) + 1;
+		int inputCount = Integer.parseInt(request.getParameter("getCount"));
+		int sortCondition = Integer.parseInt(request.getParameter("sortCondition"));
+		String search = request.getParameter("search");
+		if(search.equals("")){
+			search = "*";
+		}
+		System.out.println("search : " + search);
+		System.out.println("start : " + start);
+		System.out.println("getCount : " + inputCount);
 		// 1. 총 개수를 구한다
-		int count = HotelDAO.hotelCount();
+		//int count = HotelDAO.hotelCount();
+		int count = HotelDAO.hotelCountBySearch(search);
+		System.out.println("count : " + count);
 		// 2. 데이터를 얻는다
 		List<HotelVO> list = new ArrayList<HotelVO>();
 		JSONObject jsonObj = new JSONObject();
 		JSONArray jsonArr = new JSONArray();
 
-		if (sortCondition == 0) {
-			list = HotelDAO.hotelAllDataByEvelDESC(start, inputCount);
+		
+		if (sortCondition == 1) {
+			list = HotelDAO.hotelAllDataByEvelDESC(start, inputCount,search);
+		}
+		switch(sortCondition){
+		case 1: list = HotelDAO.hotelAllDataByEvelDESC(start, inputCount,search); break;
+		case 2: list = HotelDAO.hotelAllDataByEvelASC(start, inputCount,search); break;
+		case 3: list = HotelDAO.hotelAllDataByReviewDESC(start, inputCount,search); break;
+		case 4: list = HotelDAO.hotelAllDataByReviewASC(start, inputCount,search); break;
 		}
 		for (int i = 0; i < list.size(); i++) {
 			JSONObject tmpObj = new JSONObject();
@@ -115,6 +121,7 @@ public class tmpHotelModel {
 
 		}
 		jsonObj.put("list", jsonArr);
+		jsonObj.put("count", count);
 		if(start + inputCount >= count){
 			jsonObj.put("more", "false");
 		}else{

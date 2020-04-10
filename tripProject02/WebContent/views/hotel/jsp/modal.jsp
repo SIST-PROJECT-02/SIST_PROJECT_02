@@ -45,6 +45,7 @@
 				ut reprehenderit repudiandae magnam doloribus, veniam perspiciatis
 				asperiores hic sapiente. Aperiam.</p>
 		</div>
+		<div class="reservation-btn">예약 ♡햏</div>
 	</div>
 	</section>
 	<script id="template-modal-detail" type="text/template">

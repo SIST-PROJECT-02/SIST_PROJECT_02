@@ -216,3 +216,24 @@ function ajaxFunc(){
 	}
 
 window.addEventListener('DOMContentLoaded', ajaxFunc());
+
+/*
+v.addEventListener('click',(e)=>{
+	var id = e.currentTarget.getAttribute('name');
+	var sendData = "id=" + id;
+	ajaxFunc('listDetail.do',sendData,getModal);
+});
+*/
+document.querySelector('.sliding-item').addEventListener('click', (e)=>{
+	if(e.target.tagName === 'IMG' ||e.target.tagName === 'div'){
+		var id = '';
+		var parentSlidingItem = e.target;
+		while(parentSlidingItem.tagName !== 'LI'){
+			parentSlidingItem = parentSlidingItem.parentNode;
+		}
+		id = parentSlidingItem.getAttribute('name');
+		console.log('sliding id : ' + id);
+		var sendData = "id=" + id;
+		ajaxFunc('listDetail.do',sendData,getModal);
+	}
+});

@@ -15,7 +15,7 @@
 	<div class="breadcumb-area bg-img bg-overlay"
 		style="background-image: url(../css/img/bg-img/jeju.png)"></div>
 	<!-- ***** Breadcumb Area End ***** -->
-
+	<jsp:include page="./../../hotel/jsp/search.jsp"></jsp:include>
 	<jsp:include page="./../../hotel/jsp/modal.jsp"></jsp:include>
 	<!-- ***** Listing Destinations Area Start ***** -->
 	<div class="recommended-hotel">

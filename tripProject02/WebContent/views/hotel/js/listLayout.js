@@ -14,8 +14,6 @@ function setLayout(layoutData){
     nav.style.width = layoutData.width + 'px';
     wrap.style.width = layoutData.width + 'px';
     
-    console.log('li a:nth-child(3) div : ' + innerWrap.querySelector('li a:nth-child(3) div:nth-child(2)').id);
-    
         //(x+20) * rowCount + 2 < width
     var elementWidth = parseInt((layoutData.width - 20*layoutData.rowCount-2) / (layoutData.rowCount));
     var imgHeight = parseInt(layoutData.elementHeight * 0.6);
@@ -59,4 +57,5 @@ document.querySelector('.hotel-nav ul li select').addEventListener('change',(e)=
 		break;
 	}
 	setLayout(layoutData);
-})
+});
+

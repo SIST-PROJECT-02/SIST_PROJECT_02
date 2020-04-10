@@ -9,7 +9,8 @@ var layoutData = {
     elementHeight : 400,
     startPoint : 0,
     getCount : 6,
-    sortCondition : 0
+    sortCondition : 1,
+    search : ''
 };
 
 
@@ -38,30 +39,33 @@ function ajaxFunc(url, sendData, func){
 
 window.addEventListener('DOMContentLoaded', ()=>{
 	document.querySelector('section.list ul').innerHTML = "";
-	var sendData = "";
-	  sendData += "startPoint=" + layoutData.startPoint;
-	  sendData += "&getCount=" + layoutData.getCount;
-	  sendData += "&sortCondition=" + layoutData.sortCondition;
-	  console.log("sendData : " + sendData);
-	ajaxFunc('list.do',sendData,makeList);
-	layoutData.startPoint += 6;
+	getListAjax();
 });
 
+var initList = ()=>{
+	var wrap = document.querySelector('section.list');
+    var innerWrap = wrap.querySelector('ul');
+    innerWrap.innerHTML = "";
+    layoutData.startPoint = 0;
+}
 var makeList = (data) =>{
     var wrap = document.querySelector('section.list');
     var innerWrap = wrap.querySelector('ul');
     var listData = data.list;
+    var moreData = wrap.querySelector('.more-data');
     var templateData = document.querySelector('#template-list-items').innerHTML;
     //innerWrap.innerHTML = "";
+
+	console.log('datacount ::::::::::::::: ' + data.count);
+	wrap.querySelector('.list-count').innerText = "총 " + data.count + " 개의 검색결과가 있어요!";
     listData.forEach((v,i)=>{
     	var evelText = "";
     	for(var i = 0; i < v.evelPoint; i++){
     		evelText += " ★ ";
     	}
-    	for(var i = v.evelPoint+1; i < 5; i++){
+    	for(var i = v.evelPoint; i < 5; i++){
     		evelText += " ☆ ";
     	}
-    	
         innerWrap.innerHTML += templateData.replace('{name}',v.id)
                                            .replace('{img}', v.thumbnail)
                                            .replace('{title}',v.title)
@@ -70,6 +74,11 @@ var makeList = (data) =>{
         
         
     });
+    if(data.more === 'true'){
+    	moreData.style.display = 'block';
+    }else{
+    	moreData.style.display = 'none';
+    }
     var items = innerWrap.querySelectorAll('li');
     items.forEach((v,i)=>{
         v.addEventListener('mouseover',(e)=>{
@@ -93,12 +102,16 @@ var makeList = (data) =>{
 
 document.querySelector(".more-data").addEventListener('click',(e)=>{
 	//먼저, 개수와 정렬 조건을 얻는 것이 필요하지만 생략하자 일단은
-	console.log('hello~');
+	getListAjax();
+});
+
+var getListAjax = ()=>{
 	var sendData = "";
 	  sendData += "startPoint=" + layoutData.startPoint;
 	  sendData += "&getCount=" + layoutData.getCount;
 	  sendData += "&sortCondition=" + layoutData.sortCondition;
+	  sendData += "&search=" + layoutData.search;
+	  console.log("sendData : " + sendData);
 	ajaxFunc('list.do',sendData,makeList);
 	layoutData.startPoint += 6;
-});
-
+}
