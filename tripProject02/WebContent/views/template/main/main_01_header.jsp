@@ -66,7 +66,7 @@
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">커뮤니티<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                         <a class="dropdown-item" href="index.jsp?mode=9">공지사항</a>
-                                        <a class="dropdown-item" href="index.jsp?mode=10">자유게시판</a>
+                                        <a class="dropdown-item" href="../../board/reply/list.do">자유게시판</a>
                                         <a class="dropdown-item" href="index.jsp?mode=11">후기&팁</a>
                                         <a class="dropdown-item" href="index.jsp?mode=12">Q&A</a>
                                     </div>
