@@ -7,8 +7,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- Favicon -->
+<link rel="icon" href="../css/img/core-img/favicon.ico">
+
+<!-- Core Stylesheet -->
+<link href="../css/style.css" rel="stylesheet">
+
+<!-- Responsive CSS -->
+<link href="../css/css/responsive/responsive.css" rel="stylesheet">
 </head>
 <body>
+<div class="breadcumb-area bg-img bg-overlay" style="background-image: url(../../template/css/img/bg-img/jeju.png)"></div>
+<div class="wrapper row2">
+  <div id="services" class="clear">
 	<div class="container">
 		<h2 class="text-center">내용보기</h2>
 		<div class="row">
@@ -45,7 +56,9 @@
 			</table>
 		
 		</div>
-	
+	</div>
+	</div>
+	</div>
 	</div>
 </body>
 </html>

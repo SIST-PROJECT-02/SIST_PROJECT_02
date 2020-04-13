@@ -50,6 +50,9 @@ $(function(){
 </script>
 </head>
 <body>
+<div class="breadcumb-area bg-img bg-overlay" style="background-image: url(../../template/css/img/bg-img/jeju.png)"></div>
+<div class="wrapper row2">
+  <div id="services" class="clear">
 	<div class="container">
 		<h2>수정하기</h2>
 		<div class="row">
@@ -96,6 +99,9 @@ $(function(){
 					</tr>
 				</table>
 			</form>
+		</div>
+		</div>
+		</div>
 		</div>
 	</div>
 </body>

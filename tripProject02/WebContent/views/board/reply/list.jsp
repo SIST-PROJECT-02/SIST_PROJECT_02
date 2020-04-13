@@ -9,7 +9,9 @@
 <title>Insert title here</title>
 <link href="../css/css/responsive/responsive.css" rel="stylesheet">
 <style type="text/css">
-.row .table .success th{color: black;}
+.row .table .success th{
+color: black;
+}
 </style>
 </head>
 <body>

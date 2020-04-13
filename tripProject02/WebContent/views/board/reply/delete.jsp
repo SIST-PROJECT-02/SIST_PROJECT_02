@@ -13,6 +13,9 @@
 </style>
 </head>
 <body>
+<div class="breadcumb-area bg-img bg-overlay" style="background-image: url(../../template/css/img/bg-img/jeju.png)"></div>
+<div class="wrapper row2">
+  <div id="services" class="clear">
 	<div class="wrapper row2">
 		<div id="services" class="clear">
 			<div class="row text-center">
@@ -37,6 +40,9 @@
 				</table>
 				</form>
 			</div>
+		</div>
+		</div>
+		</div>
 		</div>
 	</div>
 </body>
