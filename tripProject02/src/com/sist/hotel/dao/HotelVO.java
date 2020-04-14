@@ -24,33 +24,6 @@ public class HotelVO {
 			road_address, tel, longitude, latitude, short_description, thumbnail;
 	private double evel_point;
 
-	
-	
-	public HotelVO(int id, String title, String product_kind, String hash_tag, String introduction, String web_site,
-			String description, String convenience, String address, String road_address, String tel, String longitude,
-			String latitude, String short_description, String thumbnail, double evel_point) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.product_kind = product_kind;
-		this.hash_tag = hash_tag;
-		this.introduction = introduction;
-		this.web_site = web_site;
-		this.description = description;
-		this.convenience = convenience;
-		this.address = address;
-		this.road_address = road_address;
-		this.tel = tel;
-		this.longitude = longitude;
-		this.latitude = latitude;
-		this.short_description = short_description;
-		this.thumbnail = thumbnail;
-		this.evel_point = evel_point;
-	}
-	public HotelVO(){
-		super();
-	}
-
 	public int getId() {
 		return id;
 	}
