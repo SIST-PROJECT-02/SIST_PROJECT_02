@@ -75,7 +75,7 @@
 		break;
 	//회원가입/로그인
 	case 14:
-		jsp = "../detail/00_signup.jsp";
+		jsp = "../detail/00_join.jsp";
 		break;
 	}
 %>
@@ -109,11 +109,15 @@
 	<!-- content -->
 	<div>
 		<c:if test="${not empty jsp}">
-			<h4><jsp:include page="${jsp }"></jsp:include></h4>
+
+			<jsp:include page="${jsp }"></jsp:include>
+
 		</c:if>
 		<c:if test="${empty jsp}">
 			<jsp:include page="../detail/00_search.jsp"></jsp:include>
 		</c:if>
+
+		
 	</div>
 
 	<br>

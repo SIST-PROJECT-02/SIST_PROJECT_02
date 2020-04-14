@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -88,9 +89,19 @@
                                 <a id="search-btn" href="#"><i class="fa fa-search" aria-hidden="true"></i>검색</a>
                             </div>
                             <!-- Register btn -->
-                            <div class="dorne-signin-btn">
-                                <a href="index.jsp?mode=14">로그인 / 회원가입</a>
-                            </div>
+                            <c:if test="${sessionScope.email==null }"> 
+	                            <div class="dorne-signin-btn">
+	                                <a href="join.do">로그인 / 회원가입</a>
+	                            </div>
+                            </c:if>
+                            <c:if test="${sessionScope.email!=null }">
+	                            <form method="post" action="logout.do">
+									<span style="display: inline-block;">
+										<font color="white">${sessionScope.name } 님</font>
+									</span>&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="submit" class="btn btn-sm btn-primary" value="로그아웃">
+								</form>	
+							</c:if>
                         </div>
                     </nav>
                 </div>

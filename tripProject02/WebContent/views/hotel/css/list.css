@@ -1,0 +1,75 @@
+*{
+    margin : 0px;
+    padding : 0px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    cursor : pointer;
+}
+.list{
+    margin:auto;
+}
+.hotel-nav{
+	width:800px;
+	margin:auto;
+}
+.hotel-nav ul li select{
+    height : 35px;
+    width: 130px;
+}
+.hotel-nav ul{
+	overflow:hidden;
+}
+.hotel-nav ul li{
+	float : right;
+}
+.hotel-nav ul li select{
+    height : 35px;
+    width: 130px;
+}
+.list li{
+    list-style: none;
+}
+.list ul{
+    overflow: hidden;
+}
+.list ul > li{
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px;
+    
+}
+
+.list ul > li > label{
+	overflow: hidden;
+    position: absolute;
+    top : 10px;
+    left : 20px;
+    background-color: #7643ea;
+    height : 40px;
+    z-index: 5;
+    color : #f19222;
+    line-height: 40px;
+}
+.list ul > li > a{
+    
+    overflow: hidden;
+    position: absolute;
+    top : 0px;
+    left : 0px;
+    background-color: #f4f6f8;
+    transition : background-color 0.5s;
+}
+
+.list .more-data{
+	height : 80px;
+	text-align : center;
+	background-color : gray;
+	line-height : 80px; 
+}
+.list .more-data:hover{
+	cursor:pointer;
+}
