@@ -7,6 +7,11 @@
     <servlet-class>com.sist.controller.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
+      <param-value>C:\Users\daege\git\SIST_PROJECT_02\tripProject\WebContent\WEB-INF\app.xml</param-value>
+    </init-param>
+    <init-param>
+       <param-name>defaultPath</param-name>
+       <param-value>C:\Users\daege\git\SIST_PROJECT_02\tripProject\src</param-value>
       <param-value>C:\Dev\study\tripProject\WebContent\WEB-INF\app.xml</param-value>
     </init-param>
     <init-param>
