@@ -1,0 +1,13 @@
+var modalData = {
+    operation : 'false',
+    operating : 'false',
+    modalNavMenu : 0
+};
+var modalLocalData = {};
+// modal background layout
+window.addEventListener('DOMContentLoaded',(e)=>{
+    var modalBack = document.querySelector('.modal-background');
+    modalBack.style.width = document.body.clientWidth + 'px';
+    modalBack.style.height = '2000px';
+    var modal = document.querySelector('.modal-wrap');
+});

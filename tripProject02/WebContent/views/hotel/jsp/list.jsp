@@ -46,7 +46,10 @@
         </li>
     </script>
 	<script src="./../../hotel/js/listConstructor.js?ver4"></script>
-	<script src="./../../hotel/js/listLayout.js?ver4"></script>
+	<script src="./../../hotel/js/layout/listLayout.js"></script>
+	<script src="./../../hotel/js/configuration/listConfiguration.js?ver1"></script>
+	<script src="./../../hotel/js/ajax/ajax.js"></script>
+	<script src="./../../hotel/js/getData/getDataForList.js"></script>
 </body>
 
 </html>

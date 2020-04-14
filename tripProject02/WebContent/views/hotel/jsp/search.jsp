@@ -26,6 +26,6 @@
             <div class="submit-search">검색 ♡행</div>
         </div>
     </aside>
-    <script src="./../../hotel/js/search.js?ver2"></script>
+    <script src="./../../hotel/js/search.js?ver3"></script>
 </body>
 </html>

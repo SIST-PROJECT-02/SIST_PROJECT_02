@@ -53,5 +53,7 @@
 			</table>
 	</script>
 	<script src="./../../hotel/js/modal.js?ver9"></script>
+	<script src="./../../hotel/js/configuration/modalConfiguration.js"></script>
+	<script src="./../../hotel/js/getData/getDataForModal.js"></script>
 </body>
 </html>

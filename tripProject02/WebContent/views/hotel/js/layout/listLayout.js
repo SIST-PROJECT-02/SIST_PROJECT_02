@@ -3,8 +3,8 @@
 'use strict'
 
 function setLayout(layoutData){
-	var nav = document.querySelector('.hotel-nav');
-    var wrap = document.querySelector('section.list');
+	var nav = document.querySelector('.' + layoutDataForMainList.navClassName);
+    var wrap = document.querySelector('.' + layoutDataForMainList.mainClassName);
     var innerWrap = wrap.querySelector('ul');
     var items = innerWrap.querySelectorAll('li');
     var itemsValue = [];
@@ -19,9 +19,7 @@ function setLayout(layoutData){
     var imgHeight = parseInt(layoutData.elementHeight * 0.6);
     var titleHeight = parseInt(layoutData.elementHeight * 0.2);
     var itemsData = [imgHeight,0,titleHeight,imgHeight,titleHeight,imgHeight];
-    console.log('elementWidth : ' + elementWidth);
 
-    console.log('items len : ' + items.length);
     items.forEach((v,i)=>{
         v.style.width = elementWidth + 'px';
         v.style.height = layoutData.elementHeight + 'px';
@@ -34,28 +32,28 @@ function setLayout(layoutData){
             v2.style.lineHeight = itemsData[i1*2] + 'px';
         });
     });
+    
+    document.querySelector('.' + layoutDataForMainList.navClassName + ' ul li select').addEventListener('change',(e)=>{
+    	console.log('here!');
+    	switch(e.target.value){
+    	case "1":
+    		layoutDataForMainList.width = 800;
+    		layoutDataForMainList.rowCount = parseInt(e.target.value);
+    		layoutDataForMainList.elementHeight = 500;
+    		break;
+    	case "2":
+    		layoutDataForMainList.width = 900;
+    		layoutDataForMainList.rowCount = parseInt(e.target.value);
+    		layoutDataForMainList.elementHeight = 400;
+    		break;
+    	case "3":
+    		layoutDataForMainList.width = 1000;
+    		layoutDataForMainList.rowCount = parseInt(e.target.value);
+    		layoutDataForMainList.elementHeight = 300;
+    		break;
+    	}
+    	setLayout(layoutData);
+    });
 }
 
-
-document.querySelector('.hotel-nav ul li select').addEventListener('change',(e)=>{
-	console.log('here!');
-	switch(e.target.value){
-	case "1":
-		layoutData.width = 800;
-		layoutData.rowCount = parseInt(e.target.value);
-		layoutData.elementHeight = 500;
-		break;
-	case "2":
-		layoutData.width = 900;
-		layoutData.rowCount = parseInt(e.target.value);
-		layoutData.elementHeight = 400;
-		break;
-	case "3":
-		layoutData.width = 1000;
-		layoutData.rowCount = parseInt(e.target.value);
-		layoutData.elementHeight = 300;
-		break;
-	}
-	setLayout(layoutData);
-});
 
