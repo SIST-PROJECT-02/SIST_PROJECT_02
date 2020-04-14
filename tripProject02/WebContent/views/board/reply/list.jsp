@@ -31,7 +31,7 @@ color: black;
   		<table class="table" style="width:60%; margin:0px auto;">
   			<tr>
   				<td>
-  					<a href="../reply/insert.do" class="btn btn-md btn-danger">새글</a>
+  					<a href="insert.do" class="btn btn-md btn-danger">새글</a>
   				</td>
   			</tr>
   		</table>
@@ -53,7 +53,7 @@ color: black;
 	  						</c:forEach>
 	  						<img src="icon_reply.gif">
 	  					</c:if>
-	  					<a href="../reply/detail.do?no=${vo.no }">${vo.subject }</a>
+	  					<a href="detail.do?no=${vo.no }">${vo.subject }</a>
 	  				</td>
 	  				<td width="15%" class="text-center">${vo.name }</td>
 	  				<td width="20%" class="text-center">
@@ -65,9 +65,9 @@ color: black;
   		</table>
   	</div>
   	<div id="paging">
-  		<a href="../reply/list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-md btn-primary">이전</a>
+  		<a href="list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-md btn-primary">이전</a>
   		${curpage } page / ${totalpage } pages
-  		<a href="../reply/list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-md btn-primary">다음</a>
+  		<a href="list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-md btn-primary">다음</a>
   	</div>
   </div>
 </div>

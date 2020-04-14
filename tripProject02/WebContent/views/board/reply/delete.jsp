@@ -26,7 +26,7 @@
 				<div id="services" class="clear">
 					
 					<div class="row" id="delete">
-						<form method=post action="../reply/delete_ok.do">
+						<form method=post action="delete_ok.do">
 							<table class="table">
 								<tr>
 									<th class="text-right success" width=25%>비밀번호</th>
