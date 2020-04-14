@@ -1,0 +1,67 @@
+* {
+    margin:0px;
+    padding:0px;
+}
+
+li{
+    list-style :none;
+}
+
+a{
+    text-decoration: none;
+}
+body{
+    overflow: hidden;
+}
+.pos-absolute{
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+
+.sliding-wrap{
+    overflow: hidden;
+    position: relative;
+    margin:auto;
+}
+
+.sliding-wrap > .sliding-item{
+    transition: transform 500ms;
+    position: relative;
+    overflow: hidden;
+}
+
+.sliding-wrap > a > img{
+    display : none;
+}
+.sliding-wrap > .sliding-item > li{
+    position: relative;
+    top:0px;
+    left:0px;
+    float: left;
+}
+.sliding-wrap > .sliding-item > li > a{
+    color:black;
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+
+.sliding-check-box{
+    display : block;
+    height : 100px;
+    width : 200px;
+    margin:auto;
+    overflow: hidden;
+}
+.sliding-check-box > ul{
+    overflow: hidden;
+    float: right;
+}
+.sliding-check-items > li{
+    float: left;
+    margin-left: 2px;
+}
+.sliding-check-items  img{
+    width:15px;
+}
