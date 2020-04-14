@@ -14,7 +14,12 @@
  -->
   <typeAliases>
     <typeAlias type="com.sist.hotel.dao.HotelVO" alias="HotelVO"/>
+
+    <typeAlias type="com.sist.board.dao.BoardVO" alias="BoardVO"/>
+    <typeAlias type="com.sist.board.dao.ReplyVO" alias="ReplyVO"/>
+
     <typeAlias type="com.sist.member.model.MemberVO" alias="MemberVO"/>
+
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -45,6 +50,8 @@
    -->
   <mappers>
     <mapper resource="com/sist/hotel/dao/emp-mapper.xml"/>
+
+    <mapper resource="com/sist/mapper/reply-mapper.xml"/>
     <mapper resource="com/sist/member/model/member-mapper.xml"/>
   </mappers>
   

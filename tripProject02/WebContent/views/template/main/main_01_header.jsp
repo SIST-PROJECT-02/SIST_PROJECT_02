@@ -6,6 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- Favicon -->
+<link rel="icon" href="../css/img/core-img/favicon.ico">
+
+<!-- Core Stylesheet -->
+<link href="../css/style.css" rel="stylesheet">
+
+<!-- Responsive CSS -->
+<link href="../css/css/responsive/responsive.css" rel="stylesheet">
 </head>
 <body>
 
@@ -32,13 +40,13 @@
             <div class="row h-100">
                 <div class="col-12 h-100">
                     <nav class="h-100 navbar navbar-expand-lg">
-                        <a class="navbar-brand" href="./index.jsp"><img src="../css/img/core-img/logo.png" alt=""></a>
+                        <a class="navbar-brand" href="../../template/main/index.jsp"><img src="../css/img/core-img/logo.png" alt=""></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dorneNav" aria-controls="dorneNav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
                         <!-- Nav -->
                         <div class="collapse navbar-collapse" id="dorneNav">
                             <ul class="navbar-nav mr-auto" id="dorneMenu">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="../../template/main/index.jsp">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">여행정보<i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -69,7 +77,7 @@
                                         <a class="dropdown-item" href="index.jsp?mode=9">공지사항</a>
                                         <a class="dropdown-item" href="index.jsp?mode=10">자유게시판</a>
                                         <a class="dropdown-item" href="index.jsp?mode=11">후기&팁</a>
-                                        <a class="dropdown-item" href="index.jsp?mode=12">Q&A</a>
+                                        <a class="dropdown-item" href="../../board/reply/list.do">Q&A</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
