@@ -22,6 +22,9 @@ h2 {
 <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(../../template/css/img/bg-img/jeju.png)"></div>
 <div class="wrapper row2">
   <div id="services" class="clear">
+  <div class="text-center">
+  		<img src="reply.png">
+  	</div> 
 	<div class="container">
 		<h2>글쓰기</h2>
 		<div class="row">

@@ -20,10 +20,13 @@
 <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(../../template/css/img/bg-img/jeju.png)"></div>
 <div class="wrapper row2">
   <div id="services" class="clear">
+  <div class="text-center">
+  		<img src="reply.png">
+  	</div> 
 	<div class="container">
 		<h2 class="text-center">내용보기</h2>
 		<div class="row">
-			<table class="table">
+			<table class="table"style="width:60%; margin:0px auto;">
 				<tr>
 					<th class="text-center success" width=20% style="color:black;">번호</th>
 					<td class="text-center" width=30% >${vo.no }</td>
@@ -47,10 +50,10 @@
 				</tr>
 				<tr>
 					<td class="text-right" colspan="4">
-						<a href="../reply/reply.do?no=${vo.no }" class="btn btn-xs btn-danger">답변</a>
-						<a href="../reply/update.do?no=${vo.no }" class="btn btn-xs btn-success">수정</a>
-						<a href="../reply/delete.do?no=${vo.no }" class="btn btn-xs btn-info">삭제</a>
-						<a href="../reply/list.do" class="btn btn-xs btn-warning">목록</a>
+						<a href="../reply/reply.do?no=${vo.no }" class="btn btn-md btn-danger">답변</a>
+						<a href="../reply/update.do?no=${vo.no }" class="btn btn-md btn-success">수정</a>
+						<a href="../reply/delete.do?no=${vo.no }" class="btn btn-md btn-info">삭제</a>
+						<a href="../reply/list.do" class="btn btn-md btn-warning">목록</a>
 					</td>
 				</tr>
 			</table>

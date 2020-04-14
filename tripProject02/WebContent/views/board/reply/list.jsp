@@ -8,9 +8,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="../css/css/responsive/responsive.css" rel="stylesheet">
+
 <style type="text/css">
 .row .table .success th{
 color: black;
+}
+#paging{
+	margin: 0px auto;
+	display: block;
+	width: 300px;
 }
 </style>
 </head>
@@ -18,18 +24,18 @@ color: black;
 <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(../../template/css/img/bg-img/jeju.png)"></div>
 <div class="wrapper row2">
   <div id="services" class="clear">
-  	<div class="row text-center">
+  	<div class="text-center">
   		<img src="reply.png">
   	</div> 
   	<div class="row">
-  		<table class="table">
+  		<table class="table" style="width:60%; margin:0px auto;">
   			<tr>
   				<td>
-  					<a href="../reply/insert.do" class="btn btn-sm btn-danger">새글</a>
+  					<a href="../reply/insert.do" class="btn btn-md btn-danger">새글</a>
   				</td>
   			</tr>
   		</table>
-  		<table class="table">
+  		<table class="table" style="width:60%; margin:0px auto;">
   			<tr class="success">
   				<th width="10%" class="text-center">번호</th>
   				<th width="45%" class="text-center">제목</th>
@@ -58,10 +64,10 @@ color: black;
   			</c:forEach>
   		</table>
   	</div>
-  	<div class="row text-center">
-  		<a href="../reply/list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-sm btn-primary">이전</a>
+  	<div id="paging">
+  		<a href="../reply/list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-md btn-primary">이전</a>
   		${curpage } page / ${totalpage } pages
-  		<a href="../reply/list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-sm btn-primary">다음</a>
+  		<a href="../reply/list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-md btn-primary">다음</a>
   	</div>
   </div>
 </div>
