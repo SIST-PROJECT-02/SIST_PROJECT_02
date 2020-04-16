@@ -77,7 +77,7 @@
                                         <a class="dropdown-item" href="index.jsp?mode=9">공지사항</a>
                                         <a class="dropdown-item" href="index.jsp?mode=10">자유게시판</a>
                                         <a class="dropdown-item" href="index.jsp?mode=11">후기&팁</a>
-                                        <a class="dropdown-item" href="../../board/reply/list.do">Q&A</a>
+                                        <a class="dropdown-item" href="list.do">Q&A</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">

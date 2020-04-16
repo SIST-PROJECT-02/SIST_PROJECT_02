@@ -8,11 +8,11 @@
     <init-param>
       <param-name>contextConfigLocation</param-name>
 
-      <param-value>C:\Users\daege\git\SIST_PROJECT_02\tripProject02\WebContent\WEB-INF\app.xml</param-value>
+      <param-value>C:\Users\sist188\git\SIST_PROJECT_02\tripProject02\WebContent\WEB-INF\app.xml</param-value>
     </init-param>
     <init-param>
        <param-name>defaultPath</param-name>
-       <param-value>C:\Users\daege\git\SIST_PROJECT_02\tripProject02\src</param-value>
+       <param-value>C:\Users\sist188\git\SIST_PROJECT_02\tripProject02\src</param-value>
 
     </init-param>
   </servlet>

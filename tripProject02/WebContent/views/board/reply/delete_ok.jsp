@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:if test="${bCheck==true }">
-	<c:redirect url="../reply/list.do"/>
+	<c:redirect url="list.do"/>
 </c:if>
 <c:if test="${bCheck==false }">
 	<script>

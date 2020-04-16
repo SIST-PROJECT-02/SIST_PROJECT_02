@@ -52,9 +52,7 @@
     <mapper resource="com/sist/hotel/dao/emp-mapper.xml"/>
 
     <mapper resource="com/sist/mapper/reply-mapper.xml"/>
-
     <mapper resource="com/sist/member/model/member-mapper.xml"/>
-
   </mappers>
   
 </configuration>
