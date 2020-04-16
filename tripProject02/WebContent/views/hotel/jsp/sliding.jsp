@@ -31,19 +31,19 @@
     </section>
 
     <script id="template-sliding-check-item" type="text/template">
-            <li><a href="#">
+            <li><a>
                 <img src="./../img/{img-kind}" class = "{class}" alt="">    
             </a></li>
 
         </script>
         <script id="template-sliding-items" type="text/template">
             <li name="{name}">
-                <a href="#"><img src="{img}" alt=""></a>
-                <a href="#"><div>"{title}"</div></a>
-                <a href="#"><div>"{information}"</div></a>
+                <a><img src="{img}" alt=""></a>
+                <a><div>"{title}"</div></a>
+                <a><div>"{information}"</div></a>
             </li>
         </script>
-    <script src="./../../hotel/js/sliding.js?ver4"></script>
+    <script src="./../../hotel/js/sliding.js?ver5"></script>
 </body>
 
 </html>

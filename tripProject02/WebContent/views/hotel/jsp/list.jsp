@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<link rel="stylesheet" href="./../../hotel/css/list.css?ver1">
+<link rel="stylesheet" href="./../../hotel/css/list.css?ver2">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
 	</nav>
 	<section class="list">
 
-
+		<div class="list-count"></div>
 		<ul>
 			<li><a href="#"><img src="" alt=""></a></li>
 			<div>
@@ -46,7 +46,10 @@
         </li>
     </script>
 	<script src="./../../hotel/js/listConstructor.js?ver4"></script>
-	<script src="./../../hotel/js/listLayout.js?ver2"></script>
+	<script src="./../../hotel/js/layout/listLayout.js"></script>
+	<script src="./../../hotel/js/configuration/listConfiguration.js?ver1"></script>
+	<script src="./../../hotel/js/ajax/ajax.js"></script>
+	<script src="./../../hotel/js/getData/getDataForList.js"></script>
 </body>
 
 </html>

@@ -70,6 +70,12 @@ a{
 	background-color : gray;
 	line-height : 80px; 
 }
+.list .list-count{
+	height : 80px;
+	text-align : center;
+	background-color : gray;
+	line-height : 80px; 
+}
 .list .more-data:hover{
 	cursor:pointer;
 }

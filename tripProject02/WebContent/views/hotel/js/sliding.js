@@ -207,7 +207,7 @@ function ajaxFunc(){
 	          var serverDataObj = JSON.parse(serverData);
 	          //json 객체 - 배열을 품고 있다
 	          localData = serverDataObj;
-	          makeSlidingMainTemplate(600, 400, serverDataObj);
+	          makeSlidingMainTemplate(1500, 800, serverDataObj);
 	      }
 	  };
 	  xhttp.open('POST', 'sliding.do', true);
@@ -216,3 +216,25 @@ function ajaxFunc(){
 	}
 
 window.addEventListener('DOMContentLoaded', ajaxFunc());
+
+document.querySelector('.sliding-item').addEventListener('click', (e)=>{
+	if(e.target.tagName === 'IMG' ||e.target.tagName === 'DIV'){
+		var id = '';
+		var parentSlidingItem = e.target;
+		while(parentSlidingItem.tagName !== 'LI'){
+			parentSlidingItem = parentSlidingItem.parentNode;
+		}
+		id = parentSlidingItem.getAttribute('name');
+		console.log('sliding id : ' + id);
+		var sendData = "id=" + id;
+		ajaxFunc('listDetail.do',sendData,getModal);
+	}
+});
+
+window.addEventListener('scroll',(e)=>{
+	if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+	    document.querySelector(".search-wrap").style.display = 'block';
+	  } else {
+		  document.querySelector(".search-wrap").style.display = 'none';
+	  }
+});

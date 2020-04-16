@@ -2,88 +2,43 @@
 <!DOCTYPE mapper
    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- 
-    SELECT empno,ename,hiredate,dname,loc
-    FROM emp,dept
-    WHERE emp.deptno=dept.deptno
-    
-    whlie(rs.next())
-    {
-        EmpVO vo=new EmpVO();
-        vo.setEmpno(rs.getInt("empno"))  
-        vo.setEname(rs.getString("ename")) 
-        
-        vo.setDname(rs.getString("dname")) ==> vo.getDvo().setDname(rs.getString("dname"))
-        vo.setLoc(rs.getString("loc"))   ==> vo.getDvo().setDname(rs.getString("dname"))
-    }
-    Class clsName=Class.forName("com.sist.dao.EmpVO");
-    Method[] methods=clsName.getDeclareMethod()
-    for(Method m:methods)
-    {
-       String name=m.getName();
-       if(name.equals("set"+property)
-       {
-          m.invoke("")
-       }
-    }
- -->
- 
- <!-- 
- <select id="boardListData" resultType="BoardVO" parameterType="java.util.Map">
-      SELECT no,subject,name,regdate,hit,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,num
-      FROM (SELECT no,subject,name,regdate,hit,rownum as num 
-      FROM (SELECT no,subject,name,regdate,hit 
-      FROM board ORDER BY no DESC))
-      WHERE num BETWEEN #{start} AND #{end}
-   </select>
-    -->
+
    
-<mapper namespace="com.sist.hotel.dao.emp-mapper">
+<mapper namespace="com.sist.hotel.mapper.emp-mapper">
 	
     <select id="hotelAllData" resultType="HotelVO" parameterType="java.util.Map">
     	SELECT id, title, product_kind, num
       FROM (SELECT id, title, product_kind, rownum as num 
       FROM (SELECT id, title, product_kind 
       FROM products ORDER BY id DESC))
-<<<<<<< HEAD
-      WHERE num BETWEEN #{start} AND #{end}
-    </select>
-    
-    <select id="hotelAllDataByEvel" resultType="HotelVO" parameterType="java.util.Map">
-    	SELECT id, title, product_kind, Evel_point, thumbnail,num
-      FROM (SELECT id, title, product_kind,Evel_point, thumbnail, rownum as num 
-      FROM (SELECT id, title, product_kind, Evel_point ,thumbnail
-      FROM products ORDER BY Evel_point DESC))
-      WHERE num BETWEEN #{start} AND #{end}
-=======
       WHERE num BETWEEN #{start} AND #{end} AND product_id = #{product_id}
     </select>
     
     <select id="hotelAllDataByEvelDESC" resultType="HotelVO" parameterType="java.util.Map">
-    	SELECT id, title, introduction, Evel_point, thumbnail,num
-      FROM (SELECT id, title, introduction,Evel_point, thumbnail, rownum as num 
-      FROM (SELECT id, title, introduction, Evel_point ,thumbnail
+    	SELECT id, title, introduction, Evel_point, thumbnail, review_count, num
+      FROM (SELECT id, title, introduction,Evel_point, thumbnail, review_count, rownum as num 
+      FROM (SELECT id, title, introduction, Evel_point ,thumbnail, review_count
       FROM products WHERE product_kind = #{product_kind} AND REGEXP_LIKE(title,#{search}) ORDER BY Evel_point DESC))
       WHERE num BETWEEN #{start} AND #{end}
     </select>
     <select id="hotelAllDataByEvelASC" resultType="HotelVO" parameterType="java.util.Map">
-    	SELECT id, title, introduction, Evel_point, thumbnail,num
-      FROM (SELECT id, title, introduction,Evel_point, thumbnail, rownum as num 
-      FROM (SELECT id, title, introduction, Evel_point ,thumbnail
+    	SELECT id, title, introduction, Evel_point, thumbnail, review_count, num
+      FROM (SELECT id, title, introduction,Evel_point, thumbnail, review_count, rownum as num 
+      FROM (SELECT id, title, introduction, Evel_point ,thumbnail review_count
       FROM products WHERE product_kind = #{product_kind} AND REGEXP_LIKE(title,#{search}) ORDER BY Evel_point ASC))
       WHERE num BETWEEN #{start} AND #{end}
     </select>
     <select id="hotelAllDataByReviewDESC" resultType="HotelVO" parameterType="java.util.Map">
-    	SELECT id, title, introduction, Evel_point, thumbnail,num
-      FROM (SELECT id, title, introduction,Evel_point, thumbnail, rownum as num 
-      FROM (SELECT id, title, introduction, Evel_point ,thumbnail
+    	SELECT id, title, introduction, Evel_point, thumbnail, review_count, num
+      FROM (SELECT id, title, introduction,Evel_point, thumbnail, review_count, rownum as num 
+      FROM (SELECT id, title, introduction, Evel_point ,thumbnail, review_count
       FROM products WHERE product_kind = #{product_kind} AND REGEXP_LIKE(title,#{search}) ORDER BY review_count DESC))
       WHERE num BETWEEN #{start} AND #{end}
     </select>
     <select id="hotelAllDataByReviewASC" resultType="HotelVO" parameterType="java.util.Map">
-    	SELECT id, title, introduction, Evel_point, thumbnail,num
-      FROM (SELECT id, title, introduction,Evel_point, thumbnail, rownum as num 
-      FROM (SELECT id, title, introduction, Evel_point ,thumbnail
+    	SELECT id, title, introduction, Evel_point, thumbnail, review_count, num
+      FROM (SELECT id, title, introduction,Evel_point, thumbnail, review_count, rownum as num 
+      FROM (SELECT id, title, introduction, Evel_point ,thumbnail, review_count
       FROM products WHERE product_kind = #{product_kind} AND REGEXP_LIKE(title,#{search}) ORDER BY review_count ASC))
       WHERE num BETWEEN #{start} AND #{end}
     </select>
@@ -110,10 +65,9 @@
     <select id="getHotelDetailById" resultType="HotelVO" parameterType="java.util.Map">
     	SELECT id, title, product_kind, hash_tag, introduction, evel_point,
     		web_site, description, convenience, address, road_address, tel,
-    		longitude, latitude, short_description, thumbnail
+    		longitude, latitude, short_description, thumbnail, review_count
     	FROM products
     	WHERE id=#{id}
->>>>>>> SimJaeHyuk
     </select>
 </mapper>
 
