@@ -23,10 +23,7 @@ public class HotelVO {
 	private String title, product_kind, hash_tag, introduction, web_site, description, convenience, address,
 			road_address, tel, longitude, latitude, short_description, thumbnail;
 	private double evel_point;
-<<<<<<< HEAD
-=======
 	private int review_count;
->>>>>>> SimJaeHyuk
 
 	public int getId() {
 		return id;

@@ -110,11 +110,11 @@
 	<div>
 		<c:if test="${not empty jsp}">
 
-			<jsp:include page="${jsp }"></jsp:include>
+			<h4><jsp:include page="${jsp }"></jsp:include></h4>
 
 		</c:if>
 		<c:if test="${empty jsp}">
-			<jsp:include page="../detail/00_search.jsp"></jsp:include>
+			<h4><jsp:include page="../detail/00_search.jsp"></jsp:include></h4>
 		</c:if>
 
 		

@@ -33,10 +33,7 @@ public class HotelDAO {
 		}
 		return list;
 	}
-<<<<<<< HEAD
 	
-	public static List<HotelVO> hotelAllDataByEvel() {
-=======
 
 	// 호텔의 데이터를 별점순(내림차순)으로 얻는다
 	public static List<HotelVO> hotelAllDataByEvelDESC(int start, int count, String search) {
@@ -88,16 +85,13 @@ public class HotelDAO {
 
 	// 호텔의 데이터를 인기순(오름차순)으로 얻는다
 	public static List<HotelVO> hotelAllDataByReviewASC(int start, int count, String search) {
->>>>>>> SimJaeHyuk
 		List<HotelVO> list = null;
 		Map map = new HashMap();
 		map.put("start", 1);
 		map.put("end", 6);
 		try (SqlSession session = ssf.openSession()) {
-<<<<<<< HEAD
 			list = session.selectList("hotelAllDataByEvel",map);
 			session.close();
-=======
 			map.put("start", start);
 			map.put("end", start + count - 1);
 			map.put("product_kind", "숙박");
@@ -152,14 +146,11 @@ public class HotelDAO {
 			map.put("end", start + count - 1);
 			map.put("product_kind", "숙박");
 			list = session.selectList("getHotelFromStartToX", map);
->>>>>>> SimJaeHyuk
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list;
 	}
-<<<<<<< HEAD
-=======
 
 	// 호텔 id로 detail 가져오기
 	public static HotelVO getHotelDetailById(int id) {
@@ -175,5 +166,4 @@ public class HotelDAO {
 
 		return vo;
 	}
->>>>>>> SimJaeHyuk
 }

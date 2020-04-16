@@ -232,6 +232,7 @@ document.querySelector('.sliding-item').addEventListener('click', (e)=>{
 });
 
 window.addEventListener('scroll',(e)=>{
+	console.log('top scroll : ' + document.body.scrollTop);
 	if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
 	    document.querySelector(".search-wrap").style.display = 'block';
 	  } else {
