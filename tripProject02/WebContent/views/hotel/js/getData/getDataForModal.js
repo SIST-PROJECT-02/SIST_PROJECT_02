@@ -70,5 +70,104 @@ document.querySelector('.modal-wrap nav').addEventListener('click',(e)=>{
 									 .replace(/null/ig, '');
 		dynamicModal.innerHTML = templateModal;
 		break;
+	case "nav-review":
+		console.log('nav-review');
+		initModalList();
+		//1. ajax로 데이터를 가져온다
+		getModalListAjax();
+		break;
 	}
 });
+
+/*
+ * var layoutDataForModalList = { width : 500, rowCount : 1, elementHeight :
+ * 200, startPoint : 0, getCount : 6, mainClassName : 'modal-list', navClassName :
+ * 'modal-nav' };
+ */
+
+var getModalListAjax = ()=>{
+	var sendData = "";
+	  sendData += "startPoint=" + layoutDataForModalList.startPoint;
+	  sendData += "&getCount=" + layoutDataForModalList.getCount;
+	  sendData += "&productId=" + modalData.modalId;
+	  console.log("sendData : " + sendData);
+	ajaxFunc('modalList.do',sendData,modalListConstructor);
+	layoutDataForModalList.startPoint += 6;
+}
+
+
+var injectDataModalListUpdate = (data) =>{
+	var wrap = document.querySelector('.modal-wrap .data-wrap .dynamic-info-wrap');
+	var innerWrap = wrap.querySelector('ul');
+    var listData = data.list;
+    var moreData = wrap.querySelector('.modal-more-data');
+    var templateData = document.querySelector('#template-modal-review').innerHTML;
+    wrap.querySelector('.list-modal-count').innerText = "총 " + data.count + " 개의 리뷰가 있어요!";
+    listData.forEach((v,i)=>{
+    	var evelText = "";
+    	for(var i = 0; i < v.evelPoint; i++){
+    		evelText += " ★ ";
+    	}
+    	for(var i = v.evelPoint; i < 5; i++){
+    		evelText += " ☆ ";
+    	}
+    	
+        innerWrap.innerHTML += templateData.replace('{user-id}',v.id)
+                                           .replace('{user-name}', v.memberEmail)
+                                           .replace('{user-date}',v.regdate)
+                                           .replace('{user-star}',evelText)
+                                           .replace('{user-content}',v.content);
+        
+        
+    });
+    if(data.more === 'true'){
+    	moreData.style.display = 'block';
+    }else{
+    	moreData.style.display = 'none';
+    }
+}
+var injectDataModalList = (data)=>{
+	var wrap = document.querySelector('.modal-wrap .data-wrap .dynamic-info-wrap');
+	var templateDataWrap = document.querySelector('#template-modal-review-wrap').innerHTML;
+	templateDataWrap.replace('{count}',data.count);
+	wrap.innerHTML = templateDataWrap;
+    var innerWrap = wrap.querySelector('ul');
+    var listData = data.list;
+    var moreData = wrap.querySelector('.modal-more-data');
+    var templateData = document.querySelector('#template-modal-review').innerHTML;
+    
+    
+	wrap.querySelector('.list-modal-count').innerText = "총 " + data.count + " 개의 리뷰가 있어요!";
+    listData.forEach((v,i)=>{
+    	var evelText = "";
+    	for(var i = 0; i < v.evelPoint; i++){
+    		evelText += " ★ ";
+    	}
+    	for(var i = v.evelPoint; i < 5; i++){
+    		evelText += " ☆ ";
+    	}
+    	
+        innerWrap.innerHTML += templateData.replace('{user-id}',v.id)
+                                           .replace('{user-name}', v.memberEmail)
+                                           .replace('{user-date}',v.regdate)
+                                           .replace('{user-star}',evelText)
+                                           .replace('{user-content}',v.content);
+        
+        
+    });
+    if(data.more === 'true'){
+    	moreData.style.display = 'block';
+    }else{
+    	moreData.style.display = 'none';
+    }
+}
+
+var updateModalListAjax = () =>{
+	var sendData = "";
+	  sendData += "startPoint=" + layoutDataForModalList.startPoint;
+	  sendData += "&getCount=" + layoutDataForModalList.getCount;
+	  sendData += "&productId=" + modalData.modalId;
+	  console.log("sendData : " + sendData);
+	ajaxFunc('modalList.do',sendData,updateModalList);
+	layoutDataForModalList.startPoint += 6;
+}

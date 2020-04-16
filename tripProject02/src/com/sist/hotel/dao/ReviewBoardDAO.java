@@ -22,17 +22,43 @@ public class ReviewBoardDAO {
 			ex.printStackTrace();
 		}
 	}
-	
-	//해당 호텔의 총 평점 점수를 얻는다
-		public static int sumOfRate(int product_id){
-			Map map = new HashMap();
-			int res = 0;
+
+	// 해당 호텔의 총 평점 점수를 얻는다
+	public static int sumOfRate(int product_id) {
+		Map map = new HashMap();
+		int res = 0;
+		map.put("product_id", product_id);
+		try (SqlSession session = ssf.openSession()) {
+			res = session.selectOne("sumOfRate", map);
+		} catch (Exception e) {
+		}
+		return res;
+	}
+
+	public static List<ReviewBoardVO> reviewListDataFromStartDESC(int start, int count, int product_id) {
+		List<ReviewBoardVO> list = null;
+		Map map = new HashMap();
+		try (SqlSession session = ssf.openSession()) {
+			map.put("start", start);
+			map.put("end", start + count - 1);
 			map.put("product_id", product_id);
+			list = session.selectList("reviewListDataFromStartDESC", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
+		public static int reviewCount(int productId) {
+			int count = 0;
+			Map map = new HashMap();
+			map.put("product_id", productId);
 			try (SqlSession session = ssf.openSession()) {
-				res = session.selectOne("sumOfRate",map);
+				count = session.selectOne("reviewCount", map);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return res;
+			return count;
 		}
 }

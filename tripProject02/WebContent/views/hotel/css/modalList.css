@@ -1,0 +1,33 @@
+
+.modal-review-wrap{
+    margin:auto;
+}
+.modal-review-wrap li{
+    list-style: none;
+}
+.modal-review-wrap ul{
+    overflow: hidden;
+}
+.modal-review-wrap ul > li{
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px;
+    
+}
+
+.modal-review-wrap .modal-more-data{
+	height : 80px;
+	text-align : center;
+	background-color : gray;
+	line-height : 80px; 
+}
+.modal-review-wrap .list-modal-count{
+	height : 80px;
+	text-align : center;
+	background-color : gray;
+	line-height : 80px; 
+}
+.modal-review-wrap .modal-more-data:hover{
+	cursor:pointer;
+}

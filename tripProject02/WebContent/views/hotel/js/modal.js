@@ -11,7 +11,7 @@ var initNav = function(){
         v.style.borderTop = '1px solid #e5e5e5';
         v.style.borderLeft = '1px solid #e5e5e5';
         v.style.borderBottom = '2px solid #ef6d00';
-    })
+    });
 
 }
 

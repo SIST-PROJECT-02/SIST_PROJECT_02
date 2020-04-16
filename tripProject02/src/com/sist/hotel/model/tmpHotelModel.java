@@ -92,8 +92,6 @@ public class tmpHotelModel {
 		}
 		
 		int count = HotelDAO.hotelCountBySearch(search);
-		System.out.println("count : " + count);
-		// 2. 데이터를 얻는다
 		List<HotelVO> list = new ArrayList<HotelVO>();
 		JSONObject jsonObj = new JSONObject();
 		JSONArray jsonArr = new JSONArray();

@@ -70,6 +70,7 @@ var injectDataMainList = (data)=>{
         v.addEventListener('click',(e)=>{
         	var id = e.currentTarget.getAttribute('name');
         	var sendData = "id=" + id;
+        	modalData.modalId = id;
         	ajaxFunc('listDetail.do',sendData,getModal);
         });
     })

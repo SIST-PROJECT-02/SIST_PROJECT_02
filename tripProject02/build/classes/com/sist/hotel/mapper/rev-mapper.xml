@@ -11,5 +11,20 @@
 		FROM review_board
 		WHERE product_id = #{product_id}
 	</select>
+	
+	<select id="reviewListDataFromStartDESC" resultType="ReviewBoardVO" parameterType="java.util.Map">
+    	SELECT id,member_email,regdate,content,rate, num
+      FROM (SELECT id,member_email,regdate,content,rate, rownum as num 
+      FROM (SELECT id,member_email,regdate,content,rate
+      FROM review_board WHERE product_id = #{product_id} ORDER BY regdate DESC))
+      WHERE num BETWEEN #{start} AND #{end}
+    </select>
+    
+    <select id="reviewCount" resultType="int" parameterType="java.util.Map">
+    	SELECT COUNT(id) as cnt
+    	FROM review_board
+    	WHERE product_id = #{product_id}
+    </select>
+    
 </mapper>
 	
