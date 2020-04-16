@@ -80,4 +80,27 @@ public class MemberDAO {
 		}
 		return vo;
 	}
+	
+	public static int checkid(String email)
+	{
+		int count=0;
+		SqlSession session=null;
+		try
+		{
+			session=ssf.openSession();
+			count=session.selectOne("idCheck", email);
+			System.out.println("count: "+count);
+		}
+		catch(Exception ex)
+		{
+			System.out.println("checkid_error: "+ex.getMessage());
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+		return count;
+	}
+	
 }
