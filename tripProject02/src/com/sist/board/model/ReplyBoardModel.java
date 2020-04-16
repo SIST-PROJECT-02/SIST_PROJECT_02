@@ -24,8 +24,8 @@ public class ReplyBoardModel {
 		int end=rowSize*curpage;
 		map.put("start", start);
 		map.put("end", end);
-		
-		List<BoardVO> list=ReplyBoardDAO.replyListData(map);
+		//List<BoardVO> alist //e개의 공지사항-
+		List<BoardVO> list=ReplyBoardDAO.replyListData(map);//start부터 end까지 자유게시판 가져온다
 		int totalpage=ReplyBoardDAO.replyTotalPage();
 		
 		request.setAttribute("list", list);
