@@ -6,10 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="./../../hotel/css/search.css?ver1"/>
+<link href="https://fonts.googleapis.com/css2?family=Gugi&family=Jua&family=Yeon+Sung&display=swap" rel="stylesheet">
 </head>
 <body>
 	<aside class="search-wrap">
-        <div class="search-subjext">검색 ♡행</div>
+        <div class="search-subjext">검색 및 정렬</div>
         <div class="search-data-wrap">
             <div class="text-search">
                 검색 : <input type="text" name="text-search" placeholder="검색♡행">
@@ -23,7 +24,7 @@
                     <option value="4">인기순 <span class="char-col">▲</option>
                 </select>
             </div>
-            <div class="submit-search">검색 ♡행</div>
+            <div class="submit-search">Click</div>
         </div>
     </aside>
     <script src="./../../hotel/js/search.js?ver3"></script>
