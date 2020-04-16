@@ -1,5 +1,6 @@
 package com.sist.board.model;
-
+import java.util.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +12,7 @@ import com.sist.board.dao.ReplyBoardDAO;
 @Controller
 public class ReplyBoardModel {
 
-	@RequestMapping("views/template/main/list.do")
+	@RequestMapping("views/template/main/qna.do")
 	public String reply_list(HttpServletRequest request, HttpServletResponse response)
 	{
 		String page=request.getParameter("page");
@@ -24,6 +25,7 @@ public class ReplyBoardModel {
 		int end=rowSize*curpage;
 		map.put("start", start);
 		map.put("end", end);
+		
 		//List<BoardVO> alist //e개의 공지사항-
 		List<BoardVO> list=ReplyBoardDAO.replyListData(map);//start부터 end까지 자유게시판 가져온다
 		int totalpage=ReplyBoardDAO.replyTotalPage();
@@ -72,7 +74,7 @@ public class ReplyBoardModel {
 		
 		// 클라이언트가 입력한 데이터를 가지고 와야...
 		String name=request.getParameter("name");
-		String subject=request.getParameter("name");
+		String subject=request.getParameter("subject");
 		String content=request.getParameter("content");
 		String pwd=request.getParameter("pwd");
 		

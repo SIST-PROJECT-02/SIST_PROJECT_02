@@ -57,7 +57,7 @@ $(function(){
 <div class="wrapper row2">
   <div id="services" class="clear">
   <div class="text-center">
-  		<img src="reply.png">
+  		<img src="../../board/images/reply.png">
   	</div> 
 	<div class="container">
 		<h2>수정하기</h2>

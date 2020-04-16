@@ -21,7 +21,7 @@
 <div class="wrapper row2">
   <div id="services" class="clear">
   <div class="text-center">
-  		<img src="reply.png">
+  		<img src="../../board/images/reply.png">
   	</div> 
 	<div class="container">
 		<h2 class="text-center">내용보기</h2>
@@ -53,7 +53,7 @@
 						<a href="reply.do?no=${vo.no }" class="btn btn-md btn-danger">답변</a>
 						<a href="update.do?no=${vo.no }" class="btn btn-md btn-success">수정</a>
 						<a href="delete.do?no=${vo.no }" class="btn btn-md btn-info">삭제</a>
-						<a href="list.do" class="btn btn-md btn-warning">목록</a>
+						<a href="qna.do" class="btn btn-md btn-warning">목록</a>
 					</td>
 				</tr>
 			</table>
