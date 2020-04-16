@@ -65,9 +65,9 @@ color: black;
   		</table>
   	</div>
   	<div id="paging">
-  		<a href="list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-md btn-primary">이전</a>
+  		<a href="qna.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-md btn-primary">이전</a>
   		${curpage } page / ${totalpage } pages
-  		<a href="list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-md btn-primary">다음</a>
+  		<a href="qna.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-md btn-primary">다음</a>
   	</div>
   </div>
 </div>

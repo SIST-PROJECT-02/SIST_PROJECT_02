@@ -11,7 +11,7 @@ import com.sist.board.dao.ReplyBoardDAO;
 @Controller
 public class ReplyBoardModel {
 
-	@RequestMapping("views/template/main/list.do")
+	@RequestMapping("views/template/main/qna.do")
 	public String reply_list(HttpServletRequest request, HttpServletResponse response)
 	{
 		String page=request.getParameter("page");
