@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
-<html>
+<h4><html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -57,7 +57,7 @@ $(function(){
 <div class="wrapper row2">
   <div id="services" class="clear">
   <div class="text-center">
-  		<img src="../../board/images/reply.png">
+  		<img src="../../board/images/QnA.png">
   	</div> 
 	<div class="container">
 		<h2>수정하기</h2>
@@ -107,4 +107,4 @@ $(function(){
 		</div>
 	</div>
 </body>
-</html>
+</html></h4>

@@ -6,7 +6,7 @@
 <fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="today1" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<h4><html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -22,6 +22,12 @@
 	display: block;
 	width: 300px;
 }
+#notice{
+margin: 0px auto;
+ border: 1px solid red;
+ width: 60%;
+ hight:100px;
+}
 </style>
 </head>
 <body>
@@ -30,13 +36,22 @@
 	<div class="wrapper row2">
 		<div id="services" class="clear">
 			<div class="text-center">
-				<img src="../../board/images/reply.png">
+				<img src="../../board/images/QnA.png">
 			</div>
 			<div class="row">
 				<table class="table" style="width: 60%; margin: 0px auto;">
 					<tr>
 						<td><a href="insert.do" class="btn btn-md btn-danger">새글</a>
 						</td>
+					</tr>
+				</table>
+				<table id="notice">
+					<img src="../../board/images/notice.jpg">
+					<tr>
+						<th width="10%" class="text-center">번호</th>
+						<th width="60%" class="text-center">공지사항</th>
+						<th width="20%" class="text-center">작성일</th>
+						<th width="10%" class="text-center">조회수</th>
 					</tr>
 				</table>
 				<table class="table" style="width: 60%; margin: 0px auto;">
@@ -79,4 +94,4 @@
 	</div>
 
 </body>
-</html>
+</html></h4>
