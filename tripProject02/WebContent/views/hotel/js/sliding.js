@@ -207,7 +207,7 @@ function ajaxFunc(){
 	          var serverDataObj = JSON.parse(serverData);
 	          //json 객체 - 배열을 품고 있다
 	          localData = serverDataObj;
-	          makeSlidingMainTemplate(600, 400, serverDataObj);
+	          makeSlidingMainTemplate(1500, 800, serverDataObj);
 	      }
 	  };
 	  xhttp.open('POST', 'sliding.do', true);
@@ -229,4 +229,12 @@ document.querySelector('.sliding-item').addEventListener('click', (e)=>{
 		var sendData = "id=" + id;
 		ajaxFunc('listDetail.do',sendData,getModal);
 	}
+});
+
+window.addEventListener('scroll',(e)=>{
+	if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+	    document.querySelector(".search-wrap").style.display = 'block';
+	  } else {
+		  document.querySelector(".search-wrap").style.display = 'none';
+	  }
 });
