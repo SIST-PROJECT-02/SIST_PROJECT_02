@@ -6,8 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
-import java.util.*;
 import com.sist.member.model.*;
+import java.util.*;
 
 @Controller
 public class MemberModel {
@@ -31,7 +31,7 @@ public class MemberModel {
 		
 		//회원가입 필요정보 저장
 		String email=request.getParameter("email");
-		String pwd=request.getParameter("pwd");
+		String pwd=request.getParameter("pwd1");
 		String name=request.getParameter("name");
 		String nick=request.getParameter("nick");
 		String gender=request.getParameter("gender");
@@ -80,4 +80,20 @@ public class MemberModel {
 		session.invalidate();
 		return "index.jsp";
 	}
+	
+	@RequestMapping("views/member/checkid.do")
+	public String memberidCheck(HttpServletRequest request, HttpServletResponse response)
+	{
+		return "checkid.jsp";
+	}
+	
+	@RequestMapping("views/member/checkid_ok.do")
+	public String memberidCheckOk(HttpServletRequest request, HttpServletResponse response)
+	{
+		String email=request.getParameter("email");
+		int count=MemberDAO.checkid(email);
+		request.setAttribute("count", count);
+		return "checkid_ok.jsp";
+	}
+	
 }

@@ -32,6 +32,11 @@
 		WHERE email=#{email}
 	</select>
 	
+	<select id="idCheck" resultType="int" parameterType="string"> 
+		SELECT COUNT(*) FROM member
+		WHERE email=#{email}
+	</select>
+	
 	<select id="getPwd" resultType="MemberVO" parameterType="string">
 	 	SELECT pwd,name,admin FROM member
 		WHERE email=#{email}
