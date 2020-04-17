@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
   <!-- ***** Search Form Area ***** -->
     <div class="dorne-search-form d-flex align-items-center">
         <div class="container">
@@ -75,6 +74,16 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.jsp?mode=13">고객센터</a>
                                 </li>
+                                <c:if test="${sessionScope.email!=null }">
+                                <li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                                        <a class="dropdown-item" href="mypage.do?email=${email }">회원정보수정 / 탈퇴</a>
+                                        <a class="dropdown-item" href="index.jsp?mode=10">즐겨찾기</a>
+                                        <a class="dropdown-item" href="index.jsp?mode=11">예약확인</a>
+                                    </div>
+								</li>
+								</c:if>
                             </ul>
                             <!-- Search btn -->
                             <div class="dorne-search-btn">
@@ -88,10 +97,13 @@
                             </c:if>
                             <c:if test="${sessionScope.email!=null }">
 	                            <form method="post" action="logout.do">
-									<span style="display: inline-block;">
-										<font color="white">${sessionScope.name } 님</font>
-									</span>&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="submit" class="btn btn-sm btn-primary" value="로그아웃">
+	                            	<div class="collapse navbar-collapse" id="dorneNav">
+										<span style="display: inline-block;">
+											<font color="white">${sessionScope.name } 님</font>
+										</span>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="submit" class="btn btn-sm btn-primary" value="로그아웃">
+									</div>			
 								</form>	
 							</c:if>
                         </div>
