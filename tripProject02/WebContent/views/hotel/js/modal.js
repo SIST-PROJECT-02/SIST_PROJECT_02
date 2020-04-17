@@ -33,6 +33,13 @@ document.querySelector('.modal-wrap nav').addEventListener('click',(e)=>{
         target.style.borderBottom = '0px';
     }
 });
+document.querySelector('.modal-wrap .img-wrap div').addEventListener('click',(e)=>{
+	//1. ajax로 보내기 - session정보와 product 정보가 필요하다 (config에 있다) modalData.modalId
+	
+	var sendData = "productId=" + modalData.modalId;
+	ajaxFunc('modalLike.do',sendData,changeModalLike);
+	//2. 함수 실행 끝
+})
 
 // 모달 종료시키기
 window.addEventListener('click',(e)=>{

@@ -50,3 +50,12 @@ document.querySelector('.search-wrap .submit-search').addEventListener('click',(
     layoutDataForMainList.search = searchData.value;
     updateListAjax();
 });
+
+window.addEventListener('scroll',(e)=>{
+	console.log('top scroll : ' + document.body.scrollTop);
+	if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+	    document.querySelector(".search-wrap").style.display = 'block';
+	  } else {
+		  document.querySelector(".search-wrap").style.display = 'none';
+	  }
+});

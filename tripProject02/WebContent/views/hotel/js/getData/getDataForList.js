@@ -25,7 +25,6 @@ var injectDataMainList = (data)=>{
     var innerWrap = wrap.querySelector('ul');
     var listData = data.list;
     var moreData = wrap.querySelector('.more-data');
-    var templateData = document.querySelector('#template-list-items').innerHTML;
     
 	wrap.querySelector('.list-count').innerText = "총 " + data.count + " 개의 검색결과가 있어요!";
     listData.forEach((v,i)=>{
@@ -42,13 +41,18 @@ var injectDataMainList = (data)=>{
     	for(var i = evelRes; i < 5; i++){
     		evelText += " ☆ ";
     	}
-        innerWrap.innerHTML += templateData.replace('{name}',v.id)
+    	var templateData = document.querySelector('#template-list-items').innerHTML;
+        templateData = templateData.replace('{name}',v.id)
                                            .replace('{img}', v.thumbnail)
                                            .replace('{title}',v.title)
                                            .replace('{label}',evelText)
                                            .replace('{information}',v.information);
-        
-        
+        if(v.like == 'false'){
+        	templateData = templateData.replace('{like}','♡');
+        }else{
+        	templateData = templateData.replace('{like}','♥');
+        }
+        innerWrap.innerHTML += templateData;
     });
     if(data.more === 'true'){
     	moreData.style.display = 'block';

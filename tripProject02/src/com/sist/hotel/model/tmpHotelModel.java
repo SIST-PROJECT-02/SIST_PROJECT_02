@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -15,6 +16,7 @@ import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.hotel.dao.HotelDAO;
 import com.sist.hotel.dao.HotelVO;
+import com.sist.hotel.dao.LikeDAO;
 import com.sist.hotel.dao.ReviewBoardDAO;
 
 @Controller
@@ -100,6 +102,8 @@ public class tmpHotelModel {
 		case 4: list = HotelDAO.hotelAllDataByReviewASC(start, inputCount,search); break;
 		}
 		
+		HttpSession mySession = request.getSession();
+		
 		int sumOfRate = 0;
 		for (int i = 0; i < list.size(); i++) {
 			JSONObject tmpObj = new JSONObject();
@@ -112,6 +116,18 @@ public class tmpHotelModel {
 			
 			sumOfRate = ReviewBoardDAO.sumOfRate(list.get(i).getId());
 			tmpObj.put("sumOfRate", sumOfRate);
+			
+			if(mySession.getAttribute("email") == null){
+				tmpObj.put("like", "false");
+			}else{
+				int like = LikeDAO.getLikeById(list.get(i).getId(), String.valueOf(mySession.getAttribute("email")));
+				System.out.println("like : " + like);
+				if(like >= 1){
+					tmpObj.put("like", "true");
+				}else{
+					tmpObj.put("like", "false");
+				}
+			}
 			
 			jsonArr.add(tmpObj);
 
@@ -140,6 +156,7 @@ public class tmpHotelModel {
 		int id = Integer.parseInt(request.getParameter("id"));
 		HotelVO vo = HotelDAO.getHotelDetailById(id);
 		int sumOfRate = ReviewBoardDAO.sumOfRate(id);
+		HttpSession mySession = request.getSession();
 		
 		JSONObject jsonObj = new JSONObject();
 		jsonObj.put("id", vo.getId());
@@ -161,9 +178,54 @@ public class tmpHotelModel {
 		jsonObj.put("reviewCount", vo.getReview_count());
 		jsonObj.put("sumOfRate", sumOfRate);
 		
+		if(mySession.getAttribute("email") == null){
+			jsonObj.put("like", "false");
+		}else{
+			int like = LikeDAO.getLikeById(vo.getId(), String.valueOf(mySession.getAttribute("email")));
+			if(like >= 1){
+				jsonObj.put("like", "true");
+			}else{
+				jsonObj.put("like", "false");
+			}
+		}
+		
 		PrintWriter out = response.getWriter();
 		out.println(jsonObj);
 		out.flush();
+		return "./../../hotel/jsp/dummy.jsp";
+	}
+	@RequestMapping("views/template/main/modalLike.do")
+	public String changeModalLike(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		
+		System.out.println("modalLike operating");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		JSONObject jsonObj = new JSONObject();
+		
+		int product_id = Integer.parseInt(request.getParameter("productId"));
+		HttpSession mySession = request.getSession();
+		if(mySession.getAttribute("email") == null){
+			System.out.println("if session is null");
+			jsonObj.put("like", "no");
+			out.println(jsonObj);
+			out.flush();
+			return "./../../hotel/jsp/dummy.jsp";
+		}
+		String member_email = String.valueOf(mySession.getAttribute("email"));
+		int like = LikeDAO.getLikeById(product_id, member_email);
+		if(like >= 1){
+			jsonObj.put("like", "off");
+			LikeDAO.deleteLike(product_id, member_email);
+		}else{
+			jsonObj.put("like", "on");
+			LikeDAO.insertLike(product_id, member_email);
+		}
+		out.println(jsonObj);
+		out.flush();
+		
 		return "./../../hotel/jsp/dummy.jsp";
 	}
 }
