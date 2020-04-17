@@ -44,6 +44,8 @@
             </li>
         </script>
     <script src="./../../hotel/js/sliding.js?ver5"></script>
+    <script src="./../../hotel/js/configuration/slidingConfiguration.js"></script>
+    <script src="./../../hotel/js/getData/getDataForSliding.js"></script>
 </body>
 
 </html>

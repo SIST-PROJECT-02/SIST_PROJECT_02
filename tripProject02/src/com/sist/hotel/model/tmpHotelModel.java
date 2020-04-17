@@ -121,7 +121,6 @@ public class tmpHotelModel {
 				tmpObj.put("like", "false");
 			}else{
 				int like = LikeDAO.getLikeById(list.get(i).getId(), String.valueOf(mySession.getAttribute("email")));
-				System.out.println("like : " + like);
 				if(like >= 1){
 					tmpObj.put("like", "true");
 				}else{
@@ -197,8 +196,6 @@ public class tmpHotelModel {
 	@RequestMapping("views/template/main/modalLike.do")
 	public String changeModalLike(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		
-		System.out.println("modalLike operating");
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
@@ -208,7 +205,6 @@ public class tmpHotelModel {
 		int product_id = Integer.parseInt(request.getParameter("productId"));
 		HttpSession mySession = request.getSession();
 		if(mySession.getAttribute("email") == null){
-			System.out.println("if session is null");
 			jsonObj.put("like", "no");
 			out.println(jsonObj);
 			out.flush();
