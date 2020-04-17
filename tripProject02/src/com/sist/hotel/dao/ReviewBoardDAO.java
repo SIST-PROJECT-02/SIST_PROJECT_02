@@ -48,17 +48,39 @@ public class ReviewBoardDAO {
 		}
 		return list;
 	}
-	
-	
-		public static int reviewCount(int productId) {
-			int count = 0;
-			Map map = new HashMap();
-			map.put("product_id", productId);
-			try (SqlSession session = ssf.openSession()) {
-				count = session.selectOne("reviewCount", map);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return count;
+
+	public static int reviewCount(int productId) {
+		int count = 0;
+		Map map = new HashMap();
+		map.put("product_id", productId);
+		try (SqlSession session = ssf.openSession()) {
+			count = session.selectOne("reviewCount", map);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return count;
+	}
+	
+	public static int isMyReview(int productId, String member_email) {
+		int count = 0;
+		Map map = new HashMap();
+		map.put("product_id", productId);
+		map.put("member_email",member_email);
+		try (SqlSession session = ssf.openSession()) {
+			count = session.selectOne("isMyReview", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+	public static int insertModalReview(ReviewBoardVO vo) {
+		int count = 0;
+		try (SqlSession session = ssf.openSession()) {
+			count = session.insert("insertModalReview", vo);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 }

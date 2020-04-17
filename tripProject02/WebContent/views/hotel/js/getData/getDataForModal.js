@@ -97,9 +97,7 @@ var getModalListAjax = ()=>{
 	  sendData += "startPoint=" + layoutDataForModalList.startPoint;
 	  sendData += "&getCount=" + layoutDataForModalList.getCount;
 	  sendData += "&productId=" + modalData.modalId;
-	  console.log("sendData : " + sendData);
 	ajaxFunc('modalList.do',sendData,modalListConstructor);
-	layoutDataForModalList.startPoint += 6;
 }
 
 
@@ -132,6 +130,7 @@ var injectDataModalListUpdate = (data) =>{
     }else{
     	moreData.style.display = 'none';
     }
+    
 }
 var injectDataModalList = (data)=>{
 	var wrap = document.querySelector('.modal-wrap .data-wrap .dynamic-info-wrap');

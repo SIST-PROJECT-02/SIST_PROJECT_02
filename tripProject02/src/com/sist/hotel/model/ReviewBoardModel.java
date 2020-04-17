@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -38,7 +39,19 @@ public class ReviewBoardModel {
 		JSONArray jsonArr = new JSONArray();
 		// 1. 총 개수를 얻는다
 		int count = ReviewBoardDAO.reviewCount(productId);
-		System.out.println("count : " + count);
+		HttpSession mySession = request.getSession();
+		String isMyReview = "";
+		if(mySession.getAttribute("email") == null){
+			isMyReview = "false";
+		}else{
+			String member_email = String.valueOf(mySession.getAttribute("email"));
+			int isReview = ReviewBoardDAO.isMyReview(productId, member_email);
+			if(isReview > 0){
+				isMyReview = "true";
+			}else{
+				isMyReview = "false";
+			}
+		}
 
 		list = ReviewBoardDAO.reviewListDataFromStartDESC(start, inputCount, productId);
 		
@@ -54,6 +67,7 @@ public class ReviewBoardModel {
 		}
 		jsonObj.put("list", jsonArr);
 		jsonObj.put("count", count);
+		jsonObj.put("isMyReview", isMyReview);
 		if(start + inputCount >= count){
 			jsonObj.put("more", "false");
 		}else{
@@ -63,6 +77,44 @@ public class ReviewBoardModel {
 		out.println(jsonObj);
 		out.flush();
 
+		return "./../../hotel/jsp/dummy.jsp";
+	}
+	
+	@RequestMapping("views/template/main/modalReviewCreate.do")
+public String getModalReviewFormAjax(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8"); 
+		
+		HttpSession mySession = request.getSession();
+		JSONObject jsonObj = new JSONObject();
+		PrintWriter out = response.getWriter();
+		
+		if(mySession.getAttribute("email") == null){
+			System.out.println("session is null!");
+			jsonObj.put("modalRes", "false");
+			out.println(jsonObj);
+			out.flush();
+			return "./../../hotel/jsp/dummy.jsp"; 
+		}
+		
+		int product_id = Integer.parseInt(request.getParameter("product_id"));
+		String member_email = String.valueOf(mySession.getAttribute("email"));
+		String content = request.getParameter("content");
+		double rate = Double.parseDouble(request.getParameter("rate"));
+		ReviewBoardVO vo = new ReviewBoardVO();
+		vo.setProduct_id(product_id);
+		vo.setMember_email(member_email);
+		vo.setContent(content);
+		vo.setRate(rate);
+		System.out.println("database... ing...");
+		ReviewBoardDAO.insertModalReview(vo);
+		System.out.println("database ok!");
+		jsonObj.put("modalRes", "true");
+		out.println(jsonObj);
+		out.flush();
+		
 		return "./../../hotel/jsp/dummy.jsp";
 	}
 }

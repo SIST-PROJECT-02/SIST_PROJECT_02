@@ -31,3 +31,46 @@
 .modal-review-wrap .modal-more-data:hover{
 	cursor:pointer;
 }
+
+*{
+    list-style: none;
+    text-decoration: none;
+    margin: 0px;
+    padding:0px;
+}
+
+.modal-review-form{
+    width : 800px;
+    margin : auto;
+}
+
+.modal-review-form .top{
+    width : 400px;
+    margin:auto;
+    font-size: 3rem;
+}
+
+.modal-review-form .star{
+    overflow: hidden;
+    font-size: 2rem;
+}
+
+.modal-review-form .star li{
+    float: left;
+    cursor: pointer;
+}
+
+.modal-review-form #review-content{
+    width : 700px;
+    margin-left : 10px;
+    font-size: 2rem;
+}
+
+.modal-review-form .bottom{
+    float: right;
+    margin-right: 100px;
+}
+.modal-review-form .bottom input{
+    width: 100px;
+    height : 50px;
+}

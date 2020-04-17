@@ -3,7 +3,8 @@ var modalData = {
     operating : 'false',
     modalNavMenu : 0,
     modalId : 0,
-    modalLike : 0
+    modalLike : 0,
+    modalIsReview : 'false'
 };
 var modalLocalData = {};
 // modal background layout

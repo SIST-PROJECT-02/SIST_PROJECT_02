@@ -13,7 +13,7 @@
 	<section class="modal-wrap">
 	<div class="data-wrap">
 		<div class="img-wrap">
-			<span>#해시태그지롱</span> <img src="#"/>
+			<span>#해시태그지롱</span> <img src="#" />
 			<div>♡</div>
 		</div>
 		<div class="basic-info-wrap">
@@ -67,6 +67,23 @@
 		</ul>
 		<div class="modal-more-data">더 보기♡행</div>
 	</section>
+	<section class="modal-review-form">
+        <div class="top">리뷰 쓰기</div>
+        <ul class="star">
+            <li name="1">☆</li>
+            <li name="2">☆</li>
+            <li name="3">☆</li>
+            <li name="4">☆</li>
+            <li name="5">☆</li>
+            <span class="star-num">1</span> / 5
+        </ul>
+        <textarea id="review-content" cols="30" rows="5" class="content"></textarea>
+        <div class="bottom">
+            <input type="button" class="delete" value="삭 제">
+            <input type="button" class="update" value="수 정">
+            <input type="button" class="create" value="생 성">
+        </div>
+    </section>
 	</script>
 	<script src="./../../hotel/js/modal.js?ver9"></script>
 	<script src="./../../hotel/js/configuration/modalConfiguration.js"></script>

@@ -26,5 +26,25 @@
     	WHERE product_id = #{product_id}
     </select>
     
+    <select id="isMyReview" resultType="int" parameterType="java.util.Map">
+    	SELECT COUNT(id) as cnt
+    	FROM review_board
+    	WHERE product_id = #{product_id} AND member_email = #{member_email}
+    </select>
+    
+    <insert id="insertModalReview" parameterType="ReviewBoardVO">
+    	<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    		SELECT NVL(MAX(id)+1,1) as id FROM review_board
+    	</selectKey>
+    	INSERT INTO review_board
+    	VALUES(
+    	#{id},
+    	#{product_id},
+    	#{member_email},
+    	SYSDATE,
+    	#{content},
+    	#{rate}
+    	)
+    </insert>
 </mapper>
 	
