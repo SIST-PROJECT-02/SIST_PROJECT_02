@@ -41,5 +41,14 @@
 	 	SELECT pwd,name,admin FROM member
 		WHERE email=#{email}
 	</select>
-
+	
+	<select id="memberDetailData" resultType="MemberVO" parameterType="string">
+		SELECT email,name,nick,birth,tel FROM member WHERE email=#{email }
+	</select>
+	
+	<update id="memberUpdate" parameterType="MemberVO">
+		UPDATE member
+		SET email=#{email},pwd=#{pwd},name=#{name},nick=#{nick},gender=#{gender},birth=#{birth},tel=#{tel},admin='0'
+		WHERE email=#{email}
+	</update>
 </mapper>
