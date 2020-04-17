@@ -2,7 +2,8 @@ var modalData = {
     operation : 'false',
     operating : 'false',
     modalNavMenu : 0,
-    modalId : 0
+    modalId : 0,
+    modalLike : 0
 };
 var modalLocalData = {};
 // modal background layout

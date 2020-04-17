@@ -87,11 +87,7 @@ public class HotelDAO {
 	public static List<HotelVO> hotelAllDataByReviewASC(int start, int count, String search) {
 		List<HotelVO> list = null;
 		Map map = new HashMap();
-		map.put("start", 1);
-		map.put("end", 6);
 		try (SqlSession session = ssf.openSession()) {
-			list = session.selectList("hotelAllDataByEvel",map);
-			session.close();
 			map.put("start", start);
 			map.put("end", start + count - 1);
 			map.put("product_kind", "숙박");
@@ -166,4 +162,5 @@ public class HotelDAO {
 
 		return vo;
 	}
+	
 }

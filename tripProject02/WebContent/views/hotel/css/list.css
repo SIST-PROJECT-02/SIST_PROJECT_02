@@ -63,7 +63,10 @@ a{
     background-color: #f4f6f8;
     transition : background-color 0.5s;
 }
-
+.list li #title span{
+	font-size : 4rem;
+	color: red;
+}
 .list .more-data{
 	height : 80px;
 	text-align : center;

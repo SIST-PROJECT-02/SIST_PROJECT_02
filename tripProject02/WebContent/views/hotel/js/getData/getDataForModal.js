@@ -25,6 +25,12 @@ var modalSetting = (data)=>{
 	}
 	hashTag.innerText ='#' + data.hashTag.replace(/,/ig,',#');
 	
+	if(data.like === 'true'){
+		modal.querySelector('.img-wrap div').innerText = '♥';
+	}else{
+		modal.querySelector('.img-wrap div').innerText = '♡';
+	}
+	
 	var title = modal.querySelector('.data-wrap .basic-info-wrap p');
 	title.innerHTML = "";
 	title.innerHTML += data.title + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -46,6 +52,7 @@ var modalSetting = (data)=>{
 	var templateModal = document.querySelector('#template-modal-detail').innerHTML;
 	templateModal = templateModal.replace('{description}',data.description);
 	dynamicModal.innerHTML = templateModal;
+	
 }
 
 document.querySelector('.modal-wrap nav').addEventListener('click',(e)=>{
@@ -170,4 +177,29 @@ var updateModalListAjax = () =>{
 	  console.log("sendData : " + sendData);
 	ajaxFunc('modalList.do',sendData,updateModalList);
 	layoutDataForModalList.startPoint += 6;
+}
+
+var changeModalLike = (data)=>{
+	if(data.like === 'no'){
+		alert('로그인이 필요합니다!');
+	}
+	else if(data.like === 'on'){
+		document.querySelector('.modal-wrap .img-wrap div').innerText = '♥';
+		var target = document.querySelectorAll('.list ul > li');
+		target.forEach((v,i)=>{
+			if(v.getAttribute('name') === modalData.modalId){
+				v.querySelector('#title span').innerText = '♥';
+			}
+		})
+		alert('좋아요에 추가되었습니다!');
+	}else{
+		document.querySelector('.modal-wrap .img-wrap div').innerText = '♡';
+		var target = document.querySelectorAll('.list ul > li');
+		target.forEach((v,i)=>{
+			if(v.getAttribute('name') === modalData.modalId){
+				v.querySelector('#title span').innerText = '♡';
+			}
+		})
+		alert('좋아요가 취소되었습니다!');
+	}
 }

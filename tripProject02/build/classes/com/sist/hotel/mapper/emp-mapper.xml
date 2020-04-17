@@ -24,7 +24,7 @@
     <select id="hotelAllDataByEvelASC" resultType="HotelVO" parameterType="java.util.Map">
     	SELECT id, title, introduction, Evel_point, thumbnail, review_count, num
       FROM (SELECT id, title, introduction,Evel_point, thumbnail, review_count, rownum as num 
-      FROM (SELECT id, title, introduction, Evel_point ,thumbnail review_count
+      FROM (SELECT id, title, introduction, Evel_point ,thumbnail, review_count
       FROM products WHERE product_kind = #{product_kind} AND REGEXP_LIKE(title,#{search}) ORDER BY Evel_point ASC))
       WHERE num BETWEEN #{start} AND #{end}
     </select>
@@ -69,6 +69,7 @@
     	FROM products
     	WHERE id=#{id}
     </select>
+    
 </mapper>
 
 

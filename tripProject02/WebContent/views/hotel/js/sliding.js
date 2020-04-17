@@ -227,15 +227,7 @@ document.querySelector('.sliding-item').addEventListener('click', (e)=>{
 		id = parentSlidingItem.getAttribute('name');
 		console.log('sliding id : ' + id);
 		var sendData = "id=" + id;
+		modalData.modalId = id;
 		ajaxFunc('listDetail.do',sendData,getModal);
 	}
-});
-
-window.addEventListener('scroll',(e)=>{
-	console.log('top scroll : ' + document.body.scrollTop);
-	if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-	    document.querySelector(".search-wrap").style.display = 'block';
-	  } else {
-		  document.querySelector(".search-wrap").style.display = 'none';
-	  }
 });

@@ -58,6 +58,15 @@
 	top:10px;
 	left:30px;
 }
+.modal-wrap .img-wrap div{
+	position:absolute;
+	z-index : 30;
+	font-size : 4rem;
+	color : red;
+	top:400px;
+	left:1000px;
+	cursor:pointer;
+}
 .modal-wrap .basic-info-wrap{
     margin-top: 20px;
 }

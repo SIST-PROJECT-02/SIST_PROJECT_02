@@ -41,7 +41,7 @@
         <li name="{name}">
 			<label class="evelPoint">{label}</label>
             <a ><img src="{img}" alt=""></a>
-            <a ><div id="title">{title}</div>
+            <a ><div id="title">{title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{like}</span></div>
             <div id="info">{information}</div></a>
         </li>
     </script>

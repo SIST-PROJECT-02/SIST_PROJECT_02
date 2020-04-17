@@ -13,7 +13,8 @@
 	<section class="modal-wrap">
 	<div class="data-wrap">
 		<div class="img-wrap">
-			<span>#해시태그지롱</span> <img src="#">
+			<span>#해시태그지롱</span> <img src="#"/>
+			<div>♡</div>
 		</div>
 		<div class="basic-info-wrap">
 			<p>
