@@ -17,11 +17,11 @@
 	<jsp:include page="./../../hotel/jsp/search.jsp"></jsp:include>
 	<jsp:include page="./../../hotel/jsp/modal.jsp"></jsp:include>
 	<div class="recommended-hotel">
-		<span></span> 추천 숙박♡행
+		<span></span> 추천 숙박
 	</div>
 	<jsp:include page="./../../hotel/jsp/sliding.jsp"></jsp:include>
 	<div class="recommended-hotel">
-		<span></span> 숙박 리스트♡행
+		<span></span> 숙박 리스트
 	</div>
 
 	<jsp:include page="./../../hotel/jsp/list.jsp"></jsp:include>
