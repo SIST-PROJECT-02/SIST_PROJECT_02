@@ -7,13 +7,18 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="./../../hotel/css/modal.css?ver3">
 <link rel="stylesheet" href="./../../hotel/css/modalList.css">
+<link href="https://fonts.googleapis.com/css2?family=Gugi&family=Jua&family=Yeon+Sung&display=swap" rel="stylesheet">
 </head>
 <body>
 	<div class="modal-background"></div>
 	<section class="modal-wrap">
 	<div class="data-wrap">
 		<div class="img-wrap">
+<<<<<<< HEAD
 			<span>#해시태그지롱</span> <img src="#" />
+=======
+			<span>#해시태그</span> <img src="#"/>
+>>>>>>> 78325e4c95147400588a1f603f1795c1d7669840
 			<div>♡</div>
 		</div>
 		<div class="basic-info-wrap">
@@ -30,7 +35,7 @@
 		</ul>
 		</nav>
 		<div class="dynamic-info-wrap"></div>
-		<div class="reservation-btn">예약 ♡햏</div>
+		<div class="reservation-btn">예약하기</div>
 	</div>
 	</section>
 	<script id="template-modal-detail" type="text/template">
@@ -65,7 +70,7 @@
 		<ul class="modal-review">
 		
 		</ul>
-		<div class="modal-more-data">더 보기♡행</div>
+		<div class="modal-more-data">검색결과 더보기</div>
 	</section>
 	<section class="modal-review-form">
         <div class="top">리뷰 쓰기</div>

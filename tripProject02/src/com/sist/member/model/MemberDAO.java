@@ -5,6 +5,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.sist.dao.CreateSqlsessionFactory;
 import com.sist.member.model.*;
+import com.sun.corba.se.impl.protocol.BootstrapServerRequestDispatcher;
+
 import java.util.*;
 
 
@@ -103,4 +105,43 @@ public class MemberDAO {
 		return count;
 	}
 	
+	public static MemberVO memberDetailData(String email)
+	{
+		MemberVO vo=new MemberVO();
+		SqlSession session=null;
+		try
+		{
+			session=ssf.openSession();
+			vo=session.selectOne("memberDetailData",email);
+		}
+		catch(Exception ex)
+		{
+			System.out.println("memberDetailData_error: "+ex.getMessage());
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+		return vo; 
+	}
+	
+	public static void memberUpdate(MemberVO vo)
+	{
+		SqlSession session=null;
+		try
+		{
+			session=ssf.openSession(true);
+			session.update("memberUpdate",vo);
+		}
+		catch(Exception ex)
+		{
+			System.out.println("memberUpdate_error: "+ex.getMessage());
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+	}
 }

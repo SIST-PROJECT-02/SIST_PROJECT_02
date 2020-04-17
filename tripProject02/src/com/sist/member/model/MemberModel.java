@@ -96,4 +96,43 @@ public class MemberModel {
 		return "checkid_ok.jsp";
 	}
 	
+	@RequestMapping("views/template/main/mypage.do")
+	public String memberDetailData(HttpServletRequest request, HttpServletResponse response)
+	{	
+		/*name,nick,birth,tel*/
+		String email=request.getParameter("email");
+		MemberVO vo=MemberDAO.memberDetailData(email);
+		request.setAttribute("vo", vo);
+		request.setAttribute("jsp", "../../member/mypage.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/member/update.do")
+	public String memberUpdate(HttpServletRequest request, HttpServletResponse response)
+	{
+		try
+		{
+			request.setCharacterEncoding("UTF-8");
+		}catch(Exception ex){}
+		
+		String email=request.getParameter("email");
+		String pwd=request.getParameter("pwd1");
+		String name=request.getParameter("name");
+		String nick=request.getParameter("nick");
+		String gender=request.getParameter("gender");
+		String birth=request.getParameter("birth");
+		String tel=request.getParameter("tel");
+		
+		MemberVO vo=new MemberVO();
+		vo.setEmail(email);
+		vo.setPwd(pwd);
+		vo.setName(name);
+		vo.setNick(nick);
+		vo.setGender(gender);
+		vo.setBirth(birth);
+		vo.setTel(tel);
+		
+		MemberDAO.memberUpdate(vo);
+		return "redirect:../template/main/index.jsp";
+	}
 }

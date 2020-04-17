@@ -25,7 +25,7 @@
 .modal-review-wrap .list-modal-count{
 	height : 80px;
 	text-align : center;
-	background-color : gray;
+	background-color : #f8f9fa;
 	line-height : 80px; 
 }
 .modal-review-wrap .modal-more-data:hover{

@@ -72,12 +72,16 @@ a{
 	text-align : center;
 	background-color : #80808066;
 	line-height : 80px; 
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 2rem;
 }
 .list .list-count{
 	height : 80px;
 	text-align : center;
 	background-color : #ffc107;
 	line-height : 80px; 
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 2rem;
 }
 .list .more-data:hover{
 	cursor:pointer;

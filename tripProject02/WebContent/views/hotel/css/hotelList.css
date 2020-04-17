@@ -1,7 +1,8 @@
 .recommended-hotel{
-	font-size : 1.5rem;
+	font-size : 4rem;
 	text-align : center;
 	margin : 30px 0px;
+	font-family: 'Do Hyeon', sans-serif;
 }
 
 .recommended-hotel span{
@@ -11,7 +12,7 @@
 	display : block;
 	margin : auto;
 	margin-bottom : 5px;
-	font-family: 'Yeon Sung', cursive;
+	
 }
 
 .hotel-nav ul li select{

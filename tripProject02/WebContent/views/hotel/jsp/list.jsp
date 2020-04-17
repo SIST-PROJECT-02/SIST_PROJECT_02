@@ -8,6 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <link rel="stylesheet" href="./../../hotel/css/list.css?ver2">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gugi&family=Jua&family=Yeon+Sung&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -15,9 +17,9 @@
 	<nav class="hotel-nav">
 		<ul>
 			<li><select id="레이아웃♡행">
-					<option value="1">한줄로 볼♡행</option>
-					<option value="2">두줄로 볼♡행</option>
-					<option value="3">세줄로 볼♡행</option>
+					<option value="1">한줄로 보기</option>
+					<option value="2">두줄로 보기</option>
+					<option value="3">세줄로 보기</option>
 			</select></li>
 		</ul>
 	</nav>
@@ -35,7 +37,7 @@
 				</a></li>
 			</div>
 		</ul>
-		<div class="more-data">더 보기♡행</div>
+		<div class="more-data">검색결과 더보기</div>
 	</section>
 	<script id="template-list-items" type="text/template">
         <li name="{name}">
