@@ -1,4 +1,5 @@
 var getListAjax = ()=>{
+	initList();
 	var sendData = "";
 	  sendData += "startPoint=" + layoutDataForMainList.startPoint;
 	  sendData += "&getCount=" + layoutDataForMainList.getCount;
@@ -6,7 +7,6 @@ var getListAjax = ()=>{
 	  sendData += "&search=" + layoutDataForMainList.search;
 	  console.log("sendData : " + sendData);
 	ajaxFunc('list.do',sendData,listConstructor);
-	layoutDataForMainList.startPoint += 6;
 }
 
 var updateListAjax = ()=>{
@@ -17,10 +17,10 @@ var updateListAjax = ()=>{
 	  sendData += "&search=" + layoutDataForMainList.search;
 	  console.log("sendData : " + sendData);
 	ajaxFunc('list.do',sendData,updateList);
-	layoutDataForMainList.startPoint += 6;
 }
 
 var injectDataMainList = (data)=>{
+	console.log('injectData - s start : ' + layoutDataForMainList.startPoint);
 	var wrap = document.querySelector('.' + layoutDataForMainList.mainClassName);
     var innerWrap = wrap.querySelector('ul');
     var listData = data.list;

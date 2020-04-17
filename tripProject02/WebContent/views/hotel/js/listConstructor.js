@@ -27,18 +27,16 @@ var listConstructor = (data, mainClass, navClass) =>{
 	layoutDataForMainList.mainClassName = mainClass;
 	layoutDataForMainList.navClassName = navClass;
 	
-	initList();
-	
 	injectDataMainList(data);
     
 	document.querySelector('.' + layoutDataForMainList.mainClassName + " .more-data").addEventListener('click',(e)=>{
 		updateListAjax();
 	});
-	
+	layoutDataForMainList.startPoint += 6;
     setLayout(layoutDataForMainList);
 }
 var updateList = (data)=>{
 	injectDataMainList(data);
-    
+	layoutDataForMainList.startPoint += 6;
     setLayout(layoutDataForMainList);
 }

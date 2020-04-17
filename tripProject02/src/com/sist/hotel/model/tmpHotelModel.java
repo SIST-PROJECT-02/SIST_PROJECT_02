@@ -82,6 +82,7 @@ public class tmpHotelModel {
 		response.setCharacterEncoding("UTF-8");
 		
 		int start = Integer.parseInt(request.getParameter("startPoint")) + 1;
+		System.out.println("start : " + start);
 		int inputCount = Integer.parseInt(request.getParameter("getCount"));
 		int sortCondition = Integer.parseInt(request.getParameter("sortCondition"));
 		
