@@ -8,7 +8,7 @@ aside.search-wrap {
 }
 aside.search-wrap .search-subjext{
     margin: auto;
-    font-size: 2rem;
+    font-size: 3rem;
     width : 200px;
     font-family: 'Yeon Sung', cursive;
 }
@@ -19,13 +19,13 @@ aside.search-wrap .search-data-wrap{
 }
 aside.search-wrap .text-search{
     margin-top : 20px;
-    font-size : 1.5rem;
+    font-size : 2rem;
     font-family: 'Yeon Sung', cursive;
     
 }
 aside.search-wrap .text-search input{
     margin-left: 5px;
-    font-size : 1.5rem;
+    font-size : 2rem;
     font-family: 'Yeon Sung', cursive;
 }
 aside.search-wrap .sort-search{
@@ -34,14 +34,15 @@ aside.search-wrap .sort-search{
     font-family: 'Yeon Sung', cursive;
 }
 aside.search-wrap .sort-search #sort-search-wrap{
-    font-size : 1.5rem;
+    font-size : 2rem;
     height : 40px;
+    color: #ff00c8;
 }
 
 aside.search-wrap .submit-search{
     background-color: #ffc107;
     width : 140px;
-    font-size : 2rem;
+    font-size : 3rem;
     height: 70px;
     line-height: 70px;
     text-align: center;

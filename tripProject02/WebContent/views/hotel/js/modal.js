@@ -3,14 +3,14 @@ var initNav = function(){
     var list = document.querySelectorAll('.modal-wrap nav li');
     list.forEach((v,i)=>{
         if(i === list.length-1){
-            v.style.borderRight = '1px solid #e5e5e5';
+            v.style.borderRight = '2px solid rgba(255,255,255,.15)';
         }else{
             v.style.borderRight = '0px';
         }
         
-        v.style.borderTop = '1px solid #e5e5e5';
-        v.style.borderLeft = '1px solid #e5e5e5';
-        v.style.borderBottom = '2px solid #ef6d00';
+        v.style.borderTop = '1px solid rgba(255,255,255,.15)';
+        v.style.borderLeft = '2px solid rgba(255,255,255,.15)';
+        v.style.borderBottom = '3px solid #7643ea';
     });
 
 }
@@ -29,8 +29,8 @@ document.querySelector('.modal-wrap nav').addEventListener('click',(e)=>{
     if(target.tagName === 'LI'){
 
         initNav();
-        target.style.border = '2px solid #ef6d00';
-        target.style.borderBottom = '0px';
+        target.style.border = '2px solid #7643ea';
+        target.style.borderBottom = '0px ';
     }
 });
 document.querySelector('.modal-wrap .img-wrap div').addEventListener('click',(e)=>{
