@@ -158,6 +158,7 @@ public class tmpHotelModel {
 		int sumOfRate = ReviewBoardDAO.sumOfRate(id);
 		HttpSession mySession = request.getSession();
 		
+		int count = ReviewBoardDAO.reviewCount(id);
 		JSONObject jsonObj = new JSONObject();
 		jsonObj.put("id", vo.getId());
 		jsonObj.put("title", vo.getTitle());
@@ -177,7 +178,7 @@ public class tmpHotelModel {
 		jsonObj.put("thumbnail", vo.getThumbnail());
 		jsonObj.put("reviewCount", vo.getReview_count());
 		jsonObj.put("sumOfRate", sumOfRate);
-		
+		jsonObj.put("count", count);
 		if(mySession.getAttribute("email") == null){
 			jsonObj.put("like", "false");
 		}else{

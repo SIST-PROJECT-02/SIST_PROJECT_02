@@ -53,6 +53,8 @@ var modalSetting = (data)=>{
 	templateModal = templateModal.replace('{description}',data.description);
 	dynamicModal.innerHTML = templateModal;
 	
+	var navReview = document.querySelector('.modal-wrap .data-wrap nav ul #nav-review');
+    navReview.innerHTML = '리뷰[<span style="color:red;">' +data.count +'</span>]';
 }
 
 document.querySelector('.modal-wrap nav').addEventListener('click',(e)=>{
@@ -86,12 +88,6 @@ document.querySelector('.modal-wrap nav').addEventListener('click',(e)=>{
 	}
 });
 
-/*
- * var layoutDataForModalList = { width : 500, rowCount : 1, elementHeight :
- * 200, startPoint : 0, getCount : 6, mainClassName : 'modal-list', navClassName :
- * 'modal-nav' };
- */
-
 var getModalListAjax = ()=>{
 	var sendData = "";
 	  sendData += "startPoint=" + layoutDataForModalList.startPoint;
@@ -108,6 +104,8 @@ var injectDataModalListUpdate = (data) =>{
     var moreData = wrap.querySelector('.modal-more-data');
     var templateData = document.querySelector('#template-modal-review').innerHTML;
     wrap.querySelector('.list-modal-count').innerText = "총 " + data.count + " 개의 리뷰가 있어요!";
+    var navReview = document.querySelector('.modal-wrap .data-wrap nav ul #nav-review');
+    navReview.innerHTML = '리뷰[<span style="color:red;">' +data.count +'</span>]';
     listData.forEach((v,i)=>{
     	var evelText = "";
     	for(var i = 0; i < v.evelPoint; i++){
@@ -144,6 +142,8 @@ var injectDataModalList = (data)=>{
     
     
 	wrap.querySelector('.list-modal-count').innerText = "총 " + data.count + " 개의 리뷰가 있어요!";
+	var navReview = document.querySelector('.modal-wrap .data-wrap nav ul #nav-review');
+    navReview.innerHTML = '리뷰[<span style="color:red;">' +data.count +'</span>]';
     listData.forEach((v,i)=>{
     	var evelText = "";
     	for(var i = 0; i < v.evelPoint; i++){
