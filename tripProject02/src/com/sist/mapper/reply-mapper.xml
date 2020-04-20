@@ -37,8 +37,9 @@
 	 	<selectKey keyProperty="no" resultType="int" order="BEFORE"> <!-- order="BEFORE": 먼저 실행해라.. -->
  			SELECT NVL(MAX(no)+1,1) as no FROM qna 
  		</selectKey>		
-		INSERT INTO qna(no,name,subject,content,pwd,group_id)
+		INSERT INTO qna(bno,no,name,subject,content,pwd,group_id)
 		VALUES(
+		    1,
 			#{no},
 			#{name},
 			#{subject},

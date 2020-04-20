@@ -18,6 +18,14 @@ public class BoardVO {
    private String filename;
    private String filesize;
    private int type;
+   
+   private String dbday;
+public String getDbday() {
+	return dbday;
+}
+public void setDbday(String dbday) {
+	this.dbday = dbday;
+}
 public int getNo() {
 	return no;
 }

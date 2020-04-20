@@ -7,14 +7,31 @@ import javax.servlet.http.HttpServletResponse;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.board.dao.BoardVO;
+import com.sist.board.dao.NoticeDAO;
 import com.sist.board.dao.ReplyBoardDAO;
 
 @Controller
 public class ReplyBoardModel {
-
 	@RequestMapping("views/template/main/qna.do")
 	public String reply_list(HttpServletRequest request, HttpServletResponse response)
 	{
+		String npage=request.getParameter("npage");
+		if(npage==null)
+			npage="1";
+		int ncurpage=Integer.parseInt(npage);
+		Map nmap=new HashMap();
+		int nrowSize=3;
+		int nstart=nrowSize*(ncurpage-1)+1;
+		int nend = nrowSize*ncurpage;
+		nmap.put("nstart", nstart);
+		nmap.put("nend", nend);
+		
+		List<BoardVO> nlist=NoticeDAO.noticeListData(nmap);
+		int ntotalpage=NoticeDAO.noticeTotalPage();
+		request.setAttribute("nlist", nlist);
+		request.setAttribute("ncurpage", ncurpage);
+		request.setAttribute("ntotalpage", ntotalpage);
+		
 		String page=request.getParameter("page");
 		if(page==null)
 			page="1";
@@ -29,7 +46,6 @@ public class ReplyBoardModel {
 		//List<BoardVO> alist //e개의 공지사항-
 		List<BoardVO> list=ReplyBoardDAO.replyListData(map);//start부터 end까지 자유게시판 가져온다
 		int totalpage=ReplyBoardDAO.replyTotalPage();
-		
 		request.setAttribute("list", list);
 		request.setAttribute("curpage", curpage);
 		request.setAttribute("totalpage", totalpage);
@@ -88,7 +104,7 @@ public class ReplyBoardModel {
 		// VO를 INSERT 하게 mapper에서 수행 
 		ReplyBoardDAO.replyInsertData(vo);
 		
-		return "redirect:list.do";
+		return "redirect:qna.do";
 	}
 	
 	// [글 수정] - 기존 글의 데이터 가져옴 
@@ -195,7 +211,7 @@ public class ReplyBoardModel {
 	
 		ReplyBoardDAO.replyReplyInsert(Integer.parseInt(pno), vo);
 		//.do = method 호출
-		return "redirect:list.do";      //reply_jsp() 를 다시 실행해서 데이터 요청하는 코딩실행
+		return "redirect:qna.do";      //reply_jsp() 를 다시 실행해서 데이터 요청하는 코딩실행
 	}
 	
 	@RequestMapping("views/template/main/delete.do")

@@ -6,7 +6,8 @@
 <fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="today1" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<h4><html>
+<h4>
+	<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -22,12 +23,16 @@
 	display: block;
 	width: 300px;
 }
-#notice{
-margin: 0px auto;
- border: 1px solid red;
- width: 60%;
- hight:100px;
+
+.row>#notice {
+	margin: 0px auto;
+	width: 60%;
+	height: 50px;
 }
+.notice{
+	background-color:#fffee4;
+}
+
 </style>
 </head>
 <body>
@@ -39,28 +44,41 @@ margin: 0px auto;
 				<img src="../../board/images/QnA.png">
 			</div>
 			<div class="row">
+
+				<table class="table" id="notice">
+
+				</table>
 				<table class="table" style="width: 60%; margin: 0px auto;">
 					<tr>
 						<td><a href="insert.do" class="btn btn-md btn-danger">새글</a>
 						</td>
 					</tr>
 				</table>
-				<table id="notice">
-					<img src="../../board/images/notice.jpg">
-					<tr>
+				<table class="table" style="width: 60%; margin: 0px auto;">
+					<tr class="danger">
 						<th width="10%" class="text-center">번호</th>
-						<th width="60%" class="text-center">공지사항</th>
+						<th width="45%" class="text-center">제목</th>
+						<th width="15%" class="text-center">작성자</th>
 						<th width="20%" class="text-center">작성일</th>
 						<th width="10%" class="text-center">조회수</th>
 					</tr>
-				</table>
-				<table class="table" style="width: 60%; margin: 0px auto;">
+					<c:forEach var="vo" items="${nlist }">
+						<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"
+							var="regdate" />
+						<tr class="notice">
+							<td width="10%" class="text-center"><img
+								src="../../board/images/bell.png" /></td>
+							<td width="45%" class="text-center"><c:if
+									test="${today1 == regdate}">
+									<img src="../../board/images/new.gif">
+								</c:if> <a href="ndetail.do?no=${vo.no }">${vo.subject }</a></td>
+							<td width="15%" class="text-center">관리자</td>
+							<td width="20%" class="text-center">${regdate }<!--<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/>-->
+							</td>
+							<td width="10%" class="text-center">${vo.hit }</td>
+						</tr>
+					</c:forEach>
 					<tr class="success">
-						<th width="10%" class="text-center">번호</th>
-						<th width="45%" class="text-center">제목</th>
-						<th width="15%" class="text-center">이름</th>
-						<th width="20%" class="text-center">작성일</th>
-						<th width="10%" class="text-center">조회수</th>
 					</tr>
 					<c:forEach var="vo" items="${list }">
 						<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"
@@ -76,7 +94,7 @@ margin: 0px auto;
 									<img src="../../board/images/icon_reply.gif">
 								</c:if> <a href="detail.do?no=${vo.no }">${vo.subject }</a></td>
 							<td width="15%" class="text-center">${vo.name }</td>
-							<td width="20%" class="text-center">${regdate } <!--<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/>-->
+							<td width="20%" class="text-center">${regdate }<!--<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/>-->
 							</td>
 							<td width="10%" class="text-center">${vo.hit }</td>
 						</tr>
@@ -94,4 +112,5 @@ margin: 0px auto;
 	</div>
 
 </body>
-</html></h4>
+	</html>
+</h4>
