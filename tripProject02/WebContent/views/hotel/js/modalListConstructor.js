@@ -10,7 +10,7 @@ var modalListConstructor = (data) =>{
 	var wrap = document.querySelector('.modal-wrap .data-wrap .dynamic-info-wrap');
 	
 	injectDataModalList(data);
-    
+    document.querySelector('.modal-wrap').scrollTop = document.querySelector('.modal-wrap').scrollHeight;
 	wrap.querySelector('.modal-more-data').addEventListener('click',(e)=>{
 		updateModalListAjax();
 	});
@@ -56,11 +56,14 @@ var initModalReviewForm = ()=>{
 	if(modalData.modalIsReview === 'false'){
 		inWrap.querySelector('.bottom .delete').style.display = 'none';
 		inWrap.querySelector('.bottom .update').style.display = 'none';
-		inWrap.querySelector('.bottom .create').style.display = 'block';
+		inWrap.querySelector('.bottom .create').style.display = 'inline-block';
+		inWrap.querySelector('textarea').disabled = false;
 	}else{
-		inWrap.querySelector('.bottom .delete').style.display = 'block';
-		inWrap.querySelector('.bottom .update').style.display = 'block';
+		inWrap.querySelector('.bottom .delete').style.display = 'inline-block';
+		inWrap.querySelector('.bottom .update').style.display = 'inline-block';
 		inWrap.querySelector('.bottom .create').style.display = 'none';
+		inWrap.querySelector('textarea').placeholder = '이미 댓글을 쓰셨습니다!';
+		inWrap.querySelector('textarea').disabled = true;
 	}
 }
 
@@ -88,20 +91,74 @@ var createModalReviewForm = ()=>{
 	var createBtn = wrap.querySelector('.bottom .create');
 	var content = wrap.querySelector('textarea');
 	createBtn.addEventListener('click',(e)=>{
-		console.log('createBtn clicked!');
+		if(content.value === null ||
+				content.value.trim() === ''){
+			alert('내용을 입력하세요!');
+			return;
+		}
 		var sendData = "";
 		sendData += "rate=" + reviewNum.innerText;
 		sendData += "&content=" + content.value;
 		sendData += "&product_id=" + modalData.modalId;
 		
-		console.log('create btn ->sendData : ' + sendData);
 		ajaxFunc('modalReviewCreate.do',sendData,createModalReview);
-	})
+	});
+	
+	var deleteBtn = wrap.querySelector('.bottom .delete');
+	deleteBtn.addEventListener('click',(e)=>{
+		
+		if(confirm("정말로 삭제하겠습니까?")){
+			var sendData = "";
+			sendData += "&product_id=" + modalData.modalId;
+			ajaxFunc('modalReviewDelete.do',sendData,deleteModalReview);
+		}
+		
+	});
+	
+	var updateBtn = wrap.querySelector('.bottom .update');
+	updateBtn.addEventListener('click',(e)=>{
+		if(content.disabled === true){
+			content.disabled = false;
+			e.target.value = '쓰 기';
+			return;
+		}
+		if(content.value === null ||
+				content.value.trim() === ''){
+			alert('내용을 입력하세요!');
+			return;
+		}
+		var sendData = "";
+		sendData += "rate=" + reviewNum.innerText;
+		sendData += "&content=" + content.value;
+		sendData += "&product_id=" + modalData.modalId;
+		
+		ajaxFunc('modalReviewUpdate.do',sendData,updateModalReview);
+	});
 }
 
 var createModalReview = (data)=>{
 	if(data.modalRes === 'true'){
+		initModalList();
+		getModalListAjax();
 		alert('댓글이 등록되었습니다!');
+		
+	}else{
+		alert('로그인을 해주세요!');
+	}
+}
+var deleteModalReview = (data) =>{
+	if(data.modalRes === 'true'){
+		initModalList();
+		getModalListAjax();
+		alert('댓글이 삭제되었습니다!');
+	}
+}
+var updateModalReview = (data)=>{
+	if(data.modalRes === 'true'){
+		initModalList();
+		getModalListAjax();
+		alert('댓글이 수정되었습니다!');
+		
 	}else{
 		alert('로그인을 해주세요!');
 	}

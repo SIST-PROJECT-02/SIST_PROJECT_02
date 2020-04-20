@@ -162,5 +162,18 @@ public class HotelDAO {
 
 		return vo;
 	}
-	
+	public static void updateHotelReview(int product_id){
+		try(SqlSession session = ssf.openSession(true)){
+			session.update("updateHotelReview",product_id);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	public static void updateDownHotelReview(int product_id){
+		try(SqlSession session = ssf.openSession(true)){
+			session.update("updateDownHotelReview",product_id);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 }

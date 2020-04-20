@@ -46,5 +46,16 @@
     	#{rate}
     	)
     </insert>
+    <delete id="deleteModalReview" parameterType="java.util.Map">
+    	DELETE FROM review_board
+    	WHERE product_id = #{product_id} AND member_email = #{member_email}
+    </delete>
+    <update id="updateModalReview" parameterType="java.util.Map">
+    	UPDATE review_board SET
+    	regdate = SYSDATE,
+    	content = #{content},
+    	rate = #{rate}
+    	WHERE product_id = #{product_id} AND member_email = #{member_email}
+    </update>
 </mapper>
 	

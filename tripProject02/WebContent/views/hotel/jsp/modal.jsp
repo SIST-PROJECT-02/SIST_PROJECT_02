@@ -14,11 +14,7 @@
 	<section class="modal-wrap">
 	<div class="data-wrap">
 		<div class="img-wrap">
-<<<<<<< HEAD
 			<span>#해시태그지롱</span> <img src="#" />
-=======
-			<span>#해시태그</span> <img src="#"/>
->>>>>>> 78325e4c95147400588a1f603f1795c1d7669840
 			<div>♡</div>
 		</div>
 		<div class="basic-info-wrap">
@@ -82,7 +78,7 @@
             <li name="5">☆</li>
             <span class="star-num">1</span> / 5
         </ul>
-        <textarea id="review-content" cols="30" rows="5" class="content"></textarea>
+        <textarea id="review-content" cols="30" rows="5" class="content" required></textarea>
         <div class="bottom">
             <input type="button" class="delete" value="삭 제">
             <input type="button" class="update" value="수 정">

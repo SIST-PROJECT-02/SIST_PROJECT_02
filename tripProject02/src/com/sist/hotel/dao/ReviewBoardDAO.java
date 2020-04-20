@@ -83,4 +83,27 @@ public class ReviewBoardDAO {
 		}
 		return count;
 	}
+	public static int deleteModalReview(int product_id, String member_email) {
+		int count = 0;
+		Map map = new HashMap();
+		try (SqlSession session = ssf.openSession()) {
+			map.put("product_id", product_id);
+			map.put("member_email", member_email);
+			count = session.insert("deleteModalReview", map);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+	public static int updateModalReview(ReviewBoardVO vo) {
+		int count = 0;
+		try (SqlSession session = ssf.openSession()) {
+			count = session.insert("updateModalReview", vo);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 }

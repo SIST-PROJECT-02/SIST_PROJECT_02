@@ -61,4 +61,26 @@ public class LikeDAO {
 			e.printStackTrace();
 		}
 	}
+	public static void insertReviewLog(int product_id, String member_email){
+		Map map = new HashMap();
+		try (SqlSession session = ssf.openSession()) {
+			map.put("product_id",product_id);
+			map.put("member_email",member_email);
+			session.insert("insertReviewLog", map);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static void deleteReviewLog(int product_id, String member_email){
+		Map map = new HashMap();
+		try (SqlSession session = ssf.openSession()) {
+			map.put("product_id",product_id);
+			map.put("member_email",member_email);
+			session.insert("deleteReviewLog", map);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -19,4 +19,12 @@
     	DELETE FROM like_log
     	WHERE product_id = #{product_id} AND member_email = #{member_email}
     </delete>
+    <insert id="insertReviewLog" parameterType="java.util.Map">
+    	INSERT INTO review_log
+    	VALUES(#{member_email},#{product_id})
+    </insert>
+    <delete id="deleteReviewLog" parameterType="java.util.Map">
+    	DELETE FROM review_log
+    	WHERE product_id = #{product_id} AND member_email = #{member_email}
+    </delete>
 </mapper>

@@ -16,6 +16,8 @@ import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.hotel.dao.HotelDAO;
 import com.sist.hotel.dao.HotelVO;
+import com.sist.hotel.dao.LikeDAO;
+import com.sist.hotel.dao.LikeVO;
 import com.sist.hotel.dao.ReviewBoardDAO;
 import com.sist.hotel.dao.ReviewBoardVO;
 
@@ -81,7 +83,7 @@ public class ReviewBoardModel {
 	}
 	
 	@RequestMapping("views/template/main/modalReviewCreate.do")
-public String getModalReviewFormAjax(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String getModalReviewFormAjax(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
@@ -108,9 +110,82 @@ public String getModalReviewFormAjax(HttpServletRequest request, HttpServletResp
 		vo.setMember_email(member_email);
 		vo.setContent(content);
 		vo.setRate(rate);
-		System.out.println("database... ing...");
+		
 		ReviewBoardDAO.insertModalReview(vo);
-		System.out.println("database ok!");
+		LikeDAO.insertReviewLog(product_id, member_email);
+		HotelDAO.updateHotelReview(product_id);
+		
+		jsonObj.put("modalRes", "true");
+		out.println(jsonObj);
+		out.flush();
+		
+		return "./../../hotel/jsp/dummy.jsp";
+	}
+	
+	@RequestMapping("views/template/main/modalReviewDelete.do")
+	public String deleteModalReviewFormAjax(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8"); 
+		
+		HttpSession mySession = request.getSession();
+		JSONObject jsonObj = new JSONObject();
+		PrintWriter out = response.getWriter();
+		
+		if(mySession.getAttribute("email") == null){
+			System.out.println("session is null!");
+			jsonObj.put("modalRes", "false");
+			out.println(jsonObj);
+			out.flush();
+			return "./../../hotel/jsp/dummy.jsp"; 
+		}
+		
+		int product_id = Integer.parseInt(request.getParameter("product_id"));
+		String member_email = String.valueOf(mySession.getAttribute("email"));
+		
+		ReviewBoardDAO.deleteModalReview(product_id,member_email);
+		LikeDAO.deleteReviewLog(product_id, member_email);
+		HotelDAO.updateDownHotelReview(product_id);
+		
+		jsonObj.put("modalRes", "true");
+		out.println(jsonObj);
+		out.flush();
+		
+		return "./../../hotel/jsp/dummy.jsp";
+	}
+	
+	@RequestMapping("views/template/main/modalReviewUpdate.do")
+	public String updateModalReviewFormAjax(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8"); 
+		
+		HttpSession mySession = request.getSession();
+		JSONObject jsonObj = new JSONObject();
+		PrintWriter out = response.getWriter();
+		
+		if(mySession.getAttribute("email") == null){
+			System.out.println("session is null!");
+			jsonObj.put("modalRes", "false");
+			out.println(jsonObj);
+			out.flush();
+			return "./../../hotel/jsp/dummy.jsp"; 
+		}
+		
+		int product_id = Integer.parseInt(request.getParameter("product_id"));
+		String member_email = String.valueOf(mySession.getAttribute("email"));
+		String content = request.getParameter("content");
+		double rate = Double.parseDouble(request.getParameter("rate"));
+		ReviewBoardVO vo = new ReviewBoardVO();
+		vo.setProduct_id(product_id);
+		vo.setMember_email(member_email);
+		vo.setContent(content);
+		vo.setRate(rate);
+		
+		ReviewBoardDAO.updateModalReview(vo);
+		
 		jsonObj.put("modalRes", "true");
 		out.println(jsonObj);
 		out.flush();

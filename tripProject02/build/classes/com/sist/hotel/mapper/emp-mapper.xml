@@ -70,6 +70,14 @@
     	WHERE id=#{id}
     </select>
     
+    <update id="updateHotelReview" parameterType="int">
+    	UPDATE products SET review_count = review_count + 1
+    	WHERE id = #{product_id}
+    </update>
+    <update id="updateDownHotelReview" parameterType = "int">
+    	UPDATE products SET review_count = review_count - 1
+    	WHERE id = #{product_id}
+    </update>
 </mapper>
 
 
