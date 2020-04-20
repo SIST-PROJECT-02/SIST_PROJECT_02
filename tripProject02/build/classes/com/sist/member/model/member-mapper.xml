@@ -51,4 +51,10 @@
 		SET email=#{email},pwd=#{pwd},name=#{name},nick=#{nick},gender=#{gender},birth=#{birth},tel=#{tel},admin='0'
 		WHERE email=#{email}
 	</update>
+	
+	<!-- <delete id="memberDelete" parameterType="String">
+		DELETE *
+		FROM member
+		WHERE email=#{email}
+	</delete> -->
 </mapper>

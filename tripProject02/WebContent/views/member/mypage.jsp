@@ -40,10 +40,10 @@
 	
 <div class="login-wrap">
 	<div class="login-html">
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">회원정보수정</label>
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">정보수정</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">회원탈퇴</label>
 		<div class="login-form">
-			<form method="POST" action="../../member/update.do?email=${email }" id="log_frm" name="log_frm">
+			<form method="POST" action="update.do?email=${email }" id="log_frm" name="log_frm">
 				<div class="sign-in-htm">
 				<div class="group" >
 					<label style="width:30%; float:left; text-align:left; margin:5px;">Email</label>
@@ -87,7 +87,7 @@
 				</div>
 				</div>
 			</form>
-			<form name="frm" id="frm" action="../../member/delete.do" method="post">	
+			<form name="frm" id="frm" action="delete.do" method="post">	
 			<div class="sign-up-htm">
 				<div class="group">
 					<input id="email" type="text" class="input" placeholder="Email" name="email">
@@ -96,7 +96,7 @@
 					<input id="pwd" type="password" class="input" data-type="password" placeholder="비밀번호" name="pwd">
 				</div>
 				<div class="group">
-					<input type="button" class="button" value="회원탈퇴" id="deleteBtn">
+					<input type="submit" class="button" value="회원탈퇴" id="deleteBtn">
 				</div>
 			</div>
 			</form>

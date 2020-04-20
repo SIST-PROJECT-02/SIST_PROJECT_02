@@ -19,7 +19,7 @@ public class MemberModel {
 		return "index.jsp";
 	}
 	
-	@RequestMapping("views/member/join_ok.do")
+	@RequestMapping("views/template/main/join_ok.do")
 	public String join_ok(HttpServletRequest request, HttpServletResponse response)
 	{
 		//한글송수인가능하도록 코드변환
@@ -51,8 +51,9 @@ public class MemberModel {
 		//dao연결
 		MemberDAO.memberInsert(vo);
 		
-		/*request.setAttribute("jsp","../../member/join.jsp");*/
-		return "redirect:../template/main/index.jsp";
+		request.setAttribute("jsp","../../member/join_ok.jsp");
+		/*return "redirect:../template/main/index.jsp";*/
+		return "index.jsp";
 	}
 	
 	@RequestMapping("views/member/login.do")
@@ -107,7 +108,7 @@ public class MemberModel {
 		return "index.jsp";
 	}
 	
-	@RequestMapping("views/member/update.do")
+	@RequestMapping("views/template/main/update.do")
 	public String memberUpdate(HttpServletRequest request, HttpServletResponse response)
 	{
 		try
@@ -133,6 +134,49 @@ public class MemberModel {
 		vo.setTel(tel);
 		
 		MemberDAO.memberUpdate(vo);
-		return "redirect:../template/main/index.jsp";
+		request.setAttribute("jsp", "../../member/update.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/delete.do")
+	public String memberDelete(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../member/delete_ok.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/like.do")
+	public String memberLike(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../member/like.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/reservation.do")
+	public String memberReservation(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../member/reservation.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/safe.do")
+	public String safeTravel(HttpServletRequest request,HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../preparation/safe.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/guide.do")
+	public String travelGuide(HttpServletRequest request,HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../preparation/guide.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/map.do")
+	public String travelMap(HttpServletRequest request,HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../preparation/map.jsp");
+		return "index.jsp";
 	}
 }

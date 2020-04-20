@@ -119,7 +119,8 @@ $(function(){
 			</div>
 			</form>
 			
-			<form name="frm" id="frm" action="../../member/join_ok.do" method="post">	
+			<!-- <form name="frm" id="frm" action="../../member/join_ok.do" method="post">	 -->
+			<form name="frm" id="frm" action="join_ok.do" method="post">
 			<div class="sign-up-htm">
 				<div class="group" >
 					<input type="text" class="input" placeholder="Email" id="id" name="email" required="required" readonly>					

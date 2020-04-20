@@ -42,8 +42,9 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">여행정보<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="index.jsp?mode=1">여행준비</a>
-                                        <a class="dropdown-item" href="index.jsp?mode=2">가이드북</a>
+                                        <a class="dropdown-item" href="safe.do">안전·안심관광가이드</a>
+                                        <a class="dropdown-item" href="guide.do">제주가이드북</a>
+                                        <a class="dropdown-item" href="map.do">제주관광지도</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -78,9 +79,9 @@
                                 <li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                        <a class="dropdown-item" href="mypage.do?email=${email }">회원정보수정 / 탈퇴</a>
-                                        <a class="dropdown-item" href="index.jsp?mode=10">즐겨찾기</a>
-                                        <a class="dropdown-item" href="index.jsp?mode=11">예약확인</a>
+                                        <a class="dropdown-item" href="mypage.do?email=${email }">정보수정 / 탈퇴</a>
+                                        <a class="dropdown-item" href="like.do">즐겨찾기</a>
+                                        <a class="dropdown-item" href="reservation.do">예약확인</a>
                                     </div>
 								</li>
 								</c:if>
