@@ -32,9 +32,23 @@
 		WHERE email=#{email}
 	</select>
 	
+	<select id="idCheck" resultType="int" parameterType="string"> 
+		SELECT COUNT(*) FROM member
+		WHERE email=#{email}
+	</select>
+	
 	<select id="getPwd" resultType="MemberVO" parameterType="string">
 	 	SELECT pwd,name,admin FROM member
 		WHERE email=#{email}
 	</select>
-
+	
+	<select id="memberDetailData" resultType="MemberVO" parameterType="string">
+		SELECT email,name,nick,birth,tel FROM member WHERE email=#{email }
+	</select>
+	
+	<update id="memberUpdate" parameterType="MemberVO">
+		UPDATE member
+		SET email=#{email},pwd=#{pwd},name=#{name},nick=#{nick},gender=#{gender},birth=#{birth},tel=#{tel},admin='0'
+		WHERE email=#{email}
+	</update>
 </mapper>

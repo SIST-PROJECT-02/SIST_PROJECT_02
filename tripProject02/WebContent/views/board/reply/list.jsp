@@ -91,6 +91,7 @@
 									<c:forEach var="i" begin="1" end="${vo.group_tab }" step="1">
 	  							&nbsp;&nbsp;
 	  						</c:forEach>
+<<<<<<< HEAD
 									<img src="../../board/images/icon_reply.gif">
 								</c:if> <a href="detail.do?no=${vo.no }">${vo.subject }</a></td>
 							<td width="15%" class="text-center">${vo.name }</td>
@@ -110,6 +111,28 @@
 			</div>
 		</div>
 	</div>
+=======
+	  						<img src="icon_reply.gif">
+	  					</c:if>
+	  					<a href="detail.do?no=${vo.no }">${vo.subject }</a>
+	  				</td>
+	  				<td width="15%" class="text-center">${vo.name }</td>
+	  				<td width="20%" class="text-center">
+						<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/>
+					</td>
+	  				<td width="10%" class="text-center">${vo.hit }</td>
+  				</tr>
+  			</c:forEach>
+  		</table>
+  	</div>
+  	<div id="paging">
+  		<a href="qna.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-md btn-primary">이전</a>
+  		${curpage } page / ${totalpage } pages
+  		<a href="qna.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-md btn-primary">다음</a>
+  	</div>
+  </div>
+</div>
+>>>>>>> b6e4fa33b9a83ac70b406cda243605983a3666c7
 
 </body>
 	</html>

@@ -1,28 +1,11 @@
 package com.sist.hotel.dao;
 
-/*
- * ID                NOT NULL NUMBER         
-TITLE                      VARCHAR2(200)  
-PRODUCT_KIND               VARCHAR2(50)   
-HASH_TAG                   VARCHAR2(300)  
-INTRODUCTION               VARCHAR2(1200) 
-EVEL_POINT                 NUMBER         
-WEB_SITE                   VARCHAR2(500)  
-DESCRIPTION                CLOB           
-CONVENIENCE                VARCHAR2(500)  
-ADDRESS                    VARCHAR2(500)  
-ROAD_ADDRESS               VARCHAR2(500)  
-TEL                        VARCHAR2(100)  
-LONGITUDE                  VARCHAR2(100)  
-LATITUDE                   VARCHAR2(100)  
-SHORT_DESCRIPTION          CLOB           
-THUMBNAIL                  VARCHAR2(1000) 
- */
 public class HotelVO {
 	private int id;
 	private String title, product_kind, hash_tag, introduction, web_site, description, convenience, address,
 			road_address, tel, longitude, latitude, short_description, thumbnail;
 	private double evel_point;
+	private int review_count;
 
 	public int getId() {
 		return id;
@@ -150,6 +133,14 @@ public class HotelVO {
 
 	public void setEvel_point(double evel_point) {
 		this.evel_point = evel_point;
+	}
+
+	public int getReview_count() {
+		return review_count;
+	}
+
+	public void setReview_count(int review_count) {
+		this.review_count = review_count;
 	}
 
 }

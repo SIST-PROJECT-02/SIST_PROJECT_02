@@ -77,6 +77,10 @@
 	case 14:
 		jsp = "../detail/00_join.jsp";
 		break;
+	//마이페이지
+	case 15:
+		jsp = "../detail/14_mypage.jsp";
+		break;
 	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -110,11 +114,11 @@
 	<div>
 		<c:if test="${not empty jsp}">
 
-			<jsp:include page="${jsp }"></jsp:include>
+			<h4><jsp:include page="${jsp }"></jsp:include></h4>
 
 		</c:if>
 		<c:if test="${empty jsp}">
-			<jsp:include page="../detail/00_search.jsp"></jsp:include>
+			<h4><jsp:include page="../detail/00_search.jsp"></jsp:include></h4>
 		</c:if>
 
 		

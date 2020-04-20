@@ -7,9 +7,43 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="../../../shadow/css/shadowbox.css">
+<script type="text/javascript" src="../../../shadow/js/shadowbox.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
+Shadowbox.init({
+	players:['iframe']
+});
+var i=0;
 $(function(){
+	
+	$('#checkBtn').click(function(){
+		Shadowbox.open({
+			content:'../../member/checkid.do',
+			title:'아이디 중복체크',
+			player:'iframe',
+			width:390,
+			height:200
+		})
+		i=1;
+	})
+	
+	$('#pwd2').blur(function(){
+		if($('#pwd1').val()!=$('#pwd2').val())
+		{
+			if($('pwd2').val()!=''){
+				$('#result2').html("<font color=red>비밀번호가 일치하지않습니다.</font>");
+				$('#pwd1').val('');
+				$('#pwd2').val('');
+				$('#pwd1').focus();
+			}
+		}
+		else
+		{
+			$('#result2').html("<font color=blue>비밀번호가 일치합니다.</font>");
+		}	
+	})
+	
 	$('#logBtn').click(function(){
 		
 		let email=$('#email').val();
@@ -49,7 +83,7 @@ $(function(){
 				}
 			},
 			error:function(e){
-				alert("에러발생");
+				alert("로그인에러발생");
 			}
 		}) 
 	})
@@ -87,15 +121,21 @@ $(function(){
 			
 			<form name="frm" id="frm" action="../../member/join_ok.do" method="post">	
 			<div class="sign-up-htm">
+				<div class="group" >
+					<input type="text" class="input" placeholder="Email" id="id" name="email" required="required" readonly>					
+				</div>	
+				<div class="group" >
+					<input type="button" id="checkBtn" class="button" value="중복확인">
+				</div>				
 				<div class="group">
-					<input type="text" class="input" placeholder="Email" id="id" name="email" required="required">
-					<!-- <input type="button" id="checkBtn" value="중복확인"> -->
+					<input type="password" name="pwd1" class="input" id="pwd1" placeholder="비밀번호" required="required">
+					<span id=result1>
+					</span>
 				</div>
 				<div class="group">
-					<input type="password" name="pwd" class="input" id="pwd1" placeholder="비밀번호" required="required">
-				</div>
-				<div class="group">
-					<input type="password" name="pwd1" class="input" id="pwd2" placeholder="비밀번호 확인" required="required">
+					<input type="password" name="pwd2" class="input" id="pwd2" placeholder="비밀번호 확인" required="required">
+					<span id=result2>
+					</span>
 				</div>
 				<div class="group">
 					<input id="pass" type="text" class="input" placeholder="이름" name="name" required="required">
@@ -123,8 +163,7 @@ $(function(){
 				</div>
 			</div>
 			</form>
-		</div>
-		
+		</div>	
 	</div>
 	</div>
 </body>
