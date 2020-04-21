@@ -226,4 +226,65 @@ public class tmpHotelModel {
 		
 		return "./../../hotel/jsp/dummy.jsp";
 	}
+	
+	@RequestMapping("views/template/main/modalMap.do")
+	public String getModalMap(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		
+		PrintWriter out = response.getWriter();
+		JSONObject jsonObj = new JSONObject();
+		JSONArray jsonArray = new JSONArray();
+		int product_id = Integer.parseInt(request.getParameter("productId"));
+		HotelVO vo = HotelDAO.getHotelDetailById(product_id);
+		
+		double longitude = Double.parseDouble(vo.getLongitude());
+		double latitude = Double.parseDouble(vo.getLatitude());
+		
+		JSONObject myJson = new JSONObject();
+		myJson.put("latitude", latitude);
+		myJson.put("longitude", longitude);
+		myJson.put("title", vo.getTitle());
+		jsonObj.put("myData", myJson.toJSONString());
+		System.out.println(jsonObj.toJSONString());
+		
+		//ACOS( COS( RADIANS( 90-위도1 )) * COS( RADIANS( 90-위도2 )) + SIN( RADIANS( 90-위도1 )) * SIN( RADIANS( 90-위도2 )) * COS( RADIANS( 경도1-경도2 ))) * 6378.137
+		List<HotelVO> list = new ArrayList<HotelVO>();
+		List<List> resList = new ArrayList<List>();
+		list = HotelDAO.productAllData();
+		for(HotelVO hvo : list){
+			if(hvo.getLatitude() == null || hvo.getLongitude() == null){
+				System.out.println("null!! is detected");
+				continue;
+			}
+			double la = 0;
+			double lo = 0;
+			try{
+				la = Double.parseDouble(hvo.getLatitude());
+				lo = Double.parseDouble(hvo.getLongitude());
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			if(Math.acos(Math.cos(Math.toRadians(90 - latitude))*Math.cos(Math.toRadians(90-la))+Math.sin(Math.toRadians(90-latitude))*Math.sin(Math.toRadians(90-la))*Math.cos(Math.toRadians(longitude-lo)))*6378.137 <= 1){
+				JSONObject tmpJson = new JSONObject();
+				tmpJson.put("latitude", la);
+				tmpJson.put("longitude", lo);
+				tmpJson.put("title", hvo.getTitle());
+				System.out.println("hello");
+				System.out.println("tmpJson : " + tmpJson.toJSONString());
+				jsonArray.add(tmpJson.toJSONString());
+			}
+		}
+		System.out.println("is array???");
+		jsonObj.put("othersData", jsonArray);
+		System.out.println("hhhh");
+		System.out.println(jsonObj.toJSONString());
+		out.println(jsonObj);
+		out.flush();
+		
+		return "./../../hotel/jsp/dummy.jsp"; 
+	}
+	
 }

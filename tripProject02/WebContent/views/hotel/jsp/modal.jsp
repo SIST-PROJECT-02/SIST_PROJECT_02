@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="./../../hotel/css/modal.css?ver3">
 <link rel="stylesheet" href="./../../hotel/css/modalList.css">
 <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Jua&family=Yeon+Sung&display=swap" rel="stylesheet">
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=339dabf7e4db5fbb62ad255755d1f27d"></script>
 </head>
 <body>
 	<div class="modal-background"></div>
@@ -85,6 +87,10 @@
             <input type="button" class="create" value="생 성">
         </div>
     </section>
+	</script>
+	<script id="template-modal-map-wrap" type="text/template">
+		<section class="modal-map-wrap" style="width:500px;height:400px;">
+		</section>
 	</script>
 	<script src="./../../hotel/js/modal.js?ver9"></script>
 	<script src="./../../hotel/js/configuration/modalConfiguration.js"></script>

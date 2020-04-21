@@ -104,6 +104,10 @@
     
 }
 
+.modal-wrap .data-wrap .modal-map-wrap{
+	margin:auto;
+}
+
 .modal-wrap table{
 	text-align : left;
 	font-size : 1.5rem;

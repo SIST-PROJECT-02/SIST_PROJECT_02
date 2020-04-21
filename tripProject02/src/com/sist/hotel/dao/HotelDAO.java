@@ -176,4 +176,13 @@ public class HotelDAO {
 			e.printStackTrace();
 		}
 	}
+	public static List<HotelVO> productAllData(){
+		List<HotelVO> list = new ArrayList<HotelVO>();
+		try(SqlSession session = ssf.openSession(true)){
+			list = session.selectList("productAllData");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
 }
