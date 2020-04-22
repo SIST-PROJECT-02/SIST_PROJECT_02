@@ -89,7 +89,7 @@
     </section>
 	</script>
 	<script id="template-modal-map-wrap" type="text/template">
-		<section class="modal-map-wrap" style="width:500px;height:400px;">
+		<section class="modal-map-wrap">
 		</section>
 	</script>
 	<script id="template-mark" type="text/template">
