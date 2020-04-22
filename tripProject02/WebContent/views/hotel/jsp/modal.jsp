@@ -92,6 +92,12 @@
 		<section class="modal-map-wrap" style="width:500px;height:400px;">
 		</section>
 	</script>
+	<script id="template-mark" type="text/template">
+		<div class="mark-wrap">
+			<div class="mark-thumbnail"><img src="{thumbnail}"/></div>
+			<div class="mark-title"><p>{title}</p></div>
+		</div>
+	</script>
 	<script src="./../../hotel/js/modal.js?ver9"></script>
 	<script src="./../../hotel/js/configuration/modalConfiguration.js"></script>
 	<script src="./../../hotel/js/getData/getDataForModal.js"></script>

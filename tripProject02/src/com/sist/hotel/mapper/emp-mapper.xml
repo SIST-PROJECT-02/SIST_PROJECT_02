@@ -80,7 +80,7 @@
     </update>
     
     <select id="productAllData" resultType = "HotelVO">
-    	SELECT id, title, longitude, latitude
+    	SELECT id, title, longitude, latitude,thumbnail, product_kind
     	FROM products
     </select>
 </mapper>
