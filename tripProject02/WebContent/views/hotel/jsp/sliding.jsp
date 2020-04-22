@@ -39,8 +39,8 @@
         <script id="template-sliding-items" type="text/template">
             <li name="{name}">
                 <a><img src="{img}" alt=""></a>
-                <a><div>"{title}"</div></a>
-                <a><div>"{information}"</div></a>
+                <a><div>{title}</div></a>
+                <a><div>{information}</div></a>
             </li>
         </script>
     <script src="./../../hotel/js/sliding.js?ver5"></script>

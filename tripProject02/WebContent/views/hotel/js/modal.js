@@ -50,8 +50,7 @@ window.addEventListener('click',(e)=>{
     var target = e.target;
     // target을 찾는데, modal을 못찾고 body를 만나면 return
     var count = 0;
-    while(target.tagName !=='BODY' && count < 10){
-        console.log(target.tagName);
+    while(target.tagName !=='BODY' && count < 20){
         if(target === modal){
             return;
         }

@@ -28,8 +28,9 @@ a{
     overflow: hidden;
 }
 .sliding-wrap > .sliding-item a div{
-    background-color: #ffffff;
-    opacity: 0.5;
+	border-radius : 100px 100px 100px 100px;
+    color:#ffffff;
+    text-shadow:4px 2px 2px gray;
 }
 
 .sliding-wrap > a > img{
@@ -57,6 +58,7 @@ a{
 }
 .sliding-wrap .sliding-check-box > ul{
     overflow: hidden;
+    margin-right:10px;
     float: right;
 }
 .sliding-wrap .sliding-check-items > li{

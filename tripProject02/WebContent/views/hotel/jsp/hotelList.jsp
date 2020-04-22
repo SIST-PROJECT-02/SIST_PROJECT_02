@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="./../../hotel/css/hotelList.css">
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Jua&family=Yeon+Sung&display=swap" rel="stylesheet">
-
 </head>
 <body>
 	<div class="breadcumb-area bg-img bg-overlay"
@@ -27,9 +26,6 @@
 	</div>
 
 	<jsp:include page="./../../hotel/jsp/list.jsp"></jsp:include>
-
-	<script>
-	</script>
 
 </body>
 </html>

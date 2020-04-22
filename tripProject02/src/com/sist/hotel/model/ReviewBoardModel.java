@@ -105,6 +105,7 @@ public class ReviewBoardModel {
 		String member_email = String.valueOf(mySession.getAttribute("email"));
 		String content = request.getParameter("content");
 		double rate = Double.parseDouble(request.getParameter("rate"));
+		
 		ReviewBoardVO vo = new ReviewBoardVO();
 		vo.setProduct_id(product_id);
 		vo.setMember_email(member_email);
@@ -114,6 +115,16 @@ public class ReviewBoardModel {
 		ReviewBoardDAO.insertModalReview(vo);
 		LikeDAO.insertReviewLog(product_id, member_email);
 		HotelDAO.updateHotelReview(product_id);
+		
+		HotelVO hvo = HotelDAO.getHotelDetailById(product_id);
+		int sumOfRate = ReviewBoardDAO.sumOfRate(product_id);
+		int count = ReviewBoardDAO.reviewCount(product_id);
+		
+		jsonObj.put("reviewCount", hvo.getReview_count());
+		jsonObj.put("sumOfRate", sumOfRate);
+		jsonObj.put("count", count);
+		jsonObj.put("title", hvo.getTitle());
+		jsonObj.put("evelPoint", hvo.getEvel_point());
 		
 		jsonObj.put("modalRes", "true");
 		out.println(jsonObj);
@@ -147,6 +158,16 @@ public class ReviewBoardModel {
 		ReviewBoardDAO.deleteModalReview(product_id,member_email);
 		LikeDAO.deleteReviewLog(product_id, member_email);
 		HotelDAO.updateDownHotelReview(product_id);
+		
+		HotelVO hvo = HotelDAO.getHotelDetailById(product_id);
+		int sumOfRate = ReviewBoardDAO.sumOfRate(product_id);
+		int count = ReviewBoardDAO.reviewCount(product_id);
+		
+		jsonObj.put("reviewCount", hvo.getReview_count());
+		jsonObj.put("sumOfRate", sumOfRate);
+		jsonObj.put("count", count);
+		jsonObj.put("title", hvo.getTitle());
+		jsonObj.put("evelPoint", hvo.getEvel_point());
 		
 		jsonObj.put("modalRes", "true");
 		out.println(jsonObj);
@@ -185,6 +206,16 @@ public class ReviewBoardModel {
 		vo.setRate(rate);
 		
 		ReviewBoardDAO.updateModalReview(vo);
+		
+		HotelVO hvo = HotelDAO.getHotelDetailById(product_id);
+		int sumOfRate = ReviewBoardDAO.sumOfRate(product_id);
+		int count = ReviewBoardDAO.reviewCount(product_id);
+		
+		jsonObj.put("reviewCount", hvo.getReview_count());
+		jsonObj.put("sumOfRate", sumOfRate);
+		jsonObj.put("count", count);
+		jsonObj.put("title", hvo.getTitle());
+		jsonObj.put("evelPoint", hvo.getEvel_point());
 		
 		jsonObj.put("modalRes", "true");
 		out.println(jsonObj);

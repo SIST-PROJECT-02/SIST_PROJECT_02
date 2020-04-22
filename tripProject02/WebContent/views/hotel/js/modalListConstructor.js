@@ -119,6 +119,7 @@ var createModalReviewForm = ()=>{
 	updateBtn.addEventListener('click',(e)=>{
 		if(content.disabled === true){
 			content.disabled = false;
+			content.placeholder='댓글을 수정해주세요!';
 			e.target.value = '쓰 기';
 			return;
 		}
@@ -136,10 +137,38 @@ var createModalReviewForm = ()=>{
 	});
 }
 
+var updateModalStar = (data)=>{
+	var modal = document.querySelector('.modal-wrap');
+	var title = modal.querySelector('.data-wrap .basic-info-wrap p');
+	title.innerHTML = "";
+	title.innerHTML += data.title + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+	var star = '';
+	var starRes = 0;
+	if(data.reviewCount > 1){
+		starRes = parseInt((data.sumOfRate)/(data.reviewCount - 1));
+	}else{
+		starRes = parseInt(data.evelPoint);
+	}
+	for(var i = 0; i < starRes; i++){
+		star += '★';
+	}
+	for(var i = starRes; i < 5; i++){
+		star += '☆';
+	}
+	title.innerHTML += star;
+	
+	var target = document.querySelectorAll('.list ul > li');
+	target.forEach((v,i)=>{
+		if(v.getAttribute('name') === modalData.modalId){
+			v.querySelector('label').innerText = star;
+		}
+	})
+}
 var createModalReview = (data)=>{
 	if(data.modalRes === 'true'){
 		initModalList();
 		getModalListAjax();
+		updateModalStar(data);
 		alert('댓글이 등록되었습니다!');
 		
 	}else{
@@ -150,6 +179,7 @@ var deleteModalReview = (data) =>{
 	if(data.modalRes === 'true'){
 		initModalList();
 		getModalListAjax();
+		updateModalStar(data);
 		alert('댓글이 삭제되었습니다!');
 	}
 }
@@ -157,6 +187,7 @@ var updateModalReview = (data)=>{
 	if(data.modalRes === 'true'){
 		initModalList();
 		getModalListAjax();
+		updateModalStar(data);
 		alert('댓글이 수정되었습니다!');
 		
 	}else{

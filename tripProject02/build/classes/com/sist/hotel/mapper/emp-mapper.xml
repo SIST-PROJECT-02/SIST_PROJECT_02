@@ -78,6 +78,11 @@
     	UPDATE products SET review_count = review_count - 1
     	WHERE id = #{product_id}
     </update>
+    
+    <select id="productAllData" resultType = "HotelVO">
+    	SELECT id, title, longitude, latitude,thumbnail, product_kind
+    	FROM products
+    </select>
 </mapper>
 
 
