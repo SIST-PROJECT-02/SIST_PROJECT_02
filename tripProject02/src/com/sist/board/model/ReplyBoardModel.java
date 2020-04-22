@@ -12,10 +12,6 @@ import com.sist.board.dao.ReplyBoardDAO;
 
 @Controller
 public class ReplyBoardModel {
-<<<<<<< HEAD
-=======
-
->>>>>>> b6e4fa33b9a83ac70b406cda243605983a3666c7
 	@RequestMapping("views/template/main/qna.do")
 	public String reply_list(HttpServletRequest request, HttpServletResponse response)
 	{

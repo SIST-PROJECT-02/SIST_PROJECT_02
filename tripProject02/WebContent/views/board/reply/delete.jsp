@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-#delete{
+#qna-delete{
 	margin: 0px auto;
 	display: block;
 	width: 300px;
@@ -25,7 +25,7 @@
 			<div class="wrapper row2">
 				<div id="services" class="clear">
 					
-					<div class="row" id="delete">
+					<div class="row" id="qna-delete">
 						<form method=post action="delete_ok.do">
 							<table class="table">
 								<tr>

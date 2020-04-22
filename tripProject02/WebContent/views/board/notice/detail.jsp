@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <h4>
 	<html>
@@ -17,6 +18,23 @@
 
 <!-- Responsive CSS -->
 <link href="../css/css/responsive/responsive.css" rel="stylesheet">
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.nr').click(function(){
+		var content=$('#nreply').val();
+	$.ajax({
+		type:'post',
+		url:'nrinsert_ok.do',
+		data:{"content":content},
+		success:function(res)
+		{
+			$('#').html(res);
+		}
+	});
+  });
+})	
+</script>
 </head>
 <body>
 	<div class="breadcumb-area bg-img bg-overlay"
@@ -27,7 +45,6 @@
 				<img src="../../board/images/notice.jpeg">
 			</div>
 			<div class="container">
-				<h2 class="text-center">내용보기</h2>
 				<div class="row">
 					<table class="table" style="width: 60%; margin: 0px auto;">
 						<tr>
@@ -50,33 +67,48 @@
 						<tr>
 							<td class="text-left" colspan="4" valign="top" height="200">${vo.content }</td>
 						</tr>
-						<tr>
-							<td>
-								<th>내용</th>
-								<th>버튼</th>
-							</td>
-						</tr>
-						<tr>
-							<td style="height: 50px; line-height: 50px;">
-								
-							</td>
-							<td >
-								<textarea rows="3" cols="30"></textarea>
-							</td>
-						</tr>
-						<tr>
-							<td class="text-right" colspan="4"><a
-								href="nupdate.do?no=${vo.no }" class="btn btn-md btn-success">수정</a>
-								<a href="ndelete.do?no=${vo.no }" class="btn btn-md btn-info">삭제</a>
-								<a href="notice.do" class="btn btn-md btn-warning">목록</a></td>
-						</tr>
-					</table>
 
+						<table class="table" style="width: 60%; margin: 0px auto;">
+							<tr class="danger">
+								<th width="10%" class="text-center">작성자</th>
+								<th width="50%" class="text-center">내용</th>
+								<th width="20%" class="text-center">작성일</th>
+							</tr>
+							<c:forEach var="vo" items="${nrlist }">
+								<tr>
+									<td width="10%" class="text-center" id="nrname"></td>
+									<td width="50%" class="text-center" id="nrcontent"></td>
+									<td width="20%" class="text-center" id="regdate"></td>
+									</td>
+								</tr>
+							</c:forEach>
+						</table>
+						<table class="table" style="width: 60%; margin: 0px auto;">
+							<tr>
+								<th width=20% class="text-right success">내용</th>
+								<td width=80%>
+									<textarea rows="8" cols="50" id="nreply" required></textarea>
+								</td>
+								<td class="text-center"><span class="btn btn-md btn-danger nr">댓글등록</span>
+								</td>
+							</tr>
+						</table>
+						<table class="table" style="width: 60%; margin: 0px auto;">
+							<tr>
+								<td class="text-right" colspan="2"><c:if
+										test="${sessionScope.admin==1 }">
+										<a href="nupdate.do?no=${vo.no }"
+											class="btn btn-md btn-success">수정</a>
+										<a href="ndelete.do?no=${vo.no }" class="btn btn-md btn-info">삭제</a>
+									</c:if> <a href="notice.do" class="btn btn-md btn-warning">목록</a></td>
+							</tr>
+						</table>
+
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
-</body>
-	</html>
+	</body>
+</html>
 </h4>

@@ -12,10 +12,11 @@ import com.sist.board.dao.NoticeDAO;
 
 @Controller
 public class NoticeModel {
-
+	
 	@RequestMapping("views/template/main/notice.do")
 	public String reply_list(HttpServletRequest request, HttpServletResponse response)
 	{
+		System.out.println("notice.do실행");
 		String page=request.getParameter("npage");
 		if(page==null)
 			page="1";
@@ -29,6 +30,7 @@ public class NoticeModel {
 		
 		//List<BoardVO> alist //e개의 공지사항-
 		List<BoardVO> list=NoticeDAO.noticeListData(map);//start부터 end까지 자유게시판 가져온다
+		System.out.println(list.size());
 		int totalpage=NoticeDAO.noticeTotalPage();
 		request.setAttribute("nlist", list);
 		request.setAttribute("ncurpage", curpage);
@@ -38,7 +40,14 @@ public class NoticeModel {
 		return "index.jsp";
 	}
 	
-	
+	@RequestMapping("views/template/main/nrlist.do")
+	public String notice_reply_insert(HttpServletRequest request, HttpServletResponse response){
+		
+		List<BoardVO> list=NoticeDAO.nrListData();
+		   request.setAttribute("nrList", list);
+		   
+		   return "detail.jsp";
+	}
 	
 	@RequestMapping("views/template/main/ndetail.do")
 	public String notice_detail(HttpServletRequest request, HttpServletResponse response)
@@ -55,13 +64,29 @@ public class NoticeModel {
 		
 	}
 	
+	
+	@RequestMapping("views/template/main/nrinsert_ok.do")
+	public String notice_reply_insert_ok(HttpServletRequest request, HttpServletResponse response)
+	{		
+		try
+		{
+			request.setCharacterEncoding("UTF-8");
+		}catch(Exception ex){}
+		String content=request.getParameter("content");
+		System.out.println("content: "+content);
+		BoardVO vo = new BoardVO();
+		vo.setContent(content);
+		
+		NoticeDAO.nrInsertData(vo);
+		return "redirect:ndetail.do";
+	}
+	
 	@RequestMapping("views/template/main/ninsert.do")
 	public String notice_insert(HttpServletRequest request, HttpServletResponse response)
 	{		
 		request.setAttribute("jsp", "../../board/notice/insert.jsp"); // main에 include시킴 
 		return "index.jsp";
 	}
-	
 	// [새 글 작성] 
 	@RequestMapping("views/template/main/ninsert_ok.do")
 	public String notice_insert_ok(HttpServletRequest request, HttpServletResponse response)

@@ -14,10 +14,7 @@
  -->
   <typeAliases>
     <typeAlias type="com.sist.hotel.dao.HotelVO" alias="HotelVO"/>
-<<<<<<< HEAD
-=======
 	<typeAlias type="com.sist.hotel.dao.LikeVO" alias="LikeVO"/>
->>>>>>> b6e4fa33b9a83ac70b406cda243605983a3666c7
     <typeAlias type="com.sist.board.dao.BoardVO" alias="BoardVO"/>
     <typeAlias type="com.sist.board.dao.ReplyVO" alias="ReplyVO"/>
     <typeAlias type="com.sist.member.model.MemberVO" alias="MemberVO"/>
@@ -52,12 +49,7 @@
        => &mapper; => include
    -->
   <mappers>
-<<<<<<< HEAD
-    <mapper resource="com/sist/hotel/dao/emp-mapper.xml"/>
 	<mapper resource="com/sist/mapper/notice-mapper.xml"/>
-=======
-
->>>>>>> b6e4fa33b9a83ac70b406cda243605983a3666c7
     <mapper resource="com/sist/mapper/reply-mapper.xml"/>
     <mapper resource="com/sist/member/model/member-mapper.xml"/>
     <mapper resource="com/sist/hotel/mapper/emp-mapper.xml"/>

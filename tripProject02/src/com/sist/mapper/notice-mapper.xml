@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.notice-mapper">
-	<select id="noticeListData" resultType="BoardVO" parameterType="hashmap"> <!-- parameterType을 "java.util.Map"으로 줘도 되고 "hashmap"으로 줘도 됨 -->
+	<select id="noticeListData" resultType="BoardVO" parameterType="hashmap"> 
+		SELECT bno,no,subject,name,regdate,hit,group_tab,num
+		FROM (SELECT bno, no,subject,name,regdate,hit,group_tab,rownum as num
+		FROM (SELECT bno, no,subject,name,regdate,hit,group_tab
+		FROM notice ORDER BY group_id DESC,group_step ASC)) 
+		WHERE bno=1 AND num BETWEEN #{nstart} AND #{nend}
+	</select>
+	<insert id="nrInsertData" parameterType="BoardVO">
+	 	<selectKey keyProperty="no" resultType="int" order="BEFORE"> 
+ 			SELECT NVL(MAX(no)+1,1) as no FROM notice 
+ 		</selectKey>		
+		INSERT INTO notice(bno,no,content,)
+		VALUES(
+		    2,
+		    #{no},
+			#{content}
+		)
+	</insert>
+	<select id="nrListData" resultType="BoardVO" parameterType="hashmap"> 
 		SELECT no,subject,name,regdate,hit,group_tab,num
 		FROM (SELECT no,subject,name,regdate,hit,group_tab,rownum as num
 		FROM (SELECT no,subject,name,regdate,hit,group_tab
 		FROM notice ORDER BY group_id DESC,group_step ASC)) 
-		WHERE num BETWEEN #{nstart} AND #{nend}
+		WHERE bno=2 AND no=#{no}
 	</select>
 	
 	<select id="noticeFindData" resultType="BoardVO" parameterType="hashmap">

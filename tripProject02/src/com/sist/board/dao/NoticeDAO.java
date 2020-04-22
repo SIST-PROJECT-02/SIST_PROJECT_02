@@ -2,6 +2,9 @@ package com.sist.board.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.sist.board.dao.BoardVO;
+
 import java.util.*;
 
 public class NoticeDAO {
@@ -12,7 +15,45 @@ public class NoticeDAO {
 		ssf=CreateSqlSessionFactory.getSsf();
 	}
 	
-	
+	public static BoardVO nrInsertData(BoardVO vo)
+	{
+		SqlSession session=null;
+		
+		try
+		{
+			session=ssf.openSession(true); 
+			session.insert("nrInsertData",vo); 
+			
+		}catch(Exception ex)
+		{
+			System.out.println("nrInsertData: "+ex.getMessage());
+		}
+		finally
+		{
+			if(session!=null)
+				session.close(); 
+		}
+		return vo;
+	}
+	public static List<BoardVO> nrListData()
+	   {
+		   List<BoardVO> list=new ArrayList<BoardVO>();
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("nrListData");
+		   }catch(Exception ex)
+		   {
+			   System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();// 반환 => DBCP
+		   }
+		   return list;
+	   }
 	// [답글형 게시판 리스트] 
 	public static List<BoardVO> noticeListData(Map map)
 	{
@@ -23,7 +64,7 @@ public class NoticeDAO {
 		{
 			session=ssf.openSession();	
 			list=session.selectList("noticeListData",map); 
-			
+			System.out.println(list.size());
 		}catch(Exception ex)
 		{
 			System.out.println("noticeListData: "+ex.getMessage());

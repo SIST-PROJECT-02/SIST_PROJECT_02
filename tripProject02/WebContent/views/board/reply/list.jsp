@@ -6,7 +6,7 @@
 <fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="today1" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<h4>
+
 	<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -45,9 +45,6 @@
 			</div>
 			<div class="row">
 
-				<table class="table" id="notice">
-
-				</table>
 				<table class="table" style="width: 60%; margin: 0px auto;">
 					<tr>
 						<td><a href="insert.do" class="btn btn-md btn-danger">새글</a>
@@ -73,14 +70,12 @@
 									<img src="../../board/images/new.gif">
 								</c:if> <a href="ndetail.do?no=${vo.no }">${vo.subject }</a></td>
 							<td width="15%" class="text-center">관리자</td>
-							<td width="20%" class="text-center">${regdate }<!--<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/>-->
+							<td width="20%" class="text-center">${regdate }
 							</td>
 							<td width="10%" class="text-center">${vo.hit }</td>
 						</tr>
 					</c:forEach>
-					<tr class="success">
-					</tr>
-					<c:forEach var="vo" items="${list }">
+ 					<c:forEach var="vo" items="${list }">
 						<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"
 							var="regdate" />
 						<tr>
@@ -91,7 +86,6 @@
 									<c:forEach var="i" begin="1" end="${vo.group_tab }" step="1">
 	  							&nbsp;&nbsp;
 	  						</c:forEach>
-<<<<<<< HEAD
 									<img src="../../board/images/icon_reply.gif">
 								</c:if> <a href="detail.do?no=${vo.no }">${vo.subject }</a></td>
 							<td width="15%" class="text-center">${vo.name }</td>
@@ -111,29 +105,7 @@
 			</div>
 		</div>
 	</div>
-=======
-	  						<img src="icon_reply.gif">
-	  					</c:if>
-	  					<a href="detail.do?no=${vo.no }">${vo.subject }</a>
-	  				</td>
-	  				<td width="15%" class="text-center">${vo.name }</td>
-	  				<td width="20%" class="text-center">
-						<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/>
-					</td>
-	  				<td width="10%" class="text-center">${vo.hit }</td>
-  				</tr>
-  			</c:forEach>
-  		</table>
-  	</div>
-  	<div id="paging">
-  		<a href="qna.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-md btn-primary">이전</a>
-  		${curpage } page / ${totalpage } pages
-  		<a href="qna.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-md btn-primary">다음</a>
-  	</div>
-  </div>
-</div>
->>>>>>> b6e4fa33b9a83ac70b406cda243605983a3666c7
 
 </body>
 	</html>
-</h4>
+
