@@ -44,7 +44,7 @@ $(function(){
 			<div class="text-center">
 				<img src="../../board/images/notice.jpeg">
 			</div>
-			<div class="container">
+			 <div class="container">
 				<div class="row">
 					<table class="table" style="width: 60%; margin: 0px auto;">
 						<tr>
