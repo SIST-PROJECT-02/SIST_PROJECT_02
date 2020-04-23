@@ -29,13 +29,12 @@ h2 {
 		<h2>글쓰기</h2>
 		<div class="row">
 			<form method=post action="ninsert_ok.do">
-			 <!-- action: insert_ok.jsp 에서 데이터 받아서 처리 -->
-			 <!-- 업로드게시판: enctype="multipart/form-data" 써야 파일첨부됨 (cos.jar 이용한것) -->
 				<table class="table table-hover">
 					<tr>
-						<th width=20% class="text-right success">이름</th>
+						<th width=20% class="text-right success insertname">이름</th>
 						<td width=80%>
-							<input type="text" name="name" size=15 required>
+							${session.name }
+							<!--<input type="text" name="name" size=15 required>-->
 						</td>
 					</tr>
 					<tr>

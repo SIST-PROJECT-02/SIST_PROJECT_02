@@ -29,7 +29,7 @@ $(function(){
 		data:{"content":content},
 		success:function(res)
 		{
-			$('#').html(res);
+			$('#nrlist').html(res);
 		}
 	});
   });
@@ -96,14 +96,13 @@ $(function(){
 						<table class="table" style="width: 60%; margin: 0px auto;">
 							<tr>
 								<td class="text-right" colspan="2"><c:if
-										test="${sessionScope.admin==1 }">
+										test="${sessionScope.admin=='y' }">
 										<a href="nupdate.do?no=${vo.no }"
 											class="btn btn-md btn-success">수정</a>
 										<a href="ndelete.do?no=${vo.no }" class="btn btn-md btn-info">삭제</a>
 									</c:if> <a href="notice.do" class="btn btn-md btn-warning">목록</a></td>
 							</tr>
 						</table>
-
 						</div>
 					</div>
 				</div>

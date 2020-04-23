@@ -1,14 +1,16 @@
 package com.sist.board.model;
-import java.util.*;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.sist.controller.Controller;
-import com.sist.controller.RequestMapping;
+import javax.servlet.http.HttpSession;
+
 import com.sist.board.dao.BoardVO;
 import com.sist.board.dao.NoticeDAO;
-import com.sist.board.dao.NoticeDAO;
+import com.sist.controller.Controller;
+import com.sist.controller.RequestMapping;
 
 @Controller
 public class NoticeModel {
@@ -72,6 +74,9 @@ public class NoticeModel {
 		{
 			request.setCharacterEncoding("UTF-8");
 		}catch(Exception ex){}
+		HttpSession session = request.getSession();
+		String mem_Id =(String) session.getAttribute("email");
+		System.out.println("세션으로 넘어온거 확인session--:"+mem_Id);
 		String content=request.getParameter("content");
 		System.out.println("content: "+content);
 		BoardVO vo = new BoardVO();
@@ -82,7 +87,7 @@ public class NoticeModel {
 	}
 	
 	@RequestMapping("views/template/main/ninsert.do")
-	public String notice_insert(HttpServletRequest request, HttpServletResponse response)
+	public String notice_insert(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 	{		
 		request.setAttribute("jsp", "../../board/notice/insert.jsp"); // main에 include시킴 
 		return "index.jsp";

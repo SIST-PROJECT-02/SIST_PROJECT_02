@@ -69,7 +69,7 @@
 			content=#{content}
 		WHERE no=#{no}
 	</update>
-	<select id="replayParentInfoData" resultType="BoardVO" parameterType="int">
+	<select id="replyParentInfoData" resultType="BoardVO" parameterType="int">
 		SELECT group_id,group_step,group_tab
 		FROM qna
 		WHERE no=#{no}

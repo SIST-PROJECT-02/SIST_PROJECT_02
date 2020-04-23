@@ -10,13 +10,17 @@
 	</select>
 	<insert id="nrInsertData" parameterType="BoardVO">
 	 	<selectKey keyProperty="no" resultType="int" order="BEFORE"> 
- 			SELECT NVL(MAX(no)+1,1) as no FROM notice 
+ 			SELECT NVL(MAX(no)+1,1) as no
+ 			FROM notice 
  		</selectKey>		
-		INSERT INTO notice(bno,no,content,)
+		INSERT INTO notice(bno,no,content,name,subject,pwd)
 		VALUES(
 		    2,
 		    #{no},
-			#{content}
+			#{content},
+			#{name jdbcType = VARCHAR2},
+			1,
+			1234
 		)
 	</insert>
 	<select id="nrListData" resultType="BoardVO" parameterType="hashmap"> 
@@ -87,7 +91,7 @@
 			content=#{content}
 		WHERE no=#{no}
 	</update>
-	<select id="replayParentInfoData" resultType="BoardVO" parameterType="int">
+	<select id="replyParentInfoData" resultType="BoardVO" parameterType="int">
 		SELECT group_id,group_step,group_tab
 		FROM notice
 		WHERE no=#{no}

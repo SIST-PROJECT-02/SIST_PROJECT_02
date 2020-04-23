@@ -1,12 +1,12 @@
 <!-- 사용자에게 보여지는 글쓰기 화면 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <h4><html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- require 쓰기 위해서 HTML 5 버젼 쓰자 ==> head 부분을 HTML5 양식으로 고쳤음 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style type="text/css">
 .row{
@@ -28,9 +28,10 @@
 			<form method=post action="insert_ok.do">
 				<table class="table table-hover">
 					<tr>
-						<th width=20% class="text-right success"></th>
+						<th width=20% class="text-right success">이름</th>
 						<td width=80%>
-							<input type="text" name="name" size=15 required>
+						<c:out value="${name }"></c:out>
+							<!-- <input type="text" name="name" size=15 required> -->
 						</td>
 					</tr>
 					<tr>
