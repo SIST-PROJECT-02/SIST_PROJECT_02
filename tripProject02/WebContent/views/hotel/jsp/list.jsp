@@ -30,7 +30,7 @@
 	<br>
 	<section class="list">
 
-		<!-- <div class="list-count"></div> -->
+		<div class="list-count"></div>
 		<ul>
 			<li><a href="#"><img src="" alt=""></a></li>
 			<div>

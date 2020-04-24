@@ -49,6 +49,7 @@ a{
     top : 10px;
     left : 20px;
     /* background-color: #eeeeee47; */
+    background-color: #eeeeee47;
     height : 40px;
     z-index: 5;
     color : #f7ff76;
@@ -70,24 +71,22 @@ a{
 .list .more-data{
 	height : 80px;
 	text-align : center;
-	background-color : #80808066;
+	background-color : #808066;
 	line-height : 80px; 
-	/* font-family: 'Do Hyeon', sans-serif; */
 	font-size: 2rem;
 	color: #fff;
 }
 .list .list-count{
 	height : 80px;
 	text-align : center;
-	/* background-color : #ffc107; */
 	background-color : #7643ea;
 	line-height : 80px; 
-	/* font-family: 'Do Hyeon', sans-serif; */
 	font-size: 2rem;
 	color: #fff;
 }
 .list .more-data:hover{
 	cursor:pointer;
-	/* background-color : #ffc107; */
 	background-color : #7643ea;
+	line-height : 80px; 
+	font-size: 2rem;
 }

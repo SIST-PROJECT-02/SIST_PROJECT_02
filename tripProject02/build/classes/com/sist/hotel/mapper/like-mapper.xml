@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+   
+<mapper namespace="com.sist.hotel.mapper.like-mapper">
+
+	<select id="getLikeById" resultType="int" parameterType="java.util.Map">
+    	SELECT COUNT(product_id) as cnt
+    	FROM like_log
+    	WHERE product_id = #{product_id} AND member_email = #{member_email}
+    </select>
+    <insert id="insertLike" parameterType="java.util.Map">
+    	INSERT INTO like_log
+    	VALUES(#{product_id},#{member_email})
+    </insert>
+    <delete id="deleteLike" parameterType="java.util.Map">
+    	DELETE FROM like_log
+    	WHERE product_id = #{product_id} AND member_email = #{member_email}
+    </delete>
+    <insert id="insertReviewLog" parameterType="java.util.Map">
+    	INSERT INTO review_log
+    	VALUES(#{member_email},#{product_id})
+    </insert>
+    <delete id="deleteReviewLog" parameterType="java.util.Map">
+    	DELETE FROM review_log
+    	WHERE product_id = #{product_id} AND member_email = #{member_email}
+    </delete>
+</mapper>

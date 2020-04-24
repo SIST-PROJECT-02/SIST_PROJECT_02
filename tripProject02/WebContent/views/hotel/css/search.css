@@ -1,0 +1,53 @@
+aside.search-wrap {
+	
+    position: fixed;
+    width : 350px;
+    left : 10px;
+    top : 250px;
+    z-index : 8;
+}
+aside.search-wrap .search-subjext{
+    margin: auto;
+    font-size: 3rem;
+    width : 200px;
+    font-family: 'Yeon Sung', cursive;
+}
+aside.search-wrap .search-data-wrap{
+    height : 250px;
+    background-color: #77777799;
+    opacity: 0.2;
+}
+aside.search-wrap .text-search{
+    margin-top : 20px;
+    font-size : 2rem;
+    font-family: 'Yeon Sung', cursive;
+    
+}
+aside.search-wrap .text-search input{
+    margin-left: 5px;
+    font-size : 2rem;
+    font-family: 'Yeon Sung', cursive;
+}
+aside.search-wrap .sort-search{
+    margin-top : 30px;
+    font-size : 1.5rem;
+    font-family: 'Yeon Sung', cursive;
+}
+aside.search-wrap .sort-search #sort-search-wrap{
+    font-size : 2rem;
+    height : 40px;
+    color: #ff00c8;
+}
+
+aside.search-wrap .submit-search{
+    background-color: #ffc107;
+    width : 140px;
+    font-size : 3rem;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    cursor: pointer;
+    font-family: 'Yeon Sung', cursive;
+}

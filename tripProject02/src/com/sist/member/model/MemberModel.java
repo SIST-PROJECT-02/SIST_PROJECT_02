@@ -153,7 +153,7 @@ public class MemberModel {
 		//DAO연결
 		boolean bCheck=MemberDAO.memberDelete(email, pwd);
 		request.setAttribute("bCheck", bCheck);
-		return "../../member/member_delete.jsp";
+		return "redirect:../../member/member_delete_ok.do";
 	}
 	
 	@RequestMapping("views/template/main/member_delete_ok.do")
@@ -163,7 +163,6 @@ public class MemberModel {
 		session.invalidate();
 		request.setAttribute("jsp", "../../member/member_delete_ok.jsp");
 		return "index.jsp";
-		/*return "redirect:logout.do";*/
 	}
 	
 	@RequestMapping("views/template/main/member_like.do")
@@ -192,5 +191,26 @@ public class MemberModel {
 	{
 		request.setAttribute("jsp", "../../member/reserve_air.jsp");
 		return "redirect:../../member/reserve_air.jsp";
+	}
+	
+	@RequestMapping("views/template/main/guidebook_safe.do")
+	public String guidebook_safe(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../guidebook/guidebook_safe.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/guidebook_map.do")
+	public String guidebook_map(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../guidebook/guidebook_map.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/guidebook_guide.do")
+	public String guidebook_guide(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../guidebook/guidebook_guide.jsp");
+		return "index.jsp";
 	}
 }
