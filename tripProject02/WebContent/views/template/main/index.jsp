@@ -120,8 +120,6 @@
 		<c:if test="${empty jsp}">
 			<h4><jsp:include page="../detail/00_search.jsp"></jsp:include></h4>
 		</c:if>
-
-		
 	</div>
 
 	<br>

@@ -46,7 +46,7 @@ public class MemberDAO {
 		{
 			session=ssf.openSession();
 			int count=session.selectOne("idCount", email);
-			System.out.println("idCount: "+count);
+			/*System.out.println("idCount: "+count);*/
 			if(count==0)
 			{
 				//아이디가 존재하지않는 경우
@@ -143,5 +143,40 @@ public class MemberDAO {
 			if(session!=null)
 				session.close();
 		}
+	}
+	
+	public static boolean memberDelete(String email, String pwd)
+	{
+		boolean bCheck=false;
+		SqlSession session=null;
+		try
+		{
+			System.out.println("email: "+email);
+			System.out.println("pwd: "+pwd);
+			session=ssf.openSession();
+			String db_pwd=session.selectOne("memberGetPwd", email);
+			if(db_pwd.equals(pwd))
+			{
+				bCheck=true;
+				session.delete("memberDelete_ok",email);
+			}
+			else
+			{
+				bCheck=false;
+				
+			}
+			session.commit();
+		}
+		catch(Exception ex)
+		{
+			System.out.println("memberDelete_error: "+ex.getMessage());
+			session.rollback();
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+		return bCheck;
 	}
 }
