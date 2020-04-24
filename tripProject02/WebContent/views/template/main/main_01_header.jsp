@@ -58,7 +58,7 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">여행상품정보<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="index.jsp?mode=3">항공</a>
+                                        <a class="dropdown-item" href="airplane.do">항공</a>
                                         <a class="dropdown-item" href="staying.do">숙소</a>
                                         <a class="dropdown-item" href="index.jsp?mode=5">여행지</a>
                                     </div>
