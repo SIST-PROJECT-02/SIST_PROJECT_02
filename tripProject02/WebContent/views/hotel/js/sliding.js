@@ -52,16 +52,25 @@ var makeSlidingMainTemplate = (width, height, data) => {
     slidingItem.style.width = width * (len + 3) + "px";
     slidingItem.innerHTML = "";
     
+    if(data.list[len-1].thumbnail === 'null' || !(data.list[len-1].thumbnail)){
+    	data.list[len-1].thumbnail = "./../../hotel/img/imgPrepare.png";
+    }
     var slidingItems = document.querySelector('#template-sliding-items').innerHTML;
     slidingItem.innerHTML += slidingItems.replace('{name}',data.list[len-1].id)
                                          .replace('{img}', data.list[len-1].thumbnail)
                                          .replace('{title}',data.list[len-1].title)
                                          .replace('{information}',data.list[len-1].information);
     for(var i = 0; i < len; i++){
+    	if(data.list[i].thumbnail === 'null' || !(data.list[i].thumbnail)){
+        	data.list[i].thumbnail = "./../../hotel/img/imgPrepare.png";
+        }
         slidingItem.innerHTML += slidingItems.replace('{name}',data.list[i].id)
                                             .replace('{img}', data.list[i].thumbnail)
                                             .replace('{title}',data.list[i].title)
                                             .replace('{information}',data.list[i].information);
+    }
+    if(data.list[0].thumbnail === 'null' || !(data.list[0].thumbnail)){
+    	data.list[0].thumbnail = "./../../hotel/img/imgPrepare.png";
     }
     slidingItem.innerHTML += slidingItems.replace('{name}',data.list[0].id)
                                          .replace('{img}', data.list[0].thumbnail)
@@ -145,6 +154,7 @@ function ajaxFunc(){
 	          var serverDataObj = JSON.parse(serverData);
 	          //json 객체 - 배열을 품고 있다
 	          localData = serverDataObj;
+	          /*makeSlidingMainTemplate(1500, 800, serverDataObj);*/
 	          makeSlidingMainTemplate(1200, 500, serverDataObj);
 	      }
 	  };

@@ -13,19 +13,22 @@
 <body>
     <section class="sliding-wrap">
         <ul class="sliding-item">
-
         </ul>
         <a href="#" class="sliding-left-arrow pos-absolute">
             <img src="./../../hotel/img/left-arrow.png" alt="">
+            <img src="" alt="">
         </a>
         <a href="#" class="sliding-right-arrow pos-absolute">
-            <img src="./../../hotel/img/right-arrow.png" alt="">
+             <img src="./../../hotel/img/right-arrow.png" alt=""> 
+            <img src="" alt="">
         </a>
         <div class="sliding-check-box pos-absolute">
             <ul class="sliding-check-items">
-                <li><a href="#">
+                <li>
+                	<a href="#">
                         <img src="./../../hotel/img/stop-btn.png" alt="">
-                    </a></li>
+                    </a>
+                </li>
             </ul>
         </div>
     </section>

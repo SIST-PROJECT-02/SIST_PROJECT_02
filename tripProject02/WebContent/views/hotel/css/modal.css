@@ -19,6 +19,24 @@
     overflow-y: scroll;
     max-height: 750px;
 }
+.modal-wrap #template-modal-p{
+	font-size : 2rem;
+	color: #777;
+}
+.modal-wrap .reservation-btn{
+	float : right;
+	color : white;
+	width : 150px;
+	height : 60px;
+	line-height : 60px;
+	text-align : center;
+	cursor : pointer;
+	background-color : rgba(0,0,0,0.3);
+	margin-left: 800px;
+	background-color : #7643ea;
+	
+
+}
 
 .modal-wrap #template-modal-p{
 	font-size : 2rem;
@@ -104,7 +122,6 @@
 	margin:10px auto;
 	width:700px;
 	height:400px;
-	
 }
 
 .modal-wrap table{

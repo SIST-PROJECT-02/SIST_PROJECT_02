@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="./../../hotel/css/modal.css?ver3">
 <link rel="stylesheet" href="./../../hotel/css/modalList.css">
 <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Jua&family=Yeon+Sung&display=swap" rel="stylesheet">
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=339dabf7e4db5fbb62ad255755d1f27d"></script>
 </head>
 <body>
