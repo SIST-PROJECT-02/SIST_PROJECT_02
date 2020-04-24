@@ -64,3 +64,7 @@ window.addEventListener('click',(e)=>{
     document.body.style.overflow = 'auto';
     modalData.operation = 'false';
 });
+
+window.addEventListener('DOMContentLoaded',(e)=>{
+	registModalDrag();
+});

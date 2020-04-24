@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+   
+<mapper namespace="com.sist.hotel.mapper.create-room-mapper">
+
+	<select id="getAllHotelId" resultType="HotelVO">
+		SELECT id FROM products WHERE product_kind = '숙박'
+	</select>
+
+	<insert id="insertProductRooms" parameterType="ProductRoomsVO">
+		INSERT INTO product_rooms VALUES(
+			#{room_no},
+			#{hotel_id},
+			#{price}
+		)
+	</insert>
+	
+	<select id="getAllHotelRoomId" resultType="ProductRoomsVO">
+		SELECT room_no, hotel_id FROM product_rooms
+	</select>
+	
+	<insert id="insertProductRoomDates" parameterType="ProductRoomsAvailableVO">
+		INSERT INTO product_rooms_available(id, hotel_id, room_no, regdate)
+		VALUES(
+			(SELECT NVL(MAX(id)+1,1) FROM product_rooms_available),
+			#{hotel_id},
+			#{room_no},
+			SYSDATE + #{addDate}
+		)
+	</insert>
+</mapper>
+	
