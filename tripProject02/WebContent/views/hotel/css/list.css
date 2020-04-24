@@ -48,10 +48,10 @@ a{
     position: absolute;
     top : 10px;
     left : 20px;
-    background-color: #7643ea;
+    /* background-color: #eeeeee47; */
     height : 40px;
     z-index: 5;
-    color : #f19222;
+    color : #f7ff76;
     line-height: 40px;
 }
 .list ul > li > a{
@@ -63,13 +63,31 @@ a{
     background-color: #f4f6f8;
     transition : background-color 0.5s;
 }
-
+.list li #title span{
+	font-size : 4rem;
+	color: red;
+}
 .list .more-data{
 	height : 80px;
 	text-align : center;
-	background-color : gray;
+	background-color : #80808066;
 	line-height : 80px; 
+	/* font-family: 'Do Hyeon', sans-serif; */
+	font-size: 2rem;
+	color: #fff;
+}
+.list .list-count{
+	height : 80px;
+	text-align : center;
+	/* background-color : #ffc107; */
+	background-color : #7643ea;
+	line-height : 80px; 
+	/* font-family: 'Do Hyeon', sans-serif; */
+	font-size: 2rem;
+	color: #fff;
 }
 .list .more-data:hover{
 	cursor:pointer;
+	/* background-color : #ffc107; */
+	background-color : #7643ea;
 }

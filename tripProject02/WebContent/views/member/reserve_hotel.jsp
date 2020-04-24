@@ -7,71 +7,46 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="container">
-	<div class="row reserve_detail">
-		<div class="reserve_hotel_detail">
-			<div>
-				<dl>
-					<dt>예약번호</dt>
-					<dd>1</dd>
-				</dl>
-			</div>
-			<div>
-				<dl>
-					<dt>예약자명 </dt>
-					<dd>1</dd>
-				</dl>
-			</div>
-			<div>
-				<dl>
-					<dt>예약인원</dt>
-					<dd>1</dd>
-				</dl>
-			</div>
-			<div>
-				<dl>
+	<div class="container">
+		<div class="row">
+			<div class="reserve_hotel_detail">
+				<div>
+					예약번호
+				</div>
+				<div>		
+					<dt>예약상태</dt>
+					<dl>입금대기</dl>
+				</div>
+				<div>		
 					<dt>숙소명</dt>
-					<dd>1</dd>
-				</dl>
-			</div>
-			<div>
-				<dl>
-					<dt>객실정보</dt>
-					<dd>1</dd>
-				</dl>
-			</div>
-			<div>
-				<dl>
+					<dl>불꽃남자</dl>
+				</div>
+				<div>		
+					<dt>예약자명</dt>
+					<dl>김학민</dl>
+				</div>
+				<div>		
+					<dt>투숙인원</dt>
+					<dl>3명</dl>
+				</div>
+				<div>
 					<dt>체크인</dt>
-					<dd>1</dd>
-				</dl>
-			</div>
-			<div>
-				<dl>
-					<dt>체크아웃</dt>
-					<dd>1</dd>
-				</dl>
-			</div>
-			<div>
-				<dl>
-					<dt>기본요금</dt>
-					<dd>1</dd>
-				</dl>
-			</div>
-			<div>
-				<dl>
-					<dt>추가요금</dt>
-					<dd>1</dd>
-				</dl>
-			</div>
-			<div>
-				<dl>
-					<dt>요금합계</dt>
-					<dd>1</dd>
-				</dl>
+					<dl>2020년 4월 20일</dl>
+				</div>
+				<div>
+					<dt>채크아웃</dt>
+					<dl>2020년 4월 24일</dl>
+				</div>
+				<div>
+					<dt>예약현황</dt>
+					<dl>룸  1개</dl>
+				</div>
+				<div>
+					<dt>객실요금</dt>
+					<dl>10,000(원)</dl>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </body>
 </html>

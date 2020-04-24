@@ -1,17 +1,5 @@
 'use strict'
 
-var localData;
-var movingData ={
-    curPos : 0,
-    nextPos : 0,
-    len : 0,
-    mode : 'true',
-    width : 0,
-    transLoc : 0,
-    playMode : 1,
-    timefunc : 0,
-    slidingCount : 8
-};
 var makeSlidingMainTemplate = (width, height, data) => {
     //1. 사이즈 결정하기
 
@@ -110,64 +98,6 @@ var makeSlidingMainTemplate = (width, height, data) => {
     setTimeout(timeoutOperation,2000);
 }
 
-document.querySelector('section.sliding-wrap').addEventListener('click', (e) => {
-    //이미지 자체, 왼쪽화살, 오른쪽화살, 네모버튼, 재생버튼
-    if (e.target === document.querySelector('section.sliding-wrap > .sliding-left-arrow > img')) {
-        //동작 가능하다
-        if(movingData.mode === 'true'){
-            movingData.nextPos -= 1;
-            moveSlider();
-        }
-    } else if (e.target === document.querySelector('section.sliding-wrap > .sliding-right-arrow > img')) {
-        if(movingData.mode === 'true'){
-            movingData.nextPos += 1;
-            moveSlider();
-        }
-    } else if(e.target.getAttribute('class') === 'sliding-check-play-stop'){
-        movingData.playMode = (movingData.playMode + 1) % 2;
-        if(movingData.playMode === 1){
-            e.target.src = './../../hotel/img/stop-btn.png';
-            timeoutOperation();
-        }else{
-            e.target.src = './../../hotel/img/play-btn.png';
-            clearTimeout(movingData.timefunc);
-        }
-    }
-    for(var i = 0 ; i < movingData.slidingCount; i++){
-        if(e.target.getAttribute('class') === 'sliding-check-' + i){
-            movingData.nextPos = i;
-            moveSlider();
-        }
-    }
-});
-document.querySelector('section.sliding-wrap').addEventListener('mouseover', (e) => {
-    var tmpList = document.querySelectorAll('section.sliding-wrap > a > img');
-    tmpList.forEach((v, i) => {
-        v.style.display = 'block';
-    });
-});
-document.querySelector('section.sliding-wrap').addEventListener('mouseout', (e) => {
-    var tmpList = document.querySelectorAll('section.sliding-wrap > a > img');
-    tmpList.forEach((v, i) => {
-        v.style.display = 'none';
-    });
-});
-
-document.querySelector('.sliding-item').addEventListener('transitionend', (e)=>{
-    var leftValue = e.currentTarget.style.left;
-    leftValue = leftValue.toString();
-    leftValue = leftValue.substr(0,leftValue.indexOf('p'));
-    leftValue = parseInt(leftValue);
-    if(movingData.curPos === -1){
-        movingData.curPos = movingData.nextPos = movingData.len-1;
-        e.currentTarget.style.left = (leftValue + (-1 * movingData.len) * movingData.width) + 'px';
-    }else if(movingData.curPos === movingData.len){
-        movingData.curPos = movingData.nextPos = 0;
-        e.currentTarget.style.left = (leftValue + movingData.len*movingData.width) + 'px';
-    }
-    movingData.mode = 'true';
-});
-
 function moveSlider() {
     //1. 불을 전부 끈다
     let totalMove = movingData.curPos - movingData.nextPos;
@@ -207,12 +137,11 @@ function ajaxFunc(){
 	          var serverDataObj = JSON.parse(serverData);
 	          //json 객체 - 배열을 품고 있다
 	          localData = serverDataObj;
-	          makeSlidingMainTemplate(600, 400, serverDataObj);
+	          /*makeSlidingMainTemplate(1500, 800, serverDataObj);*/
+	          makeSlidingMainTemplate(768, 415, serverDataObj);
 	      }
 	  };
 	  xhttp.open('POST', 'sliding.do', true);
 	  xhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 	  xhttp.send('count=8');
 	}
-
-window.addEventListener('DOMContentLoaded', ajaxFunc());

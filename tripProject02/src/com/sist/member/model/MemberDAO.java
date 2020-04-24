@@ -46,7 +46,7 @@ public class MemberDAO {
 		{
 			session=ssf.openSession();
 			int count=session.selectOne("idCount", email);
-			System.out.println("idCount: "+count);
+			/*System.out.println("idCount: "+count);*/
 			if(count==0)
 			{
 				//아이디가 존재하지않는 경우
@@ -145,48 +145,36 @@ public class MemberDAO {
 		}
 	}
 	
-	/*public static MemberVO memerDelete(MemberVO vo)
+	public static boolean memberDelete(String email, String pwd)
 	{
-		MemberVO vo=new MemberVO();
+		boolean bCheck=false;
 		SqlSession session=null;
 		try
 		{
 			session=ssf.openSession();
-			int count=session.selectOne("idCount", email);
-			System.out.println("idCount: "+count);
-			if(count==0)
+			String db_pwd=session.selectOne("memberGetPwd", email);
+			if(db_pwd.equals(pwd))
 			{
-				//아이디가 존재하지않는 경우
-				vo.setMsg("NOID");
-				System.out.println("아이디가 존재하지않습니다.");
+				bCheck=true;
+				session.delete("memberDelete_ok",email);
 			}
 			else
 			{
-				//아이디가 존재하는 경우
-				MemberVO mvo=session.selectOne("getPwd", email);
-				System.out.println("아이디가 존재합니다.");
-				if(pwd.equals(mvo.getPwd()))
-				{
-					vo.setMsg("OK");
-					vo.setAdmin(mvo.getAdmin());
-					vo.setName(mvo.getName());
-				}
-				else
-				{
-					vo.setMsg("NOPWD");
-					System.out.println("비밀번호가 일치하지않습니다.");
-				}
+				bCheck=false;
+				
 			}
+			session.commit();
 		}
 		catch(Exception ex)
 		{
-			System.out.println("memberLogin_error: "+ex.getMessage());
+			System.out.println("memberDelete_error: "+ex.getMessage());
+			session.rollback();
 		}
 		finally
 		{
 			if(session!=null)
 				session.close();
 		}
-		return vo;
-	}*/
+		return bCheck;
+	}
 }

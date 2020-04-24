@@ -7,41 +7,68 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="container">
-	<div class="row reserve_detail">
-		<div class="reserve_hotel_detail">
-			<div>
-				<dl>
-					<dt>항공사&노선</dt>
-					<dd>1</dd>
-				</dl>
+	<div class="container">
+		<div class="row">
+			<div class="reserve_air_detail">
+				<div>
+					구간1
+				</div>
+				<div>		
+					<dt>2018-04-08(일)</dt>
+				</div>
+				<div>		
+					<dt>ICN</dt>
+					<dl>서울/인천T1</dl>
+				</div>
+				<div>		
+					<dt>운항시간</dt>
+					<dl>항공사|항공권종류</dl>
+				</div>
+				<div>		
+					<dt>FUK</dt>
+					<dl>후쿠오카</dl>
+				</div>
+				<div>
+					상태
+				</div>
 			</div>
-			<div>
-				<dl>
-					<dt>여정정보 </dt>
-					<dd>구간1</dd>
-				</dl>
+			<div class="reserve_air_detail">
+				<div>
+					구간2
+				</div>
+				<div>		
+					<dt>2018-04-10(화)</dt>
+				</div>
+				<div>		
+					<dt>FUK</dt>
+					<dl>후쿠오카</dl>
+				</div>	
+				<div>		
+					<dt>운항시간</dt>
+					<dl>항공사|항공권종류</dl>
+				</div>
+				<div>		
+					<dt>ICN</dt>
+					<dl>서울/인천T1</dl>
+				</div>
+				<div>
+					상태
+				</div>
 			</div>
-			<div>
-				<dl>
-					<dt>여정정보</dt>
-					<dd>구간2</dd>
-				</dl>
-			</div>
-			<div>
-				<dl>
-					<dt>탑승객정보</dt>
-					<dd>1</dd>
-				</dl>
-			</div>
-			<div>
-				<dl>
-					<dt>부가서비스구매내역</dt>
-					<dd>1</dd>
-				</dl>
+			<div class="reserve_air_detail">
+				<div>
+					예약자
+				</div>
+				<div>		
+					<dt>예약자명</dt>
+					<dl>김학민</dl>
+				</div>	
+				<div>		
+					<dt>예약인원</dt>
+					<dl>5 (명)</dl>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </body>
 </html>

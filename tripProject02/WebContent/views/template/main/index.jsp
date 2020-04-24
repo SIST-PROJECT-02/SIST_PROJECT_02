@@ -95,7 +95,7 @@
 
 <!-- Title -->
 <title>SIST G강의실 여행복행</title>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <!-- Favicon -->
 <link rel="icon" href="../css/img/core-img/favicon.ico">
 
@@ -113,12 +113,11 @@
 	<!-- content -->
 	<div>
 		<c:if test="${not empty jsp}">
-			<jsp:include page="${jsp }"></jsp:include>
+			<h4><jsp:include page="${jsp }"></jsp:include></h4>
 		</c:if>
 		<c:if test="${empty jsp}">
-			<jsp:include page="../detail/00_search.jsp"></jsp:include>
+			<h4><jsp:include page="../detail/00_search.jsp"></jsp:include></h4>
 		</c:if>
-		<%-- <jsp:include page="<%= jsp %>"></jsp:include> --%>
 	</div>
 
 	<br>

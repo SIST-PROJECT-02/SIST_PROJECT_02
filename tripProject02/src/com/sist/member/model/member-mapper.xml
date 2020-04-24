@@ -52,9 +52,13 @@
 		WHERE email=#{email}
 	</update>
 	
-	<!-- <delete id="memberDelete" parameterType="String">
-		DELETE *
+	<select id="memberGetPwd" resultType="string" parameterType="string">
+		SELECT pwd FROM member WHERE email=#{email }
+	</select>
+	
+	<delete id="memberDelete_ok" parameterType="string">
+		DELETE
 		FROM member
 		WHERE email=#{email}
-	</delete> -->
+	</delete> 
 </mapper>

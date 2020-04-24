@@ -6,6 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- Favicon -->
+<link rel="icon" href="../css/img/core-img/favicon.ico">
+
+<!-- Core Stylesheet -->
+<link href="../css/style.css" rel="stylesheet">
+
+<!-- Responsive CSS -->
+<link href="../css/css/responsive/responsive.css" rel="stylesheet">
 </head>
 <body>
   <!-- ***** Search Form Area ***** -->
@@ -31,20 +39,20 @@
             <div class="row h-100">
                 <div class="col-12 h-100">
                     <nav class="h-100 navbar navbar-expand-lg">
-                        <a class="navbar-brand" href="./index.jsp"><img src="../css/img/core-img/logo.png" alt=""></a>
+                        <a class="navbar-brand" href="../../template/main/index.jsp"><img src="../css/img/core-img/logo.png" alt=""></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dorneNav" aria-controls="dorneNav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
                         <!-- Nav -->
                         <div class="collapse navbar-collapse" id="dorneNav">
                             <ul class="navbar-nav mr-auto" id="dorneMenu">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="../../template/main/index.jsp">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">여행정보<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="safe.do">안전·안심관광가이드</a>
-                                        <a class="dropdown-item" href="guide.do">제주가이드북</a>
-                                        <a class="dropdown-item" href="map.do">제주관광지도</a>
+                                        <a class="dropdown-item" href="guidebook_safe.do">안전·안심관광가이드</a>
+                                        <a class="dropdown-item" href="guidebook_guide.do">제주가이드북</a>
+                                        <a class="dropdown-item" href="guidebook_map.do">제주관광지도</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -69,7 +77,7 @@
                                         <a class="dropdown-item" href="index.jsp?mode=9">공지사항</a>
                                         <a class="dropdown-item" href="index.jsp?mode=10">자유게시판</a>
                                         <a class="dropdown-item" href="index.jsp?mode=11">후기&팁</a>
-                                        <a class="dropdown-item" href="index.jsp?mode=12">Q&A</a>
+                                        <a class="dropdown-item" href="qna.do">Q&A</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
@@ -79,9 +87,9 @@
                                 <li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                        <a class="dropdown-item" href="mypage.do?email=${email }">정보수정 / 탈퇴</a>
-                                        <a class="dropdown-item" href="like.do">즐겨찾기</a>
-                                        <a class="dropdown-item" href="reservation.do">예약확인</a>
+                                        <a class="dropdown-item" href="member_mypage.do?email=${email }">정보수정 / 탈퇴</a>
+                                        <a class="dropdown-item" href="member_like.do?email=${email }">즐겨찾기</a>
+                                        <a class="dropdown-item" href="member_reservation.do">예약확인</a>
                                     </div>
 								</li>
 								</c:if>
@@ -93,11 +101,11 @@
                             <!-- Register btn -->
                             <c:if test="${sessionScope.email==null }"> 
 	                            <div class="dorne-signin-btn">
-	                                <a href="join.do">로그인 / 회원가입</a>
+	                                <a href="member_join.do">로그인 / 회원가입</a>
 	                            </div>
                             </c:if>
                             <c:if test="${sessionScope.email!=null }">
-	                            <form method="post" action="logout.do">
+	                            <form method="post" action="member_logout.do">
 	                            	<div class="collapse navbar-collapse" id="dorneNav">
 										<span style="display: inline-block;">
 											<font color="white">${sessionScope.name } 님</font>
