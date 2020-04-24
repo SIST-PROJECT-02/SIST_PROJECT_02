@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.board.dao.BoardVO;
@@ -87,13 +90,19 @@ public class ReplyBoardModel {
 			request.setCharacterEncoding("UTF-8");
 		}catch(Exception ex){}
 		
-		
 		// 클라이언트가 입력한 데이터를 가지고 와야...
-		String name=request.getParameter("name");
+		//String name=request.getParameter("name");
+		
+		HttpSession mysession=request.getSession();
+		String name=String.valueOf(mysession.getAttribute("name"));
+		String pwd=String.valueOf(mysession.getAttribute("email"));
+		System.out.println("세션네임="+name);
 		String subject=request.getParameter("subject");
 		String content=request.getParameter("content");
-		String pwd=request.getParameter("pwd");
+		//String pwd=request.getParameter("pwd");
 		
+		mysession.setAttribute("mypwd", pwd);
+		System.out.println(mysession.getAttribute("mypwd"));
 		// 클라이언트가 입력해준 데이터 VO에 저장 
 		BoardVO vo = new BoardVO();
 		vo.setName(name);
@@ -197,7 +206,9 @@ public class ReplyBoardModel {
 			// TODO: handle exception
 		}
 		String no=request.getParameter("no");
-		String name=request.getParameter("name");
+		HttpSession mysession=request.getSession();
+		String name=String.valueOf(mysession.getAttribute("name"));
+		//String name=request.getParameter("name");
 		String subject=request.getParameter("subject");
 		String content=request.getParameter("content");
 		String pwd=request.getParameter("pwd");  
@@ -225,9 +236,10 @@ public class ReplyBoardModel {
 	@RequestMapping("views/template/main/delete_ok.do")
 	public String reply_delete_ok(HttpServletRequest request, HttpServletResponse response){
 		String no=request.getParameter("no");
-		String pwd=request.getParameter("pwd");
+		HttpSession mysession=request.getSession();
+		String email=String.valueOf(mysession.getAttribute("email"));
 		//DAO
-		boolean bCheck=ReplyBoardDAO.replyDelete(Integer.parseInt(no), pwd);
+		boolean bCheck=ReplyBoardDAO.replyDelete(Integer.parseInt(no), email);
 		request.setAttribute("bCheck", bCheck);
 		return "../../board/reply/delete_ok.jsp";
 	}

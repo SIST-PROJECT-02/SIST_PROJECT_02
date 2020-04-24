@@ -15,26 +15,6 @@ public class NoticeDAO {
 		ssf=CreateSqlSessionFactory.getSsf();
 	}
 	
-	public static BoardVO nrInsertData(BoardVO vo)
-	{
-		SqlSession session=null;
-		
-		try
-		{
-			session=ssf.openSession(true); 
-			session.insert("nrInsertData",vo); 
-			
-		}catch(Exception ex)
-		{
-			System.out.println("nrInsertData: "+ex.getMessage());
-		}
-		finally
-		{
-			if(session!=null)
-				session.close(); 
-		}
-		return vo;
-	}
 	public static List<BoardVO> nrListData()
 	   {
 		   List<BoardVO> list=new ArrayList<BoardVO>();

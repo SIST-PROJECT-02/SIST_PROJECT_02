@@ -42,7 +42,7 @@
 			</div>
 			<div class="row">
 				<table class="table" style="width: 60%; margin: 0px auto;">
-					<c:if test="${sessionScope.admin=='y' }">
+					<c:if test="${sessionScope.admin==1 }">
 						<tr>
 							<td><a href="ninsert.do" class="btn btn-md btn-danger">새글</a>
 							</td>
@@ -71,8 +71,7 @@
 									<img src="../../board/images/icon_reply.gif">
 								</c:if> <a href="ndetail.do?no=${vo.no }">${vo.subject }</a></td>
 							<td width="15%" class="text-center">관리자</td>
-							<td width="20%" class="text-center">${regdate }
-							</td>
+							<td width="20%" class="text-center">${regdate }</td>
 							<td width="10%" class="text-center">${vo.hit }</td>
 						</tr>
 					</c:forEach>

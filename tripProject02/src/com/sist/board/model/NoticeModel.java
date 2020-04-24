@@ -11,6 +11,7 @@ import com.sist.board.dao.BoardVO;
 import com.sist.board.dao.NoticeDAO;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
+import com.sist.board.dao.NoticeReplyDAO;
 
 @Controller
 public class NoticeModel {
@@ -67,24 +68,29 @@ public class NoticeModel {
 	}
 	
 	
-	@RequestMapping("views/template/main/nrinsert_ok.do")
-	public String notice_reply_insert_ok(HttpServletRequest request, HttpServletResponse response)
-	{		
-		try
-		{
-			request.setCharacterEncoding("UTF-8");
-		}catch(Exception ex){}
-		HttpSession session = request.getSession();
-		String mem_Id =(String) session.getAttribute("email");
-		System.out.println("세션으로 넘어온거 확인session--:"+mem_Id);
-		String content=request.getParameter("content");
-		System.out.println("content: "+content);
-		BoardVO vo = new BoardVO();
-		vo.setContent(content);
-		
-		NoticeDAO.nrInsertData(vo);
-		return "redirect:ndetail.do";
-	}
+	@RequestMapping("views/template/main/nreply_insert.do")
+	   public String freeboard_reply_insert(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex){}
+		   String bno=request.getParameter("bno");
+		   String msg=request.getParameter("msg");
+		   HttpSession session=request.getSession();// request=>Session,Cookie
+		   String email=(String)session.getAttribute("email");
+		   String name=(String)session.getAttribute("name");
+		   
+		   // DAO => Map에 묶어서 전송
+		   Map<String,Object> map=new HashMap<String,Object>();
+		   map.put("pBno", Integer.parseInt(bno));
+		   map.put("pId", email);
+		   map.put("pName", name);
+		   map.put("pMsg", msg);
+		   // insert 처리 
+		   NoticeReplyDAO.replyInsert(map);
+		   return "redirect:ndetail.do?no="+bno;
+	   }
 	
 	@RequestMapping("views/template/main/ninsert.do")
 	public String notice_insert(HttpServletRequest request, HttpServletResponse response, HttpSession session)
@@ -204,29 +210,29 @@ public class NoticeModel {
 	}
 	
 	@RequestMapping("views/template/main/nreply_ok.do")
-	public String reply_ok(HttpServletRequest request, HttpServletResponse response){
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		String no=request.getParameter("no");
-		String name=request.getParameter("name");
-		String subject=request.getParameter("subject");
-		String content=request.getParameter("content");
-		String pwd=request.getParameter("pwd");  
-		String pno=request.getParameter("pno");
-			 
-		BoardVO vo = new BoardVO();
-		vo.setName(name);
-		vo.setSubject(subject);
-		vo.setContent(content);
-		vo.setPwd(pwd);
-	
-		NoticeDAO.noticeReplyInsert(Integer.parseInt(pno), vo);
-		//.do = method 호출
-		return "redirect:qna.do";      //reply_jsp() 를 다시 실행해서 데이터 요청하는 코딩실행
-	}
+	public String nreply_ok(HttpServletRequest request, HttpServletResponse response){
+		try
+		   {
+			  request.setCharacterEncoding("UTF-8");   
+		   }catch(Exception ex){}
+		   
+		   String bno=request.getParameter("bno");
+		   String pno=request.getParameter("pno");
+		   String msg=request.getParameter("msg");
+		   HttpSession session=request.getSession();
+		   String email=(String)session.getAttribute("email");
+		   String name=(String)session.getAttribute("name");
+		   
+		   Map map=new HashMap();
+		   map.put("pBno", Integer.parseInt(bno));
+		   map.put("pPno", Integer.parseInt(pno));
+		   map.put("pId", email);
+		   map.put("pName", name);
+		   map.put("pMsg", msg);
+		   // DAO
+		   NoticeReplyDAO.replyReplyInsert(map);
+		   return "redirect:ndetail.do?no="+bno;
+	   }
 	
 	@RequestMapping("views/template/main/ndelete.do")
 	public String reply_delete(HttpServletRequest request, HttpServletResponse response){

@@ -1,6 +1,7 @@
 <!-- 사용자에게 보여지는 글쓰기 화면 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <h4><html>
 <head>
@@ -46,8 +47,8 @@ h2 {
 				<table class="table table-hover" style="width:60%; margin:0px auto;">
 					<tr>
 						<th width=20% class="text-right success">이름</th>
-						<td width=80%>
-							<input type="text" name="name" size=15 required>
+						<td width=80% data-name="${name }">
+						<c:out value="${name }"></c:out>
 							<input type=hidden name=pno value="${pno }">
 						</td>
 					</tr>
@@ -61,12 +62,6 @@ h2 {
 						<th width=20% class="text-right success">내용</th>
 						<td width=80%>
 							<textarea rows="8" cols="50" name="content" required></textarea>
-						</td>
-					</tr>
-					<tr>
-						<th width=20% class="text-right success">비밀번호</th>
-						<td width=80%>
-							<input type="password" name="pwd" size=10 required>
 						</td>
 					</tr>
 					<tr>

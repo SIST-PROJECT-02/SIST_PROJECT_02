@@ -184,7 +184,7 @@ public class ReplyBoardDAO {
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			BoardVO pvo=session.selectOne("replayParentInfoData",pno);
+			BoardVO pvo=session.selectOne("replyParentInfoData",pno);
 			session.update("replyGroupStepIncrement",pvo);
 			//replyReplyInsert
 			//replyDepthIncrement
@@ -207,13 +207,13 @@ public class ReplyBoardDAO {
 		}
 	}
 	
-	public static boolean replyDelete(int no,String pwd){
+	public static boolean replyDelete(int no,String email){
 		boolean bCheck=false;
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			String db_pwd=session.selectOne("replyGetPassword", no);
-			if(db_pwd.equals(pwd)){
+			String db_email=session.selectOne("replyGetPassword", no);
+			if(db_email.equals(email)){
 				bCheck=true;
 				BoardVO vo=session.selectOne("replyDeleteInfoData", no);
 				if(vo.getDepth()==0){

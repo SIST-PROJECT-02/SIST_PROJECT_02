@@ -22,7 +22,7 @@ h2 {
 }
 </style>
 <script type="text/javascript">
-$(function(){
+/* $(function(){
 	$('#pwd2').keyup(function(){ // 유저가 뭔가 입력후 바로 체크 ==> keyup으로 체크 
 		var k=$(this).val();
 		console.log(k);
@@ -49,7 +49,7 @@ $(function(){
 			}
 		})
 	});
-});
+}); */
 </script>
 </head>
 <body>
@@ -84,17 +84,17 @@ $(function(){
 							<!-- input은 value로 주고, textarea는 태그 사이에 값 준다. -->
 						</td>
 					</tr>
-					<tr>
+					<!-- <tr>
 						<th width=20% class="text-right success">비밀번호</th>
 						<td width=80%>
-							<input type="password" name="pwd" size=10 required id="pwd2"> <!-- main.jsp의 비번창이 id가 pwd라서 얘는 id를 pwd2로 줬음 -->
+							<input type="password" name="pwd" size=10 required id="pwd2"> main.jsp의 비번창이 id가 pwd라서 얘는 id를 pwd2로 줬음
 							<div id="pwd_check_result"></div>
 						</td>
-					</tr>
+					</tr> -->
 					<tr>
 						<td class="text-center" colspan="2">
 							<input type="submit" value="수정" class="btn btn-sm btn-primary"
-							id="updateBtn" disabled>
+							id="updateBtn">
 							<input type="button" value="취소" class="btn btn-sm btn-danger"
 							onclick="javascript:history.back()">
 						</td>

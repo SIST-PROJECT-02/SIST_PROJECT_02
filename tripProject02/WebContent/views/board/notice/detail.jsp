@@ -20,20 +20,41 @@
 <link href="../css/css/responsive/responsive.css" rel="stylesheet">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
+var u=0;
+var i=0;
 $(function(){
-	$('.nr').click(function(){
-		var content=$('#nreply').val();
-	$.ajax({
-		type:'post',
-		url:'nrinsert_ok.do',
-		data:{"content":content},
-		success:function(res)
+	$('.upBtn').click(function(){
+		$('.reply_update').hide();
+		$('.reply_insert').hide();
+		var no=$(this).attr("data-no");
+		if(u==0)
 		{
-			$('#nrlist').html(res);
+			$('#m'+no).show();
+			u=1;
+		}
+		else
+		{
+			$('#m'+no).hide();
+			u=0;
 		}
 	});
-  });
-})	
+	
+	$('.inBtn').click(function(){
+		$('.reply_update').hide();
+		$('.reply_insert').hide();
+		var no=$(this).attr("data-no");
+		if(i==0)
+		{
+			$('#i'+no).show();
+			i=1;
+		}
+		else
+		{
+			$('#i'+no).hide();
+			i=0;
+		}
+	});
+});
 </script>
 </head>
 <body>
@@ -67,32 +88,82 @@ $(function(){
 						<tr>
 							<td class="text-left" colspan="4" valign="top" height="200">${vo.content }</td>
 						</tr>
+						</table>
+						</div>
+						</div>
+			<!-- 공지댓글 시작 -->
+			<div style="height:20px"></div>		
+     <table class="table" style="width: 60%; margin: 0px auto;">
+				<c:forEach var="rvo" items="${nlist }">
+					<tr>
+						<td class="text-left"><c:if test="${rvo.group_tab>0 }">
+								<c:forEach var="i" begin="1" end="${rvo.group_tab }">
+               &nbsp;&nbsp;
+             </c:forEach>
+								<img src="../images/icon_reply.gif" />
+							</c:if> ${rvo.name }&nbsp;<span style="color: #999">(${rvo.dbday })</span>
+						</td>
+						<td class="text-right"><c:if
+								test="${rvo.msg!='관리자가 삭제한 댓글입니다' }">
+								<c:if test="${sessionScope.email==rvo.email }">
+									<span class="btn btn-xs btn-primary upBtn" data-no="${rvo.no }">수정</span>
+									<a
+										href="../freeboard/reply_delete.do?no=${rvo.no }&bno=${vo.no}"
+										class="btn btn-xs btn-danger">삭제</a>
+								</c:if>
+								<span class="btn btn-xs btn-success inBtn" data-no=${rvo.no }>댓글</span>
+							</c:if></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="text-left" valign="top">f <pre
+								style="white-space: pre-wrap; border: none">${rvo.msg }</pre>
+						</td>
+					</tr>
+					<tr id="m${rvo.no }" style="display: none" class="reply_update">
+						<td colspan="2">
+							<form method="post" action="../freeboard/reply_update.do">
+								<input type=hidden name=bno value="${vo.no }"> <input
+									type=hidden name=no value="${rvo.no }">
+								<textarea rows="5" cols="125" name="msg" style="float: left">${rvo.msg }</textarea>
+								<input type="submit" class="btn btn-sm btn-primary"
+									style="height: 100px; float: left" value="수정하기">
+							</form>
+						</td>
+					</tr>
 
-						<table class="table" style="width: 60%; margin: 0px auto;">
-							<tr class="danger">
-								<th width="10%" class="text-center">작성자</th>
-								<th width="50%" class="text-center">내용</th>
-								<th width="20%" class="text-center">작성일</th>
-							</tr>
-							<c:forEach var="vo" items="${nrlist }">
-								<tr>
-									<td width="10%" class="text-center" id="nrname"></td>
-									<td width="50%" class="text-center" id="nrcontent"></td>
-									<td width="20%" class="text-center" id="regdate"></td>
-									</td>
-								</tr>
-							</c:forEach>
-						</table>
-						<table class="table" style="width: 60%; margin: 0px auto;">
-							<tr>
-								<th width=20% class="text-right success">내용</th>
-								<td width=80%>
-									<textarea rows="8" cols="50" id="nreply" required></textarea>
-								</td>
-								<td class="text-center"><span class="btn btn-md btn-danger nr">댓글등록</span>
-								</td>
-							</tr>
-						</table>
+					<tr id="i${rvo.no }" style="display: none" class="reply_insert">
+						<td colspan="2">
+							<form method="post" action="nreply_ok.do">
+								<input type=hidden name=bno value="${vo.no }"> <input
+									type=hidden name=pno value="${rvo.no }">
+								<textarea rows="5" cols="125" name="msg" style="float: left"></textarea>
+								<input type="submit" class="btn btn-sm btn-primary"
+									style="height: 100px; float: left" value="댓글쓰기">
+							</form>
+						</td>
+					</tr>
+				</c:forEach>
+				<tr>
+           <td class="text-center" colspan="2">
+            <a href="#" class="btn btn-xs btn-danger">이전</a>
+             ${curpage } page / ${totalpage } pages
+            <a href="#" class="btn btn-xs btn-danger">다음</a>
+           </td>
+         </tr>
+     </table>
+     <table class="table" style="width: 60%; margin: 0px auto;">
+       <tr>
+         <td>
+           <form method="post" action="nreply_insert.do">
+             <input type=hidden name=bno value="${vo.no }">
+             <textarea rows="5" cols="120" name="msg" style="float: left"></textarea>
+             <input type="submit" class="btn btn-sm btn-primary" style="height: 100px;float: left" value="댓글쓰기">
+           </form>
+         </td>
+       </tr>
+     </table>
+    </div>
+						<!-- 공지댓글 끝 -->
 						<table class="table" style="width: 60%; margin: 0px auto;">
 							<tr>
 								<td class="text-right" colspan="2"><c:if
@@ -104,10 +175,7 @@ $(function(){
 							</tr>
 						</table>
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+					
 	</body>
 </html>
 </h4>
