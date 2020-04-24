@@ -126,7 +126,7 @@
 
 	<br>
 	<br>
-	<!-- footer -->
+	<!-- footer1 -->
 	<%@ include file="./main_03_footer.jsp"%>
 
 	<!-- jQuery-2.2.4 js -->
