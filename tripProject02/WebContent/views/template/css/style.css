@@ -1806,14 +1806,16 @@ a{color:inherit;text-decoration:none}
 .reserve_air_detail{
 	float:none; 
 	width: 100%;
+	margin-top: 36px;
 }
 
-.reserve_air_detail div:FIRST-CHILD{
+.reserve_air_detail .title{
 	 font-size: 20px;
 	 font-weight: 700;
 	 padding-bottom:10px;
 	 border-bottom: 2px solid #313131;
 	 border-bottom-width: 100%;
+	 width: 100%;
 }
 
 .reserve_air_detail dt{
@@ -1821,6 +1823,31 @@ a{color:inherit;text-decoration:none}
 	width: 15%;
 }
 
-.reserve_hotel_detail div{
-	margin-top: 36px;
+.reserve_air_detail div{
+	float: left;
+	width: 100%	
+}
+
+.air_start {
+	display: inline-block;
+	position: relative;
+	width: 150px;
+}
+
+.air_start .start_airport{
+	font-size: 40px;
+	font-weight: 700;
+	color: #1a1a1a;	
+	text-align: center;
+	line-height: 36px;
+	display: block;
+}
+
+.air_end .end_airport{
+	font-size: 40px;
+	font-weight: 700;
+	color: #1a1a1a;	
+	text-align: center;
+	line-height: 36px;
+	display: block;
 }
