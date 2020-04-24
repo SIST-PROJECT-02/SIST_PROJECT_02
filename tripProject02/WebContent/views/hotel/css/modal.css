@@ -10,10 +10,10 @@
 .modal-wrap{
     display: none;
     background-color: #f8f9faba;
-    width : 1500px;
+    width : 1300px;
     position: fixed;
-    top: 100px;
-    left: 100px;
+    top: 150px;
+    left: 150px;
     border :7px solid #ffc107;
     z-index : 10;
     overflow-y: scroll;
@@ -36,6 +36,22 @@
 	background-color : #7643ea;
 	
 
+}
+
+.modal-wrap #template-modal-p{
+	font-size : 2rem;
+	color: #777;
+}
+.modal-wrap .reservation-btn{
+	float : right;
+	color : white;
+	width : 150px;
+	height : 60px;
+	line-height : 60px;
+	text-align : center;
+	cursor : pointer;
+	margin-left: 800px;
+	background-color : #7643ea;
 }
 
 .modal-wrap .data-wrap{
@@ -102,8 +118,37 @@
     
 }
 
+.modal-wrap .data-wrap .modal-map-wrap{
+	margin:10px auto;
+	width:700px;
+	height:400px;
+}
+
 .modal-wrap table{
 	text-align : left;
 	font-size : 1.5rem;
 	border-bottom : 0px;
+}
+
+.modal-wrap .mark-wrap{
+	overflow:hidden;
+	width:220px;
+	height:70px;
+}
+.modal-wrap .mark-wrap .mark-thumbnail{
+	float:left;
+}
+.modal-wrap .mark-wrap .mark-thumbnail img{
+	width:90px;
+	height:70px;
+}
+.modal-wrap .mark-wrap .mark-title{
+	width:120px;
+	height:70px;
+	float:left;
+	line-height: 70px;
+	oveflow:hidden;
+}
+.modal-wrap .mark-wrap .mark-title p{
+	line-height: 70px;
 }

@@ -8,17 +8,14 @@
 <link rel="stylesheet" href="./../../hotel/css/modal.css?ver3">
 <link rel="stylesheet" href="./../../hotel/css/modalList.css">
 <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Jua&family=Yeon+Sung&display=swap" rel="stylesheet">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=339dabf7e4db5fbb62ad255755d1f27d"></script>
 </head>
 <body>
 	<div class="modal-background"></div>
 	<section class="modal-wrap">
 	<div class="data-wrap">
 		<div class="img-wrap">
-<<<<<<< HEAD
 			<span>#해시태그지롱</span> <img src="#" />
-=======
-			<span>#해시태그</span> <img src="#"/>
->>>>>>> 78325e4c95147400588a1f603f1795c1d7669840
 			<div>♡</div>
 		</div>
 		<div class="basic-info-wrap">
@@ -82,13 +79,23 @@
             <li name="5">☆</li>
             <span class="star-num">1</span> / 5
         </ul>
-        <textarea id="review-content" cols="30" rows="5" class="content"></textarea>
+        <textarea id="review-content" cols="30" rows="5" class="content" required></textarea>
         <div class="bottom">
             <input type="button" class="delete" value="삭 제">
             <input type="button" class="update" value="수 정">
             <input type="button" class="create" value="생 성">
         </div>
     </section>
+	</script>
+	<script id="template-modal-map-wrap" type="text/template">
+		<section class="modal-map-wrap">
+		</section>
+	</script>
+	<script id="template-mark" type="text/template">
+		<div class="mark-wrap">
+			<div class="mark-thumbnail"><img src="{thumbnail}"/></div>
+			<div class="mark-title"><p>{title}</p></div>
+		</div>
 	</script>
 	<script src="./../../hotel/js/modal.js?ver9"></script>
 	<script src="./../../hotel/js/configuration/modalConfiguration.js"></script>

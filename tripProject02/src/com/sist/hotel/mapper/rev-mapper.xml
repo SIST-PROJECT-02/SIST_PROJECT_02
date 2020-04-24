@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+   
+<mapper namespace="com.sist.hotel.mapper.rev-mapper">
+
+	<select id="sumOfRate" resultType="int" parameterType="java.util.Map">
+		SELECT SUM(rate)
+		FROM review_board
+		WHERE product_id = #{product_id}
+	</select>
+	
+	<select id="reviewListDataFromStartDESC" resultType="ReviewBoardVO" parameterType="java.util.Map">
+    	SELECT id,member_email,regdate,content,rate, num
+      FROM (SELECT id,member_email,regdate,content,rate, rownum as num 
+      FROM (SELECT id,member_email,regdate,content,rate
+      FROM review_board WHERE product_id = #{product_id} ORDER BY regdate DESC))
+      WHERE num BETWEEN #{start} AND #{end}
+    </select>
+    
+    <select id="reviewCount" resultType="int" parameterType="java.util.Map">
+    	SELECT COUNT(id) as cnt
+    	FROM review_board
+    	WHERE product_id = #{product_id}
+    </select>
+    
+    <select id="isMyReview" resultType="int" parameterType="java.util.Map">
+    	SELECT COUNT(id) as cnt
+    	FROM review_board
+    	WHERE product_id = #{product_id} AND member_email = #{member_email}
+    </select>
+    
+    <insert id="insertModalReview" parameterType="ReviewBoardVO">
+    	<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    		SELECT NVL(MAX(id)+1,1) as id FROM review_board
+    	</selectKey>
+    	INSERT INTO review_board
+    	VALUES(
+    	#{id},
+    	#{product_id},
+    	#{member_email},
+    	SYSDATE,
+    	#{content},
+    	#{rate}
+    	)
+    </insert>
+    <delete id="deleteModalReview" parameterType="java.util.Map">
+    	DELETE FROM review_board
+    	WHERE product_id = #{product_id} AND member_email = #{member_email}
+    </delete>
+    <update id="updateModalReview" parameterType="java.util.Map">
+    	UPDATE review_board SET
+    	regdate = SYSDATE,
+    	content = #{content},
+    	rate = #{rate}
+    	WHERE product_id = #{product_id} AND member_email = #{member_email}
+    </update>
+</mapper>
+	

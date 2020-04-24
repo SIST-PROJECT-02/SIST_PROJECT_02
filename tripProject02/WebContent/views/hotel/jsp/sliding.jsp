@@ -15,11 +15,11 @@
         <ul class="sliding-item">
         </ul>
         <a href="#" class="sliding-left-arrow pos-absolute">
-            <!-- <img src="./../../hotel/img/left-arrow-1.png" alt=""> -->
+            <img src="./../../hotel/img/left-arrow.png" alt="">
             <img src="" alt="">
         </a>
         <a href="#" class="sliding-right-arrow pos-absolute">
-            <!-- <img src="./../../hotel/img/right-arrow-1.png" alt=""> -->
+             <img src="./../../hotel/img/right-arrow.png" alt=""> 
             <img src="" alt="">
         </a>
         <div class="sliding-check-box pos-absolute">

@@ -1,23 +1,5 @@
 package com.sist.hotel.dao;
 
-/*
- * ID                NOT NULL NUMBER         
-TITLE                      VARCHAR2(200)  
-PRODUCT_KIND               VARCHAR2(50)   
-HASH_TAG                   VARCHAR2(300)  
-INTRODUCTION               VARCHAR2(1200) 
-EVEL_POINT                 NUMBER         
-WEB_SITE                   VARCHAR2(500)  
-DESCRIPTION                CLOB           
-CONVENIENCE                VARCHAR2(500)  
-ADDRESS                    VARCHAR2(500)  
-ROAD_ADDRESS               VARCHAR2(500)  
-TEL                        VARCHAR2(100)  
-LONGITUDE                  VARCHAR2(100)  
-LATITUDE                   VARCHAR2(100)  
-SHORT_DESCRIPTION          CLOB           
-THUMBNAIL                  VARCHAR2(1000) 
- */
 public class HotelVO {
 	private int id;
 	private String title, product_kind, hash_tag, introduction, web_site, description, convenience, address,

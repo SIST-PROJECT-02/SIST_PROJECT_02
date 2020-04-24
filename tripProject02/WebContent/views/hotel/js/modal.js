@@ -12,7 +12,6 @@ var initNav = function(){
         v.style.borderLeft = '2px solid rgba(255,255,255,.15)';
         v.style.borderBottom = '3px solid #7643ea';
     });
-
 }
 
 var modalOperating = function(){
@@ -50,8 +49,7 @@ window.addEventListener('click',(e)=>{
     var target = e.target;
     // target을 찾는데, modal을 못찾고 body를 만나면 return
     var count = 0;
-    while(target.tagName !=='BODY' && count < 10){
-        console.log(target.tagName);
+    while(target.tagName !=='BODY' && count < 20){
         if(target === modal){
             return;
         }

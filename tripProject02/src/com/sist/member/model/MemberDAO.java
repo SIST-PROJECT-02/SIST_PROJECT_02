@@ -151,6 +151,8 @@ public class MemberDAO {
 		SqlSession session=null;
 		try
 		{
+			System.out.println("email: "+email);
+			System.out.println("pwd: "+pwd);
 			session=ssf.openSession();
 			String db_pwd=session.selectOne("memberGetPwd", email);
 			if(db_pwd.equals(pwd))

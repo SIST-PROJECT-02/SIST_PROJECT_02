@@ -59,6 +59,6 @@
 	<delete id="memberDelete_ok" parameterType="string">
 		DELETE
 		FROM member
-		WHERE email=#{email}
+		WHERE email=#{email }
 	</delete> 
 </mapper>
