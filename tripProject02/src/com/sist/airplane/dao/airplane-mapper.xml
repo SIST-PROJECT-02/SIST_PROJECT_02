@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.airplane.dao.airplane-mapper">
+
+	<resultMap type="AirplaneVO" id="airplaneMap">
+		<result column="plane_id" property="plane_id"/>
+		<result column="airline" property="airline"/>	
+		<result column="img" property="img"/>	
+		<result column="start_airport" property="timeVO.start_airport"/>
+		<result column="end_airport" property="timeVO.end_airport"/>
+		<result column="start_time" property="timeVO.start_time"/>
+		<result column="end_time" property="timeVO.end_time"/>
+		<result column="start_hour" property="timeVO.start_hour"/>
+		<result column="end_hour" property="timeVO.end_hour"/>
+		<result column="totaltime" property="timeVO.totaltime"/>
+		<result column="price" property="seatVO.price"/>
+		<result column="seattype" property="seatVO.seattype"/>
+		
+	</resultMap>
+	<sql id="airListColumn">
+		plane_id,airline,start_airport,end_airport,
+		start_time, end_time, start_hour, end_hour, totaltime, price ,seattype,img
+	</sql>
+	
+	<sql id="startAirList">
+		SELECT ap.plane_id,ap.airline,at.start_airport,at.end_airport,
+		at.start_time, at.end_time, TO_CHAR(at.start_time,'HH24:MI') start_hour,
+		TO_CHAR(at.end_time,'HH24:MI') end_hour,
+		0||ROUND((end_time-start_time)*24*60/60)||'시간 0'||MOD(ROUND((end_time-start_time)*24*60),60)||'분' totaltime, price ,seattype,img
+		FROM airplane ap JOIN air_time at ON ap.plane_id=at.plane_id
+		INNER JOIN air_seat ae ON ap.plane_id=ae.plane_id
+		INNER JOIN airline_img al ON ap.airline=al.airline 
+		WHERE (at.start_airport=#{start_airport} AND at.end_airport=#{end_airport}) AND TO_CHAR(at.start_time)=#{start_time}
+	</sql>
+	
+	<sql id="endAirList">
+		SELECT ap.plane_id,ap.airline,at.start_airport,at.end_airport,
+		at.start_time, at.end_time, TO_CHAR(at.start_time,'HH24:MI') start_hour,
+		TO_CHAR(at.end_time,'HH24:MI') end_hour,
+		0||ROUND((end_time-start_time)*24*60/60)||'시간 0'||MOD(ROUND((end_time-start_time)*24*60),60)||'분' totaltime, price ,seattype,img 
+		FROM airplane ap JOIN air_time at ON ap.plane_id=at.plane_id
+		INNER JOIN air_seat ae ON ap.plane_id=ae.plane_id
+		INNER JOIN airline_img al ON ap.airline=al.airline 
+		WHERE (at.start_airport=#{start_airport} AND at.end_airport=#{end_airport}) AND TO_CHAR(at.end_time)=#{end_time}
+		
+	</sql>
+	
+	<sql id="airlistGroup">
+		GROUP BY ap.plane_id,ap.airline,at.start_airport,at.end_airport,
+		at.start_time, at.end_time, TO_CHAR(at.start_time,'HH24:MI'),
+		TO_CHAR(at.end_time,'HH24:MI'),
+		0||ROUND((end_time-start_time)*24*60/60)||':0'||MOD(ROUND((end_time-start_time)*24*60),60), price ,seattype,img
+	</sql>
+	
+	<select id="startAirplaneListData" resultMap="airplaneMap" parameterType="java.util.Map">
+				SELECT <include refid="airListColumn"/>, num 
+				FROM (SELECT <include refid="airListColumn"/>, rownum as num
+				FROM (<include refid="startAirList"/>
+					  <include refid="airlistGroup"/>
+					  ORDER BY price ASC))
+				WHERE num BETWEEN #{start} AND #{end}			
+	</select>
+	
+	<select id="endAirplaneListData" resultMap="airplaneMap" parameterType="java.util.Map">
+				SELECT <include refid="airListColumn"/>, num 
+				FROM (SELECT <include refid="airListColumn"/>, rownum as num
+				FROM (<include refid="endAirList"/>
+					  <include refid="airlistGroup"/>
+					  ORDER BY price ASC))
+				WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<select id="airplaneTotalPage" resultType="int" parameterType="java.util.Map">
+		SELECT TRUNC(SUM(CEIL(COUNT(*)/10.0)/100)) as totalpage
+		FROM airplane ap JOIN air_time at ON ap.plane_id=at.plane_id
+		INNER JOIN air_seat ae ON ap.plane_id=ae.plane_id
+		WHERE (at.start_airport=#{start_airport} AND at.end_airport=#{end_airport}) AND 
+		<choose> 
+			<when test="start_time!=''">
+				TO_CHAR(at.start_time)=#{start_time}
+			</when>
+			<otherwise>
+				TO_CHAR(at.end_time)=#{end_time}
+			</otherwise>
+		</choose> 
+		GROUP BY ap.plane_id
+	</select>
+</mapper>

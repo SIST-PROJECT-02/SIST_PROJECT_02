@@ -154,6 +154,7 @@ function ajaxFunc(){
 	          var serverDataObj = JSON.parse(serverData);
 	          //json 객체 - 배열을 품고 있다
 	          localData = serverDataObj;
+	          /*makeSlidingMainTemplate(1500, 800, serverDataObj);*/
 	          makeSlidingMainTemplate(1200, 500, serverDataObj);
 	      }
 	  };

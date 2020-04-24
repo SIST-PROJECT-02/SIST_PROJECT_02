@@ -6,20 +6,19 @@ import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
-import com.sist.member.model.*;
-import java.util.*;
+
 
 @Controller
 public class MemberModel {
 
-	@RequestMapping("views/template/main/join.do")
+	@RequestMapping("views/template/main/member_join.do")
 	public String join(HttpServletRequest request,HttpServletResponse response)
 	{
-		request.setAttribute("jsp","../../member/join.jsp");
+		request.setAttribute("jsp","../../member/member_join.jsp");
 		return "index.jsp";
 	}
 	
-	@RequestMapping("views/member/join_ok.do")
+	@RequestMapping("views/template/main/member_join_ok.do")
 	public String join_ok(HttpServletRequest request, HttpServletResponse response)
 	{
 		//한글송수인가능하도록 코드변환
@@ -51,11 +50,12 @@ public class MemberModel {
 		//dao연결
 		MemberDAO.memberInsert(vo);
 		
-		/*request.setAttribute("jsp","../../member/join.jsp");*/
-		return "redirect:../template/main/index.jsp";
+		request.setAttribute("jsp","../../member/member_join_ok.jsp");
+		/*return "redirect:../template/main/index.jsp";*/
+		return "index.jsp";
 	}
 	
-	@RequestMapping("views/member/login.do")
+	@RequestMapping("views/member/member_login.do")
 	public String memberLogin(HttpServletRequest request,HttpServletResponse response)
 	{
 		String email=request.getParameter("email");
@@ -70,10 +70,10 @@ public class MemberModel {
 		}
 		System.out.println("MappingEmail: "+vo);
 		request.setAttribute("msg", vo.getMsg());
-		return "login.jsp";
+		return "member_login.jsp";
 	}
 	
-	@RequestMapping("views/template/main/logout.do")
+	@RequestMapping("views/template/main/member_logout.do")
 	public String memberLogout(HttpServletRequest request, HttpServletResponse response)
 	{
 		HttpSession session=request.getSession();
@@ -81,33 +81,33 @@ public class MemberModel {
 		return "index.jsp";
 	}
 	
-	@RequestMapping("views/member/checkid.do")
+	@RequestMapping("views/member/member_checkid.do")
 	public String memberidCheck(HttpServletRequest request, HttpServletResponse response)
 	{
-		return "checkid.jsp";
+		return "member_checkid.jsp";
 	}
 	
-	@RequestMapping("views/member/checkid_ok.do")
+	@RequestMapping("views/member/member_checkid_ok.do")
 	public String memberidCheckOk(HttpServletRequest request, HttpServletResponse response)
 	{
 		String email=request.getParameter("email");
 		int count=MemberDAO.checkid(email);
 		request.setAttribute("count", count);
-		return "checkid_ok.jsp";
+		return "member_checkid_ok.jsp";
 	}
 	
-	@RequestMapping("views/template/main/mypage.do")
+	@RequestMapping("views/template/main/member_mypage.do")
 	public String memberDetailData(HttpServletRequest request, HttpServletResponse response)
 	{	
 		/*name,nick,birth,tel*/
 		String email=request.getParameter("email");
 		MemberVO vo=MemberDAO.memberDetailData(email);
 		request.setAttribute("vo", vo);
-		request.setAttribute("jsp", "../../member/mypage.jsp");
+		request.setAttribute("jsp", "../../member/member_mypage.jsp");
 		return "index.jsp";
 	}
 	
-	@RequestMapping("views/member/update.do")
+	@RequestMapping("views/template/main/member_update.do")
 	public String memberUpdate(HttpServletRequest request, HttpServletResponse response)
 	{
 		try
@@ -133,6 +133,84 @@ public class MemberModel {
 		vo.setTel(tel);
 		
 		MemberDAO.memberUpdate(vo);
-		return "redirect:../template/main/index.jsp";
+		request.setAttribute("jsp", "../../member/member_update.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/member_delete.do")
+	public String memberDelete(HttpServletRequest request, HttpServletResponse response)
+	{
+		try
+		{
+			request.setCharacterEncoding("UTF-8");
+		}catch(Exception ex){}
+		
+		String email=request.getParameter("email");
+		String pwd=request.getParameter("pwd");
+		/*System.out.println(email);
+		System.out.println(pwd);*/
+		
+		//DAO연결
+		boolean bCheck=MemberDAO.memberDelete(email, pwd);
+		request.setAttribute("bCheck", bCheck);
+		return "redirect:../../member/member_delete_ok.do";
+	}
+	
+	@RequestMapping("views/template/main/member_delete_ok.do")
+	public String memberDeleteOK(HttpServletRequest request, HttpServletResponse response)
+	{
+		HttpSession session=request.getSession();
+		session.invalidate();
+		request.setAttribute("jsp", "../../member/member_delete_ok.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/member_like.do")
+	public String memberLike(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../member/member_like.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/member_reservation.do")
+	public String memberReservation(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../member/member_reservation.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/reserve_hotel.do")
+	public String reserve_hotel(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../member/reserve_hotel.jsp");
+		return "redirect:../../member/reserve_hotel.jsp";
+	}
+	
+	@RequestMapping("views/template/main/reserve_air.do")
+	public String reserve_air(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../member/reserve_air.jsp");
+		return "redirect:../../member/reserve_air.jsp";
+	}
+	
+	@RequestMapping("views/template/main/guidebook_safe.do")
+	public String guidebook_safe(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../guidebook/guidebook_safe.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/guidebook_map.do")
+	public String guidebook_map(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../guidebook/guidebook_map.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/guidebook_guide.do")
+	public String guidebook_guide(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../guidebook/guidebook_guide.jsp");
+		return "index.jsp";
 	}
 }

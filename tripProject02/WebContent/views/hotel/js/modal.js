@@ -12,7 +12,6 @@ var initNav = function(){
         v.style.borderLeft = '2px solid rgba(255,255,255,.15)';
         v.style.borderBottom = '3px solid #7643ea';
     });
-    
 }
 
 var modalOperating = function(){
