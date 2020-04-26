@@ -55,7 +55,7 @@
   <mappers>
 	<mapper resource="com/sist/board/mapper/notice-mapper.xml"/>
     <mapper resource="com/sist/board/mapper/qna-mapper.xml"/>
-    <mapper resource="com/sist/board/mapper/notice-reply-mapper.xml"/>
+    <!-- <mapper resource="com/sist/board/mapper/notice-reply-mapper.xml"/> -->
     <mapper resource="com/sist/member/model/member-mapper.xml"/>
     <mapper resource="com/sist/hotel/mapper/emp-mapper.xml"/>
     <mapper resource="com/sist/hotel/mapper/rev-mapper.xml"/>

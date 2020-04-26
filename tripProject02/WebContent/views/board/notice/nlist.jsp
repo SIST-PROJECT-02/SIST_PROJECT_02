@@ -44,7 +44,7 @@
 				<table class="table" style="width: 60%; margin: 0px auto;">
 					<c:if test="${sessionScope.admin==1 }">
 						<tr>
-							<td><a href="notice_insert.do" class="btn btn-md btn-danger">새글</a>
+							<td><a href="qnainsert.do" class="btn btn-md btn-danger">새글</a>
 							</td>
 						</tr>
 					</c:if>

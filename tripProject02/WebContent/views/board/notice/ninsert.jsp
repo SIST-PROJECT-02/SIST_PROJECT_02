@@ -6,9 +6,8 @@
 <h4>
 	<html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
@@ -26,7 +25,7 @@
 				<div class="row">
 					<form method=post action="notice_insert_ok.do">
 						<table class="table table-hover"
-							style="width: 60%; margin: 0px auto;">
+							>
 							<tr>
 								<th width=20% class="text-right success">이름</th>
 								<td width=80% data-name="${name }"><c:out value="${name }"></c:out>
@@ -53,7 +52,8 @@
 				</div>
 			</div>
 		</div>
-	</div>
+		</div>
+	s
 </body>
 	</html>
 </h4>

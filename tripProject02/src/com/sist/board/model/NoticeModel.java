@@ -83,14 +83,14 @@ public class NoticeModel {
 		   NoticeReplyDAO.noticereplyInsert(map);
 		   return "redirect:ndetail.do?no="+bno;
 	   }
-	
 	@RequestMapping("views/template/main/notice_insert.do")
 	public String notice_insert(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 	{		
-		request.setAttribute("jsp", "../../board/notice/ninsert.jsp"); // main에 include시킴 
+		request.setAttribute("jsp", "../../board/notice/ninsert.jsp");
 		return "index.jsp";
 	}
 	// [새 글 작성] 
+	
 	@RequestMapping("views/template/main/notice_insert_ok.do")
 	public String notice_insert_ok(HttpServletRequest request, HttpServletResponse response)
 	{

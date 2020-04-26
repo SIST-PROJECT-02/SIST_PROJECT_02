@@ -29,7 +29,7 @@ public class QnaModel {
 		nmap.put("nstart", nstart);
 		nmap.put("nend", nend);
 		
-		List<BoardVO> nlist=NoticeDAO.qnoticeListData(nmap);
+		List<BoardVO> nlist=NoticeDAO.noticeListData(nmap);
 		System.out.println("Modelnlist사이즈:"+nlist.size());
 		int ntotalpage=NoticeDAO.noticeTotalPage();
 		request.setAttribute("nlist", nlist);
@@ -61,7 +61,7 @@ public class QnaModel {
 	
 	
 	@RequestMapping("views/template/main/qna_detail.do")
-	public String reply_detail(HttpServletRequest request, HttpServletResponse response)
+	public String qna_detail(HttpServletRequest request, HttpServletResponse response)
 	{
 		String no = request.getParameter("no");
 		
@@ -76,7 +76,7 @@ public class QnaModel {
 	}
 	
 	@RequestMapping("views/template/main/qnainsert.do")
-	public String reply_insert(HttpServletRequest request, HttpServletResponse response)
+	public String qna_insert(HttpServletRequest request, HttpServletResponse response)
 	{		
 		request.setAttribute("jsp", "../../board/qna/insert.jsp"); // main에 include시킴 
 		return "index.jsp";
@@ -84,7 +84,7 @@ public class QnaModel {
 	
 	// [새 글 작성] 
 	@RequestMapping("views/template/main/qna_insert_ok.do")
-	public String reply_insert_ok(HttpServletRequest request, HttpServletResponse response)
+	public String qna_insert_ok(HttpServletRequest request, HttpServletResponse response)
 	{
 		try
 		{
