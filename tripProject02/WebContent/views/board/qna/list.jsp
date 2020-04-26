@@ -62,10 +62,21 @@
 					<c:forEach var="vo" items="${nlist }">
 						<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"
 							var="regdate" />
+							
+							<tr>
+							<td>notice test</td>
+							</tr>
 						<tr class="notice">
 							<td width="10%" class="text-center"><img
 								src="../../board/images/bell.png" /></td>
-							<td width="45%" class="text-center"><c:if
+							<td width="45%" class="text-center">
+							<c:if test="${vo.group_tab>0 }">
+									<c:forEach var="i" begin="1" end="${vo.group_tab }" step="1">
+	  							&nbsp;&nbsp;
+	  						</c:forEach>
+									<img src="../../board/images/icon_reply.gif">
+								</c:if>
+							<c:if
 									test="${today1 == regdate}">
 									<img src="../../board/images/new.gif">
 								</c:if> <a href="ndetail.do?no=${vo.no }">${vo.subject }</a></td>
@@ -75,19 +86,26 @@
 							<td width="10%" class="text-center">${vo.hit }</td>
 						</tr>
 					</c:forEach>
+					<div id="paging">
+				<a href="qna.do?npage=${ncurpage>1?ncurpage-1:ncurpage }"
+					class="btn btn-md btn-primary">이전</a> ${ncurpage } page /
+				${ntotalpage } pages <a
+					href="qna.do?npage=${ncurpage<ntotalpage?ncurpage+1:ncurpage }"
+					class="btn btn-md btn-primary">다음</a>
+			</div>
  					<c:forEach var="vo" items="${list }">
 						<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"
 							var="regdate" />
 						<tr>
 							<td width="10%" class="text-center">${vo.no }</td>
-							<td width="45%"><c:if test="${today1 == regdate}">
-									<img src="../../board/images/new.gif">
-								</c:if> <c:if test="${vo.group_tab>0 }">
+							<td width="45%"> <c:if test="${vo.group_tab>0 }">
 									<c:forEach var="i" begin="1" end="${vo.group_tab }" step="1">
 	  							&nbsp;&nbsp;
 	  						</c:forEach>
 									<img src="../../board/images/icon_reply.gif">
-								</c:if> <a href="detail.do?no=${vo.no }">${vo.subject }</a></td>
+								</c:if> <a href="detail.do?no=${vo.no }">${vo.subject }</a><c:if test="${today1 == regdate}">
+									<img src="../../board/images/new.gif">
+								</c:if></td>
 							<td width="15%" class="text-center">${vo.name }</td>
 							<td width="20%" class="text-center">${regdate }<!--<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/>-->
 							</td>

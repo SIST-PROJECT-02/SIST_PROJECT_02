@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <h4><html>
 <head>
@@ -62,15 +63,14 @@ h2 {
 	<div class="container">
 		<h2>수정하기</h2>
 		<div id="update">
-			<form method=post action="update_ok.do"> 
+			<form method=post action="qna_update_ok.do"> 
 				<table class="table table-hover" style="width:80%; margin:0px auto;">
 					<tr>
-						<th width=20% class="text-right success">이름</th>
-						<td width=80%>
-							<input type="text" name="name" size=15 value="${vo.name }" required />
-							<input type="hidden" name="no" id="no" value="${vo.no }">
-						</td>
+							<th width=20% class="text-right success">이름</th>
+							<td width=80% data-name="${name }"><c:out value="${name }"></c:out>
+							</td>
 					</tr>
+							<input type="hidden" name="no" id="no" value="${vo.no }">
 					<tr>
 						<th width=20% class="text-right success">제목</th>
 						<td width=80%>

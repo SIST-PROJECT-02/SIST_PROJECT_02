@@ -49,7 +49,7 @@
      <parameter property="pResult"  jdbcType="CURSOR" mode="OUT" resultMap="boardReplyMap"/>
    </parameterMap>
    <select id="replyListData2" parameterMap="replyListDataMap" statementType="CALLABLE">
-     {CALL replyListData(?,?,?,?)}
+     {CALL nreplyListData(?,?,?,?)}
    </select>
    <!-- 
         CREATE OR REPLACE PROCEDURE replyInsert(
@@ -66,8 +66,8 @@
       <parameter property="pName" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN"/>
       <parameter property="pMsg" javaType="java.lang.String" jdbcType="CLOB" mode="IN"/>
     </parameterMap>
-    <select id="replyInsert2" parameterMap="replyInsertMap" statementType="CALLABLE">
-      {CALL replyInsert(?,?,?,?)}
+    <select id="noticereplyInsert" parameterMap="replyInsertMap" statementType="CALLABLE">
+      {CALL nreplyInsert(?,?,?,?)}
     </select>
     
     <!-- 
@@ -81,7 +81,7 @@
        <parameter property="pTotal" javaType="java.lang.Integer" jdbcType="INTEGER" mode="OUT"/>
      </parameterMap> 
      <select id="replyTotalPage2" parameterMap="replyTotalMap" statementType="CALLABLE">
-       {CALL replyTotalPage(?,?)}
+       {CALL nreplyTotalPage(?,?)}
      </select>
      
      <!-- 
@@ -95,7 +95,7 @@
        <parameter property="pMsg" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN"/>
      </parameterMap> 
      <select id="replyUpdate2" parameterMap="replyUpdateMap" statementType="CALLABLE">
-       {CALL replyUpdate(?,?)}
+       {CALL nreplyUpdate(?,?)}
      </select>
      <!-- 
          CREATE OR REPLACE PROCEDURE replyReplyInsert(
@@ -114,14 +114,14 @@
        <parameter property="pMsg" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN"/>
      </parameterMap>
      <select id="replyReplyInsert2" parameterMap="replyReplyInsertMap" statementType="CALLABLE">
-       {CALL replyReplyInsert(?,?,?,?,?)}
+       {CALL nreplyReplyInsert(?,?,?,?,?)}
      </select>
      
      <parameterMap type="hashmap" id="replyDeleteMap">
        <parameter property="pNo" javaType="java.lang.Integer" jdbcType="INTEGER" mode="IN"/>
      </parameterMap> 
      <select id="replyDelete2" parameterMap="replyDeleteMap" statementType="CALLABLE">
-       {CALL replyDelete(?)}
+       {CALL nreplyDelete(?)}
      </select>
 </mapper>
 

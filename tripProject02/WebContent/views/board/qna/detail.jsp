@@ -51,10 +51,10 @@
 				</tr>
 				<tr>
 					<td class="text-right" colspan="4">
-						<a href="reply.do?no=${vo.no }" class="btn btn-md btn-danger">답변</a>
+						<a href="qna_reply.do?no=${vo.no }" class="btn btn-md btn-danger">답변</a>
 						<c:if test="${sessionScope.email == vo.pwd}">
-						<a href="update.do?no=${vo.no }" class="btn btn-md btn-success">수정</a></c:if>
-						<a href="delete_ok.do?no=${vo.no }" class="btn btn-md btn-info">삭제</a>
+						<a href="qna_update.do?no=${vo.no }" class="btn btn-md btn-success">수정</a>
+						<a href="qna_delete_ok.do?no=${vo.no }" class="btn btn-md btn-info">삭제</a></c:if>
 						<a href="qna.do" class="btn btn-md btn-warning">목록</a>
 					</td>
 				</tr>

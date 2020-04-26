@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import java.util.*;
 
-public class ReplyBoardDAO {
+public class QnaDAO {
 	private static SqlSessionFactory ssf;
 	static
 	{
@@ -14,7 +14,7 @@ public class ReplyBoardDAO {
 	
 	
 	// [답글형 게시판 리스트] 
-	public static List<BoardVO> replyListData(Map map)
+	public static List<BoardVO> qnaListData(Map map)
 	{
 		List<BoardVO> list=new ArrayList<BoardVO>();
 		SqlSession session=null;
@@ -22,11 +22,11 @@ public class ReplyBoardDAO {
 		try
 		{
 			session=ssf.openSession();	
-			list=session.selectList("replyListData",map); 
+			list=session.selectList("qnaListData",map); 
 			
 		}catch(Exception ex)
 		{
-			System.out.println("replyListData: "+ex.getMessage());
+			System.out.println("qnaListData: "+ex.getMessage());
 		}
 		finally
 		{
@@ -38,7 +38,7 @@ public class ReplyBoardDAO {
 	}
 	
 	// [답글형 게시판 총 페이지]
-	public static int replyTotalPage()
+	public static int qnaTotalPage()
 	{
 		int total=0;
 		SqlSession session=null;
@@ -46,11 +46,11 @@ public class ReplyBoardDAO {
 		try
 		{
 			session=ssf.openSession();	
-			total=session.selectOne("replyTotalPage");
+			total=session.selectOne("qnaTotalPage");
 			
 		}catch(Exception ex)
 		{
-			System.out.println("replyTotalPage: "+ex.getMessage());
+			System.out.println("qnaTotalPage: "+ex.getMessage());
 		}
 		finally
 		{
@@ -62,7 +62,7 @@ public class ReplyBoardDAO {
 	}
 	
 	// [답글형 게시판 상세페이지] 
-	public static BoardVO replyDetailData(int no)
+	public static BoardVO qnaDetailData(int no)
 	{
 		BoardVO vo = new BoardVO();
 		SqlSession session=null;
@@ -70,11 +70,11 @@ public class ReplyBoardDAO {
 		try
 		{
 			session=ssf.openSession();	
-			vo=session.selectOne("replyDetailData",no); 
+			vo=session.selectOne("qnaDetailData",no); 
 			
 		}catch(Exception ex)
 		{
-			System.out.println("replyDetailData: "+ex.getMessage());
+			System.out.println("qnaDetailData: "+ex.getMessage());
 		}
 		finally
 		{
@@ -94,9 +94,9 @@ public class ReplyBoardDAO {
 		{
 			session=ssf.openSession();	
 			session.update("hitIncrement",no);
-			session.commit(); // ★★★
+			session.commit(); 
 			
-			vo=session.selectOne("replyDetailData", no); // ★★★
+			vo=session.selectOne("qnaDetailData", no); // ★★★
 			
 		}catch(Exception ex)
 		{
@@ -113,18 +113,18 @@ public class ReplyBoardDAO {
 	
 	
 	// [답글형 게시판 글쓰기] 
-	public static BoardVO replyInsertData(BoardVO vo)
+	public static BoardVO qnaInsertData(BoardVO vo)
 	{
 		SqlSession session=null;
 		
 		try
 		{
-			session=ssf.openSession(true); // 오토커밋하게 true로 변경 	
-			session.insert("replyInsertData",vo); // ★★★★
+			session=ssf.openSession(true); 
+			session.insert("qnaInsertData",vo); 
 			
 		}catch(Exception ex)
 		{
-			System.out.println("replyInsertData: "+ex.getMessage());
+			System.out.println("qnaInsertData: "+ex.getMessage());
 		}
 		finally
 		{
@@ -159,18 +159,18 @@ public class ReplyBoardDAO {
 	
 	
 	// [글 수정] - 데이터 update 
-	public static BoardVO replyUpdateData(BoardVO vo)
+	public static BoardVO qnaUpdateData(BoardVO vo)
 	{
 		SqlSession session=null;
 		
 		try
 		{
 			session=ssf.openSession(true); 
-			session.update("replyUpdateData",vo); 
+			session.update("qnaUpdateData",vo); 
 
 		}catch(Exception ex)
 		{
-			System.out.println("replyUpdateData: "+ex.getMessage());
+			System.out.println("qnaUpdateData: "+ex.getMessage());
 		}
 		finally
 		{
@@ -180,12 +180,12 @@ public class ReplyBoardDAO {
 		return vo;
 	}
 	
-	public static void replyReplyInsert(int pno,BoardVO vo){
+	public static void qnaReplyInsert(int pno,BoardVO vo){
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			BoardVO pvo=session.selectOne("replyParentInfoData",pno);
-			session.update("replyGroupStepIncrement",pvo);
+			BoardVO pvo=session.selectOne("qnaParentInfoData",pno);
+			session.update("qnaGroupStepIncrement",pvo);
 			//replyReplyInsert
 			//replyDepthIncrement
 			vo.setGroup_id(pvo.getGroup_id());
@@ -193,8 +193,8 @@ public class ReplyBoardDAO {
 			vo.setGroup_tab(pvo.getGroup_tab()+1);
 			vo.setRoot(pno);
 			
-			session.insert("replyReplyInsert", vo);
-			session.update("replyDepthIncrement", pno);
+			session.insert("qnaReplyInsert", vo);
+			session.update("qnaDepthIncrement", pno);
 			
 			session.commit();	
 			
@@ -207,7 +207,7 @@ public class ReplyBoardDAO {
 		}
 	}
 	
-	public static boolean replyDelete(int no,String email){
+	public static boolean qnaDelete(int no,String email){
 		boolean bCheck=false;
 		SqlSession session=null;
 		try {
@@ -217,10 +217,10 @@ public class ReplyBoardDAO {
 				bCheck=true;
 				BoardVO vo=session.selectOne("replyDeleteInfoData", no);
 				if(vo.getDepth()==0){
-					session.delete("replyDelete",no);
+					session.delete("qnaDelete",no);
 				}else{
-					vo.setSubject("관리자가 삭제한 게시물입니다");
-					vo.setContent("관리자가 삭제한 게시물입니다");
+					vo.setSubject("삭제된 게시물입니다");
+					vo.setContent("삭제된 게시물입니다");
 					vo.setNo(no);
 					session.update("replySubjectUpdate",vo);
 				}

@@ -154,7 +154,7 @@ $(function(){
      <table class="table" style="width: 60%; margin: 0px auto;">
        <tr>
          <td>
-           <form method="post" action="nreply_insert.do">
+           <form method="post" action="noticereply_insert.do">
              <input type=hidden name=bno value="${vo.no }">
              <textarea rows="5" cols="120" name="msg" style="float: left"></textarea>
              <input type="submit" class="btn btn-sm btn-primary" style="height: 100px;float: left" value="댓글쓰기">

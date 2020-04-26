@@ -34,6 +34,28 @@ public class NoticeDAO {
 		   }
 		   return list;
 	   }
+	public static List<BoardVO> qnoticeListData(Map nmap)
+	{
+		List<BoardVO> list=new ArrayList<BoardVO>();
+		SqlSession session=null;
+		
+		try
+		{
+			session=ssf.openSession();	
+			list=session.selectList("qnoticeListData",nmap); 
+			System.out.println("DAOnoticelistsize="+list.size());
+		}catch(Exception ex)
+		{
+			System.out.println("qnoticeListData: "+ex.getMessage());
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+		
+		return list;
+	}
 	// [답글형 게시판 리스트] 
 	public static List<BoardVO> noticeListData(Map map)
 	{
@@ -44,7 +66,7 @@ public class NoticeDAO {
 		{
 			session=ssf.openSession();	
 			list=session.selectList("noticeListData",map); 
-			System.out.println(list.size());
+			System.out.println("DAOnoticelistsize="+list.size());
 		}catch(Exception ex)
 		{
 			System.out.println("noticeListData: "+ex.getMessage());

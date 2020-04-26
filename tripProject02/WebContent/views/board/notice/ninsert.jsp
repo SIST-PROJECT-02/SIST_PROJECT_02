@@ -19,12 +19,12 @@
 	<div class="wrapper row2">
 		<div id="services" class="clear">
 			<div class="text-center">
-				<img src="../../board/images/QnA.png">
+				<img src="../../board/images/notice.jpeg">
 			</div>
 			<div class="container">
 				<h2>글쓰기</h2>
 				<div class="row">
-					<form method=post action="insert_ok.do">
+					<form method=post action="notice_insert_ok.do">
 						<table class="table table-hover"
 							style="width: 60%; margin: 0px auto;">
 							<tr>

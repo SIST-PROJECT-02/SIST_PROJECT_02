@@ -17,7 +17,7 @@ import com.sist.board.dao.NoticeReplyDAO;
 public class NoticeModel {
 	
 	@RequestMapping("views/template/main/notice.do")
-	public String reply_list(HttpServletRequest request, HttpServletResponse response)
+	public String notice_list(HttpServletRequest request, HttpServletResponse response)
 	{
 		System.out.println("notice.do실행");
 		String page=request.getParameter("npage");
@@ -43,14 +43,6 @@ public class NoticeModel {
 		return "index.jsp";
 	}
 	
-	@RequestMapping("views/template/main/nrlist.do")
-	public String notice_reply_insert(HttpServletRequest request, HttpServletResponse response){
-		
-		List<BoardVO> list=NoticeDAO.nrListData();
-		   request.setAttribute("nrList", list);
-		   
-		   return "detail.jsp";
-	}
 	
 	@RequestMapping("views/template/main/ndetail.do")
 	public String notice_detail(HttpServletRequest request, HttpServletResponse response)
@@ -68,8 +60,8 @@ public class NoticeModel {
 	}
 	
 	
-	@RequestMapping("views/template/main/nreply_insert.do")
-	   public String freeboard_reply_insert(HttpServletRequest request,HttpServletResponse response)
+	@RequestMapping("views/template/main/noticereply_insert.do")
+	   public String notice_reply_insert(HttpServletRequest request,HttpServletResponse response)
 	   {
 		   try
 		   {
@@ -88,18 +80,18 @@ public class NoticeModel {
 		   map.put("pName", name);
 		   map.put("pMsg", msg);
 		   // insert 처리 
-		   NoticeReplyDAO.replyInsert(map);
+		   NoticeReplyDAO.noticereplyInsert(map);
 		   return "redirect:ndetail.do?no="+bno;
 	   }
 	
-	@RequestMapping("views/template/main/ninsert.do")
+	@RequestMapping("views/template/main/notice_insert.do")
 	public String notice_insert(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 	{		
-		request.setAttribute("jsp", "../../board/notice/insert.jsp"); // main에 include시킴 
+		request.setAttribute("jsp", "../../board/notice/ninsert.jsp"); // main에 include시킴 
 		return "index.jsp";
 	}
 	// [새 글 작성] 
-	@RequestMapping("views/template/main/ninsert_ok.do")
+	@RequestMapping("views/template/main/notice_insert_ok.do")
 	public String notice_insert_ok(HttpServletRequest request, HttpServletResponse response)
 	{
 		try
@@ -109,10 +101,11 @@ public class NoticeModel {
 		
 		
 		// 클라이언트가 입력한 데이터를 가지고 와야...
-		String name=request.getParameter("name");
 		String subject=request.getParameter("subject");
 		String content=request.getParameter("content");
-		String pwd=request.getParameter("pwd");
+		HttpSession mysession=request.getSession();
+		String name=String.valueOf(mysession.getAttribute("name"));
+		String pwd=String.valueOf(mysession.getAttribute("email"));
 		
 		// 클라이언트가 입력해준 데이터 VO에 저장 
 		BoardVO vo = new BoardVO();
@@ -230,7 +223,7 @@ public class NoticeModel {
 		   map.put("pName", name);
 		   map.put("pMsg", msg);
 		   // DAO
-		   NoticeReplyDAO.replyReplyInsert(map);
+		   NoticeReplyDAO.nreplyReplyInsert(map);
 		   return "redirect:ndetail.do?no="+bno;
 	   }
 	

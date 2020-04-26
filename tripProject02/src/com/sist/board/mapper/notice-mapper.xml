@@ -8,6 +8,15 @@
 		FROM notice ORDER BY group_id DESC,group_step ASC)) 
 		WHERE bno=1 AND num BETWEEN #{nstart} AND #{nend}
 	</select>
+	
+	<select id="qnoticeListData" resultType="BoardVO" parameterType="hashmap"> 
+		SELECT bno,no,subject,name,regdate,hit,group_tab,num
+		FROM (SELECT bno, no,subject,name,regdate,hit,group_tab,rownum as num
+		FROM (SELECT bno, no,subject,name,regdate,hit,group_tab
+		FROM notice ORDER BY group_id DESC,group_step ASC)) 
+		WHERE bno=1 AND num BETWEEN #{nstart} AND #{nend}
+	</select>
+	
 	<insert id="nrInsertData" parameterType="BoardVO">
 		INSERT INTO notice(bno,no,content,name,subject,pwd)
 		VALUES(

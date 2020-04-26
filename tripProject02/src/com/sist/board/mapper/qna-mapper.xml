@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.board.mapper.reply-mapper">
-	<select id="replyListData" resultType="BoardVO" parameterType="hashmap"> <!-- parameterType을 "java.util.Map"으로 줘도 되고 "hashmap"으로 줘도 됨 -->
+
+	<select id="qnaListData" resultType="BoardVO" parameterType="hashmap"> 
 		SELECT no,subject,name,regdate,hit,group_tab,num
 		FROM (SELECT no,subject,name,regdate,hit,group_tab,rownum as num
 		FROM (SELECT no,subject,name,regdate,hit,group_tab
@@ -15,11 +16,11 @@
 		WHERE ${fs} '%'||${ss}||'%' 
 	</select>
 	
-	<select id="replyTotalPage" resultType="int">
+	<select id="qnaTotalPage" resultType="int">
 		SELECT CEIL(COUNT(*)/15.0) FROM qna
 	</select>
 	
-	<select id="replyDetailData" resultType="BoardVO" parameterType="int">
+	<select id="qnaDetailData" resultType="BoardVO" parameterType="int">
 		SELECT *
 		FROM qna
 		WHERE no=#{no}
@@ -33,7 +34,7 @@
 	</update>
 	 
 	 
-	<insert id="replyInsertData" parameterType="BoardVO">
+	<insert id="qnaInsertData" parameterType="BoardVO">
 	 	<selectKey keyProperty="no" resultType="int" order="BEFORE"> <!-- order="BEFORE": 먼저 실행해라.. -->
  			SELECT NVL(MAX(no)+1,1) as no FROM qna 
  		</selectKey>		
@@ -61,7 +62,7 @@
 		WHERE no=#{no}
 	</select>
 	
-	<update id="replyUpdateData" parameterType="BoardVO">
+	<update id="qnaUpdateData" parameterType="BoardVO">
 		UPDATE qna
 		SET
 			name=#{name},
@@ -69,28 +70,28 @@
 			content=#{content}
 		WHERE no=#{no}
 	</update>
-	<select id="replyParentInfoData" resultType="BoardVO" parameterType="int">
+	<select id="qnaParentInfoData" resultType="BoardVO" parameterType="int">
 		SELECT group_id,group_step,group_tab
 		FROM qna
 		WHERE no=#{no}
 	</select>
 												
-	<update id="replyGroupStepIncrement" parameterType="BoardVO">
+	<update id="qnaGroupStepIncrement" parameterType="BoardVO">
 		UPDATE qna SET
 		group_step=group_step+1
 		WHERE group_id=#{group_id} AND group_step>#{group_step}				
 	</update>
 	
-	<insert id="replyReplyInsert" parameterType="BoardVO">
+	<insert id="qnaReplyInsert" parameterType="BoardVO">
 		<selectKey keyProperty="no" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(no)+1,1) as no FROM qna
 		</selectKey>
 		INSERT INTO qna(no,name,subject,content,pwd,group_id,group_step,group_tab,root)
-		VALUES(#{no},#{name},#{subject},#{content},1234,
+		VALUES(#{no},#{name},#{subject},#{content},#{pwd},
 		#{group_id},#{group_step},#{group_tab},#{root})
 	</insert>
 	
-	<update id="replyDepthIncrement" parameterType="int">
+	<update id="qnaDepthIncrement" parameterType="int">
 		UPDATE qna SET
 		depth=depth+1
 		WHERE no=#{no}
@@ -103,7 +104,7 @@
 		WHERE no=#{no}
 	</select>			
 	
-	<delete id="replyDelete" parameterType="int">
+	<delete id="qnaDelete" parameterType="int">
 		DELETE FROM qna
 		WHERE no=#{no}
 	</delete>
