@@ -11,7 +11,7 @@
     </init-param>
     <init-param>
        <param-name>defaultPath</param-name>
-       <param-value>C:\Users\sbcho\git\SIST_PROJECT_02\tripProject02\src</param-value>
+       <param-value>C:\Users\sist\git\SIST_PROJECT_02\tripProject02\src</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
