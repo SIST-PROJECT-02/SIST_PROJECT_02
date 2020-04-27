@@ -56,9 +56,15 @@
 		SELECT pwd FROM member WHERE email=#{email }
 	</select>
 	
+	<select id="memberforgotemail" resultType="String" parameterType="java.util.Map">
+		SELECT email FROM member WHERE name=#{name } AND birth=#{birth }
+	</select>
+	
 	<delete id="memberDelete_ok" parameterType="string">
-		DELETE
-		FROM member
-		WHERE email=#{email }
+		DELETE FROM member WHERE email=#{email }
 	</delete> 
+	
+	<select id="memberLikeDetail" resultType="HotelVO" parameterType="String">
+		SELECT * FROM like_log, products WHERE products.id=like_log.product_id AND member_email=#{member_email }
+	</select>
 </mapper>

@@ -24,7 +24,6 @@
 	<div class="recommended-hotel">
 		<span></span> 숙박 리스트
 	</div>
-
 	<jsp:include page="./../../hotel/jsp/list.jsp"></jsp:include>
 
 </body>
