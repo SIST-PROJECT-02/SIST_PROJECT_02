@@ -11,7 +11,7 @@
       FROM (SELECT id, title, product_kind, rownum as num 
       FROM (SELECT id, title, product_kind 
       FROM products ORDER BY id DESC))
-      WHERE num BETWEEN #{start} AND #{end} AND product_id = #{product_id}
+      WHERE num BETWEEN #{start} AND #{end} AND product_kind = #{product_kind}
     </select>
     
     <select id="hotelAllDataByEvelDESC" resultType="HotelVO" parameterType="java.util.Map">

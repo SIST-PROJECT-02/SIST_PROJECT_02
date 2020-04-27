@@ -7,6 +7,10 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+<settings>
+<setting name="jdbcTypeForNull" value="NULL"/>
+
+</settings>
 <!-- 
       (typeAliases?, 
        environments?,
@@ -21,6 +25,7 @@
     <typeAlias type="com.sist.member.model.MemberVO" alias="MemberVO"/>
 
     <typeAlias type="com.sist.hotel.dao.ReviewBoardVO" alias="ReviewBoardVO"/>
+    <typeAlias type="com.sist.attraction.vo.AttractionVO" alias="AttractionVO"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -56,6 +61,7 @@
     <mapper resource="com/sist/hotel/mapper/emp-mapper.xml"/>
     <mapper resource="com/sist/hotel/mapper/rev-mapper.xml"/>
     <mapper resource="com/sist/hotel/mapper/like-mapper.xml"/>
+    <mapper resource="com/sist/attraction/mapper/attr_mapper.xml"/>
   </mappers>
   
 </configuration>
