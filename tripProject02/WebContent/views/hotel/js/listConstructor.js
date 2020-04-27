@@ -2,8 +2,27 @@
 'use strict'
 
 window.addEventListener('DOMContentLoaded', ()=>{
-	console.log('it is changed - configuration5');
 	document.querySelector('.' + layoutDataForMainList.mainClassName +' ul').innerHTML = "";
+	document.querySelector('.' + layoutDataForMainList.navClassName + ' ul li select').addEventListener('change',(e)=>{
+    	switch(e.target.value){
+    	case "1":
+    		layoutDataForMainList.width = 800;
+    		layoutDataForMainList.rowCount = parseInt(e.target.value);
+    		layoutDataForMainList.elementHeight = 500;
+    		break;
+    	case "2":
+    		layoutDataForMainList.width = 900;
+    		layoutDataForMainList.rowCount = parseInt(e.target.value);
+    		layoutDataForMainList.elementHeight = 400;
+    		break;
+    	case "3":
+    		layoutDataForMainList.width = 1000;
+    		layoutDataForMainList.rowCount = parseInt(e.target.value);
+    		layoutDataForMainList.elementHeight = 300;
+    		break;
+    	}
+    	setLayout(layoutDataForMainList);
+    });
 	getListAjax();
 });
 

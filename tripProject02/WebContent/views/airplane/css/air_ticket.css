@@ -23,6 +23,7 @@
 	top:0px;
 	width: 692px;
 	height: 63px;
+	line-height: 63px;
 }
 .airport{
 	position: absolute;
@@ -40,10 +41,57 @@
 	width: 415.2px; height: 115px;
 }
 
+.start_info{
+	position: absolute;
+	text-align: center;
+	border: 0px solid black;
+	left: 18px;
+	top:23px;
+	width: 80px;
+	height: 70px;
+	line-height:30px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.total_time_seat{
+	position: absolute;
+	top: 70px;
+	left: 140px;
+	color: #999;
+}
+.end_info{
+	position: absolute;
+	text-align: center;
+	border: 0px solid black;
+	right: 12px;
+	top:23px;
+	width: 80px;
+	height: 70px;
+	line-height:30px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.airport_ticket_time{
+	width: 80px;
+	text-align: center;
+	background-image: url("../img/time_back_img.PNG");
+	background-position:center;
+	background-repeat: no-repeat;
+}
+.line{
+	position: absolute;
+	left: 63px;
+	top:57.5px;
+	background-color: purple;
+	width: 305px;
+	height: 2px;
+		
+}
 .airplane_reservation_btn{
 	position: absolute;
 	border:0px solid green;
-	/* background:red; */
 	top:63px;left:80%;
 	width: 138.4px;	height: 115px;
 	line-height: 115px;

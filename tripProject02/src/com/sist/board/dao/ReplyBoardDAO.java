@@ -12,16 +12,6 @@ public class ReplyBoardDAO {
 		ssf=CreateSqlSessionFactory.getSsf();
 	}
 	
-	/*
-	 * <프로그램>
-	 *  - 공통모듈: 모든 프로그램에 적용되는 모듈. 핵심모델에 반복되는 코드가 들어가지 않기 위해서, 중복되는 코드는 공통모듈로 따로 뺀다. 
-	 *    ex) 우리 프로그램에서 CreateSQLSessionFactory.java 따로 뺐음.
-	 *    ex) 스프링에서 AOP(Aspect Oriented Programming) 
-	 *        : 어떤 로직을 기준으로 핵심적인 관점, 부가적인 관점으로 나누어서 보고 그 관점을 기준으로 각각 모듈화한다.
-	 *          횡단관심(Crosscutting concerns)은 Aspect로 모듈화하고 핵심적인 비즈니스 로직에서 분리하여 재사용함.
-	 *    ex) 스프링에서는 아래와 같은 메소드에서 catch,finally절은 다 생략 가능. 계속 반복되는 공통 부분이므로 다 따로 빼놨기 때문.
-	 *  - 핵심모듈 
-	 */
 	
 	// [답글형 게시판 리스트] 
 	public static List<BoardVO> replyListData(Map map)
@@ -31,8 +21,8 @@ public class ReplyBoardDAO {
 		
 		try
 		{
-			session=ssf.openSession();	// 이전에 짰던 GetConnection과 같은 역할.
-			list=session.selectList("replyListData",map); // reply-mapper.xml의 id가 replyListData인 SQL구문에 map을 넣어서 값 넣는다.
+			session=ssf.openSession();	
+			list=session.selectList("replyListData",map); 
 			
 		}catch(Exception ex)
 		{
@@ -42,13 +32,6 @@ public class ReplyBoardDAO {
 		{
 			if(session!=null)
 				session.close();
-			/*
-			 * 위의 코딩 두 줄은 우리가 이전에 짰던 아래의 Disconnection 코드와 같다. 
-			 * (즉, Session안에 Connection과 PreparedStatement가 들어있는 것.)  
-			 * Connection, PreparedStatement
-			 * if(ps!=null) ps.close()
-			 * if(conn!=null) conn.close()
-			 */
 		}
 		
 		return list;
@@ -201,7 +184,7 @@ public class ReplyBoardDAO {
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			BoardVO pvo=session.selectOne("replayParentInfoData",pno);
+			BoardVO pvo=session.selectOne("replyParentInfoData",pno);
 			session.update("replyGroupStepIncrement",pvo);
 			//replyReplyInsert
 			//replyDepthIncrement
@@ -224,13 +207,13 @@ public class ReplyBoardDAO {
 		}
 	}
 	
-	public static boolean replyDelete(int no,String pwd){
+	public static boolean replyDelete(int no,String email){
 		boolean bCheck=false;
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			String db_pwd=session.selectOne("replyGetPassword", no);
-			if(db_pwd.equals(pwd)){
+			String db_email=session.selectOne("replyGetPassword", no);
+			if(db_email.equals(email)){
 				bCheck=true;
 				BoardVO vo=session.selectOne("replyDeleteInfoData", no);
 				if(vo.getDepth()==0){

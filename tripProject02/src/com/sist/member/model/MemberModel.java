@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 
+import sun.nio.cs.HistoricallyNamedCharset;
+
 
 @Controller
 public class MemberModel {
@@ -68,7 +70,7 @@ public class MemberModel {
 			session.setAttribute("name", vo.getName());
 			session.setAttribute("admin",vo.getAdmin());
 		}
-		System.out.println("MappingEmail: "+vo);
+		/*System.out.println("MappingEmail: "+vo);*/
 		request.setAttribute("msg", vo.getMsg());
 		return "member_login.jsp";
 	}
@@ -147,13 +149,12 @@ public class MemberModel {
 		
 		String email=request.getParameter("email");
 		String pwd=request.getParameter("pwd");
-		/*System.out.println(email);
-		System.out.println(pwd);*/
-		
+		/*System.out.println("mapper email:"+email);
+		System.out.println("mapper pwd"+pwd);*/
 		//DAO연결
 		boolean bCheck=MemberDAO.memberDelete(email, pwd);
 		request.setAttribute("bCheck", bCheck);
-		return "redirect:../../member/member_delete_ok.do";
+		return "../../member/member_delete.jsp";
 	}
 	
 	@RequestMapping("views/template/main/member_delete_ok.do")
