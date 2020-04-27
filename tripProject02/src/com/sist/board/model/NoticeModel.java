@@ -1,4 +1,5 @@
 package com.sist.board.model;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,8 @@ import com.sist.board.dao.NoticeDAO;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.board.dao.NoticeReplyDAO;
+import com.sist.board.dao.NoticeReplyVO;
+
 
 @Controller
 public class NoticeModel {
@@ -19,7 +22,8 @@ public class NoticeModel {
 	@RequestMapping("views/template/main/notice.do")
 	public String notice_list(HttpServletRequest request, HttpServletResponse response)
 	{
-		System.out.println("notice.do실행");
+		
+		
 		String page=request.getParameter("npage");
 		if(page==null)
 			page="1";
@@ -31,14 +35,24 @@ public class NoticeModel {
 		map.put("nstart", start);
 		map.put("nend", end);
 		
+		List replyList=new ArrayList();
+		
+	
+		int replyCount = 0;
 		//List<BoardVO> alist //e개의 공지사항-
+		
 		List<BoardVO> list=NoticeDAO.noticeListData(map);//start부터 end까지 자유게시판 가져온다
-		System.out.println(list.size());
+		for(int i = 0; i < list.size(); i++){
+			replyCount = NoticeDAO.noticecount(list.get(i).getNo());
+			replyList.add(replyCount);
+		}
+		request.setAttribute("countList", replyList);
+		
 		int totalpage=NoticeDAO.noticeTotalPage();
 		request.setAttribute("nlist", list);
 		request.setAttribute("ncurpage", curpage);
 		request.setAttribute("ntotalpage", totalpage);
-		
+	
 		request.setAttribute("jsp", "../../board/notice/nlist.jsp"); // main에 include시킴 
 		return "index.jsp";
 	}
@@ -48,12 +62,29 @@ public class NoticeModel {
 	public String notice_detail(HttpServletRequest request, HttpServletResponse response)
 	{
 		String no = request.getParameter("no");
-		
+		String page=request.getParameter("page");
+		if(page==null)
+			   page="1";
+		int curpage=Integer.parseInt(page);
+	    Map map=new HashMap();
+	    int rowSize=10;
+	    int start=(curpage*rowSize)-(rowSize-1);
+	    int end=curpage*rowSize;
+	    map.put("pStart", start);
+	    map.put("pEnd", end);
+	    map.put("pBno", Integer.parseInt(no));
+	    List<NoticeReplyVO> list=NoticeReplyDAO.noticereplyListData(map);
+	    
+	    map=new HashMap();
+	    map.put("pBno", Integer.parseInt(no));
+	    int totalpage=NoticeReplyDAO.noticereplyTotalPage(map);
+	    
 		BoardVO vo = NoticeDAO.noticeDetailData(Integer.parseInt(no));
 		vo=NoticeDAO.nhitIncrement(Integer.parseInt(no));
-				
+		request.setAttribute("list", list);
+		request.setAttribute("curpage", curpage);
+		request.setAttribute("totalpage", totalpage);
 		request.setAttribute("vo", vo);		
-		
 		request.setAttribute("jsp", "../../board/notice/detail.jsp"); // main에 include시킴 
 		return "index.jsp";
 		
@@ -84,7 +115,7 @@ public class NoticeModel {
 		   return "redirect:ndetail.do?no="+bno;
 	   }
 	@RequestMapping("views/template/main/notice_insert.do")
-	public String notice_insert(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+	public String notice_insert(HttpServletRequest request, HttpServletResponse response)
 	{		
 		request.setAttribute("jsp", "../../board/notice/ninsert.jsp");
 		return "index.jsp";
@@ -113,6 +144,7 @@ public class NoticeModel {
 		vo.setSubject(subject);
 		vo.setContent(content);
 		vo.setPwd(pwd);	
+		
 		
 		// VO를 INSERT 하게 mapper에서 수행 
 		NoticeDAO.noticeInsertData(vo);
@@ -223,7 +255,7 @@ public class NoticeModel {
 		   map.put("pName", name);
 		   map.put("pMsg", msg);
 		   // DAO
-		   NoticeReplyDAO.nreplyReplyInsert(map);
+		   NoticeReplyDAO.noticereplyInsert(map);
 		   return "redirect:ndetail.do?no="+bno;
 	   }
 	
@@ -239,11 +271,64 @@ public class NoticeModel {
 	public String reply_delete_ok(HttpServletRequest request, HttpServletResponse response){
 		String no=request.getParameter("no");
 		String pwd=request.getParameter("pwd");
-		//DAO
 		boolean bCheck=NoticeDAO.noticeDelete(Integer.parseInt(no), pwd);
 		request.setAttribute("bCheck", bCheck);
 		return "../../board/notice/delete_ok.jsp";
 	}
+	
+	@RequestMapping("views/template/main/noticereply_delete.do")
+	   public String notice_reply_delete(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   String no=request.getParameter("no");
+		   String bno=request.getParameter("bno");
+		   Map map=new HashMap();
+		   map.put("pNo", Integer.parseInt(no));
+		   NoticeReplyDAO.noticereplyDelete(map);
+		   return "redirect:ndetail.do?no="+bno;
+	   }
+	@RequestMapping("views/template/main/noticereply_update.do")
+	   public String notice_reply_update(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex){}
+		   String bno=request.getParameter("bno");
+		   String no=request.getParameter("no");
+		   String msg=request.getParameter("msg");
+		   
+		   Map map=new HashMap();
+		   map.put("pNo", Integer.parseInt(no));
+		   map.put("pMsg", msg);
+		   
+		   NoticeReplyDAO.noticereplyUpdate(map);
+		   return "redirect:ndetail.do?no="+bno;
+	   }
+	@RequestMapping("views/template/main/noticereply_reply.do")
+	   public String notice_reply_reply_insert(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   try
+		   {
+			  request.setCharacterEncoding("UTF-8");   
+		   }catch(Exception ex){}
+		   
+		   String bno=request.getParameter("bno");
+		   String pno=request.getParameter("pno");
+		   String msg=request.getParameter("msg");
+		   HttpSession session=request.getSession();
+		   String id=(String)session.getAttribute("email");
+		   String name=(String)session.getAttribute("name");
+		   
+		   Map map=new HashMap();
+		   map.put("pBno", Integer.parseInt(bno));
+		   map.put("pPno", Integer.parseInt(pno));
+		   map.put("pId", id);
+		   map.put("pName", name);
+		   map.put("pMsg", msg);
+		   // DAO
+		   NoticeReplyDAO.noticereplyReplyInsert(map);
+		   return "redirect:ndetail.do?no="+bno;
+	   }
 }
 
 

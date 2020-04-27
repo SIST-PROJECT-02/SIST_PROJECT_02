@@ -4,7 +4,7 @@ import java.util.*;
 public class NoticeReplyVO {
    private int no;
    private int bno;
-   private String id;
+   private String email;
    private String name;
    private String msg;
    private Date regdate;
@@ -27,10 +27,10 @@ public void setBno(int bno) {
 	this.bno = bno;
 }
 public String getId() {
-	return id;
+	return email;
 }
 public void setId(String id) {
-	this.id = id;
+	this.email = email;
 }
 public String getName() {
 	return name;

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.board.mapper.qna-mapper">
+
+	<select id="qnaListData" resultType="BoardVO" parameterType="hashmap"> 
+		SELECT no,subject,name,regdate,hit,group_tab,num
+		FROM (SELECT no,subject,name,regdate,hit,group_tab,rownum as num
+		FROM (SELECT no,subject,name,regdate,hit,group_tab
+		FROM qna ORDER BY group_id DESC,group_step ASC)) 
+		WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	
+	
+	<select id="qnaTotalPage" resultType="int">
+		SELECT CEIL(COUNT(*)/15.0) FROM qna
+	</select>
+	
+	<select id="qnaDetailData" resultType="BoardVO" parameterType="int">
+		SELECT *
+		FROM qna
+		WHERE no=#{no}
+	</select>
+	
+	 
+	<update id="hitIncrement" parameterType="int">
+		UPDATE qna
+		SET hit=hit+1
+		WHERE no=#{no}
+	</update>
+	 
+	 
+	<insert id="qnaInsertData" parameterType="BoardVO">
+	 	<selectKey keyProperty="no" resultType="int" order="BEFORE"> <!-- order="BEFORE": 먼저 실행해라.. -->
+ 			SELECT NVL(MAX(no)+1,1) as no FROM qna 
+ 		</selectKey>		
+		INSERT INTO qna(bno,no,name,subject,content,pwd,group_id)
+		VALUES(
+		    1,
+			#{no},
+			#{name},
+			#{subject},
+			#{content},
+			#{pwd},
+			(SELECT NVL(MAX(group_id)+1,1) FROM qna)
+		)
+	</insert>
+	
+	<select id="getInfoForUpdate" resultType="BoardVO" parameterType="int">
+		SELECT no,regdate,name,hit,subject,content
+		FROM qna
+		WHERE no=#{no}
+	
+	</select>
+	
+	<select id="replyGetPassword" resultType="String" parameterType="int" >
+		SELECT pwd FROM qna
+		WHERE no=#{no}
+	</select>
+	
+	<update id="qnaUpdateData" parameterType="BoardVO">
+		UPDATE qna
+		SET
+			name=#{name},
+			subject=#{subject},
+			content=#{content}
+		WHERE no=#{no}
+	</update>
+	<select id="qnaParentInfoData" resultType="BoardVO" parameterType="int">
+		SELECT group_id,group_step,group_tab
+		FROM qna
+		WHERE no=#{no}
+	</select>
+												
+	<update id="qnaGroupStepIncrement" parameterType="BoardVO">
+		UPDATE qna SET
+		group_step=group_step+1
+		WHERE group_id=#{group_id} AND group_step>#{group_step}				
+	</update>
+	
+	<insert id="qnaReplyInsert" parameterType="BoardVO">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(no)+1,1) as no FROM qna
+		</selectKey>
+		INSERT INTO qna(no,name,subject,content,pwd,group_id,group_step,group_tab,root)
+		VALUES(#{no},#{name},#{subject},#{content},#{pwd},
+		#{group_id},#{group_step},#{group_tab},#{root})
+	</insert>
+	
+	<update id="qnaDepthIncrement" parameterType="int">
+		UPDATE qna SET
+		depth=depth+1
+		WHERE no=#{no}
+	</update>
+	
+	<!-- delete -->
+	<select id="replyDeleteInfoData" resultType="BoardVO" parameterType="int">
+		SELECT root,depth
+		FROM qna
+		WHERE no=#{no}
+	</select>			
+	
+	<delete id="qnaDelete" parameterType="int">
+		DELETE FROM qna
+		WHERE no=#{no}
+	</delete>
+	<update id="replySubjectUpdate" parameterType="BoardVO">
+		UPDATE qna SET
+		subject=#{subject},content=#{content}
+		WHERE no=#{no}
+	</update>
+	<update id="replyDepthDecrement" parameterType="int">
+		UPDATE qna SET
+		depth=depth-1
+		WHERE no=#{no}
+	</update>
+</mapper>
+

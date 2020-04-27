@@ -38,13 +38,13 @@
 	<div class="wrapper row2">
 		<div id="services" class="clear">
 			<div class="text-center">
-				<img src="../../board/images/notice.jpeg">
+				<img src="../../board/images/notice.jpeg" style="width:900px;height:200px;">
 			</div>
 			<div class="row">
 				<table class="table" style="width: 60%; margin: 0px auto;">
 					<c:if test="${sessionScope.admin==1 }">
 						<tr>
-							<td><a href="qnainsert.do" class="btn btn-md btn-danger">새글</a>
+							<td><a href="notice_insert.do" class="btn btn-md btn-danger">새글</a>
 							</td>
 						</tr>
 					</c:if>
@@ -57,7 +57,7 @@
 						<th width="20%" class="text-center">작성일</th>
 						<th width="10%" class="text-center">조회수</th>
 					</tr>
-					<c:forEach var="vo" items="${nlist }">
+					<c:forEach var="vo" items="${nlist }" varStatus="status">
 						<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"
 							var="regdate" />
 						<tr>
@@ -69,7 +69,7 @@
 	  							&nbsp;&nbsp;
 	  						</c:forEach>
 									<img src="../../board/images/icon_reply.gif">
-								</c:if> <a href="ndetail.do?no=${vo.no }">${vo.subject }</a></td>
+								</c:if> <a href="ndetail.do?no=${vo.no }">${vo.subject }<c:if test="${countList[status.index] !=0 }">(${countList[status.index] })</c:if></a></td>
 							<td width="15%" class="text-center">관리자</td>
 							<td width="20%" class="text-center">${regdate }</td>
 							<td width="10%" class="text-center">${vo.hit }</td>

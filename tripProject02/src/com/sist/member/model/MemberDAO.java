@@ -151,8 +151,8 @@ public class MemberDAO {
 		SqlSession session=null;
 		try
 		{
-			System.out.println("email: "+email);
-			System.out.println("pwd: "+pwd);
+			/*System.out.println("email: "+email);
+			System.out.println("pwd: "+pwd);*/
 			session=ssf.openSession();
 			String db_pwd=session.selectOne("memberGetPwd", email);
 			if(db_pwd.equals(pwd))
@@ -163,7 +163,7 @@ public class MemberDAO {
 			else
 			{
 				bCheck=false;
-				
+				System.out.println("비밀번호가 일치하지않습니다.");
 			}
 			session.commit();
 		}

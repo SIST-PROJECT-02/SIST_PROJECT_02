@@ -29,8 +29,14 @@ public class QnaModel {
 		nmap.put("nstart", nstart);
 		nmap.put("nend", nend);
 		
+		List replyList=new ArrayList();
+		int replyCount = 0;
 		List<BoardVO> nlist=NoticeDAO.noticeListData(nmap);
-		System.out.println("Modelnlist사이즈:"+nlist.size());
+		for(int i = 0; i < nlist.size(); i++){
+			replyCount = NoticeDAO.noticecount(nlist.get(i).getNo());
+			replyList.add(replyCount);
+		}
+		request.setAttribute("countList", replyList);
 		int ntotalpage=NoticeDAO.noticeTotalPage();
 		request.setAttribute("nlist", nlist);
 		request.setAttribute("ncurpage", ncurpage);

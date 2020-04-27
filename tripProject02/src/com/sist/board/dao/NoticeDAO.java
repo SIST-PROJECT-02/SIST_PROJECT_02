@@ -34,29 +34,7 @@ public class NoticeDAO {
 		   }
 		   return list;
 	   }
-	public static List<BoardVO> qnoticeListData(Map nmap)
-	{
-		List<BoardVO> list=new ArrayList<BoardVO>();
-		SqlSession session=null;
-		
-		try
-		{
-			session=ssf.openSession();	
-			list=session.selectList("qnoticeListData",nmap); 
-			System.out.println("DAOnoticelistsize="+list.size());
-		}catch(Exception ex)
-		{
-			System.out.println("qnoticeListData: "+ex.getMessage());
-		}
-		finally
-		{
-			if(session!=null)
-				session.close();
-		}
-		
-		return list;
-	}
-	// [답글형 게시판 리스트] 
+	
 	public static List<BoardVO> noticeListData(Map map)
 	{
 		List<BoardVO> list=new ArrayList<BoardVO>();
@@ -66,7 +44,6 @@ public class NoticeDAO {
 		{
 			session=ssf.openSession();	
 			list=session.selectList("noticeListData",map); 
-			System.out.println("DAOnoticelistsize="+list.size());
 		}catch(Exception ex)
 		{
 			System.out.println("noticeListData: "+ex.getMessage());
@@ -80,7 +57,6 @@ public class NoticeDAO {
 		return list;
 	}
 	
-	// [답글형 게시판 총 페이지]
 	public static int noticeTotalPage()
 	{
 		int total=0;
@@ -103,8 +79,21 @@ public class NoticeDAO {
 		
 		return total;
 	}
+	public static int noticecount(int no){
+		int count=0;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			count=session.selectOne("noticecount",no);
+		} catch (Exception e) {
+			System.out.println("noticecount "+e.getMessage());
+		}finally{
+			if(session!=null)
+				session.close();
+		}
+		return count;
+	}
 	
-	// [답글형 게시판 상세페이지] 
 	public static BoardVO noticeDetailData(int no)
 	{
 		BoardVO vo = new BoardVO();
@@ -127,7 +116,6 @@ public class NoticeDAO {
 		return vo;
 	}
 	
-	// [상세피이지 조회 시 조회 수 증가]
 	public static BoardVO nhitIncrement(int no)
 	{
 		BoardVO vo = new BoardVO();
@@ -137,9 +125,9 @@ public class NoticeDAO {
 		{
 			session=ssf.openSession();	
 			session.update("nhitIncrement",no);
-			session.commit(); // ★★★
+			session.commit(); 
 			
-			vo=session.selectOne("noticeDetailData", no); // ★★★
+			vo=session.selectOne("noticeDetailData", no); 
 			
 		}catch(Exception ex)
 		{
@@ -155,7 +143,6 @@ public class NoticeDAO {
 	}
 	
 	
-	// [답글형 게시판 글쓰기] 
 	public static BoardVO noticeInsertData(BoardVO vo)
 	{
 		SqlSession session=null;
@@ -177,7 +164,6 @@ public class NoticeDAO {
 		return vo;
 	}
 	
-	// [글 수정] - 비번 확인 
 	public static String noticeGetPassword(int no)
 	{
 		String pwd="";
@@ -201,7 +187,6 @@ public class NoticeDAO {
 	}
 	
 	
-	// [글 수정] - 데이터 update 
 	public static BoardVO noticeUpdateData(BoardVO vo)
 	{
 		SqlSession session=null;

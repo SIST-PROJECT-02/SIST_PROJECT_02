@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="./../../airplane/js/airplane_ticket.js?v<%=System.currentTimeMillis()%>"></script>
-<script type="text/javascript" src="./../../airplane/js/airplane_ticket_more_info.js?v<%=System.currentTimeMillis()%>"></script>
+<script type="text/javascript" src="./../../airplane/js/airplane_info_more_info.js?v<%=System.currentTimeMillis()%>"></script>
 </head>
 <body>
 	<div id="ticket_view" >
@@ -74,7 +74,6 @@
 					 
 				</c:forEach>
 				<div class="row">
-				<% System.out.println("View page:"+request.getAttribute("page"));%>
 					<c:if test="${listSize == 10 }">
 					<div class="moreInfoBtn" id="moreInfoBtn" data-page="${page }" >
 						<h3 class="text-center" style="line-height: 100px;">더 보기</h3>

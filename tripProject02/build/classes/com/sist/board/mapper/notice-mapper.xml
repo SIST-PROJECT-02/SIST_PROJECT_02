@@ -70,7 +70,12 @@
 		SELECT no,regdate,name,hit,subject,content
 		FROM notice
 		WHERE no=#{no}
+	</select>
 	
+	<select id="noticecount" resultType="int" parameterType="int">
+	  SELECT COUNT(*) 
+	  FROM notice_reply 
+	  WHERE bno=#{no}
 	</select>
 	
 	<select id="noticeGetPassword" resultType="String" parameterType="int" >
@@ -86,6 +91,7 @@
 			content=#{content}
 		WHERE no=#{no}
 	</update>
+	
 	<select id="noticeParentInfoData" resultType="BoardVO" parameterType="int">
 		SELECT group_id,group_step,group_tab
 		FROM notice
