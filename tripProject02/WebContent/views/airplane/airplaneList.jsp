@@ -20,6 +20,7 @@
 	<!-- ***** Breadcumb Area End ***** -->
 
 	<!-- Explore Area -->
+	<div class="breadcumb-area bg-img bg-overlay" style="background-image: url(../css/img/bg-img/jeju.png)"></div>
 	<section id="air_frame" class="dorne-explore-area">
 		<!-- Explore Search Area -->
 		<!-- Explore Search Form -->
@@ -79,7 +80,7 @@
 
 
 							<button type="button" id="searchBtn"
-								class="btn dorne-btn-air mt-50 bg-white text-dark" style="margin-top: 50px">
+								class="btn dorne-btn-air mt-50 bg-white text-dark" style="margin-top: 30px">
 								<i class="fa fa-search pr-2" aria-hidden="true"></i> Search
 							</button>
 <!-- 						</form>

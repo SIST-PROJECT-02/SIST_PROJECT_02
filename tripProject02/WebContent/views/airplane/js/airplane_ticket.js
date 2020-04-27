@@ -33,34 +33,47 @@ $(function() {
 		
 		var type=$(this).attr('data-type');
 		
-		console.log("type:"+type);
-		/*console.log(airway);
-		console.log(start_airport);
-		console.log(start_hour);
-		console.log(end_airport);
-		console.log(end_hour);
-		console.log(seattype);
-		console.log(total_time);*/
+		var start_airport_str=start_airport_hidden.substring(1,2);
+		var end_airport_str=end_airport_hidden.substring(1,2);
 		
 		if(airway=='편도')
 		{
 			$('#ticket_view').html(
-					'<div class="air_ticket" data-start-airport="'+start_airport+'"data-end-airport="'+end_airport+'"'
-					+ 'data-start-time="'+start_time_hidden+'" data-end-time="'+end_time_hidden+'" data-airway="'+airway+'">'
+					'<div class="air_ticket" data-start-airport="'+start_airport+'"data-end-airport="'+end_airport+'" data-airline="'+airline+'"'
+					+ 'data-start-time="'+start_time_hidden+'" data-end-time="'+end_time_hidden+'" data-airway="'+airway+'"'
+					+ 'data-total-time="'+total_time+'" data-start-hour="'+start_hour+'" data-end-hour="'+end_hour+'" data-seattype="'+seattype+'" data-airimg="'+airimg+'">'
 					+ '<div class="air_title">'
-					+ '<h3 class="ticket_title"><b>가는날</b> 항공편</h3>'
+					+ '<h3 class="ticket_title"><b>가는날</b> 항공편</h3>' 
+					+ '<span style="font-size: 14px; color:#999; vertical-align: top;">'+start_time_hidden+' | '+start_airport_str+'에서 '+end_time_str+'가는 항공편</span>'
 					+ '</div>'
 					+ '<div class="ticket_delete_btn">'
 					+ '<input type="button" class="btn btn-xs btn-danger" value="x">'
 					+ '</div>'
 					+ '<div class="airport text-center">'
-					+ '<img src="../../airplane/img/'+airimg+'" width="30px" height="30px" data-airimg="'+airimg+'">'
-					+'<div id="airline" class="bottom"><span>'+airline+'</span></div>'
+					+ '<img src="../../airplane/img/'+airimg+'" width="30px" height="30px">'
+					+'<div id="airline" class="bottom"> <span>'+airline+'</span></div>'
 					+ '</div>'	
 					+'<div class="airplane_info">'
-					+start_hour+end_hour+seattype+total_time+ start_airport+end_airport
+					+ '<div class="start_info">'
+					+ '<span class="airport_ticket_title">'+start_airport_str+'</span><br>'
+					+ '<img src="img/start_spot.png"><br>'
+					+ '<div class="airport_ticket_time">'
+					+ '<span>'+start_hour+'</span>'
+					+ '</div>'
+					+ '<div class="line"></div>'
+					+ '<div class="total_time_seat">'
+					+ '<span style="font-size: 15px;">'+total_time+' '+seattype+'</span>'
+					+ '</div>'
+					+ '<div class="end_info">'
+					+ '<span class="airport_ticket_title">'+end_airport_str+'</span><br>'
+					+ '<img src="img/start_spot.png"><br>'
+					+ '<div class="airport_ticket_time">'
+					+ '<span>'+end_hour+'</span>'
+					+ '</div>'
+					+ '</div>'
 					+'</div>'
 					+'<div class="airplane_reservation_btn">'
+					+'<input id="reserveBtn" type="button" class="btn btn-sm btn-primary" value="예매하기">'
 					+'</div>'
 					+'</div>');
 			$('.container_air').hide();
@@ -70,12 +83,6 @@ $(function() {
 		{
 			if(type=='1')
 			{
-			/*	console.log(start_airport_hidden);
-				console.log(end_airport_hidden);
-				console.log(end_time_hidden);
-				console.log(airway);
-				console.log("type :"+type);*/
-				console.log(end_time_hidden);
 				$.ajax({
 					type:'POST',
 					url:'../../airplane/airplaneList_ok.do',
@@ -88,32 +95,46 @@ $(function() {
 					},
 					success:function(res)
 					{
-						/*console.log("type:"+type);
-						console.log("airway:"+airway);*/
 						$('#air-search').html(res);
 						$('#ticket_view').append(
-								'<div class="air_ticket" data-start-airport="'+start_airport+'"data-end-airport="'+end_airport+'"'
-								+ 'data-start-time="'+start_time_hidden+'" data-end-time="'+end_time_hidden+'" data-airway="'+airway+'">'
+								'<div class="air_ticket" data-start-airport="'+start_airport+'"data-end-airport="'+end_airport+'" data-airline="'+airline+'"'
+								+ 'data-start-time="'+start_time_hidden+'" data-end-time="'+end_time_hidden+'" data-airway="'+airway+'"'
+								+ 'data-total-time="'+total_time+'" data-start-hour="'+start_hour+'" data-end-hour="'+end_hour+'" data-seattype="'+seattype+'" data-airimg="'+airimg+'">'
 								+ '<div class="air_title">'
 								+ '<h3 class="ticket_title"><b>가는날</b> 항공편</h3>'
+								+ '<span style="font-size: 14px; color:#999; vertical-align: top;">'+start_airport_hidden+' | '+start_airport_str+'에서 '+end_time_str+'가는 항공편</span>'
 								+ '</div>'
 								+ '<div class="ticket_delete_btn">'
 								+ '<input type="button" class="btn btn-xs btn-danger" value="x">'
 								+ '</div>'
 								+ '<div class="airport text-center">'
-								+ '<img src="../../airplane/img/'+airimg+'" width="30px" height="30px" data-airimg="'+airimg+'">'
+								+ '<img src="../../airplane/img/'+airimg+'" width="30px" height="30px">'
 								+'<div id="airline" class="bottom"><span>'+airline+'</span></div>'
 								+ '</div>'	
 								+'<div class="airplane_info">'
-								+start_hour+end_hour+seattype+total_time
+								+'<div class="airplane_info">'
+								+ '<div class="start_info">'
+								+ '<span class="airport_ticket_title">'+start_airport_str+'</span><br>'
+								+ '<img src="img/start_spot.png"><br>'
+								+ '<div class="airport_ticket_time">'
+								+ '<span>'+start_hour+'</span>'
+								+ '</div>'
+								+ '<div class="line"></div>'
+								+ '<div class="total_time_seat">'
+								+ '<span style="font-size: 15px;">'+total_time+' '+seattype+'</span>'
+								+ '</div>'
+								+ '<div class="end_info">'
+								+ '<span class="airport_ticket_title">'+end_airport_str+'</span><br>'
+								+ '<img src="img/start_spot.png"><br>'
+								+ '<div class="airport_ticket_time">'
+								+ '<span>'+end_hour+'</span>'
+								+ '</div>'
+								+ '</div>'
 								+'</div>'
 								+'<div class="airplane_reservation_btn">'
-								/*+'<input type="hidden" name="start_time_hideen" id="start_time_hideen" value="'+start_time_hidden+'">'
-								+'<input type="hidden" name="end_time_hidden" id="end_time_hidden" value="'+end_time_hidden+'">'
-								+'<input type="hidden" name="start_airport_hideen" id="start_airport_hideen" value="'+start_airport+'">'
-								+'<input type="hidden" name="end_airport_hideen" id="end_airport_hidden" value="'+end_airport+'">'*/
 								+'</div>'
 								+'</div>');
+						
 					},
 					error:function(e)
 					{
@@ -127,24 +148,40 @@ $(function() {
 			else if(type=='2')
 			{
 				$('#ticket_view').append(
-						'<div class="air_ticket">'
-						+ '<div class="air_title">'
+						'<div class="air_ticket" data-start-airport2="'+start_airport+'"data-end-airport2="'+end_airport+'" data-airline2="'+airline+'"'
+						+ 'data-start-time2="'+start_time_hidden+'" data-end-time2="'+end_time_hidden+'" data-airway2="'+airway+'"'
+						+ 'data-total-time2="'+total_time+'" data-start-hour2="'+start_hour+'" data-end-hour2="'+end_hour+'" data-seattype2="'+seattype+'" data-airimg2="'+airimg+'">'
 						+ '<h3 class="ticket_title"><b>오는날</b> 항공편</h3>'
+						+ '<span style="font-size: 14px; color:#999; vertical-align: top;">'+start_airport_hidden+' | '+start_airport_str+'에서 '+end_time_str+'가는 항공편</span>'
 						+ '</div>'
 						+ '<div class="ticket_delete_btn">'
 						+ '<input type="button" class="btn btn-xs btn-danger" value="x">'
 						+ '</div>'
 						+ '<div class="airport text-center">'
-						+ '<img src="../../airplane/img/'+airimg+'" width="30px" height="30px" data-airimg="'+airimg+'">'
+						+ '<img src="../../airplane/img/'+airimg+'" width="30px" height="30px">'
 						+'<div id="airline" class="bottom"><span>'+airline+'</span></div>'
 						+ '</div>'	
 						+'<div class="airplane_info">'
-						+start_hour+end_hour+seattype+total_time
+						+ '<div class="start_info">'
+						+ '<span class="airport_ticket_title">'+start_airport_str+'</span><br>'
+						+ '<img src="img/start_spot.png"><br>'
+						+ '<div class="airport_ticket_time">'
+						+ '<span>'+start_hour+'</span>'
+						+ '</div>'
+						+ '<div class="line"></div>'
+						+ '<div class="total_time_seat">'
+						+ '<span style="font-size: 15px;">'+total_time+' '+seattype+'</span>'
+						+ '</div>'
+						+ '<div class="end_info">'
+						+ '<span class="airport_ticket_title">'+end_airport_str+'</span><br>'
+						+ '<img src="img/start_spot.png"><br>'
+						+ '<div class="airport_ticket_time">'
+						+ '<span>'+end_hour+'</span>'
+						+ '</div>'
+						+ '</div>'
 						+'</div>'
 						+'<div class="airplane_reservation_btn text-center">'
-						+'<form method="POST" action="#">'
-						+'<input type="submit" class="btn btn-sm btn-primary" value="예매하기">'
-						+'</form>'
+						+'<input id="reserveBtn" type="button" class="btn btn-sm btn-primary" value="예매하기">'
 						+'</div>'
 						+'</div>');
 				$('.container_air').hide();
