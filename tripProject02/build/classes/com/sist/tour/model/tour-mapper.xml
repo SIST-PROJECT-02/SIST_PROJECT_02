@@ -1,9 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.tour.model.tour-mapper">
-
-	<select id="tourlist" resultType="TourVO" parameterType="String">
-		SELECT * FROM products WHERE product_kind=#{product_kind } 
+	<!-- 
+	ID                NOT NULL NUMBER         
+	TITLE                      VARCHAR2(200)  
+	PRODUCT_KIND               VARCHAR2(50)   
+	HASH_TAG                   VARCHAR2(300)  
+	INTRODUCTION               VARCHAR2(1200) 
+	EVEL_POINT                 NUMBER         
+	WEB_SITE                   VARCHAR2(500)  
+	DESCRIPTION                CLOB           
+	CONVENIENCE                VARCHAR2(500)  
+	ADDRESS                    VARCHAR2(500)  
+	ROAD_ADDRESS               VARCHAR2(500)  
+	TEL                        VARCHAR2(100)  
+	LONGITUDE                  VARCHAR2(100)  
+	LATITUDE                   VARCHAR2(100)  
+	SHORT_DESCRIPTION          CLOB           
+	THUMBNAIL                  VARCHAR2(1000) 
+	REVIEW_COUNT               NUMBER   
+	 -->
+	<select id="tourlist" resultType="TourVO" parameterType="hashmap">
+		SELECT id,title,introduction,thumbnail,num
+		FROM (SELECT id,title,introduction,thumbnail,rownum as num 
+		FROM (SELECT id,title,introduction,thumbnail 
+		FROM products WHERE product_kind=#{product_kind } ORDER BY id))
+		WHERE num BETWEEN #{start} AND #{end}
 	</select>
+	
+	<select id="tourTotalPage" resultType="int" parameterType="String">
+		SELECT CEIL(COUNT(*)/9.0) FROM products WHERE product_kind=#{product_kind } 
+	</select>
+	
 	
 </mapper>
