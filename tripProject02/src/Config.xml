@@ -31,7 +31,6 @@
 	  <typeAlias type="com.sist.airplane.dao.AirplaneVO" alias="AirplaneVO"/>
 	  <typeAlias type="com.sist.airplane.dao.AirplaneSeatVO" alias="AirplaneSeatVO"/>
 	  <typeAlias type="com.sist.airplane.dao.AirplaneTimeVO" alias="AirplaneTimeVO"/>
-	  <typeAlias type="com.sist.member.model.TourlistVO" alias="TourlistVO"/>  
 		<typeAlias type="com.sist.tour.model.TourVO" alias="TourVO"/>  
     	<typeAlias type="com.sist.main.model.MainFoodVO" alias="MainFoodVO"/>
     	<typeAlias type="com.sist.main.model.MainHotelVO" alias="MainHotelVO"/>
@@ -74,7 +73,6 @@
     <mapper resource="com/sist/hotel/mapper/like-mapper.xml"/>
     <mapper resource="com/sist/hotel/mapper/create-room-mapper.xml"/>
     <mapper resource="com/sist/airplane/dao/airplane-mapper.xml"/>
-    <mapper resource="com/sist/member/model/tourlist-mapper.xml"/>
     <mapper resource="com/sist/hotel/mapper/reservation-mapper.xml"/>
     <mapper resource="com/sist/tour/model/tour-mapper.xml"/>
     <mapper resource="com/sist/main/model/main-mapper.xml"/>

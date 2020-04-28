@@ -2,7 +2,6 @@ section.reservation-wrap{
 	
 	width: 1000px;
 	margin: 20px auto;
-	background-color: yellow;
 }
 section.reservation-wrap .reservation-tab-UI{
 	overflow:hidden;	
@@ -104,4 +103,22 @@ section.reservation-wrap table .reservation-possible{
 	text-shadow: 6px 2px 2px gray;
 	font-size : 2rem;
 	cursor : pointer;
+}
+
+section.reservation-wrap .reservation-output li img{
+	width : 400px;
+	height : 300px;
+	display:block;
+	margin:auto;
+}
+
+section.reservation-wrap .reservation-output li{
+	font-size : 2rem;
+	margin-top:10px;
+}
+section.reservation-wrap .reservation-final-btn{
+	display:none;
+	color:red;
+	cursor:pointer;
+	font-size: 4rem;
 }
