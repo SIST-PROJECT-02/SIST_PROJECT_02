@@ -35,7 +35,6 @@ public class TourModel {
 		map.put("start", start);
 		map.put("end", end);
 	
-		
 		List<TourVO> list=TourDAO.tourlist(map);
 		
 		request.setAttribute("list", list);
@@ -62,7 +61,6 @@ public class TourModel {
 		map.put("start", start);
 		map.put("end", end);
 	
-		
 		List<TourVO> list=TourDAO.tourlist(map);
 		request.setAttribute("list", list);
 		request.setAttribute("page", page);
