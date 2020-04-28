@@ -60,7 +60,7 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="airplane.do">항공</a>
                                         <a class="dropdown-item" href="staying.do">숙소</a>
-                                        <a class="dropdown-item" href="index.jsp?mode=5">여행지</a>
+                                        <a class="dropdown-item" href="tourlist.do">관광지</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -68,7 +68,7 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                         <a class="dropdown-item" href="index.jsp?mode=6">항공</a>
                                         <a class="dropdown-item" href="index.jsp?mode=7">숙소</a>
-                                        <a class="dropdown-item" href="index.jsp?mode=8">여행지</a>
+                                        <a class="dropdown-item" href="index.jsp?mode=8">관광지</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">

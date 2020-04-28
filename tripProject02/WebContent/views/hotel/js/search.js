@@ -53,7 +53,7 @@ document.querySelector('.search-wrap .submit-search').addEventListener('click',(
 
 window.addEventListener('scroll',(e)=>{
 	console.log('top scroll : ' + document.body.scrollTop);
-	if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+	if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
 	    document.querySelector(".search-wrap").style.display = 'block';
 	  } else {
 		  document.querySelector(".search-wrap").style.display = 'none';
