@@ -60,7 +60,8 @@ public class QnaModel {
 		request.setAttribute("curpage", curpage);
 		request.setAttribute("totalpage", totalpage);
 		
-		request.setAttribute("jsp", "../../board/qna/qnalist.jsp"); // main에 include시킴 
+		request.setAttribute("jsp", "../../board/qna/qnalist.jsp");
+		//request.setAttribute("jsp", "../../board/qna/qnalist.jsp"); 
 		return "index.jsp";
 	}
 	

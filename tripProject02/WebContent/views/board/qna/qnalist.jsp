@@ -17,11 +17,6 @@
 	color: black;
 }
 
-#paging {
-	margin: 0px auto;
-	display: block;
-	width: 300px;
-}
 
 .notice {
 	background-color: #fffee4;
@@ -38,8 +33,7 @@
 					style="width: 900px; height: 200px;">
 			</div>
 			<div class="row">
-				<table class="table">
-					<!-- style="width: 60%; margin: 0px auto;" -->
+				<table class="table" style="width:1000px;">
 					<tr>
 						<c:if test="${sessionScope.email!=null }">
 							<td><a href="qnainsert.do" class="btn btn-md btn-danger">새글</a>
@@ -47,23 +41,23 @@
 						</c:if>
 					</tr>
 				</table>
-				<table class="table">
+				<table class="table" style="width:1000px">
 					<!--  style="width: 60%;  margin: 0px auto;"-->
 					<tr class="danger">
-						<th width="10%" class="text-center">번호</th>
-						<th width="40%" class="text-center">제목</th>
-						<th width="15%" class="text-center">작성자</th>
-						<th width="15%" class="text-center">작성일</th>
-						<th width="10%" class="text-center">조회수</th>
+						<th style="width:50px" class="text-center">번호</th>
+						<th style="width:150px" class="text-center">제목</th>
+						<th style="width:80px" class="text-center">작성자</th>
+						<th  style="width:100px" class="text-center">작성일</th>
+						<th style="width:50px" class="text-center">조회수</th>
 					</tr>
 					<c:forEach var="vo" items="${nlist }" varStatus="status">
 						<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"
 							var="regdate" />
 
 						<tr class="notice">
-							<td width="10%" class="text-center"><img
+							<td   style="width:50px" class="text-center"><img
 								src="../../board/images/bell.png" /></td>
-							<td width="40%" class="text-center"><c:if
+							<td  style="width:150px" class="text-center"><c:if
 									test="${vo.group_tab>0 }">
 									<c:forEach var="i" begin="1" end="${vo.group_tab }" step="1">
 	  							&nbsp;&nbsp;
@@ -73,17 +67,17 @@
 									<img src="../../board/images/new.gif">
 								</c:if> <a href="ndetail.do?no=${vo.no }">${vo.subject }<c:if
 										test="${countList[status.index] !=0 }">(${countList[status.index] })</c:if></a></td>
-							<td width="15%" class="text-center">관리자</td>
-							<td width="15%" class="text-center">${regdate }</td>
-							<td width="10%" class="text-center">${vo.hit }</td>
+							<td  style="width:80px" class="text-center">관리자</td>
+							<td  style="width:100px" class="text-center">${regdate }</td>
+							<td  style="width:50px" class="text-center">${vo.hit }</td>
 						</tr>
 					</c:forEach>
 					<c:forEach var="vo" items="${list }">
 						<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"
 							var="regdate" />
 						<tr>
-							<td width="10%" class="text-center">${vo.no }</td>
-							<td width="45%"><c:if test="${vo.group_tab>0 }">
+							<td  style="width:50px" class="text-center">${vo.no }</td>
+							<td  style="width:150px"><c:if test="${vo.group_tab>0 }">
 									<c:forEach var="i" begin="1" end="${vo.group_tab }" step="1">
 	  							&nbsp;&nbsp;
 	  						</c:forEach>
@@ -92,14 +86,14 @@
 							<c:if test="${today1 == regdate}">
 									<img src="../../board/images/new.gif">
 								</c:if></td>
-							<td width="15%" class="text-center">${vo.name }</td>
-							<td width="20%" class="text-center">${regdate }</td>
-							<td width="10%" class="text-center">${vo.hit }</td>
+							<td  style="width:80px" class="text-center">${vo.name }</td>
+							<td  style="width:100px"class="text-center">${regdate }</td>
+							<td  style="width:50px" class="text-center">${vo.hit }</td>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
-			<div id="paging">
+			<div style="text-align:center">
 				<a href="qna.do?page=${curpage>1?curpage-1:curpage }"
 					class="btn btn-md btn-primary">이전</a> ${curpage } page /
 				${totalpage } pages <a
