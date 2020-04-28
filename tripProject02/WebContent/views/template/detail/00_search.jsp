@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>여행복행</title>
 </head>
 <body>
     <!-- ***** Welcome Area Start ***** -->
@@ -13,8 +13,8 @@
             <div class="row h-100 align-items-center justify-content-center">
                 <div class="col-12 col-md-10">
                     <div class="hero-content">
-                        <h2>Discover places near you</h2>
-                        <h4>This is the best guide of your city</h4>
+                        <h2>제주도의 방방곳곳</h2>
+                        <h4>제주도의 구석구석을 찾아보세요</h4>
                     </div>
                     <!-- Hero Search Form -->
                     <div class="hero-search-form">
@@ -26,55 +26,55 @@
                         <!-- Tabs Content -->
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
-                                <h6>What are you looking for?</h6>
+                                <!-- <h6>What are you looking for?</h6> -->
                                 <form action="#" method="get">
                                     <select class="custom-select">
-                                        <option selected>Your Destinations</option>
-                                        <option value="1">New York</option>
-                                        <option value="2">Latvia</option>
+                                        <option selected>출발지</option>
+                                        <option value="1">인천 국제공항</option>
+                                        <!-- <option value="2">Latvia</option>
                                         <option value="3">Dhaka</option>
                                         <option value="4">Melbourne</option>
-                                        <option value="5">London</option>
+                                        <option value="5">London</option> -->
                                     </select>
                                     <select class="custom-select">
-                                        <option selected>All Catagories</option>
-                                        <option value="1">Catagories 1</option>
-                                        <option value="2">Catagories 2</option>
-                                        <option value="3">Catagories 3</option>
+                                        <option selected>목적지</option>
+                                        <option value="1">제주 국제공항</option>
+                                        <!-- <option value="2">Catagories 2</option>
+                                        <option value="3">Catagories 3</option> -->
                                     </select>
                                     <select class="custom-select">
-                                        <option selected>Price Range</option>
-                                        <option value="1">$100 - $499</option>
-                                        <option value="2">$500 - $999</option>
-                                        <option value="3">$1000 - $4999</option>
+                                        <option selected>항공권 종류</option>
+                                        <option value="1">왕복</option>
+                                        <option value="2">편도</option>
+                                        <!-- <option value="3">$1000 - $4999</option> -->
                                     </select>
-                                    <button type="submit" class="btn dorne-btn"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+                                    <button type="submit" class="btn dorne-btn"><i class="fa fa-search pr-2" aria-hidden="true"></i>검색</button>
                                 </form>
                             </div>
                             <div class="tab-pane fade" id="nav-events" role="tabpanel" aria-labelledby="nav-events-tab">
-                                <h6>What are you looking for?</h6>
+                               <!--  <h6>What are you looking for?</h6> -->
                                 <form action="#" method="get">
                                     <select class="custom-select">
-                                        <option selected>Your Destinations</option>
-                                        <option value="1">New York</option>
-                                        <option value="2">Latvia</option>
-                                        <option value="3">Dhaka</option>
-                                        <option value="4">Melbourne</option>
-                                        <option value="5">London</option>
+                                        <option selected>장소</option>
+                                        <option value="1">숙소</option>
+                                        <option value="2">여행지</option>
+                                        <option value="3">맛집</option>
+                                        <!-- <option value="4">Melbourne</option>
+                                        <option value="5">London</option> -->
                                     </select>
                                     <select class="custom-select">
-                                        <option selected>All Catagories</option>
+                                        <option selected>도착일</option>
                                         <option value="1">Catagories 1</option>
                                         <option value="2">Catagories 2</option>
                                         <option value="3">Catagories 3</option>
-                                    </select>
+                                    </select> 
                                     <select class="custom-select">
-                                        <option selected>Price Range</option>
+                                        <option selected>인원수</option>
                                         <option value="1">$100 - $499</option>
                                         <option value="2">$500 - $999</option>
                                         <option value="3">$1000 - $4999</option>
                                     </select>
-                                    <button type="submit" class="btn dorne-btn"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+                                    <button type="submit" class="btn dorne-btn"><i class="fa fa-search pr-2" aria-hidden="true"></i>검색</button>
                                 </form>
                             </div>
                         </div>
@@ -85,19 +85,19 @@
     </section>
     <!-- ***** Welcome Area End ***** -->
     
-       <!-- ***** About Area Start ***** -->
-    <section class="dorne-about-area section-padding-0-100">
+    <!-- ***** About Area Start ***** -->
+    <!-- <section class="dorne-about-area section-padding-0-100">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="about-content text-center">
-                        <h2>Discover your city with <br><span>Dorne</span></h2>
+                        <h2>믿을 수 있는 여행 팁 <br><span>여행복행</span></h2>
                         <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis tempus elit. Sed efficitur tortor neque, vitae aliquet urna varius sit amet. Ut rhoncus, nunc nec tincidunt volutpat, ex libero.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- ***** About Area End ***** -->
 
     <!-- ***** Editor Pick Area Start ***** -->

@@ -120,13 +120,11 @@
 		<c:if test="${empty jsp}">
 			<h4><jsp:include page="../detail/00_search.jsp"></jsp:include></h4>
 		</c:if>
-
-		
 	</div>
 
 	<br>
 	<br>
-	<!-- footer -->
+	<!-- footer1 -->
 	<%@ include file="./main_03_footer.jsp"%>
 
 	<!-- jQuery-2.2.4 js -->

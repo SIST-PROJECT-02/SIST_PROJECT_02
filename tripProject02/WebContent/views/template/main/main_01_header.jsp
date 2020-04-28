@@ -50,14 +50,15 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">여행정보<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="index.jsp?mode=1">여행준비</a>
-                                        <a class="dropdown-item" href="index.jsp?mode=2">가이드북</a>
+                                        <a class="dropdown-item" href="guidebook_safe.do">안전·안심관광가이드</a>
+                                        <a class="dropdown-item" href="guidebook_guide.do">제주가이드북</a>
+                                        <a class="dropdown-item" href="guidebook_map.do">제주관광지도</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">여행상품정보<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="index.jsp?mode=3">항공</a>
+                                        <a class="dropdown-item" href="airplane.do">항공</a>
                                         <a class="dropdown-item" href="staying.do">숙소</a>
                                         <a class="dropdown-item" href="index.jsp?mode=5">여행지</a>
                                     </div>
@@ -73,7 +74,7 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">커뮤니티<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                        <a class="dropdown-item" href="index.jsp?mode=9">공지사항</a>
+                                        <a class="dropdown-item" href="notice.do">공지사항</a>
                                         <a class="dropdown-item" href="index.jsp?mode=10">자유게시판</a>
                                         <a class="dropdown-item" href="index.jsp?mode=11">후기&팁</a>
                                         <a class="dropdown-item" href="qna.do">Q&A</a>
@@ -86,9 +87,9 @@
                                 <li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                        <a class="dropdown-item" href="mypage.do?email=${email }">회원정보수정 / 탈퇴</a>
-                                        <a class="dropdown-item" href="index.jsp?mode=10">즐겨찾기</a>
-                                        <a class="dropdown-item" href="index.jsp?mode=11">예약확인</a>
+                                        <a class="dropdown-item" href="member_mypage.do?email=${email }">정보수정 / 탈퇴</a>
+                                        <a class="dropdown-item" href="member_like.do?email=${email }">즐겨찾기</a>
+                                        <a class="dropdown-item" href="member_reservation.do">예약확인</a>
                                     </div>
 								</li>
 								</c:if>
@@ -100,11 +101,11 @@
                             <!-- Register btn -->
                             <c:if test="${sessionScope.email==null }"> 
 	                            <div class="dorne-signin-btn">
-	                                <a href="join.do">로그인 / 회원가입</a>
+	                                <a href="member_join.do">로그인 / 회원가입</a>
 	                            </div>
                             </c:if>
                             <c:if test="${sessionScope.email!=null }">
-	                            <form method="post" action="logout.do">
+	                            <form method="post" action="member_logout.do">
 	                            	<div class="collapse navbar-collapse" id="dorneNav">
 										<span style="display: inline-block;">
 											<font color="white">${sessionScope.name } 님</font>

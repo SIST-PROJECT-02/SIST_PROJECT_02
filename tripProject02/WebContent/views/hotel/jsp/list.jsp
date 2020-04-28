@@ -13,7 +13,9 @@
 </head>
 
 <body>
-
+	<br>
+	<br>
+	<br>
 	<nav class="hotel-nav">
 		<ul>
 			<li><select id="레이아웃♡행">
@@ -23,6 +25,9 @@
 			</select></li>
 		</ul>
 	</nav>
+	<br>
+	<br>
+	<br>
 	<section class="list">
 
 		<div class="list-count"></div>
@@ -39,14 +44,47 @@
 		</ul>
 		<div class="more-data">검색결과 더보기</div>
 	</section>
+	
 	<script id="template-list-items" type="text/template">
-        <li name="{name}">
+		<li name="{name}">
 			<label class="evelPoint">{label}</label>
             <a ><img src="{img}" alt=""></a>
             <a ><div id="title">{title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{like}</span></div>
             <div id="info">{information}</div></a>
-        </li>
+        </li> 
     </script>
+
+   <!-- 기존 css -->
+   <!-- 
+   		<li name="{name}">
+			<label class="evelPoint">{label}</label>
+            <a ><img src="{img}" alt=""></a>
+            <a ><div id="title">{title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{like}</span></div>
+            <div id="info">{information}</div></a>
+        </li> 
+   -->
+    
+   <!-- 바꾼 css -->
+   <!--  
+   		<li name="{name}">
+			<label class="evelPoint">{label}</label>
+			<div>
+				<div>
+					<img src="{img}" alt="">
+				</div>
+				<div class="feature-content d-flex align-items-center justify-content-between">
+					<div class="feature-title">
+						<h5>{title}</h5>
+						<p>{information}</p>
+					</div>
+					<div class="feature-favourite">
+						<a href="#">{like}</a>
+					</div>
+				</div>	
+			</div>
+        </li>	
+   -->
+    
 	<script src="./../../hotel/js/listConstructor.js?ver4"></script>
 	<script src="./../../hotel/js/layout/listLayout.js"></script>
 	<script src="./../../hotel/js/configuration/listConfiguration.js?ver1"></script>

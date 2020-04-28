@@ -17,10 +17,12 @@ var modalSetting = (data)=>{
 	modalLocalData = data;
 	var modal = document.querySelector('.modal-wrap');
 	var thumbnail = modal.querySelector('.data-wrap .img-wrap img');
+	if(data.thumbnail === 'null' || !(data.thumbnail)){
+    	data.thumbnail = "./../../hotel/img/imgPrepare.png";
+	}
 	thumbnail.src = data.thumbnail;
 	var hashTag = modal.querySelector('.data-wrap .img-wrap span');
-	if(data.hashTag === 'null'){
-		console.log('data.hashTag is null : ' + data.hashTag);
+	if(data.hashTag === 'null' || !(data.hashTag)){
 		data.hashTag = '즐거운 숙박!!♡행';
 	}
 	hashTag.innerText ='#' + data.hashTag.replace(/,/ig,',#');
@@ -64,6 +66,9 @@ document.querySelector('.modal-wrap nav').addEventListener('click',(e)=>{
 	case "nav-detail":
 		console.log('nav-detail');
 		var templateModal = document.querySelector('#template-modal-detail').innerHTML;
+		if(modalLocalData.description === 'null' || !(modalLocalData.description)){
+			modalLocalData.description = '설명 준비중이에요!';
+		}
 		templateModal = templateModal.replace('{description}',modalLocalData.description);
 		dynamicModal.innerHTML = templateModal;
 		break;
@@ -301,4 +306,27 @@ function makeOutListener(infowindow) {
     return function() {
         infowindow.close();
     };
+}
+
+var registModalDrag = ()=>{
+	var modal = document.querySelector('.modal-wrap');
+	var style = window.getComputedStyle(modal,null);
+	var modalX = (style.left).substr(0,(style.left).indexOf('px'));
+	var modalY = (style.top).substr(0,(style.top).indexOf('px'));
+	var gapX = 0;
+	var gapY = 0;
+
+	modal.addEventListener('drag',(e)=>{
+	});
+	modal.addEventListener('dragstart',(e)=>{
+		console.log("dd");
+		modalX = (style.left).substr(0,(style.left).indexOf('px'));
+		modalY = (style.top).substr(0,(style.top).indexOf('px'));
+		gapX = modalX - e.pageX;
+		gapY = modalY - e.pageY;
+	});
+	modal.addEventListener('dragover',(e)=>{
+		modal.style.top = gapY + e.pageY + 'px';
+		modal.style.left = gapX + e.pageX + 'px';
+	});
 }

@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="./../../hotel/css/modal.css?ver3">
 <link rel="stylesheet" href="./../../hotel/css/modalList.css">
 <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Jua&family=Yeon+Sung&display=swap" rel="stylesheet">
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=339dabf7e4db5fbb62ad255755d1f27d"></script>
 </head>
 <body>
@@ -33,7 +32,7 @@
 		</ul>
 		</nav>
 		<div class="dynamic-info-wrap"></div>
-		<div class="reservation-btn">예약하기</div>
+		<div class="reservation-btn"><a href="reservation.do">예약하기</a> </div>
 	</div>
 	</section>
 	<script id="template-modal-detail" type="text/template">
@@ -89,7 +88,7 @@
     </section>
 	</script>
 	<script id="template-modal-map-wrap" type="text/template">
-		<section class="modal-map-wrap" style="width:500px;height:400px;">
+		<section class="modal-map-wrap">
 		</section>
 	</script>
 	<script id="template-mark" type="text/template">

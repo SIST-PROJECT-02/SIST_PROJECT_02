@@ -33,27 +33,6 @@ function setLayout(layoutData){
         });
     });
     
-    document.querySelector('.' + layoutDataForMainList.navClassName + ' ul li select').addEventListener('change',(e)=>{
-    	console.log('here!');
-    	switch(e.target.value){
-    	case "1":
-    		layoutDataForMainList.width = 800;
-    		layoutDataForMainList.rowCount = parseInt(e.target.value);
-    		layoutDataForMainList.elementHeight = 500;
-    		break;
-    	case "2":
-    		layoutDataForMainList.width = 900;
-    		layoutDataForMainList.rowCount = parseInt(e.target.value);
-    		layoutDataForMainList.elementHeight = 400;
-    		break;
-    	case "3":
-    		layoutDataForMainList.width = 1000;
-    		layoutDataForMainList.rowCount = parseInt(e.target.value);
-    		layoutDataForMainList.elementHeight = 300;
-    		break;
-    	}
-    	setLayout(layoutData);
-    });
 }
 
 

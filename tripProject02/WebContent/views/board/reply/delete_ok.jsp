@@ -6,7 +6,7 @@
 </c:if>
 <c:if test="${bCheck==false }">
 	<script>
-		alert("비밀번호가 틀렸습니다");
+		alert("권한이 없습니다");
 		history.back();
 	</script>
 </c:if>

@@ -10,10 +10,10 @@
 .modal-wrap{
     display: none;
     background-color: #f8f9faba;
-    width : 1500px;
+    width : 1300px;
     position: fixed;
-    top: 100px;
-    left: 100px;
+    top: 150px;
+    left: 150px;
     border :7px solid #ffc107;
     z-index : 10;
     overflow-y: scroll;
@@ -31,13 +31,27 @@
 	line-height : 60px;
 	text-align : center;
 	cursor : pointer;
-<<<<<<< HEAD
 	background-color : rgba(0,0,0,0.3);
 	margin-left: 800px;
-=======
 	background-color : #7643ea;
 	
->>>>>>> 78325e4c95147400588a1f603f1795c1d7669840
+
+}
+
+.modal-wrap #template-modal-p{
+	font-size : 2rem;
+	color: #777;
+}
+.modal-wrap .reservation-btn{
+	float : right;
+	color : white;
+	width : 150px;
+	height : 60px;
+	line-height : 60px;
+	text-align : center;
+	cursor : pointer;
+	margin-left: 800px;
+	background-color : #7643ea;
 }
 
 .modal-wrap .data-wrap{
@@ -69,7 +83,7 @@
 .modal-wrap .img-wrap div{
 	position:absolute;
 	z-index : 30;
-	font-size : 2rem;
+	font-size : 4rem;
 	color : red;
 	top:400px;
 	left:1000px;
@@ -105,7 +119,9 @@
 }
 
 .modal-wrap .data-wrap .modal-map-wrap{
-	margin:auto;
+	margin:10px auto;
+	width:700px;
+	height:400px;
 }
 
 .modal-wrap table{
