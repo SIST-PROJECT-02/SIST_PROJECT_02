@@ -7,7 +7,19 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+
+<settings>
+<setting name="jdbcTypeForNull" value="NULL"/>
+
+</settings>
+<!-- 
+      (typeAliases?, 
+       environments?,
+       mappers?)
+ -->
+
   <typeAliases>
+  
       <typeAlias type="com.sist.hotel.dao.HotelVO" alias="HotelVO"/>
 	  <typeAlias type="com.sist.hotel.dao.LikeVO" alias="LikeVO"/>
 	  <typeAlias type="com.sist.hotel.dao.ProductRoomsVO" alias="ProductRoomsVO"/>
@@ -16,10 +28,11 @@
       <typeAlias type="com.sist.board.dao.ReplyVO" alias="ReplyVO"/>
       <typeAlias type="com.sist.board.dao.NoticeReplyVO" alias="NoticeReplyVO"/>
       <typeAlias type="com.sist.member.model.MemberVO" alias="MemberVO"/>
-	    <typeAlias type="com.sist.hotel.dao.ReviewBoardVO" alias="ReviewBoardVO"/>
-	    <typeAlias type="com.sist.airplane.dao.AirplaneVO" alias="AirplaneVO"/>
-	    <typeAlias type="com.sist.airplane.dao.AirplaneSeatVO" alias="AirplaneSeatVO"/>
-	    <typeAlias type="com.sist.airplane.dao.AirplaneTimeVO" alias="AirplaneTimeVO"/>
+	  <typeAlias type="com.sist.hotel.dao.ReviewBoardVO" alias="ReviewBoardVO"/>
+	  <typeAlias type="com.sist.airplane.dao.AirplaneVO" alias="AirplaneVO"/>
+	  <typeAlias type="com.sist.airplane.dao.AirplaneSeatVO" alias="AirplaneSeatVO"/>
+	  <typeAlias type="com.sist.airplane.dao.AirplaneTimeVO" alias="AirplaneTimeVO"/>
+	  <typeAlias type="com.sist.member.model.TourlistVO" alias="TourlistVO"/>  
     
   </typeAliases>
   <environments default="development">
@@ -59,6 +72,8 @@
     <mapper resource="com/sist/hotel/mapper/like-mapper.xml"/>
     <mapper resource="com/sist/hotel/mapper/create-room-mapper.xml"/>
     <mapper resource="com/sist/airplane/dao/airplane-mapper.xml"/>
+    <mapper resource="com/sist/member/model/tourlist-mapper.xml"/>
+    <mapper resource="com/sist/hotel/mapper/reservation-mapper.xml"/>
   </mappers>
   
 </configuration>

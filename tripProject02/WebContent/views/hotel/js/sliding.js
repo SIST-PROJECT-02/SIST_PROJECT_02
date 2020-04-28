@@ -1,3 +1,4 @@
+
 'use strict'
 
 var makeSlidingMainTemplate = (width, height, data) => {
@@ -160,5 +161,5 @@ function ajaxFunc(){
 	  };
 	  xhttp.open('POST', 'sliding.do', true);
 	  xhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-	  xhttp.send('count=8');
+	  xhttp.send('count=' + movingData.slidingCount);
 	}

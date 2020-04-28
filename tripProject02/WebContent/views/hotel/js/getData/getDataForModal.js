@@ -319,6 +319,7 @@ var registModalDrag = ()=>{
 	modal.addEventListener('drag',(e)=>{
 	});
 	modal.addEventListener('dragstart',(e)=>{
+		console.log("dd");
 		modalX = (style.left).substr(0,(style.left).indexOf('px'));
 		modalY = (style.top).substr(0,(style.top).indexOf('px'));
 		gapX = modalX - e.pageX;
@@ -329,3 +330,8 @@ var registModalDrag = ()=>{
 		modal.style.left = gapX + e.pageX + 'px';
 	});
 }
+document.querySelector('.modal-wrap .reservation-btn').addEventListener('click',(e)=>{
+	console.log('reservation button clicked!');
+	
+	window.location.href = 'reservation.do?product_id=' + modalData.modalId;
+});
