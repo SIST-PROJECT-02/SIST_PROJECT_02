@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.main.model.main-mapper">
+
+	<select id="mainPageHotel" resultType="MainHotelVO" parameterType="java.util.Map">
+    	SELECT id,title,product_kind,hash_tag,introduction,web_site,address,road_address,tel,thumbnail,num,evel_point
+      FROM (SELECT id,title,product_kind,hash_tag,introduction,web_site,address,road_address,tel,thumbnail,evel_point,rownum as num 
+      FROM (SELECT id,title,product_kind,hash_tag,introduction,web_site,address,road_address,tel,thumbnail,evel_point 
+      FROM products WHERE product_kind='숙박' AND hash_tag='호텔' AND thumbnail IS NOT NULL AND web_site!='null' AND evel_point>=#{evel_point}  AND title NOT IN('라마다프라자제주호텔')) ORDER BY evel_point  DESC)
+      WHERE num BETWEEN #{start} AND #{end}
+    </select>
+
+	<select id="mainPageTour" resultType="MainTourVO" parameterType="java.util.Map">
+    	SELECT id,title,product_kind,hash_tag,introduction,web_site,address,road_address,tel,thumbnail,num,evel_point
+      FROM (SELECT id,title,product_kind,hash_tag,introduction,web_site,address,road_address,tel,thumbnail,evel_point,rownum as num 
+      FROM (SELECT id,title,product_kind,hash_tag,introduction,web_site,address,road_address,tel,thumbnail,evel_point 
+      FROM products WHERE product_kind!='숙박' AND product_kind!='음식점' AND thumbnail IS NOT NULL AND web_site!='null' AND evel_point>=#{evel_point} AND title NOT IN('한라산국립공원') AND title NOT IN('카멜리아힐')) ORDER BY evel_point  DESC)
+      WHERE num BETWEEN #{start} AND #{end}
+    </select>
+    
+    <select id="mainPageFood" resultType="MainFoodVO" parameterType="java.util.Map">
+    	SELECT id,title,product_kind,hash_tag,introduction,web_site,address,road_address,tel,thumbnail,num,evel_point
+      FROM (SELECT id,title,product_kind,hash_tag,introduction,web_site,address,road_address,tel,thumbnail,evel_point,rownum as num 
+      FROM (SELECT id,title,product_kind,hash_tag,introduction,web_site,address,road_address,tel,thumbnail,evel_point 
+      FROM products WHERE product_kind='음식점' AND thumbnail IS NOT NULL AND web_site!='null' AND evel_point>=#{evel_point} AND title NOT IN('아이스크림연구소(올레시장점)') AND title NOT IN('아이스크림연구소(우도점)') AND title NOT IN('안녕육지사람') AND title NOT IN('신의한모') AND title NOT IN('교래손칼국수')) ORDER BY evel_point  DESC)
+      WHERE num BETWEEN #{start} AND #{end}
+    </select>
+
+</mapper>
