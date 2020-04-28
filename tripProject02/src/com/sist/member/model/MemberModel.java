@@ -230,18 +230,6 @@ public class MemberModel {
 		return "index.jsp";
 	}
 	
-	@RequestMapping("views/template/main/tourlist.do")
-	public String tourlist(HttpServletRequest request, HttpServletResponse response)
-	{	
-		String product_kind="관광지";
-		/*System.out.println("1. member_email은 "+member_email);*/
-		List<HotelVO> vo=MemberDAO.tourlist(product_kind);
-		/*System.out.println("4. List는 "+vo);*/
-		request.setAttribute("vo", vo);
-		request.setAttribute("jsp", "../../tourlist/tourlist.jsp");
-		return "index.jsp";
-	}
-	
 	@RequestMapping("views/template/main/member_forgot.do")
 	public String memberForgot(HttpServletRequest request, HttpServletResponse response)
 	{

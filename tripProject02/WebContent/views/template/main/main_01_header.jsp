@@ -39,13 +39,13 @@
             <div class="row h-100">
                 <div class="col-12 h-100">
                     <nav class="h-100 navbar navbar-expand-lg">
-                        <a class="navbar-brand" href="../../template/main/index.jsp"><img src="../css/img/core-img/logo.png" alt=""></a>
+                        <!-- <a class="navbar-brand"> --><a href="../../template/main/mainPage.do"><img src="../../airplane/img/logo.png" alt="" style="width: 165px; height: 88px; vertical-align: middle;"></a><!-- </a> -->
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dorneNav" aria-controls="dorneNav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
                         <!-- Nav -->
                         <div class="collapse navbar-collapse" id="dorneNav">
                             <ul class="navbar-nav mr-auto" id="dorneMenu">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="../../template/main/index.jsp">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="../../template/main/mainPage.do">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">여행정보<i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -60,7 +60,7 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="airplane.do">항공</a>
                                         <a class="dropdown-item" href="staying.do">숙소</a>
-                                        <a class="dropdown-item" href="tourlist.do">관광지</a>
+                                        <a class="dropdown-item" href="tour.do">관광지</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">

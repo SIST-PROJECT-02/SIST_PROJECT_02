@@ -6,6 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.frm').click(function(){
+		
+	})
+})
+</script>
 </head>
 <body>
     <!-- ***** Breadcumb Area Start ***** -->
@@ -15,6 +23,7 @@
     <!-- ***** Listing Destinations Area Start ***** -->
     <section class="dorne-listing-destinations-area section-padding-100-50">
         <div class="container">
+            
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading dark text-center">
@@ -24,6 +33,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="row">
                 <!-- Single Features Area -->
                  <c:forEach var="vo" items="${vo }"> 
@@ -47,6 +57,12 @@
 	                </div>
 	       		</c:forEach>         
             </div>
+            
+            <form  method="POST" action="tour_more.do" id="frm" name="frm">
+	            <div class="row">
+	            	<input type="submit" class="btn dorne-btn" value="더보기" style="width: 100%">
+	            </div>
+            </form>
         </div>
     </section>
     <!-- ***** Listing Destinations Area End ***** -->

@@ -260,29 +260,6 @@ public class MemberDAO {
 		}
 		
 		return pwd;
-	}
-	
-	public static List tourlist(String product_kind)
-	{
-		SqlSession session=null;
-		List<TourlistVO> vo=new ArrayList<TourlistVO>();
-		try 
-		{
-			session=ssf.openSession();
-			vo=session.selectList("tourlist",product_kind);
-		}
-		catch(Exception ex)
-		{
-			System.out.println("tourlist_error(): "+ex.getMessage());
-		}
-		finally
-		{
-			if(session!=null)
-				session.close();
-		}	
-		return vo;
-	}
-	
-	
+	}	
 	
 }

@@ -9,80 +9,13 @@
 	} catch (Exception ex) {
 	}
 
-	String mode = request.getParameter("mode");
+/* 	String mode = request.getParameter("mode");
 	if (mode == null) {
 		mode = "0";
-	}
-	int no = Integer.parseInt(mode);
-	String jsp = PATH + "search.jsp";
-
-	switch (no) {
-	//메인
-	case 0:
-		jsp = "../detail/00_search.jsp";
-		break;
-	//여행준비
-	case 1:
-		jsp = "../detail/01_ready.jsp";
-		break;
-	//가이드북
-	case 2:
-		jsp = "../detail/02_guidebook.jsp";
-		break;
-	//항공	
-	case 3:
-		jsp = "../detail/03_airline.jsp";
-		break;
-	//숙소	
-	case 4:
-		jsp = "../detail/04_staying.jsp";
-		break;
-	//여행지
-	case 5:
-		jsp = "../detail/05_destination.jsp";
-		break;
-	//항공	
-	case 6:
-		jsp = "../detail/06_airline.jsp";
-		break;
-	//숙소	
-	case 7:
-		jsp = "../detail/07_staying.jsp";
-		break;
-	//여행지
-	case 8:
-		jsp = "../detail/08_destination.jsp";
-		break;
-	//공지사항	
-	case 9:
-		jsp = "../detail/09_notice.jsp";
-		break;
-	//자유게시판	
-	case 10:
-		jsp = "../detail/10_free.jsp";
-		break;
-	//후기	
-	case 11:
-		jsp = "../detail/11_comment.jsp";
-		break;
-	//q&a	
-	case 12:
-		jsp = "../detail/12_q&a.jsp";
-		break;
-	//고객센터	
-	case 13:
-		jsp = "../detail/13_csc.jsp";
-		break;
-	//회원가입/로그인
-	case 14:
-		jsp = "../detail/00_join.jsp";
-		break;
-	//마이페이지
-	case 15:
-		jsp = "../detail/14_mypage.jsp";
-		break;
-	}
-%>
+	} */
+	/* int no = Integer.parseInt(mode); */
+	String jsp = PATH + "search.jsp"; 
+%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -113,12 +46,11 @@
 	<!-- content -->
 	<div>
 		<c:if test="${not empty jsp}">
-
 			<h4><jsp:include page="${jsp }"></jsp:include></h4>
-
 		</c:if>
 		<c:if test="${empty jsp}">
 			<h4><jsp:include page="../detail/00_search.jsp"></jsp:include></h4>
+			<%-- <jsp:include page="../../mainpage/mainPage.do"></jsp:include> --%>
 		</c:if>
 	</div>
 

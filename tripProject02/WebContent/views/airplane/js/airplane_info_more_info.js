@@ -64,7 +64,6 @@ $(function() {
 		page=parseInt(page)+1;
 		var totalpageInt=parseInt(totalpage);
 		/*console.log('nextPage: ' + page);*/
-		
 			
 		$.ajax({
 			type:'POST',

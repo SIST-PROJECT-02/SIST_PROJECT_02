@@ -6,4 +6,6 @@
   <context:component-scan base-package="com.sist.member.model"/>
   <context:component-scan base-package="com.sist.guidebook.model"/>
   <context:component-scan base-package="com.sist.airplane.model"/>
+  <context:component-scan base-package="com.sist.main.model"/>
+  <context:component-scan base-package="com.sist.tour.model"/>
 </beans>
