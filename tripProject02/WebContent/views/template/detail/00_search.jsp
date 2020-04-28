@@ -12,10 +12,12 @@
         <div class="container h-100">
             <div class="row h-100 align-items-center justify-content-center">
                 <div class="col-12 col-md-10">
+                    <!--메인 검색창 위의 기능
                     <div class="hero-content">
                         <h2>제주도의 방방곳곳</h2>
                         <h4>제주도의 구석구석을 찾아보세요</h4>
-                    </div>
+                    </div> 
+                    -->
                     <!-- Hero Search Form -->
                     <div class="hero-search-form">
                         <!-- Tabs -->
@@ -86,7 +88,7 @@
     <!-- ***** Welcome Area End ***** -->
     
     <!-- ***** About Area Start ***** -->
-    <!-- <section class="dorne-about-area section-padding-0-100">
+    <section class="dorne-about-area section-padding-0-100">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -97,7 +99,7 @@
                 </div>
             </div>
         </div>
-    </section> -->
+    </section> 
     <!-- ***** About Area End ***** -->
 
     <!-- ***** Editor Pick Area Start ***** -->
@@ -119,8 +121,8 @@
                         <img src="../css/img/bg-img/editor-1.jpg" alt="">
                         <div class="editors-pick-info">
                             <div class="places-total-destinations d-flex">
-                                <a href="#">New York</a>
-                                <a href="#">1643 Destinations</a>
+                                <a href="#">NewYork</a>
+                                <a href="#">590 Destinations</a>
                             </div>
                             <div class="add-more">
                                 <a href="#">+</a>

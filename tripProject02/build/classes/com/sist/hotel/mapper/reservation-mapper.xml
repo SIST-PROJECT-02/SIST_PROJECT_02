@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+   
+<mapper namespace="com.sist.hotel.mapper.reservation-mapper">
+	
+	<resultMap type="HashMap" id="priceHashMap">
+		<id column="id" property = "id"/>
+		<id column="price" property = "price"/>
+		<id column="regdate" property = "regdate"/>
+	</resultMap>
+	
+	<select id="getDateListByYearAndMonth" parameterType="java.util.Map" resultType="int">
+		SELECT DISTINCT TO_CHAR(regdate,'dd')
+		FROM (SELECT regdate 
+			FROM product_rooms_available 
+			WHERE hotel_id = #{product_id}  AND is_reserved = 'false')
+		WHERE regdate > SYSDATE AND TO_CHAR(regdate, 'yyyy') =
+									 #{year} AND TO_CHAR(regdate,'mm') = #{month}
+	</select>
+	
+	<select id="getPriceByRegdate" parameterType="java.util.Map" resultMap="priceHashMap">
+		SELECT pra.id id, pr.price price, TO_CHAR(pra.regdate,'YYYY/MM/DD') regdate FROM product_rooms_available pra, product_rooms pr
+    	<![CDATA[WHERE pra.room_no = pr.room_no
+    		AND pra.hotel_id = pr.hotel_id 
+    		AND pra.regdate > #{check_in} AND pra.regdate < #{check_out} AND pra.hotel_id = #{product_id}]]>
+    	ORDER BY regdate
+	</select>
+	
+	<insert id="insertReservation" parameterType="java.util.Map">
+		INSERT INTO reservations VALUES(
+			(SELECT NVL(MAX(id)+1,1) FROM reservations),
+			#{check_in},
+			#{check_out},
+			#{price},
+			#{member_email},
+			#{title},
+			0
+		)
+	</insert>
+</mapper>
