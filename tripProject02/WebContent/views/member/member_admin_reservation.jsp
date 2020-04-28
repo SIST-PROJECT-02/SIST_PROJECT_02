@@ -58,7 +58,7 @@ $(function(){
 		});
 		/* return false; */
 	});
-
+	
 });
 </script>
 </head>
@@ -68,6 +68,7 @@ $(function(){
     <!-- ***** Breadcumb Area End ***** -->
 
     <!-- ***** Listing Destinations Area Start ***** -->
+    <div id="start">
     <section class="dorne-listing-destinations-area section-padding-100-50">
         <div class="container">
             <div class="row">
@@ -75,7 +76,7 @@ $(function(){
                     <div class="section-heading dark text-center">
                         <span></span>
                         <h4>예약확인</h4>
-                        <p>${name }의 예약내역</p>
+                        <p>관리자 예약관리</p>
                     </div>
                 </div>
             </div>
@@ -96,7 +97,7 @@ $(function(){
 
     <div class="container">
     	<div class="row">
-    		<table class="reserveTable_hotel" style="width: 100%;">
+    		<table class="reserveTable_hotel">
     			<thead class="reserveTable_head">
     				<tr>
     					<th>예약번호</th>
@@ -108,19 +109,17 @@ $(function(){
 	    				<th>상태</th>
     				</tr>
     			</thead>
-    			<c:forEach var="hvo" items="${hotelList}">
     			<tbody class="reserveTable_body">
     				<tr>
-    					<td>${hvo.id }</td>
-    					<td>${hvo.email }</td>
-	    				<td>${hvo.title }</td>
-	    				<td>${hvo.check_in }</td>
-	    				<td>${hvo.check_out }</td>
-	    				<td>${hvo.price } 원</td>
-	    				<td><a class="btn ok1">${hvo.state }</a></td>
+    					<td>예약번호</td>
+	    				<td>투숙객명</td>
+	    				<td>숙소명</td>
+	    				<td>체크인</td>
+	    				<td>체크아웃</td>
+	    				<td>요금합계</td>
+	    				<td><a class="btn ok1">상태</a></td>
     				</tr>
     			</tbody>
-    			</c:forEach>
     		</table>
     	</div>
     </div>
@@ -147,7 +146,7 @@ $(function(){
 	    					<img src="../../airplane/img/${avo.img }" style="width: 40px; height: 40px;"><br>
 	    					${avo.airline }
 	    				</td>
-	    				<td style="width: 10%">${avo.date }<br>
+	    				<td>${avo.date }<br>
 	    					${avo.day }
 	    				</td>
 	    				<td>${avo.start_airport }<img src="../../airplane/img/arrow.PNG"> ${avo.end_airport }</td>
@@ -158,7 +157,7 @@ $(function(){
 	    				<td>
 	    					<c:choose>
 	    						<c:when test="${avo.status==0 }">
-	    							<button class="btn ok2" style="background-color:#FA5858; color:white;" >예약 대기</button>
+	    							<a href="member_admin_reservation_ok.do?rno=${avo.rno }"><button class="btn" style="background-color:#FA5858; color:white;">예약 대기</button></a>
 	    						</c:when>
 	    						<c:otherwise>
 	    							<button class="btn" style="background-color:#01DFA5; color:white;">예약 완료</button>
@@ -171,6 +170,7 @@ $(function(){
     			</c:forEach>
     		</table>	
     	</div>
+    </div>
     </div>
     <div id="result_reservation"></div>	
 </body>

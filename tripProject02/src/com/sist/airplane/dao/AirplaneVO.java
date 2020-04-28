@@ -17,6 +17,8 @@ public class AirplaneVO {
 	private int sizeType;
 	private String img;
 	private String airline;
+/*	private String email;
+	private String name;*/
 	private AirplaneSeatVO seatVO = new AirplaneSeatVO();
 	private AirplaneTimeVO timeVO = new AirplaneTimeVO();
 	public int getPlane_id() {
@@ -74,6 +76,18 @@ public class AirplaneVO {
 	public void setImg(String img) {
 		this.img = img;
 	}
+/*	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}*/
 	
 	
 	

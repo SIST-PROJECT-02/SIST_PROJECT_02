@@ -61,4 +61,8 @@
 		FROM member
 		WHERE email=#{email }
 	</delete> 
+	
+	<select id="hotelreserve" resultType="HotelReserveVO" parameterType="String">
+		SELECT id,TO_CHAR(check_in,'YYYY-MM-DD') as check_in,TO_CHAR(check_out,'YYYY-MM-DD') as check_out,TO_CHAR(price,'999,999,999') as price,email,title,state FROM reservations WHERE email=#{email } ORDER BY id
+	</select>
 </mapper>

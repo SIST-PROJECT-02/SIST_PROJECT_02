@@ -25,7 +25,7 @@
 		<!-- Explore Search Area -->
 		<!-- Explore Search Form -->
 		<div class="row">
-			<div id="side" class="explore-search-form col-3" style="font-weight: bold; min-height: 500px;">
+			<div id="side" class="explore-search-form col-3" style="font-weight: bold; min-height: 700px;">
 				<h6><font class="search-fixed" style="font-size: 20px; font-weight: bold;">어디로 떠나볼까요?</font></h6>
 				<!-- Tabs Content -->
 
@@ -36,16 +36,16 @@
 						<!-- <form name="frm" action="../../airplane/airplaneList_ok.do" method="post" id="frm"> -->
 
 							<select class="custom-select-air" id="start_airport"
-								name="start_airport" style="font-weight: bold;">
-								<option selected>출발공항 선택</option>
+								name="start_airport" style="font-weight: bold;" required>
+								<option selected value="">출발공항 선택</option>
 								<option value="제주 국제공항">제주 국제공항</option>
 								<option value="인천 국제공항">인천 국제공항</option>
 								<option value="포항 공항">포항 공항</option>
 								<option value="김포 국제공항">김포 국제공항</option>
 							</select> 
 							<select class="custom-select-air" id="end_airport"
-								name="end_airport" style="font-weight: bold;">
-								<option selected>도착공항 선택</option>
+								name="end_airport" style="font-weight: bold;" required>
+								<option selected value="">도착공항 선택</option>
 								<option value="제주 국제공항">제주 국제공항</option>
 								<option value="인천 국제공항">인천 국제공항</option>
 								<option value="포항 공항">포항 공항</option>
@@ -55,13 +55,13 @@
 								<h6>
 									<font style="color: white; font-weight: bold;">출발 날짜</font>
 								</h6>
-								<input type="date" min="${today }" name="start_time" class="form-control-air" id="start_time" required>
+								<input type="date" min="${today }" name="start_time" class="form-control-air" id="start_time">
 							</div>
-							<div class="date_font">
+							<div class="date_font" >
 								<h6>
 									<font style="color: white; font-weight: bold;">도착 날짜</font>
 								</h6>
-								<input type="date"  min="${today }" name="end_time" class="form-control-air" id="end_time" required>
+								<input type="date"  min="${today }" name="end_time" class="form-control-air" id="end_time" style="margin-left: 5px;">
 							</div>
 
 							<!-- 왕복 편도 라디오 버튼 -->
@@ -78,7 +78,15 @@
 								</label>
 							</div>
 
-
+							<div class="inwon">
+								<select  class="custom-select-air" id="inwon"
+									name="inwon" style="font-weight: bold; width: 100%; text-right" required>
+									<option selected value="">인원 수</option>
+									<c:forEach var="i" begin="1" end="8">
+										<option value="${i}">${i} 명 </option>
+									</c:forEach>
+								</select> 
+							</div>
 							<button type="button" id="searchBtn"
 								class="btn dorne-btn-air mt-50 bg-white text-dark" style="margin-top: 30px">
 								<i class="fa fa-search pr-2" aria-hidden="true"></i> Search

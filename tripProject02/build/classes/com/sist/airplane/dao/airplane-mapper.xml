@@ -15,8 +15,9 @@
 		<result column="totaltime" property="timeVO.totaltime"/>
 		<result column="price" property="seatVO.price"/>
 		<result column="seattype" property="seatVO.seattype"/>
-		
 	</resultMap>
+	
+	
 	<sql id="airListColumn">
 		plane_id,airline,start_airport,end_airport,
 		start_time, end_time, start_hour, end_hour, totaltime, price ,seattype,img
@@ -84,4 +85,116 @@
 		</choose> 
 		GROUP BY ap.plane_id
 	</select>
+	
+	<select id="airplaneReserveSelect" parameterType="hashmap" resultMap="airplaneMap">
+		SELECT ap.plane_id,ap.airline,at.start_airport,at.end_airport,
+		at.start_time, at.end_time, TO_CHAR(at.start_time,'HH24:MI') start_hour,
+		TO_CHAR(at.end_time,'HH24:MI') end_hour,
+		0||ROUND((end_time-start_time)*24*60/60)||'시간 0'||MOD(ROUND((end_time-start_time)*24*60),60)||'분' totaltime, price ,seattype,img
+		FROM airplane ap JOIN air_time at ON ap.plane_id=at.plane_id
+		INNER JOIN air_seat ae ON ap.plane_id=ae.plane_id
+		INNER JOIN airline_img al ON ap.airline=al.airline 
+		WHERE (at.start_airport=#{start_airport} AND at.end_airport=#{end_airport}) AND TO_CHAR(at.start_time)=#{start_time} AND ap.plane_id=#{plane_id}
+		AND seattype=#{seattype}
+		GROUP BY ap.plane_id,ap.airline,at.start_airport,at.end_airport,
+		at.start_time, at.end_time, TO_CHAR(at.start_time,'HH24:MI'),
+		TO_CHAR(at.end_time,'HH24:MI'),
+		0||ROUND((end_time-start_time)*24*60/60)||':0'||MOD(ROUND((end_time-start_time)*24*60),60), price ,seattype,img
+	</select> 
+	
+	<insert id="airplaneReserveInsert" parameterType="hashmap">
+		<selectKey keyProperty="rno" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(rno)+1,1) as rno FROM air_reserve 
+		</selectKey>
+		INSERT INTO air_reserve VALUES( 
+			#{rno},
+			#{email},
+			#{name},
+			#{vo.plane_id},
+			#{vo.airline},
+			#{airway},
+			#{vo.timeVO.start_airport},
+			#{vo.timeVO.end_airport},
+			#{vo.timeVO.start_time},
+			#{vo.timeVO.end_time},
+			#{vo.timeVO.start_hour},
+			#{vo.timeVO.end_hour},
+			#{vo.timeVO.totaltime},
+			#{vo.seatVO.seattype},
+			#{price},
+			#{vo.img},
+			#{inwon},
+			0)
+			
+	</insert>
+	
+	<insert id="airplaneReserveInsert2" parameterType="hashmap">
+		<selectKey keyProperty="rno" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(rno)+1,1) as rno FROM air_reserve 
+		</selectKey>
+		INSERT INTO air_reserve VALUES( 
+			#{rno},
+			#{email},
+			#{name},
+			#{vo2.plane_id},
+			#{vo2.airline},
+			#{airway},
+			#{vo2.timeVO.start_airport},
+			#{vo2.timeVO.end_airport},
+			#{vo2.timeVO.start_time},
+			#{vo2.timeVO.end_time},
+			#{vo2.timeVO.start_hour},
+			#{vo2.timeVO.end_hour},
+			#{vo2.timeVO.totaltime},
+			#{vo2.seatVO.seattype},
+			#{price2},
+			#{vo2.img},
+			#{inwon},
+			0)
+	</insert>
+	<!-- 
+		RNO           NOT NULL NUMBER        
+		EMAIL                  VARCHAR2(300) 
+		NAME                   VARCHAR2(300) 
+		PLANE_ID      NOT NULL NUMBER        
+		AIRLINE       NOT NULL VARCHAR2(30)  
+		AIRWAY        NOT NULL VARCHAR2(30)  
+		START_AIRPORT NOT NULL VARCHAR2(30)  
+		END_AIRPORT   NOT NULL VARCHAR2(30)  
+		START_TIME    NOT NULL DATE          
+		END_TIME      NOT NULL DATE          
+		START_HOUR    NOT NULL VARCHAR2(30)  
+		END_HOUR      NOT NULL VARCHAR2(30)  
+		TOTAL_TIME    NOT NULL VARCHAR2(30)  
+		SEATTYPE      NOT NULL NUMBER        
+		PRICE         NOT NULL VARCHAR2(30)  
+		IMG           NOT NULL VARCHAR2(100) 
+		INWON                  NUMBER        
+		STATUS                 NUMBER        
+	 -->	
+	<select id="airplaneReserveData" resultType="AirplaneReserveVO" parameterType="hashmap">
+		SELECT rno,name,plane_id,airline,airway,start_airport,
+		end_airport,TO_CHAR(start_time,'YYYY-MM-DD (DAY)') as start_time,end_time,start_hour,end_hour,
+		total_time,seattype,TO_CHAR(price,'999,999,999') as price,inwon,status,img
+		FROM air_reserve
+		<trim prefix="WHERE">
+			<if test="admin==0">email=#{email}</if>
+		</trim>
+		ORDER BY <choose>
+			<when test="admin==0">
+				rno
+			</when>
+			<otherwise>
+				start_time	
+			</otherwise>
+		</choose>
+		ASC
+	</select>
+	
+	<update id="airplaneReserveDataUpdate" parameterType="int">
+		UPDATE air_reserve SET 
+			status=1
+		WHERE rno=#{rno}
+	</update>
+
 </mapper>

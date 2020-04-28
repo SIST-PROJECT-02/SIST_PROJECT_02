@@ -10,7 +10,7 @@
 <link rel="icon" href="../css/img/core-img/favicon.ico">
 
 <!-- Core Stylesheet -->
-<link href="../css/style.css" rel="stylesheet">
+<link href="../css/style.css?v<%=System.currentTimeMillis()%>" rel="stylesheet">
 
 <!-- Responsive CSS -->
 <link href="../css/css/responsive/responsive.css" rel="stylesheet">
@@ -39,10 +39,12 @@
             <div class="row h-100">
                 <div class="col-12 h-100">
                     <nav class="h-100 navbar navbar-expand-lg">
-                        <a class="navbar-brand" href="../../template/main/index.jsp"><img src="../css/img/core-img/logo.png" alt=""></a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dorneNav" aria-controls="dorneNav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
+                    	<div id="logo">
+                        	<a href="mainpage.do"><img src="../../airplane/img/logo.png" alt=""></a>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dorneNav" aria-controls="dorneNav" aria-expanded="false" aria-label="Toggle navigation" ><span class="fa fa-bars"></span></button>
                         <!-- Nav -->
-                        <div class="collapse navbar-collapse" id="dorneNav">
+                        <div class="collapse navbar-collapse" id="dorneNav" style="margin-left: 120px;">
                             <ul class="navbar-nav mr-auto" id="dorneMenu">
                                 <li class="nav-item active">
                                     <a class="nav-link" href="../../template/main/index.jsp">Home <span class="sr-only">(current)</span></a>
@@ -83,7 +85,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.jsp?mode=13">고객센터</a>
                                 </li>
-                                <c:if test="${sessionScope.email!=null }">
+                                <c:if test="${sessionScope.email!=null && admin==0}">
                                 <li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
@@ -92,6 +94,14 @@
                                         <a class="dropdown-item" href="member_reservation.do">예약확인</a>
                                     </div>
 								</li>
+								</c:if>
+								<c:if test="${sessionScope.email!=null && admin==1 }">
+								 	<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+	                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+	                                        <a class="dropdown-item" href="member_admin_reservation.do">예약 관리</a>
+	                                    </div>
+                                    </li>
 								</c:if>
                             </ul>
                             <!-- Search btn -->

@@ -3,7 +3,9 @@ package com.sist.member.model;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.util.*;
+import com.sist.airplane.dao.AirplaneDAO;
+import com.sist.airplane.dao.AirplaneReserveVO;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 
@@ -176,10 +178,75 @@ public class MemberModel {
 	@RequestMapping("views/template/main/member_reservation.do")
 	public String memberReservation(HttpServletRequest request, HttpServletResponse response)
 	{
+		try{
+			request.setCharacterEncoding("UTF-8");
+		}catch (Exception ex) {}
+		HttpSession session=request.getSession();
+		
+		String email=(String)session.getAttribute("email");
+		String admin=(String)session.getAttribute("admin");
+		
+		Map map=new HashMap();
+		map.put("email", email);
+		map.put("admin", admin);
+		List<AirplaneReserveVO> list=AirplaneDAO.airplaneReserveData(map);
+		
+		Map hmap=new HashMap();
+		hmap.put("email", email);
+		hmap.put("admin", admin);
+		List<HotelReserveVO> hotellist=HotelplaneDAO.HotelReserve(hmap);
+		
+		for(AirplaneReserveVO vo:list)
+		{
+			String date=vo.getStart_time().substring(0,10);
+			String day=vo.getStart_time().substring(vo.getStart_time().indexOf("("),vo.getStart_time().lastIndexOf(")")+1);
+			vo.setDate(date);
+			vo.setDay(day);
+		}
+		
 		request.setAttribute("jsp", "../../member/member_reservation.jsp");
+		request.setAttribute("airList", list);
+		request.setAttribute("hotelList",hotellist);
+		
+		return "index.jsp";
+	}
+	@RequestMapping("views/template/main/member_admin_reservation.do")
+	public String member_admin_reservation(HttpServletRequest request,HttpServletResponse response)
+	{
+		try{
+			request.setCharacterEncoding("UTF-8");
+		}catch (Exception ex) {}
+		HttpSession session=request.getSession();
+		
+		String email=(String)session.getAttribute("email");
+		String admin=(String)session.getAttribute("admin");
+		
+		Map map=new HashMap();
+		map.put("email", email);
+		map.put("admin", admin);
+		
+		List<AirplaneReserveVO> list=AirplaneDAO.airplaneReserveData(map);
+		
+		for(AirplaneReserveVO vo:list)
+		{
+			String date=vo.getStart_time().substring(0,10);
+			String day=vo.getStart_time().substring(vo.getStart_time().indexOf("("),vo.getStart_time().lastIndexOf(")")+1);
+			vo.setDate(date);
+			vo.setDay(day);
+		}
+		request.setAttribute("jsp", "../../member/member_admin_reservation.jsp");
+		request.setAttribute("airList", list);
 		return "index.jsp";
 	}
 	
+	@RequestMapping("views/template/main/member_admin_reservation_ok.do")
+	public String member_admin_reservation_ok(HttpServletRequest request, HttpServletResponse response)
+	{
+		String rno=request.getParameter("rno");
+		
+		AirplaneDAO.airplaneReserveDataUpdate(Integer.parseInt(rno));
+		return "redirect:../../template/main/member_admin_reservation.do";
+	}
 	@RequestMapping("views/template/main/reserve_hotel.do")
 	public String reserve_hotel(HttpServletRequest request, HttpServletResponse response)
 	{
