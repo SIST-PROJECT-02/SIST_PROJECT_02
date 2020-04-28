@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>f
+<title>Insert title here</title>
 <!-- Favicon -->
 <link rel="icon" href="../css/img/core-img/favicon.ico">
 
@@ -75,7 +75,7 @@
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">커뮤니티<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                         <a class="dropdown-item" href="notice.do">공지사항</a>
-                                        <a class="dropdown-item" href="freeboard.do">자유게시판</a>
+                                        <a class="dropdown-item" href="free.do">자유게시판</a>
                                         <a class="dropdown-item" href="qna.do">Q&A</a>
                                     </div>
                                 </li>

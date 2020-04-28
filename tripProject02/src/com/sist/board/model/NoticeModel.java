@@ -23,7 +23,6 @@ public class NoticeModel {
 	public String notice_list(HttpServletRequest request, HttpServletResponse response)
 	{
 		
-		
 		String page=request.getParameter("npage");
 		if(page==null)
 			page="1";
@@ -34,13 +33,10 @@ public class NoticeModel {
 		int end=rowSize*curpage;
 		map.put("nstart", start);
 		map.put("nend", end);
-		
+		System.out.println("start"+start);
+		System.out.println("end"+end);
 		List replyList=new ArrayList();
-		
-	
 		int replyCount = 0;
-		//List<BoardVO> alist //e개의 공지사항-
-		
 		List<BoardVO> list=NoticeDAO.noticeListData(map);//start부터 end까지 자유게시판 가져온다
 		for(int i = 0; i < list.size(); i++){
 			replyCount = NoticeDAO.noticecount(list.get(i).getNo());
@@ -207,11 +203,12 @@ public class NoticeModel {
 		}catch(Exception ex){}
 		
 		// 클라이언트가 수정한 데이터를 가지고 와서 
+		HttpSession mysession=request.getSession();
+		String name=String.valueOf(mysession.getAttribute("name"));
+		String pwd=String.valueOf(mysession.getAttribute("email"));
 		String no=request.getParameter("no");
-		String name=request.getParameter("name");
 		String subject=request.getParameter("subject");
 		String content=request.getParameter("content");
-		String pwd=request.getParameter("pwd");  // 사용자가 입력한 비번을 가지고 와서 
 			 
 		// 클라이언트가 수정한 데이터를 VO에 저장 
 		BoardVO vo = new BoardVO();
@@ -270,8 +267,10 @@ public class NoticeModel {
 	@RequestMapping("views/template/main/ndelete_ok.do")
 	public String reply_delete_ok(HttpServletRequest request, HttpServletResponse response){
 		String no=request.getParameter("no");
-		String pwd=request.getParameter("pwd");
-		boolean bCheck=NoticeDAO.noticeDelete(Integer.parseInt(no), pwd);
+		HttpSession session=request.getSession();
+		String email=String.valueOf(session.getAttribute("email"));
+		System.out.println("email="+email);
+		boolean bCheck=NoticeDAO.noticeDelete(Integer.parseInt(no), email);
 		request.setAttribute("bCheck", bCheck);
 		return "../../board/notice/delete_ok.jsp";
 	}

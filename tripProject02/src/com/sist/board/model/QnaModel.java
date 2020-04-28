@@ -109,8 +109,6 @@ public class QnaModel {
 		String content=request.getParameter("content");
 		//String pwd=request.getParameter("pwd");
 		
-		mysession.setAttribute("mypwd", pwd);
-		System.out.println(mysession.getAttribute("mypwd"));
 		// 클라이언트가 입력해준 데이터 VO에 저장 
 		BoardVO vo = new BoardVO();
 		vo.setName(name);

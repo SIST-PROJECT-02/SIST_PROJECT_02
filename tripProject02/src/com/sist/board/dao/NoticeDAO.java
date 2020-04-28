@@ -235,13 +235,13 @@ public class NoticeDAO {
 		}
 	}
 	
-	public static boolean noticeDelete(int no,String pwd){
+	public static boolean noticeDelete(int no,String email){
 		boolean bCheck=false;
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
 			String db_pwd=session.selectOne("noticeGetPassword", no);
-			if(db_pwd.equals(pwd)){
+			if(db_pwd.equals(email)){
 				bCheck=true;
 				BoardVO vo=session.selectOne("noticeDeleteInfoData", no);
 				if(vo.getDepth()==0){

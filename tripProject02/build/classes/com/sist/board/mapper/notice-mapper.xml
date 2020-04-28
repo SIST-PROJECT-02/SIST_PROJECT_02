@@ -9,7 +9,7 @@
 		WHERE bno=1 AND num BETWEEN #{nstart} AND #{nend}
 	</select>
 	
-	<insert id="nrInsertData" parameterType="BoardVO">
+	<!-- <insert id="nrInsertData" parameterType="BoardVO">
 		INSERT INTO notice(bno,no,content,name,subject,pwd)
 		VALUES(
 		    2,
@@ -19,7 +19,7 @@
 			1,
 			1234
 		)
-	</insert>
+	</insert> -->
 	<select id="nrListData" resultType="BoardVO" parameterType="hashmap"> 
 		SELECT *
 		FROM notice

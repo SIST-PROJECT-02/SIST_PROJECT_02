@@ -26,6 +26,7 @@
       <typeAlias type="com.sist.board.dao.BoardVO" alias="BoardVO"/>
       <typeAlias type="com.sist.board.dao.ReplyVO" alias="ReplyVO"/>
       <typeAlias type="com.sist.board.dao.NoticeReplyVO" alias="NoticeReplyVO"/>
+      <typeAlias type="com.sist.board.dao.FreeReplyVO" alias="FreeReplyVO"/>
       <typeAlias type="com.sist.member.model.MemberVO" alias="MemberVO"/>
 	  <typeAlias type="com.sist.hotel.dao.ReviewBoardVO" alias="ReviewBoardVO"/>
 	  <typeAlias type="com.sist.airplane.dao.AirplaneVO" alias="AirplaneVO"/>
@@ -65,12 +66,14 @@
 	<mapper resource="com/sist/board/mapper/notice-mapper.xml"/>
     <mapper resource="com/sist/board/mapper/qna-mapper.xml"/>
     <mapper resource="com/sist/board/mapper/notice-reply-mapper.xml"/>
-    <mapper resource="com/sist/board/mapper/freeboard-reply-mapper.xml"/>
+    <mapper resource="com/sist/board/mapper/free-reply-mapper.xml"/>
+    <mapper resource="com/sist/board/mapper/free-mapper.xml"/>
+    
     <mapper resource="com/sist/member/model/member-mapper.xml"/>
     <mapper resource="com/sist/hotel/mapper/emp-mapper.xml"/>
     <mapper resource="com/sist/hotel/mapper/rev-mapper.xml"/>
     <mapper resource="com/sist/hotel/mapper/like-mapper.xml"/>
-    <mapper resource="com/sist/attraction/mapper/attr_mapper.xml"/>
+    <!-- <mapper resource="com/sist/attraction/mapper/attr_mapper.xml"/> -->
     <mapper resource="com/sist/hotel/mapper/create-room-mapper.xml"/>
     <mapper resource="com/sist/airplane/dao/airplane-mapper.xml"/>
     <mapper resource="com/sist/member/model/tourlist-mapper.xml"/>

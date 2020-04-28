@@ -49,7 +49,7 @@
 	<div class="wrapper row2">
 		<div id="services" class="clear">
 			<div style="width:1000px;height: 150px;margin-left:300px;">
-			<img src="../../board/images/notice.png" style="text-align:center;width:100%; height:120px;"/></div>
+			<img src="../../board/images/free.png" style="text-align:center;width:100%; height:120px;"/></div>
 			<div class="container">
 				<div class="row">
 					<table class="table" style="width: 80%; margin: 0px auto;">
@@ -79,16 +79,16 @@
 			<tr>
 				<td class="text-right" colspan="2"><c:if
 						test="${sessionScope.admin==1 }">
-						<a href="nupdate.do?no=${vo.no }" class="btn btn-md btn-success">수정</a>
-						<a href="ndelete_ok.do?no=${vo.no }" class="btn btn-md btn-info">삭제</a>
-					</c:if> <a href="notice.do" class="btn btn-md btn-warning">목록</a></td>
+						<a href="fupdate.do?no=${vo.no }" class="btn btn-md btn-success">수정</a>
+						<a href="fdelete_ok.do?no=${vo.no }" class="btn btn-md btn-info">삭제</a>
+					</c:if> <a href="free.do" class="btn btn-md btn-warning">목록</a></td>
 			</tr>
 		</table>
 			</div>
 			<table class="table" style="width: 60%; margin: 0px auto;">
 				<tr>
 					<td>
-						<form method="post" action="noticereply_insert.do">
+						<form method="post" action="freereply_insert.do">
 							<input type=hidden name=bno value="${vo.no }">
 							<textarea rows="5" cols="80" name="msg" style="float: left"></textarea>
 							<input type="submit" class="btn btn-sm btn-primary"
@@ -113,7 +113,7 @@
 								<c:if test="${sessionScope.email==rvo.id }">
 									<span class="btn btn-xs btn-primary upBtn" data-no="${rvo.no }">수정</span>
 									<a
-										href="noticereply_delete.do?no=${rvo.no }&bno=${vo.no}"
+										href="freereply_delete.do?no=${rvo.no }&bno=${vo.no}"
 										class="btn btn-xs btn-danger">삭제</a>
 								</c:if>
 								<span class="btn btn-xs btn-success inBtn" data-no=${rvo.no }>댓글</span>
@@ -126,7 +126,7 @@
 					</tr>
 					<tr id="m${rvo.no }" style="display: none" class="reply_update">
 						<td colspan="2">
-							<form method="post" action="noticereply_update.do">
+							<form method="post" action="freereply_update.do">
 								<input type=hidden name=bno value="${vo.no }"> <input
 									type=hidden name=no value="${rvo.no }">
 								<textarea rows="5" cols="90" name="msg" style="float: left">${rvo.msg }</textarea>
@@ -138,11 +138,11 @@
 
 					<tr id="i${rvo.no }" style="display: none" class="reply_insert">
 						<td colspan="2">
-							<form method="post" action="noticereply_reply.do">
+							<form method="post" action="freereply_reply.do">
 								<input type=hidden name=bno value="${vo.no }"> 
 								<input type=hidden name=pno value="${rvo.no }">
 								<textarea rows="5" cols="90" name="msg" style="float: left"></textarea>
-								<input type="submit" class="btn btn-sm btn-primary noticereplyinsert"
+								<input type="submit" class="btn btn-sm btn-primary freereplyinsert"
 									style="height: 100px; float: left" value="댓글쓰기">
 							</form>
 						</td>
