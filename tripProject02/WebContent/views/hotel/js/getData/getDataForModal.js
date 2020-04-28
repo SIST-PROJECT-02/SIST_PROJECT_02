@@ -258,9 +258,9 @@ var getMapAPI = (data)=>{
 	// 마커 이미지의 이미지 주소입니다
 	var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
 	var imageSrcs = [];
-	imageSrcs.push('./../../hotel/img/attraction.jpg');
-	imageSrcs.push('./../../hotel/img/hotel.jpg');
-	imageSrcs.push('./../../hotel/img/food.jpg');
+	imageSrcs.push('./../../hotel/img/attraction.png');
+	imageSrcs.push('./../../hotel/img/hotel.png');
+	imageSrcs.push('./../../hotel/img/food.png');
 	for (var i = 0; i < positions.length; i ++) {
 	    
 	    // 마커 이미지의 이미지 크기 입니다
@@ -330,3 +330,8 @@ var registModalDrag = ()=>{
 		modal.style.left = gapX + e.pageX + 'px';
 	});
 }
+document.querySelector('.modal-wrap .reservation-btn').addEventListener('click',(e)=>{
+	console.log('reservation button clicked!');
+	
+	window.location.href = 'reservation.do?product_id=' + modalData.modalId;
+});

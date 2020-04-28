@@ -1,6 +1,6 @@
-package com.sist.member.model;
+package com.sist.main.model;
 
-public class TourlistVO {
+public class MainFoodVO {
 	
 	private int id;
 	private String title, product_kind, hash_tag, introduction, web_site, description, convenience, address,
@@ -109,5 +109,6 @@ public class TourlistVO {
 	}
 	public void setReview_count(int review_count) {
 		this.review_count = review_count;
-	}
+	}	
+	
 }

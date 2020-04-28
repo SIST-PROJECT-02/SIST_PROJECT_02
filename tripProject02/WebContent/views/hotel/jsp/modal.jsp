@@ -32,7 +32,7 @@
 		</ul>
 		</nav>
 		<div class="dynamic-info-wrap"></div>
-		<div class="reservation-btn"><a href="reservation.do">예약하기</a> </div>
+		<div class="reservation-btn">예약하기</div>
 	</div>
 	</section>
 	<script id="template-modal-detail" type="text/template">

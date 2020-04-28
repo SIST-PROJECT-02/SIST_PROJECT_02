@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+
+</script>
 </head>
 <body>
     <!-- ***** Breadcumb Area Start ***** -->
@@ -24,10 +28,12 @@
                     </div>
                 </div>
             </div>
+            
             <div class="row">
                 <!-- Single Features Area -->
-                 <c:forEach var="vo" items="${vo }"> 
-	                <div class="col-12 col-sm-6 col-lg-4">
+                 <c:forEach var="vo" items="${list }"> 
+	                <div id="tourList" style="width: 300px; height: 200px;">
+	                	<input type="hidden" value="${vo.id }" >
 	                    <div class="single-features-area mb-50">
 	                       <img src="${vo.thumbnail }" alt="">
 	                        <!-- Price -->
@@ -47,6 +53,12 @@
 	                </div>
 	       		</c:forEach>         
             </div>
+            
+           		<div class="row">
+		            	<input type="submit" class="btn dorne-btn moreBtn" value="더보기" style="width: 100%; display: block;" id="moreBtn" data-page="${page }" 
+		            	  data-totalpage="${totalpage }">
+	            </div>
+            
         </div>
     </section>
     <!-- ***** Listing Destinations Area End ***** -->

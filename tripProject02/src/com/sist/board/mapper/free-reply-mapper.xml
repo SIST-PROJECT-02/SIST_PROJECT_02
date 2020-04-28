@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.board.mapper.free-reply-mapper">
+  
+   <resultMap type="FreeReplyVO" id="freeReplyMap">
+     <result property="no" column="no"/>
+     <result property="bno" column="bno"/>
+     <result property="id" column="id"/>
+     <result property="name" column="name"/>
+     <result property="msg" column="msg"/>
+     <result property="regdate" column="regdate"/>
+     <result property="dbday" column="dbday"/>
+     <result property="group_id" column="group_id"/>
+     <result property="group_step" column="group_step"/>
+     <result property="group_tab" column="group_tab"/>
+     <result property="root" column="root"/>
+     <result property="depth" column="depth"/>
+   </resultMap>
+   
+   <parameterMap type="hashmap" id="freereplyListDataMap">
+     <parameter property="pStart" javaType="java.lang.Integer" jdbcType="INTEGER" mode="IN"/>
+     <parameter property="pEnd" javaType="java.lang.Integer" jdbcType="INTEGER" mode="IN"/>
+     <parameter property="pBno" javaType="java.lang.Integer" jdbcType="INTEGER" mode="IN"/>
+     <parameter property="pResult"  jdbcType="CURSOR" mode="OUT" resultMap="freeReplyMap"/>
+   </parameterMap>
+   <select id="freereplyListData" parameterMap="freereplyListDataMap" statementType="CALLABLE">
+     {CALL freeReplyListData(?,?,?,?)}
+   </select>
+
+    <parameterMap type="hashmap" id="freereplyInsertMap">
+      <!-- 매개변수  -->
+      <parameter property="pBno" javaType="java.lang.Integer" jdbcType="INTEGER" mode="IN"/>
+      <parameter property="pId" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN"/>
+      <parameter property="pName" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN"/>
+      <parameter property="pMsg" javaType="java.lang.String" jdbcType="CLOB" mode="IN"/>
+    </parameterMap>
+    <select id="freereplyInsert" parameterMap="freereplyInsertMap" statementType="CALLABLE">
+      {CALL freeReplyInsert(?,?,?,?)}
+    </select>
+
+     <parameterMap type="hashmap" id="freereplyTotalMap">
+       <parameter property="pBno" javaType="java.lang.Integer" jdbcType="INTEGER" mode="IN"/>
+       <parameter property="pTotal" javaType="java.lang.Integer" jdbcType="INTEGER" mode="OUT"/>
+     </parameterMap> 
+     <select id="freereplyTotalPage" parameterMap="freereplyTotalMap" statementType="CALLABLE">
+       {CALL freereplyTotalPage(?,?)}
+     </select>
+     
+     <parameterMap type="hashmap" id="freereplyUpdateMap">
+       <parameter property="pNo" javaType="java.lang.Integer" jdbcType="INTEGER" mode="IN"/>
+       <parameter property="pMsg" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN"/>
+     </parameterMap> 
+     <select id="freereplyUpdate" parameterMap="freereplyUpdateMap" statementType="CALLABLE">
+       {CALL freereplyUpdate(?,?)}
+     </select>
+
+     <parameterMap type="hashmap" id="freereplyReplyInsertMap">
+       <parameter property="pBno" javaType="java.lang.Integer" jdbcType="INTEGER" mode="IN"/>
+       <parameter property="pPno" javaType="java.lang.Integer" jdbcType="INTEGER" mode="IN"/>
+       <parameter property="pId" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN"/>
+       <parameter property="pName" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN"/>
+       <parameter property="pMsg" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN"/>
+     </parameterMap>
+     <select id="freereplyReplyInsert" parameterMap="freereplyReplyInsertMap" statementType="CALLABLE">
+       {CALL freereplyReplyInsert(?,?,?,?,?)}
+     </select>
+     
+     <parameterMap type="hashmap" id="freereplyDeleteMap">
+       <parameter property="pNo" javaType="java.lang.Integer" jdbcType="INTEGER" mode="IN"/>
+     </parameterMap> 
+     <select id="freereplyDelete" parameterMap="freereplyDeleteMap" statementType="CALLABLE">
+       {CALL freereplyDelete(?)}
+     </select>
+</mapper>
+
+
+
+
+
+
+
+

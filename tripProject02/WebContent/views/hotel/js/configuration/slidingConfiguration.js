@@ -8,5 +8,5 @@ var movingData ={
     transLoc : 0,
     playMode : 1,
     timefunc : 0,
-    slidingCount : 8
+    slidingCount : 3
 };
