@@ -136,6 +136,11 @@ p {
     padding-bottom: 100px;
 }
 
+.section-padding-0-50 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -1530,7 +1535,7 @@ a{color:inherit;text-decoration:none}
 }
 
 /* 아이디중복체크버튼 */
-.login-form .group #checkBtn{
+/* .login-form .group #checkBtn{
     color: #fff;
     display: inline-block;
 	background:#7643ea;
@@ -1539,7 +1544,7 @@ a{color:inherit;text-decoration:none}
     border-radius: 25px;
     margin: 0px auto;
 } 
-
+ */
 /* 탈퇴완료화면에서 메인화면이동버튼 */
 .group #mainBtn{
     color: #fff;
@@ -1869,12 +1874,11 @@ a{color:inherit;text-decoration:none}
 	display: block;
 }
 
-.air_end .end_airport{
+/* .air_end .end_airport{
 	font-size: 40px;
 	font-weight: 700;
 	color: #1a1a1a;	
 	text-align: center;
 	line-height: 36px;
 	display: block;
-}
-
+} */

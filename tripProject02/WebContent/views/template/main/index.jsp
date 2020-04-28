@@ -6,10 +6,9 @@
 <%
 	try {
 		request.setCharacterEncoding("UTF-8");
-	} catch (Exception ex) {
-	}
+	} catch (Exception ex) {}
 
-	String mode = request.getParameter("mode");
+ 	String mode = request.getParameter("mode");
 	if (mode == null) {
 		mode = "0";
 	}
@@ -113,12 +112,11 @@
 	<!-- content -->
 	<div>
 		<c:if test="${not empty jsp}">
-
 			<h4><jsp:include page="${jsp }"></jsp:include></h4>
-
 		</c:if>
 		<c:if test="${empty jsp}">
 			<h4><jsp:include page="../detail/00_search.jsp"></jsp:include></h4>
+			<%-- <jsp:include page="../../mainpage/mainPage.do"></jsp:include> --%>
 		</c:if>
 	</div>
 

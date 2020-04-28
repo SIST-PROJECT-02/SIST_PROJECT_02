@@ -47,7 +47,7 @@
                         <div class="collapse navbar-collapse" id="dorneNav" style="margin-left: 120px;">
                             <ul class="navbar-nav mr-auto" id="dorneMenu">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="../../template/main/index.jsp">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="../../template/main/mainPage.do">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">여행정보<i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -62,7 +62,7 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="airplane.do">항공</a>
                                         <a class="dropdown-item" href="staying.do">숙소</a>
-                                        <a class="dropdown-item" href="index.jsp?mode=5">여행지</a>
+                                        <a class="dropdown-item" href="tour.do">관광지</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -70,7 +70,7 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                         <a class="dropdown-item" href="index.jsp?mode=6">항공</a>
                                         <a class="dropdown-item" href="index.jsp?mode=7">숙소</a>
-                                        <a class="dropdown-item" href="index.jsp?mode=8">여행지</a>
+                                        <a class="dropdown-item" href="index.jsp?mode=8">관광지</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">

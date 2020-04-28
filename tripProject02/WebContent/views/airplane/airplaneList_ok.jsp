@@ -79,8 +79,7 @@
 				<div class="row">
 					<c:if test="${listSize == 10 }">
 					<div class="moreInfoBtn" id="moreInfoBtn" data-page="${page }" >
-						<h3 class="text-center" style="line-height: 100px;">더 보기</h3>
-					
+						<h3 class="text-center" style="line-height: 100px;">더 보기</h3>		
 					</div>
 					</c:if>
 				</div>

@@ -93,7 +93,7 @@ public class NoticeModel {
 	   }
 	
 	@RequestMapping("views/template/main/ninsert.do")
-	public String notice_insert(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+	public String notice_insert(HttpServletRequest request, HttpServletResponse response)
 	{		
 		request.setAttribute("jsp", "../../board/notice/insert.jsp"); // main에 include시킴 
 		return "index.jsp";

@@ -7,6 +7,17 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+
+<settings>
+<setting name="jdbcTypeForNull" value="NULL"/>
+
+</settings>
+<!-- 
+      (typeAliases?, 
+       environments?,
+       mappers?)
+ -->
+
   <typeAliases>
       <typeAlias type="com.sist.hotel.dao.HotelVO" alias="HotelVO"/>
 	  <typeAlias type="com.sist.hotel.dao.LikeVO" alias="LikeVO"/>
@@ -22,6 +33,11 @@
 	  <typeAlias type="com.sist.airplane.dao.AirplaneTimeVO" alias="AirplaneTimeVO"/>
 	  <typeAlias type="com.sist.airplane.dao.AirplaneReserveVO" alias="AirplaneReserveVO"/>
       <typeAlias type="com.sist.member.model.HotelReserveVO" alias="HotelReserveVO"/>
+	  <typeAlias type="com.sist.tour.model.TourVO" alias="TourVO"/>  
+      <typeAlias type="com.sist.main.model.MainFoodVO" alias="MainFoodVO"/>
+      <typeAlias type="com.sist.main.model.MainHotelVO" alias="MainHotelVO"/>
+      <typeAlias type="com.sist.main.model.MainTourVO" alias="MainTourVO"/>
+      <typeAlias type="com.sist.attraction.vo.AttractionVO" alias="AttractionVO"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -61,6 +77,9 @@
     <mapper resource="com/sist/hotel/mapper/create-room-mapper.xml"/>
     <mapper resource="com/sist/airplane/dao/airplane-mapper.xml"/>
     <mapper resource="com/sist/member/model/member-mapper.xml"/>
+    <mapper resource="com/sist/hotel/mapper/reservation-mapper.xml"/>
+    <mapper resource="com/sist/tour/model/tour-mapper.xml"/>
+    <mapper resource="com/sist/main/model/main-mapper.xml"/>
   </mappers>
   
 </configuration>

@@ -114,7 +114,7 @@ $(function(){
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
-					<a href="#forgot">회원정보를 잊으셨나요?</a>
+					<a href="member_forgot.do">회원정보를 잊으셨나요?</a>
 				</div>
 			</div>
 			</form>
@@ -126,7 +126,7 @@ $(function(){
 					<input type="text" class="input" placeholder="Email" id="id" name="email" required="required" readonly>					
 				</div>	
 				<div class="group" >
-					<input type="button" id="checkBtn" class="button" value="중복확인">
+					<input type="button" value="중복확인" class="button" id="checkBtn" >
 				</div>				
 				<div class="group">
 					<input type="password" name="pwd1" class="input" id="pwd1" placeholder="비밀번호" required="required">
@@ -159,13 +159,10 @@ $(function(){
 					<input type="submit" value="회원가입" class="button" id="sendBtn">
 				</div>
 				<div class="hr"></div>
-				<div class="foot-lnk">
-					<label for="tab-1">회원정보를 잊으셨나요?</label>
-				</div>
 			</div>
 			</form>
 		</div>	
 	</div>
-	</div>
+</div>
 </body>
 </html>

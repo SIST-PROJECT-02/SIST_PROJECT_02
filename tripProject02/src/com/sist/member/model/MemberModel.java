@@ -1,5 +1,10 @@
 package com.sist.member.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -8,6 +13,10 @@ import com.sist.airplane.dao.AirplaneDAO;
 import com.sist.airplane.dao.AirplaneReserveVO;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
+import com.sist.hotel.dao.HotelDAO;
+import com.sist.hotel.dao.HotelVO;
+import com.sist.hotel.dao.LikeDAO;
+import com.sist.hotel.dao.LikeVO;
 
 import sun.nio.cs.HistoricallyNamedCharset;
 
@@ -171,7 +180,13 @@ public class MemberModel {
 	@RequestMapping("views/template/main/member_like.do")
 	public String memberLike(HttpServletRequest request, HttpServletResponse response)
 	{
-		request.setAttribute("jsp", "../../member/member_like.jsp");
+		String member_email=request.getParameter("email");
+		/*System.out.println("1. member_email은 "+member_email);*/
+		List<HotelVO> vo=MemberDAO.memberLike(member_email);
+		/*System.out.println("4. List는 "+vo);*/
+		request.setAttribute("email", member_email);
+		request.setAttribute("vo", vo);
+		request.setAttribute("jsp","../../member/member_like_ok.jsp");
 		return "index.jsp";
 	}
 	
@@ -279,6 +294,44 @@ public class MemberModel {
 	public String guidebook_guide(HttpServletRequest request, HttpServletResponse response)
 	{
 		request.setAttribute("jsp", "../../guidebook/guidebook_guide.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/member_forgot.do")
+	public String memberForgot(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("jsp", "../../member/member_forgot.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/member_forgot_email_ok.do")
+	public String memberforgotemail(HttpServletRequest request, HttpServletResponse response)
+	{
+		try
+		{
+			request.setCharacterEncoding("UTF-8");
+		}catch(Exception ex){}
+		
+		String name=request.getParameter("name");
+		String birth=request.getParameter("birth");
+		String email=MemberDAO.memberforgotemail(name, birth);
+		request.setAttribute("email",email);
+		request.setAttribute("jsp", "../../member/member_forgot_email_ok.jsp");
+		return "index.jsp";
+	}
+	
+	@RequestMapping("views/template/main/member_forgot_pwd_ok.do")
+	public String memberforgotpwdok(HttpServletRequest request, HttpServletResponse response)
+	{
+		try
+		{
+			request.setCharacterEncoding("UTF-8");
+		}catch(Exception ex){}
+		
+		String email=request.getParameter("email");
+		String pwd=MemberDAO.memberforgotpwd(email);
+		request.setAttribute("pwd", pwd);
+		request.setAttribute("jsp", "../../member/member_forgot_pwd_ok.jsp");
 		return "index.jsp";
 	}
 }

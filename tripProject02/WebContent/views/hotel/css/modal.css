@@ -9,7 +9,7 @@
 }
 .modal-wrap{
     display: none;
-    background-color: #f8f9faba;
+    background-color: #ffffff;
     width : 1300px;
     position: fixed;
     top: 150px;
@@ -83,7 +83,7 @@
 .modal-wrap .img-wrap div{
 	position:absolute;
 	z-index : 30;
-	font-size : 2rem;
+	font-size : 4rem;
 	color : red;
 	top:400px;
 	left:1000px;
