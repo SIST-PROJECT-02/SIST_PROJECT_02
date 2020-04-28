@@ -9,8 +9,33 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
-	$('.frm').click(function(){
+	
+	$('.moreBtn').click(function(){
 		
+		var totalpage=$('body').find('.air_info').attr('data-totalpage');
+		var page=$(this).attr('data-page');
+		page=parseInt(page)+1;
+		var totalpageInt=parseInt(totalpage);
+		
+		$.ajax({
+			type:'POST',
+			url:'tour.do',
+			data:{'page':page}, 
+			success:function(res)
+			{
+				$(this).remove();
+				$('body').find('#air-search').append(res);
+				
+				if(totalpageInt==page)
+				{
+					$('body').find('.moreInfoBtn').remove();
+				}
+			},
+			error:function(e)
+			{
+				alert(e);
+			}
+		})
 	})
 })
 </script>
@@ -60,7 +85,7 @@ $(function(){
             
             <form  method="POST" action="tour_more.do" id="frm" name="frm">
 	            <div class="row">
-	            	<input type="submit" class="btn dorne-btn" value="더보기" style="width: 100%">
+	            	<input type="submit" class="btn dorne-btn" value="더보기" style="width: 100%" id="moreBtn">
 	            </div>
             </form>
         </div>
