@@ -37,15 +37,27 @@ public class TourModel {
 	
 		List<TourVO> list=TourDAO.tourlist(map);
 		
+		for(TourVO vo:list)
+		{
+			String title=vo.getTitle();
+			if(title.indexOf("(") > 0)
+			{
+				title=title.substring(0,title.indexOf("("));
+				vo.setTitle(title);
+			}
+			
+		}
+		
 		request.setAttribute("list", list);
 		request.setAttribute("page", page);
-		request.setAttribute("jsp", "../../tour/tour_list.jsp");
+		request.setAttribute("jsp", "../../tour/tour.jsp");
 		return "index.jsp";
 	}
 	
 	@RequestMapping("views/template/main/tour_list.do")
 	public String tour_list(HttpServletRequest request, HttpServletResponse response)
 	{	
+		System.out.println("hi");
 		String product_kind="관광지";
 		String page=request.getParameter("page");
 		if(page==null)
@@ -62,13 +74,23 @@ public class TourModel {
 		map.put("end", end);
 	
 		List<TourVO> list=TourDAO.tourlist(map);
+		for(TourVO vo:list)
+		{
+			String title=vo.getTitle();
+			if(title.indexOf("(") > 0)
+			{
+				title=title.substring(0,title.indexOf("("));
+				vo.setTitle(title);
+			}
+			
+		}
 		request.setAttribute("list", list);
 		request.setAttribute("page", page);
-		request.setAttribute("jsp", "../../tour/tour_list.jsp");
-		return "index.jsp";
+		
+		return "../../tour/tour_list.jsp";
 	}
 	
-	@RequestMapping("views/template/main/tour_more.do")
+	/*@RequestMapping("views/template/main/tour_more.do")
 	public String tourlistmore(HttpServletRequest request, HttpServletResponse response)
 	{	
 		
@@ -81,5 +103,5 @@ public class TourModel {
 		request.setAttribute("totalpage", totalpage);
 		request.setAttribute("jsp", "../../tour/tour.jsp");
 		return "index.jsp";
-	}
+	}*/
 }

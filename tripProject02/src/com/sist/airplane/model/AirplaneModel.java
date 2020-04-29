@@ -64,7 +64,6 @@ public class AirplaneModel {
 		String plane_id=request.getParameter("plane_id");
 		
 		Map map=new HashMap();
-		/*System.out.println("typeInt :" +typeInt);*/
 		List<AirplaneVO> list = null;
 		
 		
@@ -118,17 +117,6 @@ public class AirplaneModel {
 			if(start_time.length() != 8)
 				start_time=start_time.substring(2);
 			
-		/*	System.out.println(start_airport);
-			System.out.println(end_airport);
-			System.out.println(start_time);
-			System.out.println(end_time);
-			System.out.println(airway);
-			System.out.println(type);
-			System.out.println(start);
-			System.out.println(end);*/
-			
-			
-			
 			map.put("start_airport", start_airport);
 			map.put("end_airport", end_airport);
 			map.put("start_time", start_time);
@@ -154,7 +142,6 @@ public class AirplaneModel {
 		request.setAttribute("totalpage", totalpage);
 		request.setAttribute("page", page);
 		request.setAttribute("listSize", list.size());
-		/*System.out.println("model page : "+page);*/
 		System.out.println("list size:"+list.size());
 		
 		if(list.size()==0)
@@ -190,15 +177,6 @@ public class AirplaneModel {
 		String inwon=request.getParameter("inwon");
 		String airway=request.getParameter("airway");
 		
-		/*System.out.println("email :"+email);
-		System.out.println("start_airport :"+start_airport);
-		System.out.println("name :"+name);
-		System.out.println("end_airport :"+end_airport);
-		System.out.println("start_time :"+start_time);
-		System.out.println("plane_id :"+plane_id);
-		System.out.println("seattype :"+seattype);
-		System.out.println("inwon :"+inwon);*/
-		
 		int inwonInt=Integer.parseInt(inwon);
 		
 		Map map=new HashMap();
@@ -211,18 +189,6 @@ public class AirplaneModel {
 		
 		//DAO
 		AirplaneVO vo=AirplaneDAO.airplaneReserveSelect(map);
-		/*System.out.println("getAirline :"+vo.getAirline());
-		System.out.println("getPlane_id :"+vo.getPlane_id());
-		System.out.println("getImg :"+vo.getImg());
-		System.out.println("getPrice :"+vo.getSeatVO().getPrice());
-		System.out.println("getSeattype :"+vo.getSeatVO().getSeattype());
-		System.out.println("getStart_airport :"+vo.getTimeVO().getStart_airport());
-		System.out.println("getEnd_airport :"+vo.getTimeVO().getEnd_airport());
-		System.out.println("getStart_time :"+vo.getTimeVO().getStart_time());
-		System.out.println("getEnd_time :"+vo.getTimeVO().getEnd_time());
-		System.out.println("getStart_hour :"+vo.getTimeVO().getStart_hour());
-		System.out.println("getEnd_hour :"+vo.getTimeVO().getEnd_hour());
-		System.out.println("getTotaltime :"+vo.getTimeVO().getTotaltime());*/
 		
 		String priceTmp=(vo.getSeatVO().getPrice()).trim();
 		int priceInt=Integer.parseInt(priceTmp.replace(",", ""));
@@ -240,7 +206,7 @@ public class AirplaneModel {
 		
 		AirplaneDAO.airplaneOnewayReserveInsert(map);
 		
-		return "redirect:mainPage.do";
+		return "redirect:../../template/main/member_reservation.do";
 	}
 	
 	@RequestMapping("views/airplane/airplane_reserve_round_trip.do")
@@ -282,19 +248,6 @@ public class AirplaneModel {
 		int priceInt=Integer.parseInt(priceTmp.replace(",", ""));
 		String price=Integer.toString(priceInt*inwonInt);
 		
-		/*System.out.println("getAirline :"+vo.getAirline());
-		System.out.println("getPlane_id :"+vo.getPlane_id());
-		System.out.println("getImg :"+vo.getImg());
-		System.out.println("getPrice :"+vo.getSeatVO().getPrice());
-		System.out.println("getSeattype :"+vo.getSeatVO().getSeattype());
-		System.out.println("getStart_airport :"+vo.getTimeVO().getStart_airport());
-		System.out.println("getEnd_airport :"+vo.getTimeVO().getEnd_airport());
-		System.out.println("getStart_time :"+vo.getTimeVO().getStart_time());
-		System.out.println("getEnd_time :"+vo.getTimeVO().getEnd_time());
-		System.out.println("getStart_hour :"+vo.getTimeVO().getStart_hour());
-		System.out.println("getEnd_hour :"+vo.getTimeVO().getEnd_hour());
-		System.out.println("getTotaltime :"+vo.getTimeVO().getTotaltime());*/
-		
 		map.put("vo", vo);
 		map.put("price", price);
 		// 오는날
@@ -316,19 +269,6 @@ public class AirplaneModel {
 		int priceInt2=Integer.parseInt(priceTmp2.replace(",", ""));
 		String price2=Integer.toString(priceInt2*inwonInt);
 		
-		/*System.out.println("getAirline2 :"+vo2.getAirline());
-		System.out.println("getPlane_id2 :"+vo2.getPlane_id());
-		System.out.println("getImg2 :"+vo2.getImg());
-		System.out.println("getPrice2 :"+vo2.getSeatVO().getPrice());
-		System.out.println("getSeattype2 :"+vo2.getSeatVO().getSeattype());
-		System.out.println("getStart_airport2 :"+vo2.getTimeVO().getStart_airport());
-		System.out.println("getEnd_airport2 :"+vo2.getTimeVO().getEnd_airport());
-		System.out.println("getStart_time2 :"+vo2.getTimeVO().getStart_time());
-		System.out.println("getEnd_time2 :"+vo2.getTimeVO().getEnd_time());
-		System.out.println("getStart_hour2 :"+vo2.getTimeVO().getStart_hour());
-		System.out.println("getEnd_hour2 :"+vo2.getTimeVO().getEnd_hour());
-		System.out.println("getTotaltime2 :"+vo2.getTimeVO().getTotaltime());*/
-		
 		map.put("vo2", vo2);
 		map.put("price2", price2);
 		
@@ -340,7 +280,9 @@ public class AirplaneModel {
 		
 		AirplaneDAO.airplaneRoundReserveInsert(map);
 		
-		return "redirect:mainPage.do";
+		System.out.println("hi");
+		
+		return "redirect:../../template/main/member_reservation.do";
 	}
 	
 

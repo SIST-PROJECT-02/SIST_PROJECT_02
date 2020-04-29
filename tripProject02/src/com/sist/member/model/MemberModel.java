@@ -205,12 +205,10 @@ public class MemberModel {
 		map.put("email", email);
 		map.put("admin", admin);
 		List<AirplaneReserveVO> list=AirplaneDAO.airplaneReserveData(map);
-		
 		Map hmap=new HashMap();
 		hmap.put("email", email);
 		hmap.put("admin", admin);
 		List<HotelReserveVO> hotellist=HotelplaneDAO.HotelReserve(hmap);
-		
 		for(AirplaneReserveVO vo:list)
 		{
 			String date=vo.getStart_time().substring(0,10);
@@ -218,11 +216,9 @@ public class MemberModel {
 			vo.setDate(date);
 			vo.setDay(day);
 		}
-		
 		request.setAttribute("jsp", "../../member/member_reservation.jsp");
 		request.setAttribute("airList", list);
 		request.setAttribute("hotelList",hotellist);
-		
 		return "index.jsp";
 	}
 	@RequestMapping("views/template/main/member_admin_reservation.do")

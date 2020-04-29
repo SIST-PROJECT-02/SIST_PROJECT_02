@@ -81,7 +81,7 @@
 							<div class="inwon">
 								<select  class="custom-select-air" id="inwon"
 									name="inwon" style="font-weight: bold; width: 100%; text-right" required>
-									<option selected value="">인원 수</option>
+									<option selected value="1">인원 수</option>
 									<c:forEach var="i" begin="1" end="8">
 										<option value="${i}">${i} 명 </option>
 									</c:forEach>

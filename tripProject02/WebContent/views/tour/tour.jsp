@@ -6,10 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../../tour/css/tour.css" >
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript">
-
-</script>
+<script type="text/javascript" src="../../tour/js/tour_more_info.js"></script>
 </head>
 <body>
     <!-- ***** Breadcumb Area Start ***** -->
@@ -18,10 +17,10 @@
 
     <!-- ***** Listing Destinations Area Start ***** -->
     <section class="dorne-listing-destinations-area section-padding-100-50">
-        <div class="container">
+        <div class="container text-center">
             <div class="row">
                 <div class="col-12">
-                    <div class="section-heading dark text-center">
+                    <div class="section-heading dark">
                         <span></span>
                         <h4>관광지</h4>
                         <!-- <p>Editor’s pick</p> -->
@@ -34,15 +33,15 @@
                  <c:forEach var="vo" items="${list }"> 
 	                <div id="tourList">
 	                	<input type="hidden" value="${vo.id }" >
-	                    <div class="single-features-area mb-50">
-	                       <img src="${vo.thumbnail }" alt="">
+	                    <div class="single-features-area">
+	                       <img class="tour-img" src="${vo.thumbnail }" alt="">
 	                        <!-- Price -->
 	                        <!-- <div class="price-start">
 	                            <p>FROM $59/night</p>
 	                        </div> -->
-	                        <div class="feature-content d-flex align-items-center justify-content-between">
+	                        <div class="feature-content d-flex align-items-center justify-content-between tour-title">
 	                            <div class="feature-title">
-	                                <h5>${vo.title }</h5>
+	                                <h5 style="margin-bottom: 5px">${vo.title }</h5>
 	                                <p>${vo.address }</p>
 	                            </div>
 	                            <!-- <div class="feature-favourite">
