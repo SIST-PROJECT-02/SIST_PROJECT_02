@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.board.mapper.free-mapper">
+	<select id="freeListData" resultType="BoardVO" parameterType="hashmap"> 
+		SELECT bno,no,subject,name,regdate,hit,group_tab,num
+		FROM (SELECT bno, no,subject,name,regdate,hit,group_tab,rownum as num
+		FROM (SELECT bno, no,subject,name,regdate,hit,group_tab
+		FROM free ORDER BY group_id DESC,group_step ASC)) 
+		WHERE bno=1 AND num BETWEEN #{nstart} AND #{nend}
+	</select>
+	
+	<select id="freeFindData" resultType="BoardVO" parameterType="hashmap">
+		SELECT no,subject,name,regdate,hit
+		FROM free 
+		WHERE ${fs} '%'||${ss}||'%' 
+	</select>
+	
+	<select id="freeTotalPage" resultType="int">
+		SELECT CEIL(COUNT(*)/15.0) FROM free
+	</select>
+	
+	<select id="freeDetailData" resultType="BoardVO" parameterType="int">
+		SELECT *
+		FROM free
+		WHERE no=#{no}
+	</select>
+	
+	 
+	<update id="fhitIncrement" parameterType="int">
+		UPDATE free
+		SET hit=hit+1
+		WHERE no=#{no}
+	</update>
+	 
+	 
+	<insert id="freeInsertData" parameterType="BoardVO">
+	 	<selectKey keyProperty="no" resultType="int" order="BEFORE"> <!-- order="BEFORE": 먼저 실행해라.. -->
+ 			SELECT NVL(MAX(no)+1,1) as no FROM free 
+ 		</selectKey>		
+		INSERT INTO free(bno,no,name,subject,content,pwd,group_id)
+		VALUES(
+		    1,
+			#{no},
+			#{name},
+			#{subject},
+			#{content},
+			#{pwd},
+			(SELECT NVL(MAX(group_id)+1,1) FROM free)
+		)
+	</insert>
+	
+	<select id="getInfoForUpdate" resultType="BoardVO" parameterType="int">
+		SELECT no,regdate,name,hit,subject,content
+		FROM free
+		WHERE no=#{no}
+	</select>
+	
+	<select id="freecount" resultType="int" parameterType="int">
+	  SELECT COUNT(*) 
+	  FROM free_reply 
+	  WHERE bno=#{no}
+	</select>
+	
+	<select id="freeGetPassword" resultType="String" parameterType="int" >
+		SELECT pwd FROM free
+		WHERE no=#{no}
+	</select>
+	
+	<update id="freeUpdateData" parameterType="BoardVO">
+		UPDATE free
+		SET
+			name=#{name},
+			subject=#{subject},
+			content=#{content}
+		WHERE no=#{no}
+	</update>
+	
+	<select id="freeParentInfoData" resultType="BoardVO" parameterType="int">
+		SELECT group_id,group_step,group_tab
+		FROM free
+		WHERE no=#{no}
+	</select>
+												
+	<update id="freeGroupStepIncrement" parameterType="BoardVO">
+		UPDATE free SET
+		group_step=group_step+1
+		WHERE group_id=#{group_id} AND group_step>#{group_step}				
+	</update>
+	
+	<insert id="freefreeInsert" parameterType="BoardVO">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(no)+1,1) as no FROM free
+		</selectKey>
+		INSERT INTO free(no,name,subject,content,pwd,group_id,group_step,group_tab,root)
+		VALUES(#{no},#{name},#{subject},#{content},#{pwd},
+		#{group_id},#{group_step},#{group_tab},#{root})
+	</insert>
+	
+	<update id="freeDepthIncrement" parameterType="int">
+		UPDATE free SET
+		depth=depth+1
+		WHERE no=#{no}
+	</update>
+	
+	<!-- delete -->
+	<select id="freeDeleteInfoData" resultType="BoardVO" parameterType="int">
+		SELECT root,depth
+		FROM free
+		WHERE no=#{no}
+	</select>			
+	
+	<delete id="freeDelete" parameterType="int">
+		DELETE FROM free
+		WHERE no=#{no}
+	</delete>
+	<update id="freeSubjectUpdate" parameterType="BoardVO">
+		UPDATE free SET
+		subject=#{subject},content=#{content}
+		WHERE no=#{no}
+	</update>
+	<update id="freeDepthDecrement" parameterType="int">
+		UPDATE free SET
+		depth=depth-1
+		WHERE no=#{no}
+	</update>
+</mapper>
+

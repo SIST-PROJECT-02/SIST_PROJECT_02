@@ -1,7 +1,7 @@
 package com.sist.board.dao;
 import java.util.*;
 
-public class NoticeReplyVO {
+public class FreeReplyVO {
    private int no;
    private int bno;
    private String email;

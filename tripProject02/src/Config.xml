@@ -26,6 +26,7 @@
       <typeAlias type="com.sist.board.dao.BoardVO" alias="BoardVO"/>
       <typeAlias type="com.sist.board.dao.ReplyVO" alias="ReplyVO"/>
       <typeAlias type="com.sist.board.dao.NoticeReplyVO" alias="NoticeReplyVO"/>
+      <typeAlias type="com.sist.board.dao.FreeReplyVO" alias="FreeReplyVO"/>
       <typeAlias type="com.sist.member.model.MemberVO" alias="MemberVO"/>
 	  <typeAlias type="com.sist.hotel.dao.ReviewBoardVO" alias="ReviewBoardVO"/>
 	  <typeAlias type="com.sist.airplane.dao.AirplaneVO" alias="AirplaneVO"/>
@@ -54,7 +55,7 @@
                getConnection(p.getUrl(),p.getUsername(),p.getPassword()),disConnection()
           -->
          <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
-         <property name="url" value="jdbc:oracle:thin:@211.238.142.210:1521:XE"/>
+         <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
          <property name="username" value="hr"/>
          <property name="password" value="happy"/>
        </dataSource>
@@ -68,8 +69,11 @@
    -->
   <mappers>
 	<mapper resource="com/sist/board/mapper/notice-mapper.xml"/>
-    <mapper resource="com/sist/board/mapper/reply-mapper.xml"/>
+    <mapper resource="com/sist/board/mapper/qna-mapper.xml"/>
     <mapper resource="com/sist/board/mapper/notice-reply-mapper.xml"/>
+    <mapper resource="com/sist/board/mapper/free-reply-mapper.xml"/>
+    <mapper resource="com/sist/board/mapper/free-mapper.xml"/>
+    
     <mapper resource="com/sist/member/model/member-mapper.xml"/>
     <mapper resource="com/sist/hotel/mapper/emp-mapper.xml"/>
     <mapper resource="com/sist/hotel/mapper/rev-mapper.xml"/>

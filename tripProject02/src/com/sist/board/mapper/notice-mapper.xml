@@ -8,7 +8,8 @@
 		FROM notice ORDER BY group_id DESC,group_step ASC)) 
 		WHERE bno=1 AND num BETWEEN #{nstart} AND #{nend}
 	</select>
-	<insert id="nrInsertData" parameterType="BoardVO">
+	
+	<!-- <insert id="nrInsertData" parameterType="BoardVO">
 		INSERT INTO notice(bno,no,content,name,subject,pwd)
 		VALUES(
 		    2,
@@ -18,7 +19,7 @@
 			1,
 			1234
 		)
-	</insert>
+	</insert> -->
 	<select id="nrListData" resultType="BoardVO" parameterType="hashmap"> 
 		SELECT *
 		FROM notice
@@ -69,7 +70,12 @@
 		SELECT no,regdate,name,hit,subject,content
 		FROM notice
 		WHERE no=#{no}
+	</select>
 	
+	<select id="noticecount" resultType="int" parameterType="int">
+	  SELECT COUNT(*) 
+	  FROM notice_reply 
+	  WHERE bno=#{no}
 	</select>
 	
 	<select id="noticeGetPassword" resultType="String" parameterType="int" >
@@ -85,6 +91,7 @@
 			content=#{content}
 		WHERE no=#{no}
 	</update>
+	
 	<select id="noticeParentInfoData" resultType="BoardVO" parameterType="int">
 		SELECT group_id,group_step,group_tab
 		FROM notice

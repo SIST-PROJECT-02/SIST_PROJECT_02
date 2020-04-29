@@ -10,20 +10,6 @@
 	<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript">
- $(function() {
-	 $('.blist').hover(function(){
-		 $(this).css('cursor','pointer');
-	 }, function(){
-		 $(this).css('cursor','none');
-	 });
-	 
-	 $('.blist').click(function(){
-	 })
- })
- 
-</script>
 <title>Insert title here</title>
 <link href="../../board/css/board.css" rel="stylesheet">
 <style type="text/css">
@@ -48,7 +34,7 @@
 	<div class="wrapper row2">
 		<div id="services" class="clear">
 			<div style="width:1000px;height: 150px;margin-left:300px;">
-			<img src="../../board/images/notice.png" style="text-align:center;width:100%; height:120px;"/></div>
+			<img src="../../board/images/free.png" style="text-align:center;width:100%; height:120px;"/></div>
 			<div class="row">
 				<div class="blist">
 					<h1>커뮤니티</h1>
@@ -62,8 +48,8 @@
 					<table class="table" style="width: 90%; margin: 0px auto;">
 						<c:if test="${sessionScope.admin==1 }">
 							<tr>
-								<td><a href="notice_insert.do"
-									class="btn btn-md btn-danger">새글</a></td>
+								<td><a href="free_insert.do" class="btn btn-md btn-danger">새글</a>
+								</td>
 							</tr>
 						</c:if>
 					</table>
@@ -90,13 +76,13 @@
 	  							&nbsp;&nbsp;
 	  						</c:forEach>
 										<img src="../../board/images/icon_reply.gif">
-									</c:if> <a href="ndetail.do?no=${vo.no }">${vo.subject }<c:if
+									</c:if> <a href="fdetail.do?no=${vo.no }">${vo.subject }<c:if
 											test="${countList[status.index] !=0 }">
 											<em style="color: #7643ea">(${countList[status.index] })</em>
 										</c:if></a></td>
 								<td
 									style="width: 80px; text-overflow: ellipsis; overflow: hidden"
-									class="text-center">관리자</td>
+									class="text-center">${name }</td>
 								<td
 									style="width: 100px; text-overflow: ellipsis; overflow: hidden"
 									class="text-center">${regdate }</td>
@@ -107,10 +93,10 @@
 						</c:forEach>
 					</table>
 					<div style="text-align: center">
-						<a href="notice.do?npage=${ncurpage>1?ncurpage-1:ncurpage }"
+						<a href="free.do?npage=${ncurpage>1?ncurpage-1:ncurpage }"
 							class="btn btn-md btn-primary">이전</a> ${ncurpage } page /
 						${ntotalpage } pages <a
-							href="notice.do?npage=${ncurpage<ntotalpage?ncurpage+1:ncurpage }"
+							href="free.do?npage=${ncurpage<ntotalpage?ncurpage+1:ncurpage }"
 							class="btn btn-md btn-primary">다음</a>
 					</div>
 				</div>

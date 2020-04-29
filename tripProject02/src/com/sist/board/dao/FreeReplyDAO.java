@@ -5,24 +5,24 @@ import java.util.*;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.sist.board.dao.NoticeReplyVO;
+import com.sist.board.dao.FreeReplyVO;
 import com.sist.board.dao.ReplyVO;
-public class NoticeReplyDAO {
+public class FreeReplyDAO {
    private static SqlSessionFactory ssf;
    static
    {
 	   ssf=CreateSqlSessionFactory.getSsf();
    }
    
-   public static List<NoticeReplyVO> noticereplyListData(Map map)
+   public static List<FreeReplyVO> freereplyListData(Map map)
    {
-	   List<NoticeReplyVO> list=new ArrayList<NoticeReplyVO>();
+	   List<FreeReplyVO> list=new ArrayList<FreeReplyVO>();
 	   SqlSession session=null;
 	   try
 	   {
 		   session=ssf.openSession();
-		   session.update("noticereplyListData",map);
-		   list=(ArrayList<NoticeReplyVO>)map.get("pResult");// CURSOR
+		   session.update("freereplyListData",map);
+		   list=(ArrayList<FreeReplyVO>)map.get("pResult");// CURSOR
 	   }catch(Exception ex)
 	   {
 		   ex.printStackTrace();
@@ -34,13 +34,13 @@ public class NoticeReplyDAO {
 	   }
 	   return list;
    }
-   public static void noticereplyInsert(Map map)
+   public static void freereplyInsert(Map map)
    {
 	   SqlSession session=null;
 	   try
 	   {
 		   session=ssf.openSession();
-		   session.update("noticereplyInsert",map); //프로시저 호출 
+		   session.update("freereplyInsert",map); //프로시저 호출 
 	   }catch(Exception ex)
 	   {
 		   ex.printStackTrace();
@@ -52,14 +52,14 @@ public class NoticeReplyDAO {
 	   }
    }
    
-   public static int noticereplyTotalPage(Map map)
+   public static int freereplyTotalPage(Map map)
    {
 	   int total=0;
 	   SqlSession session=null;
 	   try
 	   {
 		   session=ssf.openSession();
-		   session.update("noticereplyTotalPage",map); //프로시저 호출 
+		   session.update("freereplyTotalPage",map); //프로시저 호출 
 		   total=(int)map.get("pTotal");
 	   }catch(Exception ex)
 	   {
@@ -73,13 +73,13 @@ public class NoticeReplyDAO {
 	   return total;
    }
    
-   public static void noticereplyUpdate(Map map)
+   public static void freereplyUpdate(Map map)
    {
 	   SqlSession session=null;
 	   try
 	   {
 		   session=ssf.openSession();
-		   session.update("noticereplyUpdate",map); //프로시저 호출 
+		   session.update("freereplyUpdate",map); //프로시저 호출 
 	   }catch(Exception ex)
 	   {
 		   ex.printStackTrace();
@@ -93,13 +93,13 @@ public class NoticeReplyDAO {
    
    
    
-   public static void noticereplyDelete(Map map)
+   public static void freereplyDelete(Map map)
    {
 	   SqlSession session=null;
 	   try
 	   {
 		   session=ssf.openSession();
-		   session.update("noticereplyDelete",map); //프로시저 호출 
+		   session.update("freereplyDelete",map); //프로시저 호출 
 	   }catch(Exception ex)
 	   {
 		   ex.printStackTrace();
@@ -110,13 +110,13 @@ public class NoticeReplyDAO {
 			   session.close();
 	   }
    }
-   public static void noticereplyReplyInsert(Map map)
+   public static void freereplyReplyInsert(Map map)
    {
 	   SqlSession session=null;
 	   try
 	   {
 		   session=ssf.openSession();
-		   session.update("noticereplyReplyInsert",map); //프로시저 호출 
+		   session.update("freereplyReplyInsert",map); //프로시저 호출 
 	   }catch(Exception ex)
 	   {
 		   ex.printStackTrace();
