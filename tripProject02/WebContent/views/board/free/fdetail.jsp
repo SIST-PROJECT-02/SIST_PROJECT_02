@@ -77,8 +77,7 @@
 				</div>
 				<table class="table" style="width: 80%; margin: 0px auto;">
 			<tr>
-				<td class="text-right" colspan="2"><c:if
-						test="${sessionScope.admin==1 }">
+				<td class="text-right" colspan="2"><c:if test="${sessionScope.email == vo.pwd}">
 						<a href="fupdate.do?no=${vo.no }" class="btn btn-md btn-success">수정</a>
 						<a href="fdelete_ok.do?no=${vo.no }" class="btn btn-md btn-info">삭제</a>
 					</c:if> <a href="free.do" class="btn btn-md btn-warning">목록</a></td>

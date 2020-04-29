@@ -61,8 +61,8 @@
 									value="${vo.regdate }" pattern="yyyy-MM-dd" /></td>
 						</tr>
 						<tr>
-							<th class="text-center" width=20% style="background-color: #7643ea;">이름</th>
-							<td class="text-center" width=30%>${vo.name }</td>
+							<th class="text-center" width=20% style="background-color: #7643ea;">작성자</th>
+							<td class="text-center" width=30%>관리자</td>
 							<th class="text-center" width=20% style="background-color: #7643ea;">조회수</th>
 							<td class="text-center" width=30%>${vo.hit }</td>
 						</tr>

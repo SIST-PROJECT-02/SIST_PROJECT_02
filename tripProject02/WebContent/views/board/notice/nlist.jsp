@@ -30,7 +30,7 @@
 .blist {
 	border: 1px grey solid;
 	width: 150px;
-	height: 800px;
+	height: 400px;
 	margin-left: 100px;
 	margin-right: 40px;
 }
@@ -38,7 +38,15 @@
 .boardtable {
 	border: 0px blue solid;
 	margin-left: 0px;
-	width: 1000px;
+	width: 1200px;
+}
+.blist > ul > li {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 30px;
+    margin-top: 50px;
+     margin-bottom: 50px;
 }
 </style>
 </head>
@@ -51,7 +59,7 @@
 			<img src="../../board/images/notice.png" style="text-align:center;width:100%; height:120px;"/></div>
 			<div class="row">
 				<div class="blist">
-					<h1>커뮤니티</h1>
+					<h1 class="text-center">커뮤니티</h1>
 					<ul>
 						<li><a href="notice.do"><h3>공지사항</h3></a></li>
 						<li><a href="free.do"><h3>자유게시판</h3></a></li>
@@ -71,10 +79,10 @@
 						style="width: 90%; margin: 0px auto; table-layout: fixed">
 						<tr style="background-color: #7643ea">
 							<th style="width: 50px" class="text-center">번호</th>
-							<th style="width: 150px" class="text-center">제목</th>
-							<th style="width: 80px" class="text-center">작성자</th>
+							<th style="width: 250px" class="text-center">제목</th>
+							<th style="width: 50px" class="text-center">작성자</th>
 							<th style="width: 100px" class="text-center">작성일</th>
-							<th style="width: 50px" class="text-center">조회수</th>
+							<th style="width: 30px" class="text-center">조회수</th>
 						</tr>
 						<c:forEach var="vo" items="${nlist }" varStatus="status">
 							<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"
@@ -82,7 +90,7 @@
 							<tr class="notice2">
 								<td style="width: 50px;" class="text-center">${vo.no }</td>
 								<td
-									style="width: 150px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"><c:if
+									style="width: 250px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"><c:if
 										test="${today1 == regdate}">
 										<sup><img src="../../board/images/new.gif"></sup>
 									</c:if> <c:if test="${vo.group_tab>0 }">
@@ -95,13 +103,13 @@
 											<em style="color: #7643ea">(${countList[status.index] })</em>
 										</c:if></a></td>
 								<td
-									style="width: 80px; text-overflow: ellipsis; overflow: hidden"
+									style="width: 50px; text-overflow: ellipsis; overflow: hidden"
 									class="text-center">관리자</td>
 								<td
 									style="width: 100px; text-overflow: ellipsis; overflow: hidden"
 									class="text-center">${regdate }</td>
 								<td
-									style="width: 50px; text-overflow: ellipsis; overflow: hidden"
+									style="width: 30px; text-overflow: ellipsis; overflow: hidden"
 									class="text-center">${vo.hit }</td>
 							</tr>
 						</c:forEach>

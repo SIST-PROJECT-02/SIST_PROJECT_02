@@ -27,7 +27,7 @@
 .boardtable {
 	border: 0px blue solid;
 	margin-left: 0px;
-	width: 1000px;
+	width: 1200px;
 }
 
  .blist > ul > li {
@@ -69,10 +69,10 @@
 						style="width: 90%; margin: 0px auto; table-layout: fixed;">
 						<tr style="background-color: #7643ea">
 							<th style="width: 50px" class="text-center">번호</th>
-							<th style="width: 150px" class="text-center">제목</th>
-							<th style="width: 80px" class="text-center">작성자</th>
+							<th style="width: 250px" class="text-center">제목</th>
+							<th style="width: 50px" class="text-center">작성자</th>
 							<th style="width: 100px" class="text-center">작성일</th>
-							<th style="width: 50px" class="text-center">조회수</th>
+							<th style="width: 30px" class="text-center">조회수</th>
 						</tr>
 						<c:forEach var="vo" items="${nlist }" varStatus="status">
 							<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"
@@ -82,7 +82,7 @@
 								<td style="width: 50px" class="text-center"><img
 									src="../../board/images/bell.png" /></td>
 								<td
-									style="width: 150px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"
+									style="width: 250px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"
 									class="text-center"><c:if test="${vo.group_tab>0 }">
 										<c:forEach var="i" begin="1" end="${vo.group_tab }" step="1">
 	  							&nbsp;&nbsp;
@@ -92,9 +92,9 @@
 										<img src="../../board/images/new.gif">
 									</c:if> <a href="ndetail.do?no=${vo.no }">${vo.subject }<c:if
 											test="${countList[status.index] !=0 }">(${countList[status.index] })</c:if></a></td>
-								<td style="width: 80px" class="text-center">관리자</td>
+								<td style="width: 50px" class="text-center">관리자</td>
 								<td style="width: 100px" class="text-center">${regdate }</td>
-								<td style="width: 50px" class="text-center">${vo.hit }</td>
+								<td style="width: 30px" class="text-center">${vo.hit }</td>
 							</tr>
 						</c:forEach>
 						<c:forEach var="vo" items="${list }">
@@ -103,7 +103,7 @@
 							<tr class="qna">
 								<td style="width: 50px" class="text-center">${vo.no }</td>
 								<td
-									style="width: 150px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"><c:if
+									style="width: 250px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"><c:if
 										test="${vo.group_tab>0 }">
 										<c:forEach var="i" begin="1" end="${vo.group_tab }" step="1">
 	  							&nbsp;&nbsp;
@@ -113,9 +113,9 @@
 										test="${today1 == regdate}">
 										<img src="../../board/images/new.gif">
 									</c:if></td>
-								<td style="width: 80px" class="text-center">${vo.name }</td>
+								<td style="width: 50px" class="text-center">${vo.name }</td>
 								<td style="width: 100px" class="text-center">${regdate }</td>
-								<td style="width: 50px" class="text-center">${vo.hit }</td>
+								<td style="width: 30px" class="text-center">${vo.hit }</td>
 							</tr>
 						</c:forEach>
 
