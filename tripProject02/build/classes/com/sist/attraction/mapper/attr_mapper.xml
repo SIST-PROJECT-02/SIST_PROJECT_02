@@ -4,33 +4,6 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
    
    <mapper namespace="com.sist.attraction.mapper.attr_mapper">
-   	
-   	<!-- 
-   	
-   	
-   	SELECT id, title, product_kind, num
-      FROM (SELECT id, title, product_kind, rownum as num 
-      FROM (SELECT id, title, product_kind 
-      FROM products ORDER BY id DESC))
-      WHERE num BETWEEN #{start} AND #{end} AND product_id = #{product_id}
-   	
-   	
-   	
-   		SELECT id, title, product_kind, hash_tag, introduction, evel_point, num
-      FROM (SELECT id, title, product_kind, hash_tag, introduction, evel_point, rownum as num 
-      FROM (SELECT id, title, product_kind, hash_tag, introduction, evel_point 
-      FROM products where product_kind='관광지' ORDER BY id DESC))
-      WHERE num BETWEEN 1 and 5;
-   	
-   	
-   	SELECT ID,TITLE,PRODUCT_KIND,HASH_TAG,INTRODUCTION,EVEL_POINT,num
-   	FROM (SELECT ID,TITLE,PRODUCT_KIND,HASH_TAG,INTRODUCTION,EVEL_POINT,rownum as num
-   	FROM (SELECT ID,TITLE,PRODUCT_KIND,HASH_TAG,INTRODUCTION,EVEL_POINT,
-   	FROM products ORDER BY EVEL_POINT ASC))
-   	WHERE num BETWEEN #{start} AND #{end}  AND product_id = #{product_id}
-   	
-   	 -->
-  
    <select id="attrTotalPage" resultType="int">
     SELECT CEIL(COUNT(*)/20.0) FROM products
    
