@@ -91,6 +91,7 @@ public class MemberModel {
 	{
 		HttpSession session=request.getSession();
 		session.invalidate();
+		request.setAttribute("jsp", "mainPage.jsp");
 		return "index.jsp";
 	}
 	

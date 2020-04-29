@@ -79,7 +79,7 @@ $(function(){
 				}
 				else
 				{
-					location.href="../main/index.jsp";
+					location.href="../../template/main/mainPage.do";
 				}
 			},
 			error:function(e){

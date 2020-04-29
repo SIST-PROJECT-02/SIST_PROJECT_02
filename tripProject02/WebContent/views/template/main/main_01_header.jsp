@@ -40,7 +40,7 @@
                 <div class="col-12 h-100">
                     <nav class="h-100 navbar navbar-expand-lg">
                     	<div id="logo">
-                        	<a href="mainpage.do"><img src="../../airplane/img/logo.png" alt=""></a>
+                        	<a href="../../template/main/mainPage.do"><img src="../../airplane/img/logo.png" alt=""></a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dorneNav" aria-controls="dorneNav" aria-expanded="false" aria-label="Toggle navigation" ><span class="fa fa-bars"></span></button>
                         <!-- Nav -->

@@ -97,7 +97,7 @@ $(function(){
 
     <div class="container">
     	<div class="row">
-    		<table class="reserveTable_hotel">
+    		<table class="reserveTable_hotel" style="width:100%;">
     			<thead class="reserveTable_head">
     				<tr>
     					<th>예약번호</th>

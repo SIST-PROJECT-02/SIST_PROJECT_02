@@ -4,7 +4,6 @@ $(function(){
 		
 		
 		var airway=$(this).parents('#ticket_view').find('.air_ticket').attr('data-airway');
-		
 		if(airway=='편도')
 		{
 			var plane_id=$(this).parents('.air_ticket').attr('data-plane-id');
