@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+.feature-title{
+	margin: auto;
+}
+
+.single-features-area{
+	width: 320px;
+	height: 220px; 
+	margin: 30px;
+}
+.tour-img{
+	width: 320px;
+	height: 105px;
+}
+.tour-title{
+	padding: 20px 15px;
+}
+

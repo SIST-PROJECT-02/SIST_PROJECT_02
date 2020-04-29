@@ -1,6 +1,6 @@
 $(function(){
 	
-	$(document).off('click').on('click','#reserveBtn',function(){
+	$(document).on('click','#reserveBtn',function(){
 		
 		
 		var airway=$(this).parents('#ticket_view').find('.air_ticket').attr('data-airway');
@@ -30,7 +30,11 @@ $(function(){
 					  "seattype":seattype,
 					  "inwon":inwon,
 					  "plane_id":plane_id,
-					  "airway":airway}
+					  "airway":airway},
+			    success:function(res)
+			    {
+			    	$(location).attr('href','../../template/main/member_reservation.do');
+			    }
 					
 			})
 		}
@@ -78,8 +82,11 @@ $(function(){
 					  "inwon":inwon,
 					  "plane_id":plane_id,
 					  "plane_id2":plane_id2,
-					  "airway":airway}
-					
+					  "airway":airway},
+				success:function(res)
+				{
+					$(location).attr('href','../../template/main/member_reservation.do');
+				}
 			})
 		}
 	})

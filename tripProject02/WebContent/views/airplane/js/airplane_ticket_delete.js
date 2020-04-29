@@ -1,5 +1,5 @@
 $(function(){
-	$(document).off('click').on('click','.ticket_delete_btn',function(){
+	$(document).on('click','.ticket_delete_btn',function(){
 		if( window.ajaxCheck == 1 ) return false;
 		
 		var index=$(this).parents('.air_ticket').index();

@@ -62,7 +62,7 @@
 	text-align: center;
 	border: 0px solid black;
 	left: 18px;
-	top:23px;
+	top:12px;
 	width: 80px;
 	height: 70px;
 	line-height:30px;
@@ -81,7 +81,7 @@
 	text-align: center;
 	border: 0px solid black;
 	right: 12px;
-	top:23px;
+	top:12px;
 	width: 80px;
 	height: 70px;
 	line-height:30px;
@@ -108,7 +108,7 @@
 .airplane_reservation_btn{
 	position: absolute;
 	border:0px solid green;
-	top:63px;left:80%;
+	top:25px;left:80%;
 	width: 138.4px;	height: 115px;
 	line-height: 115px;
 	padding: 40px 40px 40px 35px;
