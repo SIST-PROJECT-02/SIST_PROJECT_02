@@ -21,9 +21,9 @@
 	REVIEW_COUNT               NUMBER   
 	 -->
 	<select id="tourlist" resultType="TourVO" parameterType="hashmap">
-		SELECT id,title,introduction,thumbnail,num
-		FROM (SELECT id,title,introduction,thumbnail,rownum as num 
-		FROM (SELECT id,title,introduction,thumbnail 
+		SELECT id,title,address,thumbnail,num
+		FROM (SELECT id,title,address,thumbnail,rownum as num 
+		FROM (SELECT id,title,address,thumbnail 
 		FROM products WHERE product_kind=#{product_kind } ORDER BY id))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>

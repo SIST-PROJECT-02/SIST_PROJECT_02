@@ -31,6 +31,7 @@
    	
    	 -->
   
+   
    <select id="attrTotalPage" resultType="int">
     SELECT CEIL(COUNT(*)/20.0) FROM products
    

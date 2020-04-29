@@ -32,7 +32,7 @@
             <div class="row">
                 <!-- Single Features Area -->
                  <c:forEach var="vo" items="${list }"> 
-	                <div id="tourList" style="width: 300px; height: 200px;">
+	                <div id="tourList">
 	                	<input type="hidden" value="${vo.id }" >
 	                    <div class="single-features-area mb-50">
 	                       <img src="${vo.thumbnail }" alt="">
@@ -43,7 +43,7 @@
 	                        <div class="feature-content d-flex align-items-center justify-content-between">
 	                            <div class="feature-title">
 	                                <h5>${vo.title }</h5>
-	                                <p>${vo.introduction }</p>
+	                                <p>${vo.address }</p>
 	                            </div>
 	                            <!-- <div class="feature-favourite">
 	                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
