@@ -19,7 +19,7 @@
 .blist {
 	border: 1px grey solid;
 	width: 150px;
-	height: 800px;
+	height: 400px;
 	margin-left: 100px;
 	margin-right: 40px;
 }
@@ -28,6 +28,15 @@
 	border: 0px blue solid;
 	margin-left: 0px;
 	width: 1000px;
+}
+
+ .blist > ul > li {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 30px;
+    margin-top: 50px;
+     margin-bottom: 50px;
 }
 </style>
 </head>
@@ -40,7 +49,7 @@
 			<img src="../../board/images/qna.jpg" style="text-align:center;width:100%; height:120px;"/></div>
 			<div class="row">
 				<div class="blist">
-					<h1>커뮤니티</h1>
+					<h1 class="text-center">커뮤니티</h1>
 					<ul>
 						<li><a href="notice.do"><h3>공지사항</h3></a></li>
 						<li><a href="free.do"><h3>자유게시판</h3></a></li>

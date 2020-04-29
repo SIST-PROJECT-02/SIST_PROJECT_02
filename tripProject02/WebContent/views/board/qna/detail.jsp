@@ -46,8 +46,9 @@
 							<td class="text-left white" colspan="4" valign="top" height="200">${vo.content }</td>
 						</tr>
 						<tr>
-							<td class="text-right" colspan="4"><a
-								href="qna_reply.do?no=${vo.no }" class="btn btn-md btn-danger">답변</a>
+							<td class="text-right" colspan="4">
+							<c:if test="${sessionScope.admin == 1}">
+							<a href="qna_reply.do?no=${vo.no }" class="btn btn-md btn-danger">답변</a></c:if>
 								<c:if test="${sessionScope.email == vo.pwd}">
 									<a href="qna_update.do?no=${vo.no }"
 										class="btn btn-md btn-success">수정</a>
