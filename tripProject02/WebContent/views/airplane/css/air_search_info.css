@@ -26,12 +26,13 @@ dd{
  .airport_img{
 	width: 46px;
 	height: 37px;
-	margin-top: 18px;
+	margin-top: 13px;
 }
  .air_info{
 	border: 0px solid black;
 	height:100px;
 	width:100%;
+	padding:10px;
 	background:white;
 	box-sizing:border-box;
 	float: left;
@@ -79,8 +80,8 @@ dd{
 	height: 100%;
 	
 }
-.airline_img{
-	height: 55px;
+.airseat_img{
+	height: 50px;
 	line-height: 55px;
 }
 .seattype{
@@ -93,7 +94,7 @@ dd{
 	width:30%;
 	float:left;
 	height:100%;
-	line-height:100px;
+	line-height:80px;
 	font-size:25px;
 	box-sizing:border-box;
 }

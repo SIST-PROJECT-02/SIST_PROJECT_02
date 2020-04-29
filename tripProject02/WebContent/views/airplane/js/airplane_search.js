@@ -42,6 +42,15 @@ $(function(){
 		let start_time=$('#start_time').val();
 		let end_time=$('#end_time').val();
 		let airway=$('input:radio[name=airway]:checked').val();
+		let inwon=$('#inwon').val();
+		
+		if(inwon==null)
+		{
+			Ext.onReady(function(){
+				Ext.Msg.alert("인원수 체크","인원수를 선택해주세요");
+			})
+		}
+		console.log("inwon:"+inwon);
 		
 		
 		$.ajax({
@@ -52,7 +61,8 @@ $(function(){
 				  "end_airport":end_airport,
 				  "start_time":start_time,
 				  "end_time":end_time,
-				  "airway":airway
+				  "airway":airway,
+				  "inwon":inwon
 			},
 			success:function(res)
 			{

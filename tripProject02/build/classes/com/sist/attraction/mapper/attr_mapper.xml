@@ -4,13 +4,6 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
    
    <mapper namespace="com.sist.attraction.mapper.attr_mapper">
-   <select id="attractionListData" resultType="AttractionVO" parameterType="java.util.Map">
-   
-	SELECT id, title, product_kind, hash_tag, introduction, evel_point, num
-      FROM (SELECT id, title, product_kind, hash_tag, introduction, evel_point, rownum as num 
-      FROM (SELECT id, title, product_kind, hash_tag, introduction, evel_point 
-      FROM products where product_kind=#{product_kind} ORDER BY id DESC))
-      WHERE num BETWEEN #{start} and #{end}  
    	
    	<!-- 
    	
@@ -38,7 +31,6 @@
    	
    	 -->
   
-   </select>
    <select id="attrTotalPage" resultType="int">
     SELECT CEIL(COUNT(*)/20.0) FROM products
    

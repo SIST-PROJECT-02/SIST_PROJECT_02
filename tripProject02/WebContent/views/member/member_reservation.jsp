@@ -58,29 +58,7 @@ $(function(){
 		});
 		/* return false; */
 	});
-	
-	$('.ok1').click(function(){
-		$.ajax({
-			type:'POST',
-			url:'reserve_hotel.do',
-			success:function(res)
-			{
-				$('#result_reservation').show();
-				$('#result_reservation').html(res);
-			}
-		});
-	});
-	$('.ok2').click(function(){
-		$.ajax({
-			type:'POST',
-			url:'reserve_air.do',
-			success:function(res)
-			{
-				$('#result_reservation').show();
-				$('#result_reservation').html(res);
-			}
-		});
-	});
+
 });
 </script>
 </head>
@@ -118,7 +96,7 @@ $(function(){
 
     <div class="container">
     	<div class="row">
-    		<table class="reserveTable_hotel">
+    		<table class="reserveTable_hotel" style="width: 100%;">
     			<thead class="reserveTable_head">
     				<tr>
     					<th>예약번호</th>
@@ -130,23 +108,25 @@ $(function(){
 	    				<th>상태</th>
     				</tr>
     			</thead>
+    			<c:forEach var="hvo" items="${hotelList}">
     			<tbody class="reserveTable_body">
     				<tr>
-    					<td>예약번호</td>
-	    				<td>투숙객명</td>
-	    				<td>숙소명</td>
-	    				<td>체크인</td>
-	    				<td>체크아웃</td>
-	    				<td>요금합계</td>
-	    				<td><a class="btn ok1">상태</a></td>
+    					<td>${hvo.id }</td>
+    					<td>${hvo.email }</td>
+	    				<td>${hvo.title }</td>
+	    				<td>${hvo.check_in }</td>
+	    				<td>${hvo.check_out }</td>
+	    				<td>${hvo.price } 원</td>
+	    				<td><a class="btn ok1">${hvo.state }</a></td>
     				</tr>
     			</tbody>
+    			</c:forEach>
     		</table>
     	</div>
     </div>
     <div class="container">
     	<div class="row">
-    		<table class="reserveTable_air">
+    		<table class="reserveTable_air" style="width: 100%;">
     			<thead class="reserveTable_head">
     				<tr>
 	    				<th>항공사</th>
@@ -155,20 +135,40 @@ $(function(){
 	    				<th>출발시간</th>
 	    				<th>도착시간</th>
 	    				<th>총 탑승객</th>
+	    				<th>총 금액</th>
 	    				<th>상태</th>
     				</tr>
     			</thead>
+    			<c:forEach var="avo" items="${airList}">
     			<tbody class="reserveTable_body">
+    			
     				<tr>
-	    				<td>항공사</td>
-	    				<td>탑승일</td>
-	    				<td>노선</td>
-	    				<td>출발시간</td>
-	    				<td>도착시간</td>
-	    				<td>총탑승객</td>
-	    				<td><a class="btn ok2">상태</a></td>
+	    				<td>
+	    					<img src="../../airplane/img/${avo.img }" style="width: 40px; height: 40px;"><br>
+	    					${avo.airline }
+	    				</td>
+	    				<td style="width: 10%">${avo.date }<br>
+	    					${avo.day }
+	    				</td>
+	    				<td>${avo.start_airport }<img src="../../airplane/img/arrow.PNG"> ${avo.end_airport }</td>
+	    				<td>${avo.start_hour }</td>
+	    				<td>${avo.end_hour }</td>
+	    				<td>${avo.inwon } 명</td>
+	    				<td>${avo.price } 원</td>
+	    				<td>
+	    					<c:choose>
+	    						<c:when test="${avo.status==0 }">
+	    							<button class="btn ok2" style="background-color:#FA5858; color:white;" >예약 대기</button>
+	    						</c:when>
+	    						<c:otherwise>
+	    							<button class="btn" style="background-color:#01DFA5; color:white;">예약 완료</button>
+	    						</c:otherwise>
+	    					</c:choose>
+	    				</td>
     				</tr>
+    			
     			</tbody>
+    			</c:forEach>
     		</table>	
     	</div>
     </div>

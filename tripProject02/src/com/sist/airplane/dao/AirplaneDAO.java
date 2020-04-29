@@ -77,5 +77,90 @@ public class AirplaneDAO {
 		return totalpage;
 	}
 	
-
+	public static AirplaneVO airplaneReserveSelect(Map map)
+	{
+		AirplaneVO vo=new AirplaneVO();
+		SqlSession session=null;
+		try{
+			session=ssf.openSession();
+			vo=session.selectOne("airplaneReserveSelect",map);
+					
+		}catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+		return vo;
+	}
+	
+	public static void airplaneOnewayReserveInsert(Map map)
+	{
+		SqlSession session=null;
+		try{
+			session=ssf.openSession(true);
+			session.insert("airplaneReserveInsert",map);
+					
+		}catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+	}
+	
+	public static void airplaneRoundReserveInsert(Map map)
+	{
+		SqlSession session=null;
+		try{
+			session=ssf.openSession();
+			session.insert("airplaneReserveInsert",map);
+			session.insert("airplaneReserveInsert2",map);
+			session.commit();
+			
+		}catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+	}
+	
+	public static List<AirplaneReserveVO> airplaneReserveData(Map map)
+	{
+		SqlSession session=null;
+		List<AirplaneReserveVO> list=new ArrayList<AirplaneReserveVO>();
+		try{
+			session=ssf.openSession();
+			list=session.selectList("airplaneReserveData",map);
+		}catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		finally{
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+	
+	public static void airplaneReserveDataUpdate(int rno)
+	{
+		SqlSession session=null;
+		try{
+			session=ssf.openSession(true);
+			session.update("airplaneReserveDataUpdate",rno);
+		}catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		finally{
+			if(session!=null)
+				session.close();
+		}
+	}
 }

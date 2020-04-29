@@ -8,7 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="./../../airplane/js/airplane_ticket.js?v<%=System.currentTimeMillis()%>"></script>
-<script type="text/javascript" src="./../../airplane/js/airplane_info_more_info.js?v<%=System.currentTimeMillis()%>"></script>
+<script type="text/javascript" src="./../../airplane/js/airplane_more_info.js?v<%=System.currentTimeMillis()%>"></script>
+<script type="text/javascript" src="./../../airplane/js/airplane_reserve.js?v<%=System.currentTimeMillis()%>"></script>
+<script type="text/javascript" src="./../../airplane/js/airplane_ticket_delete.js?v<%=System.currentTimeMillis()%>"></script>
 </head>
 <body>
 	<div id="ticket_view" >
@@ -18,7 +20,8 @@
 					<div class="container_air">
 						<div class="air_info" data-airway="${airway }" data-start-airport="${start_airport }" 
 						data-end-airport="${end_airport }" data-start-time="${start_time }" data-end-time="${end_time }" 
-						data-type="${type }" data-totalpage="${totalpage }">
+						data-type="${type }" data-totalpage="${totalpage }" data-inwon="${inwon }" data-plane-id="${vo.plane_id }"
+						data-seattype="${vo.seatVO.seattype }">
 							<div class="air_img">
 								<img class="airport_img" src="../../airplane/img/${vo.img }" width="30px" height="30px" data-airimg="${vo.img }"/>
 								<div id="airline" class="bottom"><span>${vo.airline }</span></div>
@@ -42,7 +45,7 @@
 								</dl>
 							</div>
 							<div class="air_seattype">
-									<div class="airline_img">
+									<div class="airseat_img">
 										<img src="../../airplane/img/seat.PNG" height="35px" width="35px">
 									</div>
 									
@@ -54,11 +57,11 @@
 											</c:when>
 											
 											<c:when test="${seattype eq 1 }">
-												<span>비즈니스석</span>
+												<span>이등석</span>
 											</c:when>
 											
 											<c:when test="${seattype eq 0 }">
-												<span>퍼스트석</span>
+												<span>일등석</span>
 											</c:when>
 										</c:choose>
 									</div>

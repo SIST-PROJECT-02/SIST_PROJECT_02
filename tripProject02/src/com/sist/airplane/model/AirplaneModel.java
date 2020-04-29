@@ -6,6 +6,8 @@ import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
@@ -24,7 +26,6 @@ public class AirplaneModel {
 		c.add(Calendar.DATE, 1);
 		String today = mSimpleDateFormat.format(c.getTime());
 		
-		request.setAttribute("height", "height:1350px");
 		request.setAttribute("today", today);
 		request.setAttribute("jsp", "../../airplane/airplaneList.jsp");
 		return "index.jsp";
@@ -59,7 +60,8 @@ public class AirplaneModel {
 		String start_time="";
 		String end_time="";
 		String airway="";
-		
+		String inwon=request.getParameter("inwon");
+		String plane_id=request.getParameter("plane_id");
 		
 		Map map=new HashMap();
 		/*System.out.println("typeInt :" +typeInt);*/
@@ -140,6 +142,8 @@ public class AirplaneModel {
 			list=AirplaneDAO.startAirplaneListData(map);
 		}
 		
+		
+		request.setAttribute("inwon", inwon);
 		request.setAttribute("type", typeInt+1);
 		request.setAttribute("airway", airway);
 		request.setAttribute("start_airport", start_airport);
@@ -162,6 +166,181 @@ public class AirplaneModel {
 			return "../airplane/airplaneList_ok.jsp";
 		}
 		
+	}
+	
+	/*airplane_reserver_oneway_trip.do*/
+	@RequestMapping("views/airplane/airplane_reserve_oneway_trip.do")
+	public String airplane_reserve_oneway_ok(HttpServletRequest request,HttpServletResponse response)
+	{
+		try{
+			request.setCharacterEncoding("UTF-8");
+		}catch (Exception ex) {}
+		
+		System.out.println("Oneway ok.do ??");
+		HttpSession session=request.getSession();
+		
+		String email=(String)session.getAttribute("email");
+		String name=(String)session.getAttribute("name");
+		
+		String start_airport=request.getParameter("start_airport");
+		String end_airport=request.getParameter("end_airport");
+		String start_time=request.getParameter("start_time");
+		String plane_id=request.getParameter("plane_id");
+		String seattype=request.getParameter("seattype");
+		String inwon=request.getParameter("inwon");
+		String airway=request.getParameter("airway");
+		
+		/*System.out.println("email :"+email);
+		System.out.println("start_airport :"+start_airport);
+		System.out.println("name :"+name);
+		System.out.println("end_airport :"+end_airport);
+		System.out.println("start_time :"+start_time);
+		System.out.println("plane_id :"+plane_id);
+		System.out.println("seattype :"+seattype);
+		System.out.println("inwon :"+inwon);*/
+		
+		int inwonInt=Integer.parseInt(inwon);
+		
+		Map map=new HashMap();
+		
+		map.put("start_airport", start_airport);
+		map.put("end_airport", end_airport);
+		map.put("start_time", start_time);
+		map.put("plane_id", plane_id);
+		map.put("seattype", seattype);
+		
+		//DAO
+		AirplaneVO vo=AirplaneDAO.airplaneReserveSelect(map);
+		/*System.out.println("getAirline :"+vo.getAirline());
+		System.out.println("getPlane_id :"+vo.getPlane_id());
+		System.out.println("getImg :"+vo.getImg());
+		System.out.println("getPrice :"+vo.getSeatVO().getPrice());
+		System.out.println("getSeattype :"+vo.getSeatVO().getSeattype());
+		System.out.println("getStart_airport :"+vo.getTimeVO().getStart_airport());
+		System.out.println("getEnd_airport :"+vo.getTimeVO().getEnd_airport());
+		System.out.println("getStart_time :"+vo.getTimeVO().getStart_time());
+		System.out.println("getEnd_time :"+vo.getTimeVO().getEnd_time());
+		System.out.println("getStart_hour :"+vo.getTimeVO().getStart_hour());
+		System.out.println("getEnd_hour :"+vo.getTimeVO().getEnd_hour());
+		System.out.println("getTotaltime :"+vo.getTimeVO().getTotaltime());*/
+		
+		String priceTmp=(vo.getSeatVO().getPrice()).trim();
+		int priceInt=Integer.parseInt(priceTmp.replace(",", ""));
+		String price=Integer.toString(priceInt*inwonInt);
+		
+		System.out.println("price:"+price);
+		
+		map.put("vo", vo);
+		map.put("email", email);
+		map.put("name",name);
+		map.put("price", price);
+		map.put("inwon", inwon);
+		map.put("airway", airway);
+		
+		
+		AirplaneDAO.airplaneOnewayReserveInsert(map);
+		
+		return "redirect:mainPage.do";
+	}
+	
+	@RequestMapping("views/airplane/airplane_reserve_round_trip.do")
+	public String airplane_reserve_round_trip(HttpServletRequest request,HttpServletResponse response)
+	{
+		try{
+			request.setCharacterEncoding("UTF-8");
+		}catch (Exception ex) {}
+		
+		HttpSession session=request.getSession();
+		
+		String email=(String)session.getAttribute("email");
+		String name=(String)session.getAttribute("name");
+		String inwon=request.getParameter("inwon");
+		String airway=request.getParameter("airway");
+		
+		int inwonInt=Integer.parseInt(inwon);
+		
+		// 가는날
+		String start_airport=request.getParameter("start_airport");
+		String end_airport=request.getParameter("end_airport");
+		String start_time=request.getParameter("start_time");
+		String plane_id=request.getParameter("plane_id");
+		String seattype=request.getParameter("seattype");
+		System.out.println("seattype " + seattype);
+		Map map=new HashMap();
+		
+		map.put("start_airport", start_airport);
+		map.put("end_airport", end_airport);
+		map.put("start_time", start_time);
+		map.put("plane_id", plane_id);
+		map.put("seattype", seattype);
+		
+		// Go DAO
+		
+		AirplaneVO vo=AirplaneDAO.airplaneReserveSelect(map);
+		
+		String priceTmp=(vo.getSeatVO().getPrice()).trim();
+		int priceInt=Integer.parseInt(priceTmp.replace(",", ""));
+		String price=Integer.toString(priceInt*inwonInt);
+		
+		/*System.out.println("getAirline :"+vo.getAirline());
+		System.out.println("getPlane_id :"+vo.getPlane_id());
+		System.out.println("getImg :"+vo.getImg());
+		System.out.println("getPrice :"+vo.getSeatVO().getPrice());
+		System.out.println("getSeattype :"+vo.getSeatVO().getSeattype());
+		System.out.println("getStart_airport :"+vo.getTimeVO().getStart_airport());
+		System.out.println("getEnd_airport :"+vo.getTimeVO().getEnd_airport());
+		System.out.println("getStart_time :"+vo.getTimeVO().getStart_time());
+		System.out.println("getEnd_time :"+vo.getTimeVO().getEnd_time());
+		System.out.println("getStart_hour :"+vo.getTimeVO().getStart_hour());
+		System.out.println("getEnd_hour :"+vo.getTimeVO().getEnd_hour());
+		System.out.println("getTotaltime :"+vo.getTimeVO().getTotaltime());*/
+		
+		map.put("vo", vo);
+		map.put("price", price);
+		// 오는날
+		String start_airport2=request.getParameter("start_airport2");
+		String end_airport2=request.getParameter("end_airport2");
+		String start_time2=request.getParameter("start_time2");
+		String plane_id2=request.getParameter("plane_id2");
+		String seattype2=request.getParameter("seattype2");
+		
+		map.put("start_airport", start_airport2);
+		map.put("end_airport", end_airport2);
+		map.put("start_time", start_time2);
+		map.put("plane_id", plane_id2);
+		map.put("seattype", seattype2);
+		
+		AirplaneVO vo2=AirplaneDAO.airplaneReserveSelect(map);
+		
+		String priceTmp2=(vo2.getSeatVO().getPrice()).trim();
+		int priceInt2=Integer.parseInt(priceTmp2.replace(",", ""));
+		String price2=Integer.toString(priceInt2*inwonInt);
+		
+		/*System.out.println("getAirline2 :"+vo2.getAirline());
+		System.out.println("getPlane_id2 :"+vo2.getPlane_id());
+		System.out.println("getImg2 :"+vo2.getImg());
+		System.out.println("getPrice2 :"+vo2.getSeatVO().getPrice());
+		System.out.println("getSeattype2 :"+vo2.getSeatVO().getSeattype());
+		System.out.println("getStart_airport2 :"+vo2.getTimeVO().getStart_airport());
+		System.out.println("getEnd_airport2 :"+vo2.getTimeVO().getEnd_airport());
+		System.out.println("getStart_time2 :"+vo2.getTimeVO().getStart_time());
+		System.out.println("getEnd_time2 :"+vo2.getTimeVO().getEnd_time());
+		System.out.println("getStart_hour2 :"+vo2.getTimeVO().getStart_hour());
+		System.out.println("getEnd_hour2 :"+vo2.getTimeVO().getEnd_hour());
+		System.out.println("getTotaltime2 :"+vo2.getTimeVO().getTotaltime());*/
+		
+		map.put("vo2", vo2);
+		map.put("price2", price2);
+		
+		
+		map.put("email", email);
+		map.put("name",name);
+		map.put("inwon", inwon);
+		map.put("airway", airway);
+		
+		AirplaneDAO.airplaneRoundReserveInsert(map);
+		
+		return "redirect:mainPage.do";
 	}
 	
 
