@@ -65,14 +65,14 @@
                                         <a class="dropdown-item" href="tour.do">관광지</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown">
+                           <!--      <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">여행플랜<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                         <a class="dropdown-item" href="index.jsp?mode=6">항공</a>
                                         <a class="dropdown-item" href="index.jsp?mode=7">숙소</a>
                                         <a class="dropdown-item" href="index.jsp?mode=8">관광지</a>
                                     </div>
-                                </li>
+                                </li> -->
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">커뮤니티<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
@@ -81,9 +81,9 @@
                                         <a class="dropdown-item" href="qna.do">Q&A</a>
                                     </div>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" href="index.jsp?mode=13">고객센터</a>
-                                </li>
+                                </li> -->
                                 <c:if test="${sessionScope.email!=null && admin==0}">
                                 <li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지<i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -104,9 +104,9 @@
 								</c:if>
                             </ul>
                             <!-- Search btn -->
-                            <div class="dorne-search-btn">
+                            <!-- <div class="dorne-search-btn">
                                 <a id="search-btn" href="#"><i class="fa fa-search" aria-hidden="true"></i>검색</a>
-                            </div>
+                            </div> -->
                             <!-- Register btn -->
                             <c:if test="${sessionScope.email==null }"> 
 	                            <div class="dorne-signin-btn">
