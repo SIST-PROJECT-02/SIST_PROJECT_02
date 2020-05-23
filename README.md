@@ -1,6 +1,6 @@
 # 여행복행
 ### 우리나라 대표 휴양지인 제주도에 대한 다양한 정보를 제공하고 많은 사람들의 방문을 유도할 수 있는 프로젝트
-+ [Project-study](https://github.com/JaeHyukSim/project-study/blob/master/README.md,"프로젝트 스터디")
+[Project-study](https://github.com/JaeHyukSim/project-study/blob/master/README.md,"프로젝트 스터디")
 -------------
 
 ### 담당 부분과 기능
